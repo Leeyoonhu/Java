@@ -5,8 +5,8 @@ package bit_commit_exercise.day01;
 // 0m에서의 수심은 20도
 import java.util.*;
 
-public class ex01 {
-	static Scanner scan = new Scanner(System.in);
+public class Ex01 {
+	public static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 		System.out.print("수심을 입력하세요 : ");
 		int depthOfWater = scan.nextInt();

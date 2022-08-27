@@ -3,9 +3,9 @@ package bit_commit_exercise.day01;
 // 버스 전용차로 단속 프로그램
 // 버스 전용차로에 버스가아닌 다른차종이 주행할 경우 단속
 // 단 휴일은 단속x
-import static bit_commit_exercise.day01.ex01.scan;
+import static bit_commit_exercise.day01.Ex01.scan;
 
-public class ex04 {
+public class Ex04 {
 	public static void main(String[] args) {
 		System.out.println("1.월~금, 2.토요일, 3.공휴일");
 		System.out.print("요일을 선택하세요(1~3) --> ");

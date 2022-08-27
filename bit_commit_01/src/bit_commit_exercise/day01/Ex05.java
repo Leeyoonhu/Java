@@ -1,9 +1,9 @@
 package bit_commit_exercise.day01;
 // 학점에 따른 문구 출력 프로그램
 
-import static bit_commit_exercise.day01.ex01.scan;
+import static bit_commit_exercise.day01.Ex01.scan;
 
-public class ex05 {
+public class Ex05 {
 	public static void main(String[] args) {
 		System.out.print("점수를 입력하시오 -->> ");
 		int score = scan.nextInt();

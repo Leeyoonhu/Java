@@ -3,9 +3,9 @@ package bit_commit_exercise.day02;
 // 교통카드 잔액 출력
 // 1회 사용당 1250원, 잔액이 부족하면 출력종료
 
-import static bit_commit_exercise.day02.ex01.scan;
+import static bit_commit_exercise.day02.Ex01.scan;
 
-public class ex02 {
+public class Ex02 {
 	public static void main(String[] args) {
 		System.out.print("최초 충전금액 -->> ");
 		int money = scan.nextInt();
