@@ -9,11 +9,11 @@
 <body>
 <%! 
 // <%! 전역변수 선언 or 메소드 선언 %.> 
-int count = 0;	// 전역변수 count 선언
+	int count = 0;	// 전역변수 count 선언
 %>
 1이 증가된 후 카운트 값은
 <%
-out.println(++count);
+	out.println(++count);
 %>
 </body>
 </html>
