@@ -21,7 +21,7 @@ for(int i = 1; i <= 10; i++){
 		out.println(i + " = ");
 	}
 }
-out.println(sum);
+	out.println(sum);
 %></h3>
 </body>
 </html>
