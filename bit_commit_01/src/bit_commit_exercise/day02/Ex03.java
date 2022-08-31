@@ -15,6 +15,7 @@ public class Ex03 {
 				break;
 			}
 			System.out.printf("삼각형의 넓이 : %.1f\n", area);
+			
 		}
 	}
 }
