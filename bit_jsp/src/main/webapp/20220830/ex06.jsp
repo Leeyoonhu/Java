@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>표현문 태그Ex02</title>
 </head>
 <body>
-	<%String. %>
+<%
+	int a = 10;
+	int b = 20;
+	int c = 30;
+// 표현문 태그로 바로 출력 가능
+%>
+<%= a + b + c %>
 </body>
 </html>
