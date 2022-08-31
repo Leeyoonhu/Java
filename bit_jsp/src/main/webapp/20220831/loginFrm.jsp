@@ -8,6 +8,10 @@
 </head>
 <body>
 <!-- 로그인 폼임 -->
+<!-- 세션이 처음이거나, 세션이 가져온 userId의 값이 null일 경우  
+위 조건에 따라서 로그인, 로그아웃 창 나눠서 보이게 할 것임-->
+<%if(session.isNew() || session.getAttribute("userId") == null){
+	String msg = (String)request.getAttribute("error");%>
 <form action="./loginProc.jsp" method="post">
 	ID : <input type="text" name="userId"> <br>
 	비밀번호 : <input type="password" name="userPwd"> <br>
@@ -22,5 +26,10 @@
 <!-- 따라서 back-end 단에서 인코딩 형식도 처리해 줘야 함 -->
 <!-- request.setCharacterEncoding("인코딩 형식") 사용 -->
 </form>
+<%} else {%>
+<a href="./loginProc.jsp">로그아웃</a>
+<!-- a 태그를 이용해서 파일 경로로 이동하는 것은 method="get"방식임 -->
+<!-- 로그인과 로그아웃의 method 방식 차이에 따라 나오는 내용을 다르게 할 것임 -->
+<%} %>
 </body>
 </html>
