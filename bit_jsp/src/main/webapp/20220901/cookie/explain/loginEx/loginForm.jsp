@@ -23,7 +23,8 @@
 		비번 : <input type="password" name="pwd">
 		<input type="submit" value="제출">
 	<%}%>
-	
+
+
 
 </form>
 </body>

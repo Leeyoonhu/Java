@@ -20,12 +20,16 @@ String pwd2 = application.getInitParameter("adminPwd");
 
  
 <%if((id.equalsIgnoreCase(id2) && pwd.equalsIgnoreCase(pwd2))){
-	if(check.equalsIgnoreCase("on")){
-		Cookie cookie = new Cookie("id", id);
-			response.addCookie(cookie);%>
-		로그인에 성공했음 <br>
-		<a href="./loginForm.jsp">로그인 폼으로</a>	
-	<%}%>
+	Cookie cookie = new Cookie("id", id);%>
+
+	로그인에 성공했음 <br>
+	<a href="./loginForm.jsp">로그인 폼으로</a>	
+	<%if(check == null){
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+	}else{
+		response.addCookie(cookie);
+	}%>
 <%}
 else {
 	out.println("아이디나 비밀번호가 맞지 않습니다.");
