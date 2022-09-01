@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	챔피언을 선택하십시오.<br>
+	<img alt="안보영" name="champ" src="./champ.png"  >
 </body>
-</html>
+</html>	

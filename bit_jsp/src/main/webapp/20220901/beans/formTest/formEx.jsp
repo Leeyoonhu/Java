@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img alt="안보영" name="tech" src="./tech.png"  >
+<form action="./ex15.jsp">
+이름 : <input type="text" name="name"> <br>
+번호 : <input type="text" name="number"> <br>
+<input type="submit" value="제출하기">
+</form> 
 </body>
 </html>

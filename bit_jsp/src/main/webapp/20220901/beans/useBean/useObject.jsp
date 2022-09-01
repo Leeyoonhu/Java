@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img alt="안보영" name="tech" src="./tech.png"  >
+	<jsp:useBean class="org.ai.beans.Members"  scope="application" id="member"></jsp:useBean>
+	<jsp:getProperty property="name" name="member"/>
+	(<jsp:getProperty property="userId" name="member"/>)님 안녕!
 </body>
 </html>

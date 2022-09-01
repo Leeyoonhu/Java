@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img alt="안보영" name="tech" src="./tech.png"  >
+	아이디 <%=session.getAttribute("userId")%>로 로그인 한 상태 <br>
+	<a href="./logout.jsp">로그아웃</a>
 </body>
 </html>
