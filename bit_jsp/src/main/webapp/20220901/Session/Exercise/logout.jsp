@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img alt="안보영" name="tech" src="./tech.png"  >
+	로그아웃 완료. <br>
+	<%session.invalidate();%>
+	<a href="./loginFrm2.jsp">로그인 화면으로</a>
 </body>
 </html>

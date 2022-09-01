@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img alt="안보영" name="tech" src="./tech.png"  >
+	소환사의 계곡에 오신 것을 환영합니다.<br>
+	<img alt="안보영" name="home" src="./home.png">
+	
 </body>
 </html>
