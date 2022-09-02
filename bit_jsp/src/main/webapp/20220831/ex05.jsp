@@ -10,7 +10,7 @@
 <!-- header, main, footer 를 사용해 방문할때마다 횟수를 카운트하여 출력하는 페이지 작성 -->
 <%@ include file = "header.jsp" %>
 <hr>
-<%@ include file = "main.jsp" %>
+<%-- <%@ include file = "main.jsp" %> --%>
 <hr>
 <%@ include file = "footer.jsp" %>
 </body>
