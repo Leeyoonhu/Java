@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- if 구문과 choose~when~otherwise 구문 -->
-<c:set var="num" value="${95 }"></c:set>
+<c:set var="num" value="${50}"></c:set>
 점수 : <c:out value="${num }"></c:out>은	<!-- 변수 num에 저장된 값 출력 -->
 <c:if test="${num>60}">합격입니다</c:if> <br>	<!-- num이 60이상이면 합격 -->
 <c:choose>	
@@ -17,7 +17,8 @@
 <c:when test="${num >=80 }"> B학점 입니다.</c:when>
 <c:when test="${num >=70 }"> C학점 입니다.</c:when>
 <c:when test="${num >=60 }"> D학점 입니다.</c:when>
-<c:otherwise>F학점 입니다.</c:otherwise>
+<c:otherwise>F학점 입니다.</c:otherwise>	
 </c:choose>
+<!-- when없이 choose못씀 -->
 </body>
 </html>
