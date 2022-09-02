@@ -103,7 +103,7 @@ String email = request.getParameter("email");
 </tr>
 <tr>
 	<td>가입일</td>
-	<td colspan="4	"><%=mem.getRegDate() %></td>	
+	<td colspan="4"><%=mem.getRegDate() %></td>	
 </tr>
 </table>
 
