@@ -101,6 +101,8 @@ String email = request.getParameter("email");
   </tr>
 </table>
 
-
+<%
+conn.close();
+%>
 </body>
 </html>
