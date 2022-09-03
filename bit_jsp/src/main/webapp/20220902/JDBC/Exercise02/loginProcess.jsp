@@ -45,6 +45,9 @@ try {
 if(userId.equals(mem.getUserId()) && userPwd.equals(mem.getUserPwd())){
 	Cookie cookie = new Cookie("userName", mem.getUserName());
 	response.addCookie(cookie);
+	session.setAttribute("userId", userId);
+	session.setAttribute("userPwd", userPwd);
+	/* 세션 지속시간을 넣어줄 필요가 있을까...... */
 	response.sendRedirect("./loginResult.jsp");
 }
 else {

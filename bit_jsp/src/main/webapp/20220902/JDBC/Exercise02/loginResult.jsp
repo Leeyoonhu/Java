@@ -10,7 +10,7 @@
 <%
 Cookie[] cookies = request.getCookies();
 %>
-<%=cookies[0].getValue() %>님 안녕하세요 <br>
+<%=cookies[0].getValue() %>님 안녕하세요 <br> 
 <a href="./updateForm.jsp">회원정보 수정</a>
 </body>
 </html>

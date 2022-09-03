@@ -77,9 +77,6 @@ String email = request.getParameter("email");
 		e.printStackTrace();
 	}
 %>
-<%
-	
-%>
 
 <table border="1">
 <caption>테이블에서 읽어온 데이터</caption>

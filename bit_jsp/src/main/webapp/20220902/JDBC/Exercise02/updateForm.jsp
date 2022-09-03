@@ -18,7 +18,7 @@ String password = "tiger";
 Connection conn = null;
 PreparedStatement pstmt = null;
 ResultSet rs = null;
-
+/* 수정 후에 쿠키에 다시 넣기.. */
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	conn = DriverManager.getConnection(url, user, password);
