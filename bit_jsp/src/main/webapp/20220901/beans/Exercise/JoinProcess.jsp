@@ -12,7 +12,7 @@
 	Members m = new Members();
 	m.setUserId(request.getParameter("id"));
 	m.setUserPwd(request.getParameter("pwd"));
-	m.setName(request.getParameter("name"));
+/* 	m.setName(request.getParameter("name")); */
 	m.setEmail(request.getParameter("email"));
 %>
 
@@ -25,7 +25,7 @@
 	</tr>
 	<tr>
 		<td>이름</td>
-		<td><%=m.getName() %></td>
+<%-- 		<td><%=m.getName() %></td> --%>
 		<td>이메일</td>
 		<td><%=m.getEmail() %></td>
 	</tr>
