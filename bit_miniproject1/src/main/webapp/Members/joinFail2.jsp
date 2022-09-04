@@ -20,7 +20,7 @@ form {
 <!-- 회원 가입시 아이디가 존재하는 경우 -->
 <!--  -->
 <script type="text/javascript">
-	alert("이미 존재하는 회원입니다.")
+	alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다..")
 </script>
 <form action="./joinForm.jsp" method="post">
 <input type="submit" value="다시 회원가입 하러가기">

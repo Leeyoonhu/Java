@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 가입 성공!</title>
 <style type="text/css">
 body {
 	position: absolute;
@@ -20,11 +20,11 @@ form {
 </head>
 <body>
 <h3>회원 가입을 축하드립니다</h3> <br>
-<form action="./loginForm.jsp">
+<form action="./loginForm.jsp" method="post">
 <input type="submit" value="로그인 하러가기">
 </form>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<form action="./mainForm.jsp">
+<form action="./mainForm.jsp" method="post">
 <input type="submit" value="메인으로 가기">
 </form>
 </body>

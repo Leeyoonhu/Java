@@ -24,8 +24,8 @@ String userPwd = request.getParameter("userPwd");
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	/* db 에서 꺼낸 고객 아이디, 비밀번호를 가지고 있는 memList */
 	ArrayList<Members> memList = new ArrayList<Members>();
+	/* db 에서 꺼낸 고객 아이디, 비밀번호를 가지고 있는 memList */
 	
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -65,17 +65,21 @@ String userPwd = request.getParameter("userPwd");
 				}
 				/* 비밀번호 다를 때 */
 				else {
-					
+					response.sendRedirect("./loginFail.jsp");
 				}
 			}
 			/* 아이디조차 없을때 */
 			else {
 				/* 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 */
+				
 			}
 		}
 	} catch (Exception e){
 		e.printStackTrace();
 	}
+%>
+<%
+conn.close();
 %>
 </body>
 </html>
