@@ -24,7 +24,7 @@ form {
 <input type="submit" value="로그인 하러가기">
 </form>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<form action="./main.jsp">
+<form action="./mainForm.jsp">
 <input type="submit" value="메인으로 가기">
 </form>
 </body>

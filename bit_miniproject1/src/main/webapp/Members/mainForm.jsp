@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,63 +32,63 @@ background-repeat: repeat
 </style>
 </head>
 <body>
-<!-- ·Î±×ÀÎ ÀÌÀü ¸ŞÀÎÈ¨ÆäÀÌÁö -->
-<!-- °ø¿ë Çì´õ -->
-<!-- Çì´õ ¹é±×¶ó¿îµå (ÃßÈÄ ¼öÁ¤) -->
+<!-- ë¡œê·¸ì¸ ì´ì „ ë©”ì¸í™ˆí˜ì´ì§€ -->
+<!-- ê³µìš© í—¤ë” -->
+<!-- í—¤ë” ë°±ê·¸ë¼ìš´ë“œ (ì¶”í›„ ìˆ˜ì •) -->
 <header>
 <h1 style="text-align: center; font-size: 4.5em;" >ROK ARMY</h1>
 <div style="float: right">
-	<a href="./joinForm.jsp">È¸¿ø°¡ÀÔ</a>
+	<a href="./joinForm.jsp">íšŒì›ê°€ì…</a>
 	&nbsp
-	<a href="./loginForm.jsp">·Î±×ÀÎ</a>
+	<a href="./loginForm.jsp">ë¡œê·¸ì¸</a>
 	&nbsp 
 </div><br><br>
 <table>
 <tr style="text-align: center">
 	<th>
 		<form action="">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 150px" type="submit" value="ÀÚÀ¯°Ô½ÃÆÇ">
+			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 150px" type="submit" value="ììœ ê²Œì‹œíŒ">
 		</form>
 	</th>
 	<th>
 		<form action="">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="Ãâ¼®Ã¼Å©">
+			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="ì¶œì„ì²´í¬">
 		</form>
 	</th> 
 	<th>
 		<form action="">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="»çÁø°Ô½ÃÆÇ">
+			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="ì‚¬ì§„ê²Œì‹œíŒ">
 		</form>
 	</th> 
 	<th>
 		<form action="">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="Áú¹®°Ô½ÃÆÇ">
+			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="ì§ˆë¬¸ê²Œì‹œíŒ">
 		</form>
 	</th> 
 	<th>
 		<form action="">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="Á¤º¸°Ô½ÃÆÇ">
+			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="ì •ë³´ê²Œì‹œíŒ">
 		</form>
 	</th> 
 </tr>
 </table>
 <br>
 </header>
-<!-- Çì´õ ³¡³ª´Â ºÎºĞ -->
+<!-- í—¤ë” ëë‚˜ëŠ” ë¶€ë¶„ -->
 <div id="content">
 <aside>
 	<table>
 	<tr>
 		<th>
 			<form action="">
-				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="button" value="È¸¿øÁ¤º¸">
+				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="button" value="íšŒì›ì •ë³´">
 			</form>
 		</th>
 	</tr>
 	<tr>
 		<th>
 			<form action="">
-				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="Á¤º¸°Ô½ÃÆÇ">
+				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="ì •ë³´ê²Œì‹œíŒ">
 			</form>
 		</th> 
 	</tr>

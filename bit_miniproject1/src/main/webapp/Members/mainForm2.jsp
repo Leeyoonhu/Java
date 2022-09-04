@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 아이디는 있는데 암호가 틀렸을 때 가는 페이지 -->
-<script type="text/javascript">
-	alert("암호가 틀렸습니다.");
-</script>
-
+<!-- 로그인 이후 메인 홈페이지(군인이 아닐때) -->
 </body>
 </html>

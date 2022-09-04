@@ -1,7 +1,7 @@
 package org.ai.beans;
 
 public class Members {
-	private int userNum;
+	private int userNum, userExp;
 	private String userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender, regDate;
 	public Members() {
 	}
@@ -25,11 +25,12 @@ public class Members {
 		this.userJob = userJob;
 		this.gender = gender;
 	}
-	// 회원이 갖고있는 모든 정보 생성자 (13개, 처음만 int, 나머지 String)
-	public Members(int userNum, String userId, String userPwd, String checkPwd, String nickName, String firstName,
-			String lastName, String phoneNo, String pwdHintQ, String pwdHint, String userJob, String gender,
-			String regDate) {
+	// 회원이 갖고있는 모든 정보 생성자 (14개, 1,2번만 int, 나머지 String)
+	public Members(int userNum, int userExp, String userId, String userPwd, String checkPwd, String nickName,
+			String firstName, String lastName, String phoneNo, String pwdHintQ, String pwdHint, String userJob,
+			String gender, String regDate) {
 		this.userNum = userNum;
+		this.userExp = userExp;
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.checkPwd = checkPwd;
@@ -42,6 +43,21 @@ public class Members {
 		this.userJob = userJob;
 		this.gender = gender;
 		this.regDate = regDate;
+	}
+	
+	public int getUserNum() {
+		return userNum;
+	}
+	
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
+	
+	public int getUserExp() {
+		return userExp;
+	}
+	public void setUserExp(int userExp) {
+		this.userExp = userExp;
 	}
 	public String getUserId() {
 		return userId;
@@ -110,4 +126,11 @@ public class Members {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	
 }
