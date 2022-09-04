@@ -13,9 +13,19 @@ body {
 	margin-left: -150px;
 	margin-top: -100px;
 }
+form {
+	display: inline-block;
+}
 </style>
 </head>
 <body>
-<h3>회원 가입을 축하드립니다</h3>
+<h3>회원 가입을 축하드립니다</h3> <br>
+<form action="./loginForm.jsp">
+<input type="submit" value="로그인 하러가기">
+</form>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<form action="./main.jsp">
+<input type="submit" value="메인으로 가기">
+</form>
 </body>
 </html>
