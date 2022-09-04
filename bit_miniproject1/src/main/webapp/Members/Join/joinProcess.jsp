@@ -30,8 +30,8 @@ String gender = request.getParameter("gender");
 /* 넣기 전에 이미 있는 회원 정보인지 확인(Id로) */
 String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 String sql = null;
-String user = "lyh";
-String password = "dbsn1234@";
+String user = "root";
+String password = "1234";
 Connection conn = null;
 PreparedStatement pstmt = null;
 ResultSet rs = null;
