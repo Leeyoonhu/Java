@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
 <style type="text/css">
 form {
 	display: inline-block;
@@ -17,25 +17,31 @@ form {
 <!-- 이름과 전화번호로 아이디를 찾음 -->
 <h1 style="
 position: absolute;
-	top: 27%;
+	top: 23%;
 	left: 40%;">아이디 찾기</h1>
 <form action="./findIdProcess.jsp" method="post">
 <p style="
 position: absolute;
 	top: 34%;
-	left: 38%;"> 성 : <input type="text" name="firstName"> </p> <br>
+	left: 38%;"> 성 : <input type="text" name="firstName" autofocus="autofocus"> </p> <br>
 <p style="
 position: absolute;
-	top: 37%;
+	top: 38%;
 	left: 38%;"> 이름 : <input type="text" name="lastName"> </p> <br>
 	<p style="
 position: absolute;
-	top: 40%;
+	top: 42%;
 	left: 38%;"> 전화번호 : <input type="tel" name="phoneNo"> </p> <br>
 	<p style="
 position: absolute;
-	top: 45%;
-	left: 43%;"> <input type="submit" value="조회하기"></p>
-</form>	
+	top: 47%;
+	left: 39%;"> <input type="submit" value="아이디 조회하기"></p>
+</form>
+<form action="./findPwdForm.jsp" method="post">
+<p style="
+position: absolute;
+	top: 47%;
+	left: 50%;"> <input type="submit" value="비밀번호 찾기"> </p>
+</form>
 </body>
 </html>
