@@ -8,13 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 사용자가 입력한 값 -->
 <%
 request.setCharacterEncoding("utf-8");
-String firstName = request.getParameter("firstName");
-String lastName = request.getParameter("lastName");
-String phoneNo = request.getParameter("phoneNo");
+String userId = request.getParameter("userId");
+String pwdHintQ = request.getParameter("pwdHintQ");
+String pwdHint = request.getParameter("pwdHint");
 %>
-<!-- DB에 해당 정보 있는지 조회 -->
+<!-- DB에서 조회 -->
 <%
 	String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 	String sql = null;
@@ -31,31 +32,29 @@ String phoneNo = request.getParameter("phoneNo");
 		sql = "select * from members";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
+		/* db 모든 정보를 담은 memList */
 		while(rs.next()){
 			memList.add(new Members(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
 					, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
 					, rs.getString(13), rs.getString(14)));
 		}
-		/* 만약 가져온 이름과 전화번호가 같을경우 */
+		/* db에서 아이디,힌트,힌트답변이 같을때만 비밀번호 알려줌 */
 		for(int i = 0; i < memList.size(); i++){
-			if(firstName.equals(memList.get(i).getFirstName())&&
-					lastName.equals(memList.get(i).getLastName())&&
-					phoneNo.equals(memList.get(i).getPhoneNo())){
-				/* 쿠키에 담아서 다음 페이지에서 알려주고 죽이자 */
-				Cookie cookie = new Cookie("userId", memList.get(i).getUserId());
+			if(userId.equals(memList.get(i).getUserId()) &&
+					pwdHintQ.equals(memList.get(i).getPwdHintQ()) &&
+					pwdHint.equals(memList.get(i).getPwdHint())){
+				Cookie cookie = new Cookie("userPwd", memList.get(i).getUserPwd());
 				response.addCookie(cookie);
-				response.sendRedirect("./findIdSuccess.jsp");
+				response.sendRedirect("./findPwdSuccess.jsp");
 			}
-			/* 하나라도 다를경우 */
 			else {
-				response.sendRedirect("./findIdFail.jsp");
+				response.sendRedirect("./findPwdFail.jsp");
 			}
 		}
-			
-	} catch(Exception e){
+		
+	} catch (Exception e){
 		e.printStackTrace();
 	}
-
 %>
 <%
 conn.close();

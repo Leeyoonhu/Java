@@ -71,7 +71,7 @@ String userPwd = request.getParameter("userPwd");
 			/* 아이디조차 없을때 */
 			else {
 				/* 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 */
-				
+				response.sendRedirect("./loginFail.jsp");
 			}
 		}
 	} catch (Exception e){

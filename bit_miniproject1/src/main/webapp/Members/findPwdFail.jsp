@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기 실패..</title>
+<title>Insert title here</title>
+</head>
+<body>
 <style type="text/css">
 body {
 	position: absolute;
@@ -20,13 +22,15 @@ form {
 <!-- 회원 가입시 아이디가 존재하는 경우 -->
 <!--  -->
 <script type="text/javascript">
-	alert("존재하지 않는 회원입니다.")
+	alert("입력하신 정보를 가진 회원이 없거나 질문/답변이 틀렸습니다.")
 </script>
 <form action="./findIdForm.jsp" method="post">
-<input type="submit" value="다시 아이디 찾기">
+<input type="submit" value="아이디 찾기">
 </form>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<form action="./mainForm.jsp" method="post">
-<input type="submit" value="메인으로 가기">
+<form action="./findPwdForm.jsp" method="post">
+<input type="submit" value="다시 비밀번호 찾기">
+</body>
+</html>
 </body>
 </html>
