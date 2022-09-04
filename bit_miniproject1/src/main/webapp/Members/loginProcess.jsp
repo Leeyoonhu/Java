@@ -28,7 +28,6 @@ String userPwd = request.getParameter("userPwd");
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(url, user, password);
-		out.println("연결됨");
 	} catch (Exception e){
 		e.printStackTrace();
 	}
