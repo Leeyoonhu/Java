@@ -1,9 +1,16 @@
 package org.ai.beans;
 
 public class Members {
-	String userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender;
+	private int userNum;
+	private String userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender, regDate;
 	public Members() {
 	}
+	// 로그인 할때 판별하는 생성자
+	public Members(String userId, String userPwd) {
+		this.userId = userId;
+		this.userPwd = userPwd;
+	}
+	// 회원 가입 할때 받는 정보 생성자 (11개)
 	public Members(String userId, String userPwd, String checkPwd, String nickName, String firstName, String lastName,
 			String phoneNo, String pwdHintQ, String pwdHint, String userJob, String gender) {
 		this.userId = userId;
@@ -18,9 +25,28 @@ public class Members {
 		this.userJob = userJob;
 		this.gender = gender;
 	}
+	// 회원이 갖고있는 모든 정보 생성자 (13개, 처음만 int, 나머지 String)
+	public Members(int userNum, String userId, String userPwd, String checkPwd, String nickName, String firstName,
+			String lastName, String phoneNo, String pwdHintQ, String pwdHint, String userJob, String gender,
+			String regDate) {
+		this.userNum = userNum;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.checkPwd = checkPwd;
+		this.nickName = nickName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNo = phoneNo;
+		this.pwdHintQ = pwdHintQ;
+		this.pwdHint = pwdHint;
+		this.userJob = userJob;
+		this.gender = gender;
+		this.regDate = regDate;
+	}
 	public String getUserId() {
 		return userId;
 	}
+	
 	public String getUserPwd() {
 		return userPwd;
 	}

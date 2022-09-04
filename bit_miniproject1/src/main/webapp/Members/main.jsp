@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 #content {
@@ -14,6 +14,11 @@ width: 1200px;
 height: 2080px;
 }
 aside {
+background-image:URL('https://i.ibb.co/JvXcXyS/army.jpg'); 
+background-size: cover;
+background-repeat: repeat;
+background-color: rgba( 255, 255, 255, 0.5 );
+background-
 float: left;
 display: block;
 width: 300px;
@@ -76,7 +81,7 @@ background-repeat: repeat
 	<tr>
 		<th>
 			<form action="">
-				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="회원정보">
+				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="button" value="회원정보">
 			</form>
 		</th>
 	</tr>
