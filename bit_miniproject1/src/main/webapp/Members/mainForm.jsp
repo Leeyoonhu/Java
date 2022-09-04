@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ROK ARMY</title>
 <style type="text/css">
 #content {
 margin-top: 30px;
@@ -17,8 +17,6 @@ aside {
 background-image:URL('https://i.ibb.co/JvXcXyS/army.jpg'); 
 background-size: cover;
 background-repeat: repeat;
-background-color: rgba( 255, 255, 255, 0.5 );
-background-
 float: left;
 display: block;
 width: 300px;

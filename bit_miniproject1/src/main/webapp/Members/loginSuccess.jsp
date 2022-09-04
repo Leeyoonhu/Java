@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 성공!</title>
 <style type="text/css">
 h1 {
 	position: absolute;
@@ -44,6 +44,5 @@ Cookie[] cookies = request.getCookies();
 	현재 경험치는 <%=cookies[2].getValue()%>입니다. <br>
 </p>
 <a href="./mainForm.jsp">메인 홈페이지로 가기</a>
-
 </body>
 </html>
