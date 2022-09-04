@@ -45,10 +45,10 @@ try {
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	while(rs.next()){
-		if(rs.getString(1).equals(userId)){
-			/* 회원 정보가있다는 알림창 어떻게 띄울건지 고민할 것 */
-			response.sendRedirect("./joinForm.jsp");
-		}
+		if(rs.getString(1).equals(userId)){%>
+			<!-- /* 회원 정보가있다는 알림창 어떻게 띄울건지 고민할 것 */ -->
+			<jsp:forward page="./joinFail.jsp"></jsp:forward>
+		<%}
 	}
 		
 	/* 없으면 추가 */
