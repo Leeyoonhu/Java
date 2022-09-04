@@ -24,10 +24,46 @@ String userPwd = request.getParameter("userPwd");
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	/* db 에서 꺼낸 고객 아이디, 비밀번호를 가지고 있는 memList */
+	ArrayList<Members> memList = new ArrayList<Members>();
 	
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(url, user, password);
+		sql = "select * from members";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		/* 가져온 고객 정보(아이디, 비번만 가져오려했는데.. )
+			언제 더 쓸지 모르니 일단 다가져옴 (나중에 다 만들면 필요한 정보만 가져올 것)
+		*/
+		while(rs.next()){
+			memList.add(new Members(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)
+					, rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11)
+					, rs.getString(12), rs.getString(13)));
+		}
+		for(int i = 0; i < memList.size(); i++){
+			/* 아이디 같을때*/
+			if(userId.equals(memList.get(i).getUserId())){
+				/* 비밀번호 같을 때 */
+				if(userPwd.equals(memList.get(i).getUserPwd())){
+					/* 쿠키 생성(일단은 닉네임만) */
+					Cookie cookie = new Cookie("nickName", memList.get(i).getNickName());
+					/* 로그인 세션 생성 */
+					session.setAttribute("userId", userId);
+					session.setAttribute("userPwd", userPwd);
+					/* 성공 페이지 이동 */
+					response.sendRedirect("./loginSuccess.jsp");
+				}
+				/* 비밀번호 다를 때 */
+				else {
+					
+				}
+			}
+			/* 아이디조차 없을때 */
+			else {
+				/* 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 */
+			}
+		}
 	} catch (Exception e){
 		e.printStackTrace();
 	}
