@@ -23,6 +23,13 @@ String userJob = request.getParameter("userJob");
 String gender = request.getParameter("gender");
 %>
 
+<!-- userPwd와 checkPwd가 다를경우 다시보냄.. (알림창띄우면서 보내고 싶다) -->
+<%
+if (!userPwd.equals(checkPwd)){
+	response.sendRedirect("./joinForm.jsp");
+}
+%>
+
 <%@ page import="java.util.*, java.sql.*, org.ai.beans.*" %>
 
 <%
@@ -45,10 +52,10 @@ try {
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	while(rs.next()){
-		if(rs.getString(1).equals(userId)){%>
-			<!-- /* 회원 정보가있다는 알림창 어떻게 띄울건지 고민할 것 */ -->
-			<jsp:forward page="./joinFail.jsp"></jsp:forward>
-		<%}
+		if(rs.getString(1).equals(userId)){
+			/* 회원 정보가있다는 알림창 어떻게 띄울건지 고민할 것 */ 
+			response.sendRedirect("./joinfail.jsp");
+		}
 	}
 		
 	/* 없으면 추가 */

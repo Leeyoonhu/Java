@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +18,13 @@ form {
 </head>
 <body>
 <script type="text/javascript">
-	alert("юл╧л а╦юГго╢б х╦©Ьют╢о╢ы.")
+	alert("Л²╢К╞╦ Л║╢Л·╛М∙≤К┼■ М ▄Л⌡░Л·┘К▀┬К▀╓.")
 </script>
 <form action="./joinForm.jsp">
-<input type="submit" value="х╦©Ь╟║ют го╥╞╟║╠Б">
+<input type="submit" value="М ▄Л⌡░Й╟─Л·┘ М∙≤К÷╛Й╟─Й╦╟">
 </form>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<form action="./main.jsp">
-<input type="submit" value="╦чюню╦╥н ╟║╠Б">
+<form action="./mainForm.jsp">
+<input type="submit" value="К╘■Л²╦Л°╪К║° Й╟─Й╦╟">
 </body>
 </html>
