@@ -66,10 +66,10 @@ String userPwd = request.getParameter("userPwd");
 					/* 로그인 성공 페이지가아니고.. 메인페이지에 군인인지 아닌지로 보낼까? */
 					response.sendRedirect("./mainForm2.jsp");
 					if(memList.get(i).getUserJob().equals("soldier")){%>
-						<%-- <jsp:forward page="./mainForm3.jsp"></jsp:forward> --%>
+						<jsp:forward page="./mainForm3.jsp"></jsp:forward>
 					<%}
 					else {%>
-						<%-- <jsp:forward page="./mainForm2.jsp"></jsp:forward> --%>
+						<jsp:forward page="./mainForm2.jsp"></jsp:forward>
 					<%} 
 				}
 				/* 비밀번호 다를 때 */
@@ -78,6 +78,7 @@ String userPwd = request.getParameter("userPwd");
 				<%}
 			}
 			/* 아이디조차 없을때 */
+			/* 같은 아이디를 찾지 못했을때 */
 			else {%>
 				<!-- 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 -->
 				<%-- <jsp:forward page="./loginFail2.jsp"></jsp:forward> --%>

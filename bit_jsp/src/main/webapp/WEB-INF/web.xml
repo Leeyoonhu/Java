@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+ <!-- web-app이 시작 태그(root tag) -->
   <display-name>bit_jsp</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -18,4 +19,14 @@
   	<param-name>adminPwd</param-name>
   	<param-value>1234</param-value>
   </context-param>
+  
+<!--   <servlet>
+  	<servlet-name>first</servlet-name>
+  	<servlet-class>org.ai.controllers.FirstServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>first</servlet-name>
+  	<url-pattern>/hello</url-pattern>
+  </servlet-mapping> -->
 </web-app>
