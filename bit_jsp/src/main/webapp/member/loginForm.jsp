@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="./loginProcess.jsp">
+<form action="./loginProc.do" method="post">
 	<table border="1">
 		<tr>
 			<td>아이디</td>

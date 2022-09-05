@@ -45,10 +45,8 @@ String userPwd = request.getParameter("userPwd");
 			/* 아이디 같을때*/
 			if(userId.equals(memList.get(i).getUserId())){
 				/* 비밀번호 같을 때 */
-				out.println("아이디맞음");
 				if(userPwd.equals(memList.get(i).getUserPwd())){
 					/* 쿠키 생성(일단은 닉네임과 회원번호, 회원 경험치만) */
-					out.println("비밀번호맞음");
 					Cookie cookie = new Cookie("nickName", memList.get(i).getNickName());
 					response.addCookie(cookie);
 					String str1 = String.format("%d", memList.get(i).getUserNum());
@@ -65,25 +63,22 @@ String userPwd = request.getParameter("userPwd");
 					/* 성공 페이지 이동 */
 					/* 로그인 성공 페이지가아니고.. 메인페이지에 군인인지 아닌지로 보낼까? */
 					response.sendRedirect("./mainForm2.jsp");
-					if(memList.get(i).getUserJob().equals("soldier")){%>
-						<jsp:forward page="./mainForm3.jsp"></jsp:forward>
-					<%}
-					else {%>
-						<jsp:forward page="./mainForm2.jsp"></jsp:forward>
-					<%} 
+					if(memList.get(i).getUserJob().equals("soldier")){
+						response.sendRedirect("./mainForm3.jsp");
+					}
+					else {
+						response.sendRedirect("./mainForm2.jsp");
+					} 
 				}
 				/* 비밀번호 다를 때 */
-				else {%>
-					<jsp:forward page="./loginFail.jsp"></jsp:forward>
-				<%}
+				else {
+					response.sendRedirect("./loginFail.jsp");
+				}
 			}
 			/* 아이디조차 없을때 */
-			/* 같은 아이디를 찾지 못했을때 */
-			else {%>
-				<!-- 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 -->
-				<%-- <jsp:forward page="./loginFail2.jsp"></jsp:forward> --%>
-			<%}
+			/* 같은 아이디를 찾지 못했을때 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 */
 		}
+		response.sendRedirect("./loginFail2.jsp");
 	} catch (Exception e){
 		e.printStackTrace();
 	}
