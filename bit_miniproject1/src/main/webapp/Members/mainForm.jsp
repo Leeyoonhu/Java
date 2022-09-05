@@ -14,7 +14,7 @@ width: 1200px;
 height: 2080px;
 }
 aside {
-background-image:URL('https://i.ibb.co/JvXcXyS/army.jpg'); 
+background-image:URL('https://i.ibb.co/0Z5ZMXF/A.png'); 
 background-size: cover;
 background-repeat: repeat;
 float: left;
@@ -23,7 +23,7 @@ width: 300px;
 }
 
 header {
-background-image:URL('https://i.ibb.co/JvXcXyS/army.jpg'); 
+background-image:URL('https://i.ibb.co/0Z5ZMXF/A.png'); 
 background-size: cover;
 background-repeat: repeat
 }
@@ -45,27 +45,27 @@ background-repeat: repeat
 <tr style="text-align: center">
 	<th>
 		<form action="" method="post">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 150px" type="submit" value="자유게시판">
+			<input style="width: 300px; height: 40px; font-size: 1.2em; margin-left: 300px" type="submit" value="자유게시판">
 		</form>
 	</th>
 	<th>
 		<form action="" method="post">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="출석체크">
+			<input style="width: 300px; height: 40px; font-size: 1.2em; margin-left: 10px" type="submit" value="출석체크">
 		</form>
 	</th> 
 	<th>
 		<form action="" method="post">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="사진게시판">
+			<input style="width: 300px; height: 40px; font-size: 1.2em; margin-left: 10px" type="submit" value="사진게시판">
 		</form>
 	</th> 
 	<th>
 		<form action="" method="post">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="질문게시판">
+			<input style="width: 300px; height: 40px; font-size: 1.2em; margin-left: 10px" type="submit" value="질문게시판">
 		</form>
 	</th> 
 	<th>
 		<form action="" method="post">
-			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="정보게시판">
+			<input style="width: 300px; height: 40px; font-size: 1.2em; margin-left: 10px" type="submit" value="정보게시판">
 		</form>
 	</th> 
 </tr>
@@ -79,14 +79,49 @@ background-repeat: repeat
 	<tr>
 		<th>
 			<form action="" method="post">
-				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="button" value="회원정보">
+				<input style="width: 300px; height: 40px; font-size: 1.2em; margin-top : 50px; margin-bottom : 100px; margin-left: 10px"  type="button" value="회원정보">
 			</form>
 		</th>
 	</tr>
 	<tr>
 		<th>
 			<form action="" method="post">
-				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="정보게시판">
+				<input style="width: 300px; height: 40px; font-size: 1.2em; margin-bottom : 100px; margin-left: 10px" type="submit" value="정보게시판">
+			</form>
+		</th> 
+	</tr>
+	<tr>
+		<th>
+			<form action="" method="post">
+				<input style="width: 300px; height: 40px; font-size: 1.2em; margin-bottom : 100px; margin-left: 10px" type="submit" value="사진게시판">
+			</form>
+		</th> 
+	</tr>
+	<tr>
+		<th>
+			<form action="" method="post">
+				<input style="width: 300px; height: 40px; font-size: 1.2em; margin-bottom : 100px; margin-left: 10px" type="submit" value="질문게시판">
+			</form>
+		</th> 
+	</tr>
+	<tr>
+		<th>
+			<form action="" method="post">
+				<input style="width: 300px; height: 40px; font-size: 1.2em; margin-bottom : 100px; margin-left: 10px" type="submit" value="일기장">
+			</form>
+		</th> 
+	</tr>
+	<tr>
+		<th>
+			<form action="" method="post">
+				<input style="width: 300px; height: 40px; font-size: 1.2em; margin-bottom : 100px; margin-left: 10px" type="submit" value="편지함">
+			</form>
+		</th> 
+	</tr>
+	<tr>
+		<th>
+			<form action="" method="post">
+				<input style="width: 300px; height: 40px; font-size: 1.2em; margin-bottom : 100px; margin-left: 10px" type="submit" value="출석체크">
 			</form>
 		</th> 
 	</tr>
