@@ -56,14 +56,22 @@
 	}
 	
 %>
-<c:set var="items" value="<%=bList %>"></c:set>
-<c:forEach var="item" items="items">
+<c:set var="items" value="${bList}"></c:set>
+<c:forEach var="item" items="${items}">
 <!-- 이 링크를 누르면 해당 게시글로 가야됨 -->
-	<a href="./" style="text-decoration: none"></a>
-		
-</c:forEach>		
-		</table>
-	</form>
+	<tr style="text-align: center">
+		<td>${item.number}</td>
+		<td><a href="./freeBoardView.jsp?number=${item.number}" style="text-decoration: none; color: gray;">${item.title }</a></td>
+		<td>${item.writer}</td>
+		<td>${item.regDate}</td>
+		<td>${item.views}</td>
+		<td>${item.recommends}</td>
+	</tr>
+</c:forEach>
+<!-- 추가된 테이블 열이 overflow되면.. 다음 페이지 생성하고 보여주는 목록이 그쪽 페이지로 넘어가게해야함.. -->		
+</table>
+</form>
 </div>
+<%conn.close(); %>
 </body>
 </html>

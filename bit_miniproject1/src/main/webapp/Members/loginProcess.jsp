@@ -37,7 +37,6 @@ String userPwd = request.getParameter("userPwd");
 		/* 가져온 고객 정보(아이디, 비번만 가져오려했는데.. )
 			언제 더 쓸지 모르니 일단 다가져옴 (나중에 다 만들면 필요한 정보만 가져올 것)
 		*/
-		rs.get
 		while(rs.next()){
 			memList.add(new Members(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
 					, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
