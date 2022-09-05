@@ -31,8 +31,8 @@ background-repeat: repeat
 </head>
 <body>
 <!-- 로그인 이전 메인홈페이지 -->
-<!-- 공용 헤더 -->
-<!-- 헤더 백그라운드 (추후 수정) -->
+<!-- 공용 헤더(수정한 후 src파일로 만들어서 모든곳에 돌려쓸예정)  -->
+<!-- 헤더 백그라운드 -->
 <header>
 <h1 style="text-align: center; font-size: 4.5em;" >ROK ARMY</h1>
 <div style="float: right">
@@ -44,27 +44,27 @@ background-repeat: repeat
 <table>
 <tr style="text-align: center">
 	<th>
-		<form action="">
+		<form action="" method="post">
 			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 150px" type="submit" value="자유게시판">
 		</form>
 	</th>
 	<th>
-		<form action="">
+		<form action="" method="post">
 			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="출석체크">
 		</form>
 	</th> 
 	<th>
-		<form action="">
+		<form action="" method="post">
 			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="사진게시판">
 		</form>
 	</th> 
 	<th>
-		<form action="">
+		<form action="" method="post">
 			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="질문게시판">
 		</form>
 	</th> 
 	<th>
-		<form action="">
+		<form action="" method="post">
 			<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="정보게시판">
 		</form>
 	</th> 
@@ -78,14 +78,14 @@ background-repeat: repeat
 	<table>
 	<tr>
 		<th>
-			<form action="">
+			<form action="" method="post">
 				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="button" value="회원정보">
 			</form>
 		</th>
 	</tr>
 	<tr>
 		<th>
-			<form action="">
+			<form action="" method="post">
 				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="submit" value="정보게시판">
 			</form>
 		</th> 

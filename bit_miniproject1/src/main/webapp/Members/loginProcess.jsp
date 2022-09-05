@@ -41,12 +41,14 @@ String userPwd = request.getParameter("userPwd");
 					, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
 					, rs.getString(13), rs.getString(14)));
 		}
-		for(int i = 0; i < memList.size(); i++){
+		for(int i = 0; i< memList.size(); i++){
 			/* 아이디 같을때*/
 			if(userId.equals(memList.get(i).getUserId())){
 				/* 비밀번호 같을 때 */
+				out.println("아이디맞음");
 				if(userPwd.equals(memList.get(i).getUserPwd())){
 					/* 쿠키 생성(일단은 닉네임과 회원번호, 회원 경험치만) */
+					out.println("비밀번호맞음");
 					Cookie cookie = new Cookie("nickName", memList.get(i).getNickName());
 					response.addCookie(cookie);
 					String str1 = String.format("%d", memList.get(i).getUserNum());
@@ -61,18 +63,25 @@ String userPwd = request.getParameter("userPwd");
 					/* 군인인지 판별을 위해 job 세션 추가*/
 					session.setAttribute("userJob", memList.get(i).getUserJob());
 					/* 성공 페이지 이동 */
-					response.sendRedirect("./loginSuccess.jsp");
+					/* 로그인 성공 페이지가아니고.. 메인페이지에 군인인지 아닌지로 보낼까? */
+					response.sendRedirect("./mainForm2.jsp");
+					if(memList.get(i).getUserJob().equals("soldier")){%>
+						<%-- <jsp:forward page="./mainForm3.jsp"></jsp:forward> --%>
+					<%}
+					else {%>
+						<%-- <jsp:forward page="./mainForm2.jsp"></jsp:forward> --%>
+					<%} 
 				}
 				/* 비밀번호 다를 때 */
-				else {
-					response.sendRedirect("./loginFail.jsp");
-				}
+				else {%>
+					<jsp:forward page="./loginFail.jsp"></jsp:forward>
+				<%}
 			}
 			/* 아이디조차 없을때 */
-			else {
-				/* 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 */
-				response.sendRedirect("./loginFail.jsp");
-			}
+			else {%>
+				<!-- 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 -->
+				<%-- <jsp:forward page="./loginFail2.jsp"></jsp:forward> --%>
+			<%}
 		}
 	} catch (Exception e){
 		e.printStackTrace();

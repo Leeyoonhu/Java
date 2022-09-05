@@ -21,6 +21,7 @@ body {
 	아이디 : <input type="text" name="userId" autofocus="autofocus"> <br>		
 	비밀번호 : <input type="password" name="userPwd"> <br>
 	비밀번호 확인 : <input type="password" name="checkPwd">	<br>
+	<!-- 현재 userPwd와 checkPwd가 다를경우 판별을 submit 이후에 하고있기때문에 입력했을 당시 다른지 알려주려면 어떻게할까 -->
 	닉네임 : <input type="text" name="nickName">	<br>
 	성 :	<input type="text" name="firstName">
 	이름 : <input type="text" name="lastName"> <br>
@@ -43,6 +44,7 @@ body {
 	 <input type="radio" name="userJob" id="girlfriend" value="girlfriend">
 	 <label for="girlfriend">여자친구</label> 
 	 <br>
+	 <!-- 군인 > 남자 / 여자친구 > 여자로 자동체크 될 방법 생각해보기 -->
 	성별 : 
 	<input type="radio" name="gender" id="male" value="male" checked="checked">
 	<label for="male">남자</label>
