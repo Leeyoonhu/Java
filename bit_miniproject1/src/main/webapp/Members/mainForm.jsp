@@ -44,7 +44,7 @@ background-repeat: repeat
 <table>
 <tr style="text-align: center">
 	<th>
-		<form action="" method="post">
+		<form action="./freeBoard.jsp" method="post">
 			<input style="width: 300px; height: 40px; font-size: 1.2em; margin-left: 300px" type="submit" value="자유게시판">
 		</form>
 	</th>

@@ -78,8 +78,6 @@ Cookie[] cookies = request.getCookies();
 	<table>
 	<tr>
 		<th></th>
-		
-		
 		<th>
 			<form action="" method="post">
 				<input style="width: 300px; height: 50px; font-size: 1.2em; margin-left: 10px" type="button" value="내 글관리">
