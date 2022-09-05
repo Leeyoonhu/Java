@@ -43,6 +43,6 @@ Cookie[] cookies = request.getCookies();
 	font-size: 1.2em;">
 	현재 경험치는 <%=cookies[2].getValue()%>입니다. <br>
 </p>
-<a href="./mainForm.jsp">메인 홈페이지로 가기</a>
+<a href="./mainForm2.jsp">메인 홈페이지로 가기</a>
 </body>
 </html>
