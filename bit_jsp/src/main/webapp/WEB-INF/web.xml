@@ -20,6 +20,17 @@
   	<param-value>1234</param-value>
   </context-param>
   
+  <!-- ServletContext 확인을 위해 parameter 생성 -->
+  <context-param>
+  	<param-name>userId</param-name>
+  	<param-value>admin</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>userPwd</param-name>
+  	<param-value>1234</param-value>
+  </context-param>
+  
+  
 <!--   <servlet>
   	<servlet-name>first</servlet-name>
   	<servlet-class>org.ai.controllers.FirstServlet</servlet-class>
