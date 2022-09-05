@@ -57,7 +57,6 @@ try {
 			response.sendRedirect("./joinFail.jsp");
 		}
 	}
-		
 	/* 없으면 추가 */
 	sql = "insert into Members 	(userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	pstmt = conn.prepareStatement(sql);

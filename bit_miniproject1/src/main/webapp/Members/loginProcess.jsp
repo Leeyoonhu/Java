@@ -25,6 +25,7 @@ String userPwd = request.getParameter("userPwd");
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	ArrayList<Members> memList = new ArrayList<Members>();
+	int cnt = 0;
 	/* db 에서 꺼낸 고객 아이디, 비밀번호를 가지고 있는 memList */
 	
 	try {
@@ -62,7 +63,6 @@ String userPwd = request.getParameter("userPwd");
 					session.setAttribute("userJob", memList.get(i).getUserJob());
 					/* 성공 페이지 이동 */
 					/* 로그인 성공 페이지가아니고.. 메인페이지에 군인인지 아닌지로 보낼까? */
-					response.sendRedirect("./mainForm2.jsp");
 					if(memList.get(i).getUserJob().equals("soldier")){
 						response.sendRedirect("./mainForm3.jsp");
 					}
@@ -70,14 +70,19 @@ String userPwd = request.getParameter("userPwd");
 						response.sendRedirect("./mainForm2.jsp");
 					} 
 				}
-				/* 비밀번호 다를 때 */
-				else {
+			}
+		}
+		for(int i = 0; i< memList.size(); i++){
+			if(userId.equals(memList.get(i).getUserId())){
+				/* 아이디 같고 */
+				if(!userPwd.equals(memList.get(i).getUserPwd())){
+					/*  비밀번호 다를때 */
 					response.sendRedirect("./loginFail.jsp");
 				}
 			}
+		}
 			/* 아이디조차 없을때 */
 			/* 같은 아이디를 찾지 못했을때 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 */
-		}
 		response.sendRedirect("./loginFail2.jsp");
 	} catch (Exception e){
 		e.printStackTrace();

@@ -47,11 +47,8 @@ String phoneNo = request.getParameter("phoneNo");
 				response.sendRedirect("./findIdSuccess.jsp");
 			}
 			/* 하나라도 다를경우 */
-			else {
-				response.sendRedirect("./findIdFail.jsp");
-			}
 		}
-			
+		response.sendRedirect("./findIdFail.jsp");	
 	} catch(Exception e){
 		e.printStackTrace();
 	}

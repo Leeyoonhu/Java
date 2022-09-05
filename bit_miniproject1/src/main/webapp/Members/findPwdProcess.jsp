@@ -47,11 +47,8 @@ String pwdHint = request.getParameter("pwdHint");
 				response.addCookie(cookie);
 				response.sendRedirect("./findPwdSuccess.jsp");
 			}
-			else {
-				response.sendRedirect("./findPwdFail.jsp");
-			}
 		}
-		
+		response.sendRedirect("./findPwdFail.jsp");
 	} catch (Exception e){
 		e.printStackTrace();
 	}
