@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /* 응답 정보 처리 */ 
 /* url pattern을 해석하면 / 의 root 주소는 프로젝트 내의 webapp임 */
+/* 이 url 주소로 가면 Servlet을 실행할 것임 */
 @WebServlet(name="second", urlPatterns = {"/second"})
 public class SecondServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
