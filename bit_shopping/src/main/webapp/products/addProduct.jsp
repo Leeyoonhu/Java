@@ -14,7 +14,7 @@
 	</div>
 </div>
 <div class="container">
-	<form name="newProduct" action="./addProductProc.do" class="form-horizontal" method="POST">
+	<form name="newProduct" action="./addProductProc.do" class="form-horizontal" method="POST" enctype="multipart/form-data">
 		<div>
 			<label class="col-sm2">상품 코드</label>
 			<div class="col-sm3">
@@ -52,15 +52,17 @@
 			</div>
 		</div>
 		<div>
-			<label class="col-sm2">재고량</label>
+			<label class="col-sm2">재고수</label>
 			<div class="col-sm3">
 				<input type="text" id="noOfStock" name="noOfStock" class="form-control">
 			</div>
 		</div>
 		<div>
-			<label class="col-sm2">재고량</label>
-			<div class="col-sm3">
-				<input type="file" id="noOfStock" name="noOfStock" class="form-control">
+			<div class="form-group row">
+				<label class="col-sm2">이미지</label>
+				<div class="col-sm-5">
+				<input type="file" id="fileName" name="fileName" class="form-control">
+				</div>
 			</div>
 		</div>
 		<br>

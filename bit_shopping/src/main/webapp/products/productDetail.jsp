@@ -54,6 +54,9 @@ try {
 <c:set var="product" value="${product}"></c:set>
 <div class="container">
 	<div class="row">
+		<div class="col-md-5">
+			<img alt="해당 이미지 없음" src="${imgUrl}" width="80%">
+		</div>
 		<div class="col-md-6">
 			<h3>${product.proName}</h3>
 			<p>${product.description}</p>
