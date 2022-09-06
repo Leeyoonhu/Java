@@ -91,13 +91,14 @@ try {
 		<p style="float: left;"><%=content %>
 	</div>
 </div>
-<%-- <%
-Cookie cookie = new Cookie("number")
-%>
-<c:set var ="recommends" value="<%=recommends %>"></c:set>
-<form action="./recommendsProcess.do">
+
+<c:set var ="number" value="<%=number %>"></c:set>
+<form style="
+	position: absolute;
+	top : 115%;
+	left : 35%;" action="./recommendsProcess.do?number=${number}" method="post">
 	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
-	<input type="submit" value="추천">
-</form> --%>
+	<input style="text-align: center; width: 100px; height: 50px" type="submit" value="추천">
+</form> 
 </body>
 </html>
