@@ -39,6 +39,7 @@ public class RecommendsSurvlet extends HttpServlet {
 	}
 	
 	public void RecommendsDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int number = Integer.parseInt(request.getParameter("number"));
 		
 	}
 }
