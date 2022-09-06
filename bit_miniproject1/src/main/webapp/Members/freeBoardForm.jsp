@@ -18,8 +18,11 @@
 <body>
 <h1>자유 게시판</h1>
 <!-- 11행 6열 -->
+
 <div class="container">
 	<form action="">
+	<a href="./freeBoardWrite.jsp?" id="freeBoardWrite" style="display: none;"></a>
+	<input type="button" value="글쓰기" style="margin-bottom: 5px; margin-left: 1240px" onclick="document.getElementById('freeBoardWrite').click();" />
 		<table border="1">
 			<tr style="text-align: center">
 				<th style="width: 100px">글번호</th>
@@ -48,7 +51,7 @@
 		rs = pstmt.executeQuery();
 		while(rs.next()){
 			bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
-					rs.getBlob(7), rs.getBlob(8), rs.getString(9)));
+					rs.getString(7), rs.getString(8), rs.getString(9)));
 		}
 		request.setAttribute("bList", bList);
 	} catch (Exception e){
