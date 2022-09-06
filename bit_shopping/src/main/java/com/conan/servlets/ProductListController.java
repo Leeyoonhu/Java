@@ -43,7 +43,7 @@ public class ProductListController extends HttpServlet {
 		ResultSet rs = null;
 		ArrayList<Products> pList = new ArrayList<Products>();
 		String uploadedFolder = null;
-		ArrayList<String> uploadedFolderList = new ArrayList<String>();
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);

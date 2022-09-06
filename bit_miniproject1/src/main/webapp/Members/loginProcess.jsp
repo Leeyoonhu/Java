@@ -59,6 +59,8 @@ String userPwd = request.getParameter("userPwd");
 					/* 로그인 세션 생성 */
 					session.setAttribute("userId", userId);
 					session.setAttribute("userPwd", userPwd);
+					/* 글쓰기 등을 할 때 필요한 nickName 세션 추가 // board에선 writer역할 */
+					session.setAttribute("nickName", memList.get(i).getNickName());
 					/* 군인인지 판별을 위해 job 세션 추가*/
 					session.setAttribute("userJob", memList.get(i).getUserJob());
 					/* 성공 페이지 이동 */

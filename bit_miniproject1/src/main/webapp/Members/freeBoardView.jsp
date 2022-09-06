@@ -52,7 +52,7 @@ try {
 		rs = pstmt.executeQuery();
 		while(rs.next()){
 			bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
-					rs.getBlob(7), rs.getBlob(8), rs.getString(9)));
+					rs.getString(7), rs.getString(8), rs.getString(9)));
 		}
 		for(int i = 0; i < bList.size(); i++){
 			if(number == bList.get(i).getNumber()){
