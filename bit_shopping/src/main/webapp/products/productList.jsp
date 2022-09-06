@@ -18,6 +18,9 @@
 <div class="container">
 	<div class="row" align="center">
 		<c:forEach var="item" items="${pl}">
+		<div class="col-md-5">
+			<img src="${imgUrl}${item.fileName}" alt="해당 이미지 없음"  width="80%">
+		</div>
 			<div class="col-md-4">
 				<h3>${item.proName}</h3>
 				<p>${item.description}</p>

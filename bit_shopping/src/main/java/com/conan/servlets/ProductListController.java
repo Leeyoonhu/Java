@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.conan.vo.*;
 /**
  * Servlet implementation class ProductListController
@@ -40,7 +42,8 @@ public class ProductListController extends HttpServlet {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<Products> pList = new ArrayList<Products>();
-		
+		String uploadedFolder = null;
+		ArrayList<String> uploadedFolderList = new ArrayList<String>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -48,11 +51,19 @@ public class ProductListController extends HttpServlet {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				pList.add(new Products(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));
+				pList.add(new Products(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8)));
 			}
+//			db에 저장된 이미지를 upload폴더 안에 쓰고
+//			upload폴더 안에 있는 이미지를 불러온다?
+			uploadedFolder = request.getServletContext().getContextPath()+"/upload/";
+			
+//			이미지가 있는 위치를 업로드폴더안에..??
+			request.setAttribute("imgUrl", uploadedFolder);
 			request.setAttribute("pl", pList);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("./productList.jsp");
 			rd.forward(request, response);
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

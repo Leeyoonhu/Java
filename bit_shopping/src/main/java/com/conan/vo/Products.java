@@ -5,15 +5,10 @@ public class Products {
 	private Integer unitPrice;
 	private String description, manufacturer, category;
 	private Integer noOfStock;
-//	private String fileName;
+	private String fileName;
 	public Products() {
 		
 	}
-	public Products(String proName, Integer unitPrice, String description) {
-	this.proName = proName;
-	this.unitPrice = unitPrice;
-	this.description = description;
-}
 
 	public Products(String proId, String proName, Integer unitPrice, String description, String manufacturer,
 			String category, Integer noOfStock) {
@@ -26,6 +21,18 @@ public class Products {
 		this.noOfStock = noOfStock;
 	}
 	
+	public Products(String proId, String proName, Integer unitPrice, String description, String manufacturer,
+			String category, Integer noOfStock, String fileName) {
+		this.proId = proId;
+		this.proName = proName;
+		this.unitPrice = unitPrice;
+		this.description = description;
+		this.manufacturer = manufacturer;
+		this.category = category;
+		this.noOfStock = noOfStock;
+		this.fileName = fileName;
+	}
+
 	public String getProId() {
 		return proId;
 	}
@@ -67,6 +74,14 @@ public class Products {
 	}
 	public void setNoOfStock(Integer noOfStock) {
 		this.noOfStock = noOfStock;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	
 	
