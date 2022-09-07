@@ -35,13 +35,19 @@ position: absolute;
 	<p style="
 position: absolute;
 	top: 47%;
-	left: 39%;"> <input type="submit" value="아이디 조회하기"></p>
+	left: 38%;"> <input type="submit" value="아이디 조회하기"></p>
+</form>
+<form action="./mainForm.jsp">
+<p style="
+position: absolute;
+	top: 47%;
+	left: 51%;"> <input type="submit" value="메인으로"> </p>
 </form>
 <form action="./findPwdForm.jsp" method="post">
 <p style="
 position: absolute;
 	top: 47%;
-	left: 50%;"> <input type="submit" value="비밀번호 찾기"> </p>
+	left: 45%;"> <input type="submit" value="비밀번호 찾기"> </p>
 </form>
 </body>
 </html>

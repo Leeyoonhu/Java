@@ -71,7 +71,7 @@ background-repeat: repeat
 </header>
 <!-- 헤더 끝나는 부분 -->
 <%
-Cookie[] cookies = request.getCookies();
+
 %>
 <div id="content">
 <aside>
