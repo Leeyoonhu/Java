@@ -18,11 +18,14 @@
 <body>
 <h1>자유 게시판</h1>
 <!-- 11행 6열 -->
-
+<!-- 홈으로 보낼때 session에서의 아이디 비번을 parameter로 보내자 -->
+<%
+String userId = (String)session.getAttribute("userId");
+String userPwd = (String)session.getAttribute("userPwd");
+%>
 <div class="container">
-	<form action="">
 	<a href="./freeBoardWrite.jsp?" id="freeBoardWrite" style="display: none;"></a>
-	<input type="button" value="글쓰기" style="margin-bottom: 5px; margin-left: 1240px" onclick="document.getElementById('freeBoardWrite').click();" />
+	<input type="button" value="글쓰기" style="margin-bottom: 5px; margin-left: 1240px;" onclick="document.getElementById('freeBoardWrite').click();" />
 		<table border="1">
 			<tr style="text-align: center">
 				<th style="width: 100px">글번호</th>
@@ -58,6 +61,8 @@
 		e.printStackTrace();
 	}
 	
+	
+	
 %>
 <c:set var="items" value="${bList}"></c:set>
 <c:forEach var="item" items="${items}">
@@ -73,7 +78,8 @@
 </c:forEach>
 <!-- 추가된 테이블 열이 overflow되면.. 다음 페이지 생성하고 보여주는 목록이 그쪽 페이지로 넘어가게해야함.. -->		
 </table>
-</form>
+	<a href="./loginProcess.jsp?userId=<%=userId%>&userPwd=<%=userPwd%>" id="loginProcess" style="display: none;"></a>
+	<input type="button" value="메인 페이지로" style="margin-top: 10px; margin-left: 1200px" onclick="document.getElementById('loginProcess').click();" />
 </div>
 <%conn.close(); %>
 </body>

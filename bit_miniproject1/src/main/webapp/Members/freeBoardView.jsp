@@ -1,3 +1,5 @@
+<%@page import="java.util.concurrent.ExecutionException"%>
+<%@page import="javax.naming.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -24,6 +26,10 @@ String writer = null;
 String title = null;
 String regDate = null;
 String content = null;
+String imageFileName = null;
+String fileName = null;
+String path = request.getServletContext().getContextPath()+"/upload/";
+/* 상대경로 지정 */
 int views = 0;
 int recommends = 0;
 
@@ -62,8 +68,20 @@ try {
 				content = bList.get(i).getContent();
 				views = bList.get(i).getViews();
 				recommends = bList.get(i).getRecommends();
+				if(bList.get(i).getImageFileName() != null){
+					request.setAttribute("imageFileName", bList.get(i).getImageFileName());
+				}
+				if(bList.get(i).getFileName() != null){
+					request.setAttribute("FileName", bList.get(i).getFileName());
+				}
 			}
 		}
+		views += 1;
+		sql = "update board set views = ? where number = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, views);
+		pstmt.setInt(2, number);
+		pstmt.executeUpdate();
 	} catch (Exception e){
 		e.printStackTrace();
 	}
@@ -88,7 +106,8 @@ try {
 	top : 55%;
 	left : 8%;">
 	<div class="jumbotron" style="height: 640px; width: 1120px">
-		<p style="float: left;"><%=content %>
+		<img alt="a" src="<%=path%>${imageFileName}" onerror="this.style.display='none'">
+		<p style="float: left;"><%=content%>
 	</div>
 </div>
 

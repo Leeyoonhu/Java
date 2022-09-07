@@ -22,7 +22,7 @@ body {
 String writer = (String)session.getAttribute("nickName");
 %>
 <form action="./boardwrite.do?" method="post" enctype="multipart/form-data">
- 		<h2 style="margin-left: 120px">제목 : <input type="text" style="width: 700px; height: 30px; margin-left: " name="title" autofocus="autofocus" placeholder="제목을 입력하세요"></h2>
+ 		<h2 style="margin-left: 120px">제목 : <input type="text" style="width: 700px; height: 30px; margin-left: " name="title" autofocus="autofocus" placeholder="제목을 입력하세요" maxlength="50"></h2>
  		<input type="text" style="margin-left: 980px; margin-bottom: 5px; border: 0; font: bold; font-size: 16px" name="writer" readonly="readonly" value=<%=writer%>>
  		<textarea rows="" cols="" style="width: 1040px; height: 600px" name="content" placeholder="글꼴 | 크기"></textarea> <br>
  		<input type="button" style="margin-left: 80px; margin-top: 10px" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />

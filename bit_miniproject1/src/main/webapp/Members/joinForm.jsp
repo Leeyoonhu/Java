@@ -52,6 +52,5 @@ body {
 	<label for="female">여자</label> <br>
 	<input type="submit" value="회원가입 하기">
 </form>
-
 </body>
 </html>

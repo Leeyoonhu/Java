@@ -85,7 +85,7 @@ public class BoardWriteServlet extends HttpServlet {
 			pstmt.setString(4, imageFileName);
 			pstmt.setString(5, fileName);
 			pstmt.execute();
-			
+			response.sendRedirect("./freeBoardForm.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
