@@ -72,7 +72,7 @@ try {
 					request.setAttribute("imageFileName", bList.get(i).getImageFileName());
 				}
 				if(bList.get(i).getFileName() != null){
-					request.setAttribute("FileName", bList.get(i).getFileName());
+					request.setAttribute("fileName", bList.get(i).getFileName());
 				}
 			}
 		}
@@ -106,7 +106,8 @@ try {
 	top : 55%;
 	left : 8%;">
 	<div class="jumbotron" style="height: 640px; width: 1120px">
-		<img alt="a" src="<%=path%>${imageFileName}" onerror="this.style.display='none'">
+	<!-- 파일 다운로드 servlet 만들어서 다운로드 받게 해야함 -->
+		<img alt="" src="<%=path%>${imageFileName}" style="float:left" onerror="this.style.display='none'">
 		<p style="float: left;"><%=content%>
 	</div>
 </div>
