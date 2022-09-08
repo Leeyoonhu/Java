@@ -29,6 +29,7 @@ String content = null;
 String imageFileName = null;
 String fileName = null;
 String path = request.getServletContext().getContextPath()+"/upload/";
+
 /* 상대경로 지정 */
 int views = 0;
 int recommends = 0;
@@ -108,7 +109,6 @@ try {
 	<div class="jumbotron" style="height: 640px; width: 1120px">
 	<!-- 파일 다운로드 servlet 만들어서 다운로드 받게 해야함 -->
 	<!-- 파일 명을 넘겨주고.. realpath처리.. -->
-		<a href="./fileDownload.do?fileName='${fileName}'"style="float:right;" download >${fileName}</a>
 		<img alt="" src="<%=path%>${imageFileName}" style="float:left" onerror="this.style.display='none'">
 		<p style="float: left;"><%=content%>
 	</div>
@@ -120,7 +120,73 @@ try {
 	top : 115%;
 	left : 35%;" action="./recommendsProcess.do?number=${number}" method="post">
 	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
-	<input style="text-align: center; width: 100px; height: 50px" type="submit" value="추천">
-</form> 
+	<input style="text-align: center; width: 100px; height: 50px; border-radius: 20px; color : white; background-color: #343a40;" type="submit" value="추천">
+</form>
+<a href="./freeBoardForm.jsp" id="freeBoardForm" style="display: none;"></a>
+<input type="button" value="목록으로" style="position: absolute;
+	top : 125%;
+	left : 60%;
+	font-size: 15px;
+	border: 1px solid black;
+	" onclick="document.getElementById('freeBoardForm').click();"
+	/>
+	
+<hr style="position : absolute;
+	top : 140%;">
+<div style="
+	position: absolute;
+	top : 145%;
+	left : 8%;
+"> 
+<%
+String nickName = (String)session.getAttribute("nickName");
+ArrayList<Comment> cList = new ArrayList<Comment>();
+ArrayList<Comment> cList2 = new ArrayList<Comment>();
+request.setAttribute("nickName", nickName);  
+// 댓글이 있는지 찾기 위해서 댓글 db에서 서치
+sql = "select * from Comment";
+pstmt = conn.prepareStatement(sql);
+rs = pstmt.executeQuery();
+while(rs.next()){
+	cList.add(new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+}
+for(int i = 0; i < cList.size(); i++){
+	if(cList.get(i).getNumber() == number){
+		cList2.add(cList.get(i));
+	}
+}
+if(cList2 != null){
+	request.setAttribute("cList", cList2);
+}
+
+%>
+
+
+<table style="width: 1120px">
+	<%if(cList2 != null){ %>
+	<c:set var="items" value="${cList}"></c:set>
+	<c:forEach var="item" items ="items">
+	<tr>
+		
+	</tr>
+	</c:forEach>
+	<%}%>
+	<%if(session.getAttribute("nickName")!=null){ %>
+	<tr>
+		<td>
+			<div class="jumbotron">
+				<strong style="margin-left: 30px; margin-top: 20px; float: left; display: inline-block;">${nickName}</strong>
+				<!-- 댓글을 달면, 글번호(number), 글작성자(nickname), 댓글내용은 새로받은 내용(comment), 댓글 단 시간이 regDate -->
+				<form action="./saveComment.do?number=${number}&writer=${nickName}" method = "post"> 
+					<textarea style="margin-left: 40px; border: 1px solid #abadb3; height: 80px" rows="" cols="100" name="comment"></textarea>
+					<input type="submit" style="padding-bottom: -5px; margin-left: 20px">
+				</form>
+			</div>
+		</td>
+	</tr>	
+	<%}%>
+<%conn.close(); %>
+</table>
+</div>
 </body>
 </html>
