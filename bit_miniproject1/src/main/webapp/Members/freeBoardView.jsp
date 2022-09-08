@@ -107,6 +107,8 @@ try {
 	left : 8%;">
 	<div class="jumbotron" style="height: 640px; width: 1120px">
 	<!-- 파일 다운로드 servlet 만들어서 다운로드 받게 해야함 -->
+	<!-- 파일 명을 넘겨주고.. realpath처리.. -->
+		<a href="./fileDownload.do?fileName='${fileName}'"style="float:right;" download >${fileName}</a>
 		<img alt="" src="<%=path%>${imageFileName}" style="float:left" onerror="this.style.display='none'">
 		<p style="float: left;"><%=content%>
 	</div>
