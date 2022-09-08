@@ -26,13 +26,10 @@ String writer = (String)session.getAttribute("nickName");
  		<input type="text" style="margin-left: 980px; margin-bottom: 5px; border: 0; font: bold; font-size: 16px" name="writer" readonly="readonly" value=<%=writer%>>
  		<textarea rows="" cols="" style="width: 1040px; height: 600px" name="content" placeholder="글꼴 | 크기"></textarea> <br>
  		<input type="button" style="margin-left: 80px; margin-top: 10px" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
-		<input type="file" style="display:none;" id="imageFileName" name="imageFileName"/>
-		<input type="button" style="margin-left: 10px; margin-top: 10px" value="파일 첨부" onclick="document.getElementById('fileName').click();" />
-		<input type="file" style="display:none;"id="fileName" name="fileName"> <br>
-		<input style="margin-left: 945px; width: 100px; height: 30px" type="submit" value="작성 완료">
+		<input type="file" style="display:none;" id="imageFileName" name="imageFileName" accept="image/*"/>
+<!-- 	<input type="button" style="margin-left: 10px; margin-top: 10px" value="파일 첨부" onclick="document.getElementById('fileName').click();" />
+		<input type="file" style="display:none;"id="fileName" name="fileName"> <br> -->
+		<input style="margin-left: 750px; width: 100px; height: 30px" type="submit" value="작성 완료">
 </form>
-<script type="text/javascript">
-	
-</script>
 </body>
 </html>

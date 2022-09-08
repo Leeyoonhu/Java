@@ -62,7 +62,7 @@
 	}
 	
 	
-	
+
 %>
 <c:set var="items" value="${bList}"></c:set>
 <c:forEach var="item" items="${items}">
