@@ -20,13 +20,13 @@
 <!-- 11행 6열 -->
 <!-- 홈으로 보낼때 session에서의 아이디 비번을 parameter로 보내자 -->
 <%
-String userId = (String)session.getAttribute("userId");
-String userPwd = (String)session.getAttribute("userPwd");
+	String userId = (String)session.getAttribute("userId");
+	String userPwd = (String)session.getAttribute("userPwd");
 %>
 <div class="container">
 	<a href="./freeBoardWrite.jsp?" id="freeBoardWrite" style="display: none;"></a>
 	<input type="button" value="글쓰기" style="margin-bottom: 5px; margin-left: 1240px;" onclick="document.getElementById('freeBoardWrite').click();" />
-		<table border="1">
+		<table border="solid 1px black;">
 			<tr style="text-align: center">
 				<th style="width: 100px">글번호</th>
 				<th style="width: 700px">제목</th>
