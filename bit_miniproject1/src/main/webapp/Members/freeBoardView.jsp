@@ -138,32 +138,13 @@ try {
 	top : 145%;
 	left : 8%;
 "> 
-<%
-String nickName = (String)session.getAttribute("nickName");
-ArrayList<Comment> cList = new ArrayList<Comment>();
-ArrayList<Comment> cList2 = new ArrayList<Comment>();
-request.setAttribute("nickName", nickName);  
-// 댓글이 있는지 찾기 위해서 댓글 db에서 서치
-sql = "select * from Comment";
-pstmt = conn.prepareStatement(sql);
-rs = pstmt.executeQuery();
-while(rs.next()){
-	cList.add(new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
-}
-for(int i = 0; i < cList.size(); i++){
-	if(cList.get(i).getNumber() == number){
-		cList2.add(cList.get(i));
-	}
-}
-if(cList2 != null){
-	request.setAttribute("cList", cList2);
-}
+<!-- 댓글 조회 jsp로,  글번호만 보내서 해당 글번호에있는 댓글 조회할것임 -->
+<jsp:include page="./searchComment.jsp">
+	<jsp:param value="${number}" name="number"/>
+</jsp:include>
 
-%>
-
-
-<table style="width: 1120px">
-	<%if(cList2 != null){ %>
+<div style="width: 1120px">
+	<%-- <%if(cList2 != null){ %>
 	<c:set var="items" value="${cList}"></c:set>
 	<c:forEach var="item" items ="items">
 	<tr>
@@ -184,9 +165,9 @@ if(cList2 != null){
 			</div>
 		</td>
 	</tr>	
-	<%}%>
+	<%}%> --%>
 <%conn.close(); %>
-</table>
+<div>
 </div>
 </body>
 </html>
