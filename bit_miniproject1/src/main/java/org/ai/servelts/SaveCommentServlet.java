@@ -8,72 +8,73 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import java.sql.*;
+
 /**
  * Servlet implementation class SaveCommentServlet
  */
 @WebServlet("/Members/saveComment.do")
 public class SaveCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SaveCommentServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SaveCommentServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		saveCommentDo(request, response);
 	}
-	
-	public void saveCommentDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	public void saveCommentDo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 //		<!-- 댓글을 달면, 글번호(number), 글작성자(nickname을 writer로), 댓글내용은 새로받은 내용(comment), 댓글 단 시간이 regDate -->
 //		Comment DB에 작성
 		request.setCharacterEncoding("utf-8");
 		int number = Integer.parseInt(request.getParameter("number"));
 		String writer = request.getParameter("writer");
 		String comment = request.getParameter("comment");
-		
+
 		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 		String sql = null;
 		String user = "root";
 		String password = "1234";
 		Connection conn = null;
-		PreparedStatement pstmt = null;	
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(url);
-			sql = "insert into Comments value(?, ?, ?, ?)";
+			conn = DriverManager.getConnection(url, user, password);
+			sql = "insert into comment value(?, ?, ?, now())";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
 			pstmt.setString(2, writer);
 			pstmt.setString(3, comment);
 			pstmt.executeUpdate();
-			response.sendRedirect("./freeBoardView.jsp");
+			String viewUrl = String.format("./freeBoardView.jsp?number=%d", number);
+			response.sendRedirect(viewUrl);
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
-		
+
 	}
 }

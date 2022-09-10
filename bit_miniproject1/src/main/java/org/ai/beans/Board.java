@@ -7,6 +7,8 @@ public class Board {
 	private String title, content, writer, imageFileName, fileName;
 	private String regDate;
 	
+	public Board() {
+	}
 //	출력 생성자
 	public Board(int number, int views, int recommends, String title, String content, String writer, String imageFileName,
 			String fileName, String regDate) {

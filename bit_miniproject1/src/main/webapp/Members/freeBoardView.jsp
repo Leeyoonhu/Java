@@ -109,7 +109,6 @@ for(int i = 0; i < cList.size(); i++){
 if(cList2 != null){
 	request.setAttribute("cList", cList2);
 }
-
 %>
 
 <%if(session.getAttribute("userId") != null){ %>
@@ -145,32 +144,26 @@ else {%>
 	
 <hr>
 
-<!-- 굳이 테이블로 해줄 필요 없음 -->
 <!-- 아직 댓글 미구현  -->
-<%-- <table style="width: 1120px">
-	<%if(cList2 != null){ %>
-	<c:set var="items" value="${cList}"></c:set>
-	<c:forEach var="item" items ="items">
-	<tr>
-		
-	</tr>
-	</c:forEach>
-	<%}%>
-	<%if(session.getAttribute("nickName")!=null){ %>
-	<tr>
-		<td>
-			<div class="jumbotron">
-				<strong style="margin-left: 30px; margin-top: 20px; float: left; display: inline-block;">${nickName}</strong>
-				<!-- 댓글을 달면, 글번호(number), 글작성자(nickname), 댓글내용은 새로받은 내용(comment), 댓글 단 시간이 regDate -->
-				<form action="./saveComment.do?number=${number}&writer=${nickName}" method = "post"> 
-					<textarea style="margin-left: 40px; border: 1px solid #abadb3; height: 80px" rows="" cols="100" name="comment"></textarea>
-					<input type="submit" style="padding-bottom: -5px; margin-left: 20px">
-				</form>
-			</div>
-		</td>
-	</tr>	
-	<%}%>
-</table> --%>
+<div>
+<jsp:include page="./searchCommentProcess.jsp">
+	<jsp:param value="${number}" name="number"/>
+</jsp:include>
+</div>
+	<!-- 댓글을 달면, 글번호(number), 글작성자(nickname), 댓글내용은 새로받은 내용(comment), 댓글 단 시간이 regDate -->
+<%if(session.getAttribute("userId") != null){%>
+<div>
+	<div>
+	<strong style="margin-top: 20px; display: inline-block; float: left;">${nickName}</strong>
+	</div>
+	<div>
+	<form action="./saveComment.do?number=${number}&writer=${nickName}" method = "post"> 
+		<textarea style="border: 1px solid #abadb3; height: 80px" rows="" cols="100" name="comment"></textarea>
+		<input type="submit" style="padding-bottom: -5px;">
+	</form>
+	</div>
+</div>
+<%}%>
 </div>
 </div>
 <%conn.close(); %>
