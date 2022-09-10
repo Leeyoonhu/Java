@@ -5,6 +5,11 @@ public class Comment {
 	private String writer, comment, regDate;
 	public Comment() {
 	}
+	
+	public Comment(int number) {
+		this.number = number;
+	}
+
 	public Comment(int number, String writer, String comment, String regDate) {
 		this.number = number;
 		this.writer = writer;
