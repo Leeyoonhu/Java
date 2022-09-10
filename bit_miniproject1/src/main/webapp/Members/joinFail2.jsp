@@ -24,7 +24,6 @@
 </script>
 <jsp:include page="./header.jsp"></jsp:include>
 <div id="content">
-
 <div id="joinFail2">
 <form action="./joinForm.jsp" method="post">
 <input type="submit" value="다시 회원가입 하러가기">
