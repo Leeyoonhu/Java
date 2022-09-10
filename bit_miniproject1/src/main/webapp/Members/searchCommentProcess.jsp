@@ -62,11 +62,11 @@ try {
 %>
 <strong style="font-size: 1.3em">댓글 (<%=cList2.size()%>)</strong><br>
 <hr>
-<c:set var="nickName" value="${nickName}"></c:set>
 <c:forEach var="item" items="${cList2}">
+<c:set var="nickName" value="<%=nickName%>"></c:set>
 <div style="margin-left: 20px">
 <strong style="font-size: 1.2em">${item.writer}</strong>&nbsp;
-	<c:if test="${item.writer eq ''}">
+	<c:if test="${item.writer eq nickName}">
 		<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:4px;" border="0">
 	</c:if>
 &nbsp;
