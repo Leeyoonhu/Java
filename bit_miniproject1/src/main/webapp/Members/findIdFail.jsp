@@ -6,14 +6,15 @@
 <meta charset="UTF-8">
 <title>아이디 찾기 실패..</title>
 <style type="text/css">
-body {
-	position: absolute;
-	top: 45%;
-	left: 40%;
-}
-form {
+#findIdForm {
 	display: inline-block;
+	float: right;
+	width: 1400px;
+	height: 1800px;
+	margin-top: 200px;
+	text-align: center;
 }
+
 </style>
 </head>
 <body>
@@ -22,11 +23,20 @@ form {
 <script type="text/javascript">
 	alert("존재하지 않는 회원입니다.")
 </script>
-<form action="./findIdForm.jsp" method="post">
-<input type="submit" value="다시 아이디 찾기">
-</form>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<form action="./mainForm.jsp" method="post">
-<input type="submit" value="메인으로 가기">
+<jsp:include page="./header.jsp"></jsp:include>
+
+<div id="content">
+<jsp:include page="./aside.jsp"></jsp:include>
+<div id="findIdForm">
+	<form action="./findIdForm.jsp" method="post">
+	<input type="submit" value="다시 아이디 찾기">
+	</form>
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	<form action="./mainForm.jsp" method="post">
+	<input type="submit" value="메인으로 가기">
+</div>
+</div>
+
+<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

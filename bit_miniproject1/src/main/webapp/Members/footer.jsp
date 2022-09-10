@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-        footer{
+        .footer{
             width : 100%;
             height : 250px;
             position: relative;
@@ -17,18 +17,18 @@
             padding-top: 15px;
             font-size: 13px;
         }
-        footer a {
+        .footer a {
             display : inline-block;
             margin : 80px 20px 25px 150px;
             color : white;
             font-size : 20px;
         }
-        footer p {
+        .footer p {
             margin-top: 0;
             margin-bottom: 0;
             margin-left: 10;
         }
-        footer p span{
+        .footer p span{
             display: inline-block;
             margin-left: 55px;
             font-size: 15px;

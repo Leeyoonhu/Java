@@ -7,26 +7,16 @@
 <meta charset="UTF-8">
 <title>ROK ARMY</title>
 <style type="text/css">
-#content {
-margin-top: 30px;
-margin-bottom: 30px;
-text-align: center;
-width: 1200px;
-height: 2080px;
-}
-aside {
-background-image:URL('https://i.ibb.co/JvXcXyS/army.jpg'); 
-background-size: cover;
-background-repeat: repeat;
-float: left;
-display: block;
-width: 300px;
-}
 
-header {
+#header {
 background-image:URL('https://i.ibb.co/L99MpYL/A.png'); 
 background-size: cover;
-background-repeat: repeat
+background-repeat: 
+}
+
+#content {
+width: 1630px;
+height: 2000px;
 }
   
 .btn {
@@ -70,7 +60,7 @@ background-repeat: repeat
 <!-- 로그인 이전 메인홈페이지 -->
 <!-- 공용 헤더(수정한 후 src파일로 만들어서 모든곳에 돌려쓸예정)  -->
 <!-- 헤더 백그라운드 -->
-<header>
+<header id="header">
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 <a class="navbar-brand" href="./joinForm.jsp" style="position:relative; right: -1700px; font-size: 0.8em">회원가입</a>
 &nbsp;

@@ -6,13 +6,13 @@
 <meta charset="UTF-8">
 <title>아이디 찾기 성공!</title>
 <style type="text/css">
-body {
-	position: absolute;
-	top: 42%;
-	left: 35%;
-}
-form {
+#findIdSuccess {
 	display: inline-block;
+	float: right;
+	width: 1400px;
+	height: 1800px;
+	margin-top: 200px;
+	text-align: center;
 }
 </style>
 </head>
@@ -20,6 +20,10 @@ form {
 <%
 Cookie[] cookies = request.getCookies();
 %>
+<jsp:include page="./header.jsp"></jsp:include>
+<div id="content">
+<jsp:include page="./aside.jsp"></jsp:include>
+<div id="findIdSuccess">
 <p style="font-size: 1.3em">회원님의 아이디는 
 <strong style="font-size: 1.6em"><%=cookies[0].getValue()%></strong> 
 입니다</p>
@@ -33,8 +37,11 @@ for(int i = 0; i < cookies.length; i++){
 <form action="./loginForm.jsp">
 <input style="margin-left: 40px" type="submit" value="로그인 하러가기" method="post">
 </form>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<form action="./findPwdForm.jsp" method="post">
+<form action="./findPwdForm.jsp" method="post" style="margin-top: 20px">
 <input type="submit" value="비밀번호 찾으러 가기">
+</form>
+</div>
+</div>
+<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>
