@@ -7,7 +7,8 @@
 <title>어사이드</title>
 <style>
     #nav{
-/* 		float: left; */
+		/* float: left; */
+		display : inline-block;
         width : 200px;
         height: auto;
         position: relative;
@@ -17,8 +18,9 @@
         color:white;
         padding-top: 0px;
         font-size: 15px;
+        
     }
-    nav div {
+    #navDiv {
         border-radius: 20px;
         width : 100%;
         height : 200px;
@@ -28,7 +30,7 @@
         color : white;
         font-size : 40px;
     }
-    nav span {
+    #navSpan {
         border-radius: 20px;
         width : 100%;
         text-align: center;
@@ -91,9 +93,9 @@
 		</form>
         <br><br><br><br><br>
         
-        <span>현재 접속자 리스트( 명)</span>
-        <div></div>
-        <div></div>
+        <span id="navSpan">현재 접속자 리스트( 명)</span>
+        <div id="navDiv"></div>
+        <div id="navDiv"></div>
     </nav>
 
 </body>
