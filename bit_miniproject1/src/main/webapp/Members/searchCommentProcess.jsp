@@ -11,6 +11,7 @@
 <body>
 <!-- 글 번호 넘겨받아야함 -->
 <%
+request.setCharacterEncoding("utf-8");
 String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 String sql = null;
 String user = "root";
@@ -20,7 +21,7 @@ PreparedStatement pstmt = null;
 ResultSet rs = null;
 ArrayList<Board> bList = new ArrayList<Board>();
 int number = Integer.parseInt(request.getParameter("number"));
-
+String writer = request.getParameter("writer");
 String nickName = (String)session.getAttribute("nickName");
 ArrayList<Comment> cList = new ArrayList<Comment>();
 ArrayList<Comment> cList2 = new ArrayList<Comment>();
@@ -58,21 +59,22 @@ try {
 } catch (Exception e){
 	e.printStackTrace();
 }
-/* 글번호가 같을때, 작성자 */
+/* 댓글 작성자가 글 작성자와 같을 경우 작성자 표시*/
 %>
 <strong style="font-size: 1.3em">댓글 (<%=cList2.size()%>)</strong><br>
 <hr>
-<c:forEach var="item" items="${cList2}">
-<c:set var="nickName" value="<%=nickName%>"></c:set>
+<c:forEach var="comment" items="${cList2}">
+<c:set var="writer" value="<%=writer%>"></c:set>
 <div style="margin-left: 20px">
-<strong style="font-size: 1.2em">${item.writer}</strong>&nbsp;
-	<c:if test="${item.writer eq nickName}">
+<strong style="font-size: 1.2em">${comment.writer}</strong>&nbsp;
+	<c:if test="${comment.writer eq writer}">
 		<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:4px;" border="0">
 	</c:if>
 &nbsp;
-<span>(${item.regDate})</span><br>
-${item.comment}
+<span>(${comment.regDate})</span><br>
+${comment.comment}
 </div>
+<hr>
 </c:forEach>
 </body>
 </html>

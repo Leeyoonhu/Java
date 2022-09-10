@@ -34,6 +34,7 @@
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	ArrayList<Board> bList = new ArrayList<Board>();
+	ArrayList<Comment> cList = new ArrayList<Comment>();
 	
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -45,7 +46,15 @@
 			bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
 					rs.getString(7), rs.getString(8), rs.getString(9)));
 		}
+		// 해당 글에 댓글이 몇개있는지 보여줘야함
 		request.setAttribute("bList", bList);
+		sql = "select number from comment";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		while(rs.next()){
+			cList.add(new Comment(rs.getInt(1)));
+		}
+		request.setAttribute("cList", cList);
 	} catch (Exception e){
 		e.printStackTrace();
 	}
@@ -71,12 +80,27 @@ else {%>
 				<th style="width: 80px">추천</th>
 			</tr>
 			<!-- board db에서 가져와서 10줄씩 테이블 생성 -->
-<c:set var="items" value="${bList}"></c:set>
+<%!int count = 0;%>
+<c:set var="items" value="${bList}"></c:set>	
+<!-- item 이 보드 -->
+<c:set var="items2" value="${cList}"></c:set>
+<!-- item2 가 댓글 -->
 <c:forEach var="item" items="${items}">
 <!-- 이 링크를 누르면 해당 게시글로 가야됨 -->
 	<tr style="text-align: center">
 		<td>${item.number}</td>
-		<td><a href="./freeBoardView.jsp?number=${item.number}" style="text-decoration: none; color: gray;">${item.title }</a></td>
+		<td>
+		<a href="./freeBoardView.jsp?number=${item.number}" style="text-decoration: none; color: gray;">${item.title}</a>
+		<!-- 2중 for문으로 댓글 숫자 보여줘야함 -->
+		<!-- 두 글 번호가 같을경우.. 카운트가 올라가고.. 다를경우에 출력.. -->
+		<c:forEach var="item2" items="${items2}">
+			<c:if test="${item.number eq item2.number}">
+				<%count++;%>
+			</c:if>
+		</c:forEach>
+		<a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
+		<%count = 0; %>
+		</td>
 		<td>${item.writer}</td>
 		<td>${item.regDate}</td>
 		<td>${item.views}</td>

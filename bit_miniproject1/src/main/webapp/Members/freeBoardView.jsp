@@ -109,6 +109,7 @@ for(int i = 0; i < cList.size(); i++){
 if(cList2 != null){
 	request.setAttribute("cList", cList2);
 }
+request.setAttribute("writer", writer);
 %>
 
 <%if(session.getAttribute("userId") != null){ %>
@@ -144,10 +145,10 @@ else {%>
 	
 <hr>
 
-<!-- 아직 댓글 미구현  -->
 <div>
 <jsp:include page="./searchCommentProcess.jsp">
 	<jsp:param value="${number}" name="number"/>
+	<jsp:param value="${writer}" name="writer"/>
 </jsp:include>
 </div>
 	<!-- 댓글을 달면, 글번호(number), 글작성자(nickname), 댓글내용은 새로받은 내용(comment), 댓글 단 시간이 regDate -->
