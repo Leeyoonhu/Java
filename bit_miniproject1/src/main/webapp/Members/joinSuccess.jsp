@@ -23,7 +23,6 @@ form {
 <form action="./loginForm.jsp" method="post">
 <input type="submit" value="로그인 하러가기">
 </form>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <form action="./mainForm.jsp" method="post">
 <input type="submit" value="메인으로 가기">
 </form>

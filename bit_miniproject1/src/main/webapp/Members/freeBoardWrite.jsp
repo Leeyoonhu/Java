@@ -6,12 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-body {
-	position: absolute;
-	top : 30%;
-	left : 35%;
-	margin-left: -300px;
-	margin-top: -200px;
+#freeBoardWrite {
+	display: inline-block;
+	float: right;
+	width: 1400px;
+	height: 1400px;
+	margin-top: 200px;
+	text-align: center;
 }
 </style>
 </head>
@@ -21,8 +22,11 @@ body {
 <%
 String writer = (String)session.getAttribute("nickName");
 %>
+<jsp:include page="./header.jsp"></jsp:include>
+<div id="content">
+<div id="freeBoardWrite">
 <form action="./boardwrite.do?" method="post" enctype="multipart/form-data">
- 		<h2 style="margin-left: 120px">제목 : <input type="text" style="width: 700px; height: 30px; margin-left: " name="title" autofocus="autofocus" placeholder="제목을 입력하세요" maxlength="50"></h2>
+ 		<h2 style="margin-left: 120px">제목 : <input type="text" style="width: 700px; height: 30px; margin-left: " name="title" autofocus="autofocus" maxlength="50"></h2>
  		<input type="text" style="margin-left: 980px; margin-bottom: 5px; border: 0; font: bold; font-size: 16px" name="writer" readonly="readonly" value=<%=writer%>>
  		<textarea rows="" cols="" style="width: 1040px; height: 600px" name="content" placeholder="글꼴 | 크기"></textarea> <br>
  		<input type="button" style="margin-left: 80px; margin-top: 10px" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
@@ -31,5 +35,8 @@ String writer = (String)session.getAttribute("nickName");
 		<input type="file" style="display:none;"id="fileName" name="fileName"> <br> -->
 		<input style="margin-left: 750px; width: 100px; height: 30px" type="submit" value="작성 완료">
 </form>
+</div>
+</div>
+<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

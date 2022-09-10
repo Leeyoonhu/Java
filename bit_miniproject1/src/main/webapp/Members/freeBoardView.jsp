@@ -10,13 +10,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.container {
-	position: absolute;
-	top : 20%;
-	left : 7%;
+#freeBoardView {
+	display: inline-block;
+	float: right;
+	width: 1400px;
+	height: 1800px;
+	margin-top: 200px;
+	text-align: center;
 }
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
 <%
@@ -87,57 +89,6 @@ try {
 		e.printStackTrace();
 	}
 %>
-
-<h1>메인 게시판 글 보는곳</h1>
-<div class="container">
-	<div class="jumbotron">
-		<p style="float: left;">닉네임 : <%=writer %></p> <p style="text-align: center;">작성일 : <%=regDate %></p>  <p style="float: right;"> 조회 : <%=views %> &nbsp;&nbsp; 추천 : <%=recommends %></p>
-	</div>
-	<hr>
-</div>
-	<div style=
-	"position: absolute;
-	top : 45%;
-	left : 20%;">
-	<h1><%=title %></h1>
-	</div>
-	<hr>
-<div style="
-	position: absolute;
-	top : 55%;
-	left : 8%;">
-	<div class="jumbotron" style="height: 640px; width: 1120px">
-	<!-- 파일 다운로드 servlet 만들어서 다운로드 받게 해야함 -->
-	<!-- 파일 명을 넘겨주고.. realpath처리.. -->
-		<img alt="" src="<%=path%>${imageFileName}" style="float:left" onerror="this.style.display='none'">
-		<p style="float: left;"><%=content%>
-	</div>
-</div>
-
-<c:set var ="number" value="<%=number %>"></c:set>
-<form style="
-	position: absolute;
-	top : 115%;
-	left : 35%;" action="./recommendsProcess.do?number=${number}" method="post">
-	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
-	<input style="text-align: center; width: 100px; height: 50px; border-radius: 20px; color : white; background-color: #343a40;" type="submit" value="추천">
-</form>
-<a href="./freeBoardForm.jsp" id="freeBoardForm" style="display: none;"></a>
-<input type="button" value="목록으로" style="position: absolute;
-	top : 125%;
-	left : 60%;
-	font-size: 15px;
-	border: 1px solid black;
-	" onclick="document.getElementById('freeBoardForm').click();"
-	/>
-	
-<hr style="position : absolute;
-	top : 140%;">
-<div style="
-	position: absolute;
-	top : 145%;
-	left : 8%;
-"> 
 <%
 String nickName = (String)session.getAttribute("nickName");
 ArrayList<Comment> cList = new ArrayList<Comment>();
@@ -161,8 +112,37 @@ if(cList2 != null){
 
 %>
 
+<jsp:include page="./header.jsp"></jsp:include>
+<div id="content">
+<div id="freeBoardView">
+		<p style="float: left;">닉네임 : <%=writer %></p> <p style="text-align: center;">작성일 : <%=regDate %></p>  <p style="float: right;"> 조회 : <%=views %> &nbsp;&nbsp; 추천 : <%=recommends %></p>
+	<hr>
+	<div>
+	<h1><%=title %></h1>
+	</div>
+	<hr>
+<div>
+	<!-- 파일 다운로드 servlet 만들어서 다운로드 받게 해야함 -->
+	<!-- 파일 명을 넘겨주고.. realpath처리.. -->
+		<img alt="" src="<%=path%>${imageFileName}" onerror="this.style.display='none'"> <br>
+		<p><%=content%></p>
+</div> <br>
+<c:set var ="number" value="<%=number %>"></c:set>
+<form action="./recommendsProcess.do?number=${number}" method="post">
+	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
+	<input style="text-align: center; width: 100px; height: 50px; border-radius: 20px; color : white; background-color: #343a40;" type="submit" value="추천">
+</form> <br>
+<a href="./freeBoardForm.jsp" id="freeBoardForm" style="display: none;"></a>
+<input type="button" value="목록으로" style="
+	border: 1px solid black;
+	" onclick="document.getElementById('freeBoardForm').click();"
+	/>
+	
+<hr>
 
-<table style="width: 1120px">
+<!-- 굳이 테이블로 해줄 필요 없음 -->
+<!-- 아직 댓글 미구현  -->
+<%-- <table style="width: 1120px">
 	<%if(cList2 != null){ %>
 	<c:set var="items" value="${cList}"></c:set>
 	<c:forEach var="item" items ="items">
@@ -185,8 +165,10 @@ if(cList2 != null){
 		</td>
 	</tr>	
 	<%}%>
-<%conn.close(); %>
-</table>
+</table> --%>
 </div>
+</div>
+<%conn.close(); %>
+<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

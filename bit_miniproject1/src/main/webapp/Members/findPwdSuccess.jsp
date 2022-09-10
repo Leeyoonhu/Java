@@ -7,19 +7,23 @@
 <title>Insert title here</title>
 </head>
 <style type="text/css">
-body {
-	position: absolute;
-	top: 42%;
-	left: 35%;
-}
-form {
-	display: inline-block;
+#findPwdSuccess {
+display: inline-block;
+	float: right;
+	width: 1400px;
+	height: 1800px;
+	margin-top: 200px;
+	text-align: center;
 }
 </style>
 <body>
 <%
 Cookie[] cookies = request.getCookies();
 %>
+<jsp:include page="./header.jsp"></jsp:include>
+<div id="content">
+<jsp:include page="./aside.jsp"></jsp:include>
+<div id="findPwdSuccess">
 <p style="font-size: 1.3em">회원님의 비밀번호는 
 <strong style="font-size: 1.6em"><%=cookies[0].getValue()%></strong> 
 입니다</p>
@@ -31,10 +35,14 @@ for(int i = 0; i < cookies.length; i++){
 }
 %>
 <form action="./loginForm.jsp">
-<input style="margin-left: 40px" type="submit" value="로그인 하러가기" method="post">
+<input type="submit" value="로그인 하러가기" method="post">
 </form>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <form action="./mainForm.jsp" method="post">
 <input type="submit" value="메인으로 가기">
+</form>
+</div>
+</div>
+<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

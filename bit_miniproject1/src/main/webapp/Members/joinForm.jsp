@@ -6,16 +6,20 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <style type="text/css">
-body {
-	position: absolute;
-	top : 50%;
-	left : 50%;
-	margin-left: -300px;
-	margin-top: -200px;
+#joinForm {
+	display: inline-block;
+	float: right;
+	width: 1400px;
+	height: 1800px;
+	margin-top: 200px;
+	text-align: center;
 }
 </style>
 </head>
 <body>
+<jsp:include page="./header.jsp"></jsp:include>
+<div id="content">
+<div id="joinForm">
 <form action="./joinProcess.jsp" method="post">
 <h3>회원가입</h3>
 	아이디 : <input type="text" name="userId" autofocus="autofocus"> <br>		
@@ -52,5 +56,8 @@ body {
 	<label for="female">여자</label> <br>
 	<input type="submit" value="회원가입 하기">
 </form>
+</div>
+</div>
+<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>
