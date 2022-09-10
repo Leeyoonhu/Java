@@ -22,7 +22,7 @@
 <%
 String writer = (String)session.getAttribute("nickName");
 %>
-<jsp:include page="./header.jsp"></jsp:include>
+<jsp:include page="./header2.jsp"></jsp:include>
 <div id="content">
 <div id="freeBoardWrite">
 <form action="./boardwrite.do?" method="post" enctype="multipart/form-data">

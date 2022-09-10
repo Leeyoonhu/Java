@@ -38,7 +38,7 @@
         color : white;
         font-size : 15px;
     }
-    .btn {
+    .btn1 {
   		font-size: 25px;
  		padding: 10px 30px;
   		border: 1px solid white;
@@ -58,38 +58,38 @@
 <body>
     <nav id ="nav">
         <form action="" method="post" style=" margin-top: 50px">
-			<input class="btn" style="width: 180px; height: 30px; font-size: 1.0em; margin-left: 9px; type="submit"; value="R.A.로그인">
+			<input class="btn1" style="width: 180px; height: 30px; font-size: 1.0em; margin-left: 9px; type="submit"; value="R.A.로그인">
 		</form>  
 		<form action="" method="post" style=" margin-top: 10px">
-			<input class="btn" style="width: 180px; height: 30px; font-size: 1.0em; margin-left: 9px; type="submit"; value="회원가입">
+			<input class="btn1" style="width: 180px; height: 30px; font-size: 1.0em; margin-left: 9px; type="submit"; value="회원가입">
 		</form>  
 		<form action="" method="post" style=" margin-top: 10px">
-			<input class="btn" style="width: 180px; height: 30px; font-size: 1.0em; margin-left: 9px; type="submit"; value="ID/PW찾기">
+			<input class="btn1" style="width: 180px; height: 30px; font-size: 1.0em; margin-left: 9px; type="submit"; value="ID/PW찾기">
 		</form>  
         <br><br><br><br><br>
         <form action="" method="post" style=" margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit"; value="전체게시판">
+			<input class="btn1" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit"; value="전체게시판">
 		</form>
 		<form action="" method="post" style=" margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="자유게시판">
+			<input class="btn1" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="자유게시판">
 		</form>
 		<form action="" method="post" style=" margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="정보게시판">
+			<input class="btn1" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="정보게시판">
 		</form>
 		<form action="" method="post" style=" margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="사진게시판">
+			<input class="btn1" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="사진게시판">
 		</form>
 		<form action="" method="post" style=" margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="질문게시판">
+			<input class="btn1" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="질문게시판">
 		</form>
 		<form action="" method="post" style=" margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="일기장">
+			<input class="btn1" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="일기장">
 		</form>
 		<form action="" method="post" style=" margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="편지함">
+			<input class="btn1" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="편지함">
 		</form>
 		<form action="" method="post" style=" margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="출석체크">
+			<input class="btn1" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 9px; type="submit" value="출석체크">
 		</form>
         <br><br><br><br><br>
         

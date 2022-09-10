@@ -24,16 +24,15 @@
 	alert("존재하지 않는 회원입니다.")
 </script>
 <jsp:include page="./header.jsp"></jsp:include>
-
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="findIdForm">
 	<form action="./findIdForm.jsp" method="post">
 	<input type="submit" value="다시 아이디 찾기">
 	</form>
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	<form action="./mainForm.jsp" method="post">
 	<input type="submit" value="메인으로 가기">
+	</form>
 </div>
 </div>
 

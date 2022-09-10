@@ -50,7 +50,12 @@
 		e.printStackTrace();
 	}
 %>
+<%if(session.getAttribute("userId") != null){ %>
+<jsp:include page="./header2.jsp"></jsp:include>
+<%} 
+else {%>
 <jsp:include page="./header.jsp"></jsp:include>
+<%}%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="freeBoardForm">
