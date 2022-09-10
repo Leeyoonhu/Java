@@ -8,8 +8,18 @@
 </head>
 <body>
 <!-- 로그인 이후 메인 홈페이지(군인(soldier)일 때) -->
-<!-- 회원가입, 로그인쪽이 로그아웃으로 변경 -->
-<!-- 1:1 고민상담 채팅방 대기열 등록가능구현.. -->
-<h1>군일일때 보이는 메인홈페이지</h1>
+<%if(session.getAttribute("userId") != null){ %>
+<jsp:include page="./header2.jsp"></jsp:include>
+<%} 
+else {%>
+<jsp:include page="./header.jsp"></jsp:include>
+<%}%>
+<div id="content">
+<jsp:include page="./aside.jsp"></jsp:include>
+<!-- <div id="메인내용물2">
+	내용물올것임2 //  로그인했을때만 보이는 aside.jsp로 교체 필요
+</div> -->
+</div>
+<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>
