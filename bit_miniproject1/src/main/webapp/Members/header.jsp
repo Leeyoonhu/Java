@@ -78,7 +78,7 @@ height: 2000px;
 <table>
 <tr style="text-align: center">
 	<th>
-		<form action="" method="post" style="position: relative; margin-top: 100px">
+		<form action="./freeBoardForm.jsp" method="post" style="position: relative; margin-top: 100px">
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 500px" type="submit" value="자유게시판">
 		</form>
 	</th>

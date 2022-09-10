@@ -72,7 +72,7 @@ try {
 	pstmt.setString(10, userJob);
 	pstmt.setString(11, gender);
 	pstmt.executeUpdate();
-	response.sendRedirect("./joinResult.jsp");
+	response.sendRedirect("./joinSuccess.jsp");
 } catch (Exception e){
 	e.printStackTrace();
 }

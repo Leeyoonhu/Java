@@ -8,34 +8,23 @@
 <meta charset="UTF-8">
 <title>자유게시판</title>
 <style type="text/css">
-.container {
-	position: absolute;
-	top : 20%;
-	left : 7%;
+#freeBoardForm {
+	display: inline-block;
+	float: right;
+	width: 1400px;
+	height: 1800px;
+	margin-top: 200px;
+	text-align: center;
 }
 </style>
 </head>
 <body>
-<h1>자유 게시판</h1>
 <!-- 11행 6열 -->
 <!-- 홈으로 보낼때 session에서의 아이디 비번을 parameter로 보내자 -->
 <%
 	String userId = (String)session.getAttribute("userId");
 	String userPwd = (String)session.getAttribute("userPwd");
 %>
-<div class="container">
-	<a href="./freeBoardWrite.jsp?" id="freeBoardWrite" style="display: none;"></a>
-	<input type="button" value="글쓰기" style="margin-bottom: 5px; margin-left: 1240px;" onclick="document.getElementById('freeBoardWrite').click();" />
-		<table border="solid 1px black;">
-			<tr style="text-align: center">
-				<th style="width: 100px">글번호</th>
-				<th style="width: 700px">제목</th>
-				<th style="width: 150px">닉네임</th>
-				<th style="width: 150px">등록일</th>
-				<th style="width: 80px">조회</th>
-				<th style="width: 80px">추천</th>
-			</tr>
-			<!-- board db에서 가져와서 10줄씩 테이블 생성 -->
 <%	
 	String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 	String sql = null;
@@ -60,10 +49,23 @@
 	} catch (Exception e){
 		e.printStackTrace();
 	}
-	
-	
-
 %>
+<jsp:include page="./header.jsp"></jsp:include>
+<div id="content">
+<jsp:include page="./aside.jsp"></jsp:include>
+<div id="freeBoardForm">
+<a href="./freeBoardWrite.jsp?" id="freeBoardWrite" style="display: none;"></a>
+	<input type="button" value="글쓰기" style="margin-bottom: 5px;" onclick="document.getElementById('freeBoardWrite').click();" />
+		<table border="solid 1px black;">
+			<tr style="text-align: center">
+				<th style="width: 100px">글번호</th>
+				<th style="width: 700px">제목</th>
+				<th style="width: 150px">닉네임</th>
+				<th style="width: 150px">등록일</th>
+				<th style="width: 80px">조회</th>
+				<th style="width: 80px">추천</th>
+			</tr>
+			<!-- board db에서 가져와서 10줄씩 테이블 생성 -->
 <c:set var="items" value="${bList}"></c:set>
 <c:forEach var="item" items="${items}">
 <!-- 이 링크를 누르면 해당 게시글로 가야됨 -->
@@ -81,6 +83,8 @@
 	<a href="./loginProcess.jsp?userId=<%=userId%>&userPwd=<%=userPwd%>" id="loginProcess" style="display: none;"></a>
 	<input type="button" value="메인 페이지로" style="margin-top: 10px; margin-left: 1200px" onclick="document.getElementById('loginProcess').click();" />
 </div>
+</div>
+<jsp:include page="./footer.jsp"></jsp:include>
 <%conn.close(); %>
 </body>
 </html>
