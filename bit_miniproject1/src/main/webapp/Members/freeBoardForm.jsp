@@ -98,8 +98,9 @@ else {%>
 				<%count++;%>
 			</c:if>
 		</c:forEach>
+		<%if(count != 0){ %>
 		<a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
-		<%count = 0; %>
+		<%} count = 0; %>
 		</td>
 		<td>${item.writer}</td>
 		<td>${item.regDate}</td>
