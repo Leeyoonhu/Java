@@ -11,6 +11,5 @@
 session.invalidate();
 response.sendRedirect("./mainForm.jsp");
 %>
-
 </body>
 </html>
