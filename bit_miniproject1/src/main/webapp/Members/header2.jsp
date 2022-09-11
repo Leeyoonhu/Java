@@ -76,6 +76,8 @@ String userJob = (String)session.getAttribute("userJob");
 %>
 <%if(userJob.equals("soldier")) {%>
 <a href="./mainForm3.jsp" style="display: none" id="jungunsi2"></a>
+<%} else if(userJob == null){%>
+<a href="./mainForm.jsp" style="display: none" id="jungunsi2"></a>
 <%} else { %>
 <a href="./mainForm2.jsp" style="display: none" id="jungunsi2"></a>
 <%} %>
@@ -90,7 +92,7 @@ String userJob = (String)session.getAttribute("userJob");
 		</form>
 	</th>
 	<th>
-		<form action="./attendancForm.jsp" method="post" style="position: relative; margin-top: 100px">
+		<form action="./calendarForm.jsp" method="post" style="position: relative; margin-top: 100px">
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="출석체크">
 		</form>
 	</th> 
