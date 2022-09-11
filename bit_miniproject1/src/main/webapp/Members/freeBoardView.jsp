@@ -142,8 +142,13 @@ else {%>
 	border: 1px solid black;
 	" onclick="document.getElementById('freeBoardForm').click();"
 	/>
-<%if(writer.equals((String)session.getAttribute("nickName"))){ %>	
-<a href="./freeBoardUpdate.jsp" id="boardUpdate" style="display: none;"></a>
+<%if(writer.equals((String)session.getAttribute("nickName"))){
+session.setAttribute("title", title);
+session.setAttribute("content", content);
+session.setAttribute("imageFileName", imageFileName);
+session.setAttribute("number", number);
+%>
+<a href="./freeBoardUpdate.jsp"id="boardUpdate" style="display: none;"></a>
 <input type="button" value="수정하기" style="
 	border: 1px solid black;
 	" onclick="document.getElementById('boardUpdate').click();"
