@@ -72,7 +72,8 @@ height: 2000px;
 <br>
 <br>
 <div style="background-image: URL('https://i.ibb.co/L99MpYL/A.png'); background-size : cover; position: absolute; width: 1950px; height: 210px; top:4%"> 
-<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px;" >전군시</h1> </div>
+<a href="./mainForm.jsp" style="display: none" id="jungunsi"></a>
+<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px;" onclick="document.getElementById('jungunsi').click()">전군시</h1> </div>
 
 <br>
 <table>
@@ -83,8 +84,8 @@ height: 2000px;
 		</form>
 	</th>
 	<th>
-		<form action="" method="post" style="position: relative; margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="출석체크">
+		<form action="" method="post" style="position: relative; margin-top: 100px" >
+			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="button" value="출석체크" onclick="alert('로그인 시 출석체크 가능합니다')">
 		</form>
 	</th> 
 	<th>
