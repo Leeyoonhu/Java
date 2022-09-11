@@ -18,7 +18,11 @@
 </head>
 <body>
 <!-- multipart/form-data를 상요해 파일 정보를 넘겨서 업로딩 할 예정 -->
-<!-- 반드시 관련 파일들 import 해주어야 함, javax.servel-->
+<!-- 반드시 관련 파일들 import 해주어야 함-->
+<!-- 
+import com.oreilly.servlet.*;
+import com.oreilly.servlet.multipart.*;
+ -->
 <%
 String writer = (String)session.getAttribute("nickName");
 %>
