@@ -68,8 +68,10 @@ else {%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="freeBoardForm">
-<a href="./freeBoardWrite.jsp?" id="freeBoardWrite" style="display: none;"></a>
-	<input type="button" value="글쓰기" style="margin-bottom: 5px;" onclick="document.getElementById('freeBoardWrite').click();" />
+	<a href="./freeBoardWrite.jsp?" id="freeBoardWrite" style="display: none;"></a>
+	<%if(session.getAttribute("userId") != null){ %>
+	<input type="button" value="글쓰기" style="margin-bottom: 5px; float: right;" onclick="document.getElementById('freeBoardWrite').click();" />
+	<%}%> 
 		<table border="solid 1px black;">
 			<tr style="text-align: center">
 				<th style="width: 100px">글번호</th>

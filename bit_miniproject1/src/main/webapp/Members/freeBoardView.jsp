@@ -142,7 +142,13 @@ else {%>
 	border: 1px solid black;
 	" onclick="document.getElementById('freeBoardForm').click();"
 	/>
-	
+<%if(writer.equals((String)session.getAttribute("nickName"))){ %>	
+<a href="./freeBoardUpdate.jsp" id="boardUpdate" style="display: none;"></a>
+<input type="button" value="수정하기" style="
+	border: 1px solid black;
+	" onclick="document.getElementById('boardUpdate').click();"
+	/>
+<%} %>
 <hr>
 
 <div>
@@ -160,7 +166,7 @@ else {%>
 	<div>
 	<form action="./saveComment.do?number=${number}&writer=${nickName}" method = "post"> 
 		<textarea style="border: 1px solid #abadb3; height: 80px" rows="" cols="100" name="comment"></textarea>
-		<input type="submit" style="padding-bottom: -5px;">
+		<input type="submit" style="padding-bottom: -5px;" value="등록">
 	</form>
 	</div>
 </div>

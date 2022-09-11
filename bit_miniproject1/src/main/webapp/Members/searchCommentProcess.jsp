@@ -66,7 +66,7 @@ try {
 <c:forEach var="comment" items="${cList2}">
 <c:set var="writer" value="<%=writer%>"></c:set>
 <div style="margin-left: 20px">
-<strong style="font-size: 1.2em">${comment.writer}</strong>&nbsp;
+<strong style="font-size: 1.2em">${comment.writer}</strong>
 	<c:if test="${comment.writer eq writer}">
 		<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:4px;" border="0">
 	</c:if>

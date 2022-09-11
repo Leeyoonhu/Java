@@ -184,7 +184,8 @@ else {%>
         <hr/>
     </form>
     <ul id="btn_line">
-        <input type="submit" value="이전으로"> <input type="submit" value="회원가입">
+    	<a href="./mainForm.jsp" style="display: none" id="gotomainform"></a>
+       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> <input type="submit" value="회원가입">
     </ul>
 </div>
 </form>
