@@ -69,7 +69,7 @@ public class SaveCommentServlet extends HttpServlet {
 			pstmt.setString(2, writer);
 			pstmt.setString(3, comment);
 			pstmt.executeUpdate();
-			String viewUrl = String.format("./freeBoardView.jsp?number=%d", number);
+			String viewUrl = String.format("./boardView.jsp?number=%d", number);
 			response.sendRedirect(viewUrl);
 
 		} catch (Exception e) {

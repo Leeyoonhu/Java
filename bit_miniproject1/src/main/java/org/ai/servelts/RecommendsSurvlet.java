@@ -70,7 +70,7 @@ public class RecommendsSurvlet extends HttpServlet {
 			pstmt.setInt(2, number);
 			pstmt.executeUpdate();
 //			number를 파라미터로 다시 View로 쏴줘야함
-			String redirect = String.format("./freeBoardView.jsp?number=%d", number); 
+			String redirect = String.format("./boardView.jsp?number=%d", number); 
 			response.sendRedirect(redirect);
 		} catch (Exception e) {
 			e.printStackTrace();

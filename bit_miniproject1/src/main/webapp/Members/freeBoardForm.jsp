@@ -64,7 +64,7 @@ else {%>
 	<tr style="text-align: center">
 		<td>${item.number}</td>
 		<td>
-		<a href="./freeBoardView.jsp?number=${item.number}" style="text-decoration: none; color: gray;">${item.title}</a>
+		<a href="./boardView.jsp?number=${item.number}" style="text-decoration: none; color: gray;">${item.title}</a>
 		<!-- 2중 for문으로 댓글 숫자 보여줘야함 -->
 		<!-- 두 글 번호가 같을경우.. 카운트가 올라가고.. 다를경우에 출력.. -->
 		<c:forEach var="item2" items="${items2}">
