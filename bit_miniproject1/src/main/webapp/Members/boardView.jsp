@@ -31,6 +31,7 @@ String content = null;
 String imageFileName = null;
 String fileName = null;
 String path = request.getServletContext().getContextPath()+"/upload/";
+String boardTitle = request.getParameter("boardTitle");
 /* 상대경로 지정 */
 int views = 0;
 int recommends = 0;
@@ -147,7 +148,7 @@ session.setAttribute("content", content);
 session.setAttribute("imageFileName", imageFileName);
 session.setAttribute("number", number);
 %>
-<a href="./boardUpdate.jsp"id="boardUpdate" style="display: none;"></a>
+<a href="./boardUpdate.jsp?boardTitle=<%=boardTitle%>"id="boardUpdate" style="display: none;"></a>
 <input type="button" value="수정하기" style="
 	border: 1px solid black;
 	" onclick="document.getElementById('boardUpdate').click();"
