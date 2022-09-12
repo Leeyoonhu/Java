@@ -24,6 +24,7 @@
 <%
 	String userId = (String)session.getAttribute("userId");
 	String userPwd = (String)session.getAttribute("userPwd");
+	String boardTitle = "freeBoard";
 %>
 <%	
 	String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
@@ -39,12 +40,13 @@
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(url, user, password);
-		sql = "select * from board";
+		sql = "select * from board where boardTitle= ? ";
 		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, boardTitle);
 		rs = pstmt.executeQuery();
 		while(rs.next()){
 			bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
-					rs.getString(7), rs.getString(8), rs.getString(9)));
+					rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
 		}
 		// 해당 글에 댓글이 몇개있는지 보여줘야함
 		request.setAttribute("bList", bList);

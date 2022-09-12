@@ -31,7 +31,7 @@ String content = null;
 String imageFileName = null;
 String fileName = null;
 String path = request.getServletContext().getContextPath()+"/upload/";
-
+String boardTitle = "freeBoard";
 /* 상대경로 지정 */
 int views = 0;
 int recommends = 0;
@@ -61,7 +61,7 @@ try {
 		rs = pstmt.executeQuery();
 		while(rs.next()){
 			bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
-					rs.getString(7), rs.getString(8), rs.getString(9)));
+					rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
 		}
 		for(int i = 0; i < bList.size(); i++){
 			if(number == bList.get(i).getNumber()){

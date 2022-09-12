@@ -62,6 +62,7 @@ public class BoardWriteServlet extends HttpServlet {
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
 		String writer = multi.getParameter("writer");
+		String boardTitle = multi.getParameter("boardTitle");
 		String imageFileName = multi.getOriginalFileName("imageFileName");
 		String fileName = multi.getOriginalFileName("fileName");
 		
@@ -77,13 +78,14 @@ public class BoardWriteServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
-			sql = "insert into board (title, content, writer, imageFileName, fileName) values (?, ?, ?, ?, ?)";
+			sql = "insert into board (title, content, writer, imageFileName, fileName, boardTitle) values (?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setString(3, writer);
 			pstmt.setString(4, imageFileName);
 			pstmt.setString(5, fileName);
+			pstmt.setString(6, boardTitle);
 			pstmt.execute();
 			response.sendRedirect("./freeBoardForm.jsp");
 		} catch (Exception e) {

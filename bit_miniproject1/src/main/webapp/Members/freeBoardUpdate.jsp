@@ -28,6 +28,7 @@ request.setAttribute("imageFileName", imageFileName);
 /* String fileName = null; */
 String path = request.getServletContext().getContextPath()+"/upload/";
 String writer = (String)session.getAttribute("nickName");
+String boardTitle = "freeBoard";
 %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <div id="content">
@@ -42,6 +43,7 @@ String writer = (String)session.getAttribute("nickName");
 <!-- 	<input type="button" style="margin-left: 10px; margin-top: 10px" value="파일 첨부" onclick="document.getElementById('fileName').click();" />
 		<input type="file" style="display:none;"id="fileName" name="fileName"> <br> -->
 		<input style="margin-left: 750px; width: 100px; height: 30px" type="submit" value="작성 완료">
+		<input type="text" style="display: none;" name="boardTitle" value=<%=boardTitle%>>
 </form>
 </div>
 </div>

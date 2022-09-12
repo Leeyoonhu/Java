@@ -4,14 +4,14 @@ import java.sql.Blob;
 
 public class Board {
 	private int number, views, recommends;
-	private String title, content, writer, imageFileName, fileName;
+	private String title, content, writer, imageFileName, fileName, boardTitle;
 	private String regDate;
 	
 	public Board() {
 	}
 //	출력 생성자
 	public Board(int number, int views, int recommends, String title, String content, String writer, String imageFileName,
-			String fileName, String regDate) {
+			String fileName, String boardTitle, String regDate) {
 		this.number = number;
 		this.views = views;
 		this.recommends = recommends;
@@ -20,16 +20,19 @@ public class Board {
 		this.writer = writer;
 		this.imageFileName = imageFileName;
 		this.fileName = fileName;
+		this.boardTitle = boardTitle;
 		this.regDate = regDate;
 	}
 	
+	
 //	입력 생성자
-	public Board(String title, String content, String writer, String imageFileName, String fileName) {
+	public Board(String title, String content, String writer, String imageFileName, String fileName, String boardTitle) {
 	this.title = title;
 	this.content = content;
 	this.writer = writer;
 	this.imageFileName = imageFileName;
 	this.fileName = fileName;
+	this.boardTitle = boardTitle;
 	}
 
 	public int getNumber() {
@@ -103,6 +106,12 @@ public class Board {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-
+	public String getBoardTitle() {
+		return boardTitle;
+	}
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
+	}
+	
 	
 }
