@@ -24,43 +24,12 @@
 <%
 	String userId = (String)session.getAttribute("userId");
 	String userPwd = (String)session.getAttribute("userPwd");
+	String userJob = (String)session.getAttribute("userJob");
 	String boardTitle = "freeBoard";
 %>
-<%	
-	String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
-	String sql = null;
-	String user = "root";
-	String password = "1234";
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	ArrayList<Board> bList = new ArrayList<Board>();
-	ArrayList<Comment> cList = new ArrayList<Comment>();
-	
-	try {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		conn = DriverManager.getConnection(url, user, password);
-		sql = "select * from board where boardTitle= ? ";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, boardTitle);
-		rs = pstmt.executeQuery();
-		while(rs.next()){
-			bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
-					rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
-		}
-		// 해당 글에 댓글이 몇개있는지 보여줘야함
-		request.setAttribute("bList", bList);
-		sql = "select number from comment";
-		pstmt = conn.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		while(rs.next()){
-			cList.add(new Comment(rs.getInt(1)));
-		}
-		request.setAttribute("cList", cList);
-	} catch (Exception e){
-		e.printStackTrace();
-	}
-%>
+<jsp:include page="./boardInfo.jsp" flush="false">
+	<jsp:param value="<%=boardTitle%>" name="boardTitle"/>
+</jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
@@ -84,6 +53,7 @@ else {%>
 				<th style="width: 80px">추천</th>
 			</tr>
 			<!-- board db에서 가져와서 10줄씩 테이블 생성 -->
+
 <%!int count = 0;%>
 <c:set var="items" value="${bList}"></c:set>	
 <!-- item 이 보드 -->
@@ -114,11 +84,11 @@ else {%>
 </c:forEach>
 <!-- 추가된 테이블 열이 overflow되면.. 다음 페이지 생성하고 보여주는 목록이 그쪽 페이지로 넘어가게해야함.. -->		
 </table>
-	<a href="./loginProcess.jsp?userId=<%=userId%>&userPwd=<%=userPwd%>" id="loginProcess" style="display: none;"></a>
-	<input type="button" value="메인 페이지로" style="margin-top: 10px; margin-left: 1200px" onclick="document.getElementById('loginProcess').click();" />
+	<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
+	<input type="button" value="메인 페이지로" style="margin-top: 10px; margin-left: 1200px" onclick="document.getElementById('mainFormCheck').click();" />
+</div>
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
-<%conn.close(); %>
 </body>
 </html>
