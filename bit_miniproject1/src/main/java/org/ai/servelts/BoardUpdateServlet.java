@@ -62,7 +62,8 @@ public class BoardUpdateServlet extends HttpServlet {
 		String writer = multi.getParameter("writer");
 		String imageFileName = multi.getOriginalFileName("imageFileName");
 		String fileName = multi.getOriginalFileName("fileName");
-		
+		String boardTitle = multi.getParameter("boardTitle");
+		String originalFileName = null;
 // 		DB에 저장
 		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 		String sql = null;
@@ -71,10 +72,20 @@ public class BoardUpdateServlet extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+//		수정한 이미지 파일이 없으면, 원본 이미지 띄우기
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
+			sql = "select imageFileName from board where number = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, number);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				originalFileName = rs.getString(1);
+			}
+			if(imageFileName == null) {
+				imageFileName = originalFileName;
+			}
 			sql = "update board set title=?, content=?, imageFileName=?, fileName=? where number= ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
@@ -83,7 +94,13 @@ public class BoardUpdateServlet extends HttpServlet {
 			pstmt.setString(4, fileName);
 			pstmt.setInt(5, number);
 			pstmt.execute();
-			response.sendRedirect("./freeBoardForm.jsp");
+
+			if(boardTitle.equals("freeBoard")) {
+				response.sendRedirect("./freeBoardForm.jsp");
+			}
+			if(boardTitle.equals("screenBoard")) {
+				response.sendRedirect("./screenBoardForm.jsp");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

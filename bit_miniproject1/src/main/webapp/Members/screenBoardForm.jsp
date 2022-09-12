@@ -62,7 +62,7 @@ else {%>
 		</div>
 		<div>
 		<ul style="list-style:none; padding-left:0px;">
-		<li><a href="./boardView.jsp?number=${item.number}" style="font-weight: bold; color: black;">${item.title}</a>
+		<li><a href="./boardView.jsp?number=${item.number}&boardTitle=<%=boardTitle%>" style="font-weight: bold; color: black;">${item.title}</a>
 		<!-- 2중 for문으로 댓글 숫자 보여줘야함 -->
 		<!-- 두 글 번호가 같을경우.. 카운트가 올라가고.. 다를경우에 출력.. -->
 		<c:forEach var="item2" items="${items2}">
