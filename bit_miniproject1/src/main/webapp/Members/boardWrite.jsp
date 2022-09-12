@@ -24,8 +24,9 @@ import com.oreilly.servlet.*;
 import com.oreilly.servlet.multipart.*;
  -->
 <%
+request.setCharacterEncoding("utf-8");
 String writer = (String)session.getAttribute("nickName");
-String boardTitle = "freeBoard";
+String boardTitle = request.getParameter("boardTitle");
 %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <div id="content">

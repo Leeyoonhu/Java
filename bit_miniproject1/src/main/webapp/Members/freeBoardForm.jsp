@@ -70,7 +70,7 @@ else {%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="freeBoardForm">
-	<a href="./freeBoardWrite.jsp?" id="freeBoardWrite" style="display: none;"></a>
+	<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="freeBoardWrite" style="display: none;"></a>
 	<%if(session.getAttribute("userId") != null){ %>
 	<input type="button" value="글쓰기" style="margin-bottom: 5px; float: right;" onclick="document.getElementById('freeBoardWrite').click();" />
 	<%}%> 
