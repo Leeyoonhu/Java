@@ -53,7 +53,7 @@ else {%>
 				<th style="width: 80px">추천</th>
 			</tr>
 			<!-- board db에서 가져와서 10줄씩 테이블 생성 -->
-
+		
 <%!int count = 0;%>
 <c:set var="items" value="${bList}"></c:set>	
 <!-- item 이 보드 -->
@@ -64,7 +64,7 @@ else {%>
 	<tr style="text-align: center">
 		<td>${item.number}</td>
 		<td>
-		<a href="./boardView.jsp?number=${item.number}&boardTitle=<%=boardTitle%>" style="text-decoration: none; color: gray;">${item.title}</a>
+		<a href="./boardView.jsp?number=${item.number}&boardTitle=<%=boardTitle%>" style="text-decoration: none; color: black;">${item.title}</a>
 		<!-- 2중 for문으로 댓글 숫자 보여줘야함 -->
 		<!-- 두 글 번호가 같을경우.. 카운트가 올라가고.. 다를경우에 출력.. -->
 		<c:forEach var="item2" items="${items2}">
@@ -75,6 +75,9 @@ else {%>
 		<%if(count != 0){ %>
 		<a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
 		<%} count = 0; %>
+		<c:if test="${item.imageFileName ne null}">
+			<img src="https://i.ibb.co/m9b1nYt/imageicon.jpg" style="width:12px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
+		</c:if>
 		</td>
 		<td>${item.writer}</td>
 		<td>${item.regDate}</td>
@@ -86,7 +89,6 @@ else {%>
 </table>
 	<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
 	<input type="button" value="메인 페이지로" style="margin-top: 10px; margin-left: 1200px" onclick="document.getElementById('mainFormCheck').click();" />
-</div>
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
