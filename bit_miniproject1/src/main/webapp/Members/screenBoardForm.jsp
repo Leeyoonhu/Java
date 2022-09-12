@@ -20,8 +20,12 @@
 <%
 	String userId = (String)session.getAttribute("userId");
 	String userPwd = (String)session.getAttribute("userPwd");
+	String userJob = (String)session.getAttribute("userJob");
 	String boardTitle = "screenBoard";
 %>
+<jsp:include page="./boardInfo.jsp" flush="false">
+	<jsp:param value="<%=boardTitle%>" name="boardTitle"/>
+</jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
@@ -36,6 +40,8 @@ else {%>
 	<%if(session.getAttribute("userId") != null){ %>
 	<input type="button" value="글쓰기" style="margin-bottom: 5px; float: right;" onclick="document.getElementById('freeBoardWrite').click();" />
 	<%}%> 
+<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
+	<input type="button" value="메인 페이지로" style="margin-top: 10px; margin-left: 1200px" onclick="document.getElementById('mainFormCheck').click();" />
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
