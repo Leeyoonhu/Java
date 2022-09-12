@@ -54,7 +54,7 @@ try {
 	rs = pstmt.executeQuery();
 	while(rs.next()){
 		bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
-				rs.getString(7), rs.getString(8), rs.getString(9)));
+				rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
 	}
 } catch (Exception e){
 	e.printStackTrace();

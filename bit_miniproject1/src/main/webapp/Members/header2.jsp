@@ -97,7 +97,7 @@ String userJob = (String)session.getAttribute("userJob");
 		</form>
 	</th> 
 	<th>
-		<form action="" method="post" style="position: relative; margin-top: 100px" >
+		<form action="./screenBoardForm.jsp" method="post" style="position: relative; margin-top: 100px" >
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="사진게시판">
 		</form>
 	</th> 

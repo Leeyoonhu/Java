@@ -87,7 +87,12 @@ public class BoardWriteServlet extends HttpServlet {
 			pstmt.setString(5, fileName);
 			pstmt.setString(6, boardTitle);
 			pstmt.execute();
-			response.sendRedirect("./freeBoardForm.jsp");
+			if(boardTitle.equals("freeBoard")) {
+				response.sendRedirect("./freeBoardForm.jsp");
+			}
+			if(boardTitle.equals("screenBoard")) {
+				response.sendRedirect("./screenBoardForm.jsp");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
