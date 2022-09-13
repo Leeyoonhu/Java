@@ -17,28 +17,21 @@
 	width: 1400px;
 	height: 1400px;
 	margin-top: 200px;
-	text-align: center;
 }
 </style>
 </head>
 <body>
+<%
+String userId = (String)session.getAttribute("userId");
+
+%>
 <script type="text/javascript">
 $(document).ready(function(){
 	  $('#calendar').fullCalendar({
 	    header: {
 	      right: 'custom2 prevYear,prev,next,nextYear'
 	    },
-        // 출첵버튼
-	    customButtons: { 
-	        custom2: {
-	          text: '출석체크하기',
-	          id: 'check',
-	          click: function() {	
-	        	  	// ajax 통신으로 누가 클릭했는지 정보 보내기(누른날 비교해서 하루에 1번 가능하면 1번만)
-                    // 클릭하면 calendarController.do 서블릿에 정보보내고, 서블릿에서 db처리
-	          }
-	        }
-	    },
+        
 	    eventSources: [
 	    	{
 				// ajax 통신으로 달력 정보 가져오기 
@@ -54,6 +47,7 @@ $(document).ready(function(){
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="attendancForm">
+<input type="button" id="check" value="출석체크하기" onclick="" />
 <div id="calendar" style="max-width:900px; margin:40px auto;"></div>
 </div>
 </div>
