@@ -40,18 +40,19 @@ else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="freeBoardForm">
 	<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="freeBoardWrite" style="display: none;"></a>
-	<%if(session.getAttribute("userId") != null){ %>
-	<input type="button" value="글쓰기" style="margin-bottom: 5px; float: right;" onclick="document.getElementById('freeBoardWrite').click();" />
-	<%}%> 
-		<table border="solid 1px black;">
-			<tr style="text-align: center">
-				<th style="width: 100px">글번호</th>
-				<th style="width: 700px">제목</th>
-				<th style="width: 150px">닉네임</th>
-				<th style="width: 150px">등록일</th>
-				<th style="width: 80px">조회</th>
-				<th style="width: 80px">추천</th>
+	<div class="row">
+		<h2>전군시 자유게시판</h2>
+		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
+		<thead>
+			<tr>
+				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
+				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
+				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
+				<th style="background-color : #eeeeee; text-align:center; width:200px">등록일</th>
+				<th style="background-color : #eeeeee; text-align:center; width:100px">조회</th>
+				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
 			</tr>
+		</thead>
 			<!-- board db에서 가져와서 10줄씩 테이블 생성 -->
 		
 <%!int count = 0;%>
@@ -89,6 +90,9 @@ else {%>
 </table>
 	<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
 	<input type="button" value="메인 페이지로" style="margin-top: 10px; margin-left: 1200px" onclick="document.getElementById('mainFormCheck').click();" />
+	<%if(session.getAttribute("userId") != null){ %>
+	<input type="button" value="글쓰기" style="margin-top: -30px; margin-left: 1350px" onclick="document.getElementById('freeBoardWrite').click();" />
+	<%}%> 
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
