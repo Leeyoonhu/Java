@@ -54,7 +54,7 @@ try {
 	while(rs.next()){
 		if(rs.getString(1).equals(userId)){
 			/* 회원 정보가있다는 알림창 어떻게 띄울건지 고민할 것 */ 
-			response.sendRedirect("./joinFail.jsp");
+			response.sendRedirect("./joinForm.jsp");
 		}
 	}
 	/* 없으면 추가 */
