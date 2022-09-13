@@ -102,6 +102,23 @@ hr {
 </style>
 </head>
 <body>
+<!-- 비밀번호와 확인비번이 같은지 -->
+<script type="text/javascript">
+	function checkJoin() {
+		let form = document.joinForm;
+		if(form.userId.value.length < 4 || form.userId.value.length > 12){
+			alert("아이디는 4~12자 사이로 입력해주세요");
+			return false;
+		}
+		else if(form.userPwd.value != form.user.checkPwd.value){
+			alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
+			return false;
+		}
+		else {
+			form.submit();
+		}
+	}
+</script>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
@@ -111,7 +128,7 @@ else {%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="joinForm">
-<form action="./joinProcess.jsp" method="post">
+<form action="./joinProcess.jsp" method="post" name="joinForm">
 <div id="wrapper">
 <div id="top">
     <ul><h2>가입 정보 입력</h2></ul>
@@ -185,9 +202,9 @@ else {%>
     </form>
     <ul id="btn_line">
     	<a href="./mainForm.jsp" style="display: none" id="gotomainform"></a>
-       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> <input type="submit" value="회원가입">
+       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> <input type="submit" value="회원가입" onclick="checkJoin()">
     </ul>
-</div>
+</div>	
 </form>
 </div>
 </div>

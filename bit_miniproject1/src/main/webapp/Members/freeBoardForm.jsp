@@ -76,7 +76,7 @@ else {%>
 		<a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
 		<%} count = 0; %>
 		<c:if test="${item.imageFileName ne null}">
-			<img src="https://i.ibb.co/m9b1nYt/imageicon.jpg" style="width:12px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
+			<img src="https://i.ibb.co/JjjkzJB/imageicon.jpg" style="width:15px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
 		</c:if>
 		</td>
 		<td>${item.writer}</td>
