@@ -24,11 +24,13 @@ String gender = request.getParameter("gender");
 %>
 
 <!-- userPwd와 checkPwd가 다를경우 다시보냄.. (알림창띄우면서 보내고 싶다) -->
-<%
+<%-- <%
+joinForm js 유효성 검사로 확인하고있음
+
 if (!userPwd.equals(checkPwd)){
 	response.sendRedirect("./joinFail2.jsp");
 }
-%>
+%> --%>
 
 <%@ page import="java.util.*, java.sql.*, org.ai.beans.*" %>
 
@@ -42,19 +44,23 @@ String password = "1234";
 Connection conn = null;
 PreparedStatement pstmt = null;
 ResultSet rs = null;
-ArrayList<String> aList = new ArrayList<String>();
+ArrayList<Members> mList = new ArrayList<Members>();
 
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	conn = DriverManager.getConnection(url, user, password);
-	/* 일단 있는 정보인지 먼저 확인*/
-	sql = "select userId from Members";
+	/* 일단 있는 정보인지 먼저 확인 (아이디, 닉네임, 폰번호)*/
+	sql = "select * from Members";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	while(rs.next()){
-		if(rs.getString(1).equals(userId)){
-			/* 회원 정보가있다는 알림창 어떻게 띄울건지 고민할 것 */ 
-			response.sendRedirect("./joinForm.jsp");
+		mList.add(new Members(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
+				, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
+				, rs.getString(13), rs.getString(14)));
+	}
+	for(int i = 0; i < mList.size(); i++){
+		if(userId.equals(mList.get(i).getUserId())){
+			response.sendRedirect("./joinFail.jsp");
 		}
 	}
 	/* 없으면 추가 */
