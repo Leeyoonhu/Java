@@ -120,24 +120,43 @@ else {%>
 <%}%>
 <div id="content">
 <div id="freeBoardView">
-		<p style="float: left;">닉네임 : <%=writer %></p> <p style="text-align: center;">작성일 : <%=regDate %></p>  <p style="float: right;"> 조회 : <%=views %> &nbsp;&nbsp; 추천 : <%=recommends %></p>
-	<hr>
-	<div>
-	<h1><%=title %></h1>
-	</div>
-	<hr>
-<div>
-	<!-- 파일 다운로드 servlet 만들어서 다운로드 받게 해야함 -->
-	<!-- 파일 명을 넘겨주고.. realpath처리.. -->
-		<img alt="" src="<%=path%>${imageFileName}" onerror="this.style.display='none'"> <br>
-		<p><%=content%></p>
-</div> <br>
+		<div class="container">
+        <div class="row">
+            <table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
+                <thead>
+                    <tr>
+                        <th colspan="3" style="background-color: #eeeeee; text-align:center;">게시판 글보기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="width:20%;">글제목</td>조회 : <%=views %> &nbsp; 추천 : <%=recommends %>
+                        <td colspan="2"><%=title %></td>
+                    </tr>
+                    <tr>
+                        <td>작성자</td>
+                        <td colspan="2"><%=writer %></td>
+                    </tr>
+                    <tr>
+                        <td>작성일자</td>
+                        <td colspan="2"><%=regDate %></td>
+                    </tr>
+                    <tr>
+                        <td>내용</td>
+                        <td colspan="2" style="min-height:200px; text-align:left;"><img alt="" src="<%=path%>${imageFileName}" onerror="this.style.display='none'"> <br>
+		<p><%=content%></p></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+    </div>
 <c:set var ="number" value="<%=number %>"></c:set>
 <form action="./recommendsProcess.do?number=${number}" method="post">
 	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
 	<input style="text-align: center; width: 100px; height: 50px; border-radius: 20px; color : white; background-color: #343a40;" type="submit" value="추천">
 </form> <br>
-<a href="./freeBoardForm.jsp" id="freeBoardForm" style="display: none;"></a>
+<a href="./<%=boardTitle%>Form.jsp" id="freeBoardForm" style="display: none;"></a>
 <input type="button" value="목록으로" style="
 	border: 1px solid black;
 	" onclick="document.getElementById('freeBoardForm').click();"
