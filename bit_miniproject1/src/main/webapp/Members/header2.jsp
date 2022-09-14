@@ -15,10 +15,13 @@ background-repeat:
 }
 
 #content {
-width: 1630px;
-height: 2000px;
+width: 1650px;
+height: 1400px;
 }
-  
+#content2 {
+width: 1650px;
+height: 1600px;
+}
 .btn {
   font-size: 25px;
   padding: 10px 30px;

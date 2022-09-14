@@ -12,7 +12,7 @@
 	display: inline-block;
 	float: right;
 	width: 1400px;
-	height: 1800px;
+	height: 1200px;
 	margin-top: 200px;
 }
 </style>
@@ -76,7 +76,7 @@ else {%>
 		</li>
 		<br>
 		<li style="color: gray;">${item.writer}</li>
-		<li style="float: left; display: inline-block;"> 조회수 : ${item.views} <li><li style="float: right; display: inline-block;"> 추천수 : ${item.recommends} </li>
+		<li style="float: left; display: inline-block;"><img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-bottom:2px; margin-right:2px"/>${item.views} </li><li style="float: right; display: inline-block; color: navy"> <img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px"/> ${item.recommends} </li>
 		</ul>
 		</div>
 	</div>

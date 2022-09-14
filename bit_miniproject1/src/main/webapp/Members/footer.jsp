@@ -9,29 +9,30 @@
         .footer{
             width : 1950px;
             height : 250px;
-            /* position: relative; */
+            position: relative;
             bottom : 0;
             left: 0;
             background-color: #343a40;
             color:white;
-            padding-top: 15px;
+            padding-top: 15xp;
             font-size: 13px;
         }
         .footer a {
             display : inline-block;
-            margin : 80px 20px 25px 150px;
+            position: absolute;
             color : white;
             font-size : 20px;
+            top: 70px;
+            left: 200px;
         }
         .footer p {
-            margin-top: 0;
-            margin-bottom: 0;
-            margin-left: 10;
+        	position: absolute;
+            top: 130px;
         }
         .footer p span{
             display: inline-block;
-            margin-left: 55px;
             font-size: 15px;
+            margin-left: 90px;
         }
         
 
@@ -44,7 +45,7 @@
             <a>비트교육센터</a>
         </nav>
       <p>
-        <span>서울특별시 서초구 서초대로74길33 비트빌 3층  </span>
+        <span>서울특별시 서초구 서초대로74길33 비트빌 3층</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span>사업자등록번호 220-81-29726  </span>
         <span>대표이사 홍혁기  </span>
         <span>법인명 (주)병무청</span><br>

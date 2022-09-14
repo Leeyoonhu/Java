@@ -11,8 +11,8 @@
 #freeBoardForm {
 	display: inline-block;
 	float: right;
-	width: 1400px;
-	height: 1800px;
+	width: 1300px;
+	height: 1200px;
 	margin-top: 200px;
 	text-align: center;
 }

@@ -10,7 +10,7 @@
 	display: inline-block;
 	float: right;
 	width: 1400px;
-	height: 1800px;
+	height: 1200px;
 	margin-top: 200px;
 	text-align: center;
 }
@@ -112,8 +112,6 @@ hr {
 		if(form.userId.value.length < 6 || form.userId.value.length > 12 || form.userId.value == "" || !idcheck.test(form.userId.value)){
 			alert("아이디는 영문 대소문자와 숫자 6~12자리로 입력해주세요");
 			form.userId.value = "";
-			form.userPwd.value = "";
-			form.user.checkPwd.value = "";
 			form.userId.focus();
 			return false;
 		}
@@ -132,11 +130,14 @@ hr {
 			form.checkPwd.focus();
 			return false;
 		}
-		else if(form.userPwd.value != form.user.checkPwd.value){
+		else if(form.userPwd.value !== form.checkPwd.value){
 			alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
 			form.userPwd.value = "";
 			form.checkPwd.value = "";
 			return false;
+		} 
+		else {
+			form.submit();
 		}
 	} 
 </script>

@@ -14,9 +14,10 @@
 	display: inline-block;
 	float: right;
 	width: 1400px;
-	height: 1800px;
-	margin-top: 200px;
+	height: auto;
+	margin-top: 150px;
 	text-align: center;
+	overflow: hidden;
 }
 </style>
 </head>
@@ -118,7 +119,7 @@ request.setAttribute("writer", writer);
 else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
-<div id="content">
+<div id="content2">
 <div id="freeBoardView">
 		<div class="container">
         <div class="row">
@@ -175,7 +176,7 @@ session.setAttribute("number", number);
 <%} %>
 <hr>
 
-<div>
+<div style="height: auto">
 <jsp:include page="./searchCommentProcess.jsp">
 	<jsp:param value="${number}" name="number"/>
 	<jsp:param value="${writer}" name="writer"/>
@@ -183,7 +184,7 @@ session.setAttribute("number", number);
 </div>
 	<!-- 댓글을 달면, 글번호(number), 글작성자(nickname), 댓글내용은 새로받은 내용(comment), 댓글 단 시간이 regDate -->
 <%if(session.getAttribute("userId") != null){%>
-<div>
+<div style="height: auto">
 	<div>
 	<strong style="margin-top: 20px; display: inline-block; float: left;">${nickName}</strong>
 	</div>
