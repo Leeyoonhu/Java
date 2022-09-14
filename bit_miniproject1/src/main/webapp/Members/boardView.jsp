@@ -186,12 +186,15 @@ session.setAttribute("number", number);
 <%if(session.getAttribute("userId") != null){%>
 <div style="height: auto">
 	<div>
-	<strong style="margin-top: 20px; display: inline-block; float: left;">${nickName}</strong>
 	</div>
 	<div>
 	<form action="./saveComment.do?number=${number}&writer=${nickName}" method = "post"> 
-		<textarea style="border: 1px solid #abadb3; height: 80px" rows="" cols="100" name="comment"></textarea>
-		<input type="submit" style="padding-bottom: -5px;" value="등록">
+		<input type="submit" style="font: 13px; font-weight: bold; float: right; height: 85px; width: 80px; background: #444;
+	    border: 1px solid #303030;
+	    color: #fff; border-radius: 3px;
+	    box-sizing: border-box;  margin-right: 230px;" value="등록">
+		<textarea style="border: 1px solid #abadb3; height: 85px; margin-right: 20px; float: right;" rows="" cols="100" name="comment"></textarea>
+		<strong style="float: right; margin-right: 20px; margin-top: 30px; font-size: 1.2em">${nickName}</strong>
 	</form>
 	</div>
 </div>
