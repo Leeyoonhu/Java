@@ -5,11 +5,16 @@ import java.util.Arrays;
 
 import org.conan.domain.SampleDTO;
 import org.conan.domain.SampleDTOList;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.log4j.Log4j;
 
@@ -72,4 +77,45 @@ public class SampleController {
 		return "ex02Bean";
 	}
 	
+//	Model, Controller에서 생성된 data를 담아서 JSP에 전달	data >> controller >> view
+	@GetMapping("/ex04")
+//	자동 형 변환은 beans에 선언된애들만 되고, 기본형 변수는 불가능
+//	beans에는 없는 속성으로 받고싶으면 @ModelAttribute 사용 => @ModelAttribute(key) 자료형 value
+	public String ex04(SampleDTO dto, @ModelAttribute("page") int page) {
+		log.info("dto : " + dto);
+		log.info("page : " + page);
+		return "./sample/ex04";
+//		JSP view file 하고 짝이 지어지게 이름을 지었음(굳이 똑같이 만들필요는 없음)
+	}
+//	페이지 이동시에 parameter값 넘겨주는 방법 => RedirectAttributes (p143 참고)
+	
+//	method type 이 void 일 경우는 요청 경로와 동일한 이름의 .jsp가 필요
+//	String 일 경우는 상관없음
+	@GetMapping("/ex05")
+	public void ex05() {
+		log.info("너는 어디로 갔을까");
+	}
+	
+//	특별하게 page가 필요없는 ResponseBody
+//	SampleDTO 타입 메서드 (반환도 SampleDTO 타입)
+	@GetMapping("/ex06")
+	public @ResponseBody SampleDTO ex06() {
+		log.info("ex06..........!!!@");
+		SampleDTO dto = new SampleDTO();
+		dto.setAge(10);
+		dto.setName("conan");
+		return dto;
+	}
+	
+//	body 와 header를 합친 Entity타입
+//	ResponseEntity
+//	http protocool의 헤더를 다루는 경우
+	@GetMapping("/ex07")
+	public ResponseEntity<String> ex07(){
+		log.info("ex07..........");
+		String msg = String.format("{\"name\":\"conan\"}");
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Type", "application/json; charset=UTF-8");
+		return new ResponseEntity<String>(msg, header, HttpStatus.NOT_FOUND);
+	}
 }
