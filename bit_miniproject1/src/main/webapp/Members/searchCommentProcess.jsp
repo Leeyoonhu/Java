@@ -61,20 +61,22 @@ try {
 }
 /* 댓글 작성자가 글 작성자와 같을 경우 작성자 표시*/
 %>
-<strong style="font-size: 1.3em">댓글 (<%=cList2.size()%>)</strong><br>
+<div style="height: auto">
+<img alt="" src="https://i.ibb.co/C96m34C/image.jpg" width="17" height="15" style="margin-bottom: 5px; margin-right:2px" > <strong style="font-size: 1.1em">댓글 (<%=cList2.size()%>)</strong><br>
 <hr>
 <c:forEach var="comment" items="${cList2}">
 <c:set var="writer" value="<%=writer%>"></c:set>
 <div style="margin-left: 20px">
-<strong style="font-size: 1.2em">${comment.writer}</strong>
+<strong style="font-size: 1em">${comment.writer}</strong>
 	<c:if test="${comment.writer eq writer}">
-		<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:4px;" border="0">
+		<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:2px;margin-bottom:2px" border="0">
 	</c:if>
-&nbsp;
-<span>(${comment.regDate})</span><br>
+<span style="color: gray">(${comment.regDate})</span><br>
 ${comment.comment}
 </div>
+
 <hr>
 </c:forEach>
+</div>
 </body>
 </html>

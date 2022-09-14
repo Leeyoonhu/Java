@@ -7,13 +7,28 @@
 <title>Insert title here</title>
 <style type="text/css">
 #freeBoardWrite {
-	display: inline-block;
-	float: right;
-	width: 1400px;
-	height: 1400px;
-	margin-top: 200px;
-	text-align: center;
+   display: inline-block;
+   float: right;
+   width: 1400px;
+   height: 1200px;
+   margin-top: 200px;
+   text-align: center;
 }
+ .table_input {
+        display: block;
+        width: 1500px;
+        min-height: 40px;
+        padding: 11px 12px 10px;
+        border: 1px solid #ebecef;
+        box-sizing: border-box;
+        overflow: hidden;
+        word-break: break-all;
+        font-size: 15px;
+        letter-spacing: -.23px;
+        line-height: 17px;
+        outline: none;
+        height: 40px;
+        }
 </style>
 </head>
 <body>
@@ -32,10 +47,12 @@ String boardTitle = request.getParameter("boardTitle");
 <div id="content">
 <div id="freeBoardWrite">
 <form action="./boardwrite.do?" method="post" enctype="multipart/form-data">
- 		<h2 style="float: left; margin-left: 300px">제목 : </h2><input type="text" style="width: 700px; height: 30px; margin-right: 280px; margin-top: 4px" name="title" autofocus="autofocus" maxlength="50">
  		<input type="text" style="display: none;" name="writer" readonly="readonly" value=<%=writer%>>
- 		<span style="margin-left: 600px; margin-bottom: 5px; border: 0; font: bold; font-size: 16px;"><%=writer%></span>
-		<textarea rows="" cols="" style="width: 1040px; height: 600px" name="content" placeholder="글꼴 | 크기"></textarea> <br>
+ 		<span style="margin-left: 920px; border: 0; font: bold; font-size: 16px;"><%=writer%></span>
+ 		<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
+ 		style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
+ 		name="title" autofocus="autofocus" maxlength="50"><br>
+		<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px;" name="content" placeholder="글꼴"></textarea> <br>
  		<input type="button" style="margin-left: 80px; margin-top: 10px" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
 		<input type="file" style="display:none;" id="imageFileName" name="imageFileName" accept="image/*"/>
 <!-- 	<input type="button" style="margin-left: 10px; margin-top: 10px" value="파일 첨부" onclick="document.getElementById('fileName').click();" />
