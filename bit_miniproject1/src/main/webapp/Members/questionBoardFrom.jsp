@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판</title>
+<title>질문게시판</title>
 <style type="text/css">
 #freeBoardForm {
 	display: inline-block;
@@ -25,7 +25,7 @@
 	String userId = (String)session.getAttribute("userId");
 	String userPwd = (String)session.getAttribute("userPwd");
 	String userJob = (String)session.getAttribute("userJob");
-	String boardTitle = "freeBoard";
+	String boardTitle = "questionBoard";
 %>
 <jsp:include page="./boardInfo.jsp" flush="false">
 	<jsp:param value="<%=boardTitle%>" name="boardTitle"/>
@@ -40,7 +40,7 @@ else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="freeBoardForm">
 	<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="boardWrite" style="display: none;"></a>
-	<h2>전군시 자유게시판</h2>
+	<h2>전군시 질문게시판</h2>
 	<br>
 	<input type="button" value="메인 페이지로" style="float: right;margin-right: 20px; margin-bottom: 10px; line-height: 30px; border-radius: 3px; box-sizing: border-box; border: 1px solid #303030;" onclick="document.getElementById('mainFormCheck').click();" />
 	<%if(session.getAttribute("userId") != null){ %>

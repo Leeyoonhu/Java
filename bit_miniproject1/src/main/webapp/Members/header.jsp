@@ -88,7 +88,7 @@ height: 1600px;
 		</form>
 	</th>
 	<th>
-		<form action="" method="post" style="position: relative; margin-top: 100px" >
+		<form action="./questionBoardFrom.jsp" method="post" style="position: relative; margin-top: 100px" >
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="button" value="출석체크" onclick="alert('로그인 시 출석체크 가능합니다')">
 		</form>
 	</th> 

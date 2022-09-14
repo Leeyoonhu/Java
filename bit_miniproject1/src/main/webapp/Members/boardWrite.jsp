@@ -46,18 +46,30 @@ String boardTitle = request.getParameter("boardTitle");
 <jsp:include page="./header2.jsp"></jsp:include>
 <div id="content">
 <div id="freeBoardWrite">
+<h1 style="position: relative;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #323232;
+    ">전군시 글쓰기</h1>
 <form action="./boardwrite.do?" method="post" enctype="multipart/form-data">
  		<input type="text" style="display: none;" name="writer" readonly="readonly" value=<%=writer%>>
- 		<span style="margin-left: 920px; border: 0; font: bold; font-size: 16px;"><%=writer%></span>
+ 		<span style="margin-left: 940px; border: 0; font: bold; font-size: 18px; margin-bottom: 10px"><%=writer%></span>
  		<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
  		style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
  		name="title" autofocus="autofocus" maxlength="50"><br>
 		<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px;" name="content" placeholder="글꼴"></textarea> <br>
- 		<input type="button" style="margin-left: 80px; margin-top: 10px" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
 		<input type="file" style="display:none;" id="imageFileName" name="imageFileName" accept="image/*"/>
+ 		<input type="button" style="margin-left: 700px; display: inline-block; width: 120px; height: 40px; line-height: 30px;" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
 <!-- 	<input type="button" style="margin-left: 10px; margin-top: 10px" value="파일 첨부" onclick="document.getElementById('fileName').click();" />
 		<input type="file" style="display:none;"id="fileName" name="fileName"> <br> -->
-		<input style="margin-left: 750px; width: 100px; height: 30px" type="submit" value="작성 완료">
+		<input style="display:inline-block; width: 120px; height: 40px; background: #444;
+			margin-left: 20px;
+		    border: 1px solid #303030;
+		    color: #fff; border-radius: 3px;
+		    box-sizing: border-box; transition: .2s; line-height: 30px;
+		    text-align: center; 
+		    display: inline-block;" type="submit" value="작성 완료">
 		<input type="text" style="display: none;" name="boardTitle" value=<%=boardTitle%>>
 </form>
 </div>
