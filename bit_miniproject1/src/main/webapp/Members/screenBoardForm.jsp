@@ -37,19 +37,27 @@ else {%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="screenBoardForm">
+<h2 style="text-align: center; margin-left: 100px;">전군시 사진게시판</h2> <br>
 <a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
-<input type="button" value="메인 페이지로" style="margin-top: 10px; float: right; vertical-align: top; margin-right: 50px" onclick="document.getElementById('mainFormCheck').click();" />
+<input type="button" value="메인 페이지로" style="float: right;margin-right: 20px; margin-bottom: 10px; line-height: 30px; border-radius: 3px; box-sizing: border-box; border: 1px solid #303030;" onclick="document.getElementById('mainFormCheck').click();" />
 <!-- 여기다가 boardTitle = screenBoard인 애들 나오게할것 -->
-<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="freeBoardWrite" style="display: none;"></a>
-	<%if(session.getAttribute("userId") != null){ %>
-	<input type="button" value="글쓰기" style="margin-bottom: 5px; float: right;" onclick="document.getElementById('freeBoardWrite').click();" />
-	<%}%> 
+<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="boardWrite" style="display: none;"></a>
+<%if(session.getAttribute("userId") != null){ %>
+	<input type="button" value="글쓰기" style="margin-bottom: 10px; float: right; background: #444;
+    border: 1px solid #303030;
+    color: #fff; border-radius: 3px;
+    box-sizing: border-box; transition: .2s; line-height: 30px;
+    text-align: center; margin-right:20px; width: 120px" onclick="document.getElementById('boardWrite').click();" />
+<%}%> 
+<br>
+	<hr>
+	<br>
 <%!int count = 0;%>
 <%int lineCount = 0; %>
 <c:set var="items" value="${bList}"></c:set>	
 <c:set var="items2" value="${cList}"></c:set>
 <c:forEach var="item" items="${items}">
-	<div style="width: 200px; height: 320px; display: inline-block; margin-left: 100px; border: 1px solid gray">
+	<div style="width: 200px; height: 320px; display: inline-block; margin-left: 70px; border: 1px solid gray; box-sizing: border-box; border-radius: 3px;" >
 		<div>
 		<a href="./boardView.jsp?number=${item.number}" id="goScreenView" style="display: none;"></a>
 		<c:choose>
@@ -82,7 +90,7 @@ else {%>
 		</div>
 	</div>
 	<%lineCount++; %>
-	<%if(lineCount == 4){
+	<%if(lineCount == 5){
 			lineCount = 0; 
 		%>	
 			<br><br><br>
