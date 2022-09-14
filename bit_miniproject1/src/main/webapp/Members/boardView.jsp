@@ -155,11 +155,25 @@ else {%>
 <c:set var ="number" value="<%=number %>"></c:set>
 <form action="./recommendsProcess.do?number=${number}" method="post">
 	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
-	<input style="text-align: center; width: 100px; height: 50px; border-radius: 20px; color : white; background-color: #343a40;" type="submit" value="추천">
+	<input style="width: 90px;
+    height: 55px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: url(https://i.ibb.co/vVmM42G/image.jpg) no-repeat;
+    background-position:center;" type="submit" value="">
 </form> <br>
 <a href="./<%=boardTitle%>Form.jsp" id="freeBoardForm" style="display: none;"></a>
-<input type="button" value="목록으로" style="
+<input type="button" value="목록" style="
 	border: 1px solid black;
+	background-color: #74bbbe;
+	padding: 9px 0 10px;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    width: 46px;
 	" onclick="document.getElementById('freeBoardForm').click();"
 	/>
 <%if(writer.equals((String)session.getAttribute("nickName"))){
