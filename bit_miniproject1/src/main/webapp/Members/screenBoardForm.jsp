@@ -37,6 +37,8 @@ else {%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="screenBoardForm">
+<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
+<input type="button" value="메인 페이지로" style="margin-top: 10px; float: right; vertical-align: top; margin-right: 50px" onclick="document.getElementById('mainFormCheck').click();" />
 <!-- 여기다가 boardTitle = screenBoard인 애들 나오게할것 -->
 <a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="freeBoardWrite" style="display: none;"></a>
 	<%if(session.getAttribute("userId") != null){ %>
@@ -47,22 +49,21 @@ else {%>
 <c:set var="items" value="${bList}"></c:set>	
 <c:set var="items2" value="${cList}"></c:set>
 <c:forEach var="item" items="${items}">
-	<div style="width: 200px; height: 300px; display: inline-block; padding-left: 20px; margin-left: 100px" >
-		<div><p>글 번호 : ${item.number}</p></div>
+	<div style="width: 200px; height: 320px; display: inline-block; margin-left: 100px; border: 1px solid gray">
 		<div>
 		<a href="./boardView.jsp?number=${item.number}" id="goScreenView" style="display: none;"></a>
 		<c:choose>
 			<c:when test="${item.imageFileName eq null}">
-				<img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="180px" height="180px" style="border: 1px solid gray"  onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
+				<img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="198px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
 			</c:when>
 			<c:otherwise>
-				<img alt="" src="<%=path%>${item.imageFileName}" width="180px" height="180px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
+				<img alt="" src="<%=path%>${item.imageFileName}" width="198px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()" style="border-bottom: 1px solid gray; overflow: hidden"> <br>
 			</c:otherwise>
 		</c:choose>
 		</div>
 		<div>
 		<ul style="list-style:none; padding-left:0px;">
-		<li><a href="./boardView.jsp?number=${item.number}&boardTitle=<%=boardTitle%>" style="font-weight: bold; color: black;">${item.title}</a>
+		<li style="margin-top:12px; margin-left:7px;"><a href="./boardView.jsp?number=${item.number}&boardTitle=<%=boardTitle%>" style="font-family:'Malgun Gothic', '맑은 고딕', helvetica, 'Apple SD Gothic Neo', sans-serif; font-size: 100%; color: black;">${item.title}</a>
 		<!-- 2중 for문으로 댓글 숫자 보여줘야함 -->
 		<!-- 두 글 번호가 같을경우.. 카운트가 올라가고.. 다를경우에 출력.. -->
 		<c:forEach var="item2" items="${items2}">
@@ -75,9 +76,9 @@ else {%>
 		<%} count = 0; %>
 		</li>
 		<br>
-		<li style="color: gray;">${item.writer}</li>
-		<li style="float: left; display: inline-block;"><img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-bottom:2px; margin-right:2px"/>${item.views} </li><li style="float: right; display: inline-block; color: navy"> <img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px"/> ${item.recommends} </li>
-		</ul>
+		<li style="color: gray; margin-left:7px;">${item.writer}</li>
+		<li style="float: left; display: inline-block; margin-left:7px;"><img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-bottom:2px; margin-right:2px"/>${item.views} </li><li style="float: right; display: inline-block; color: navy; margin-right: 7px"> <img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px"/> ${item.recommends} </li>
+		</ul>	
 		</div>
 	</div>
 	<%lineCount++; %>
@@ -87,9 +88,6 @@ else {%>
 			<br><br><br>
 		<%}%>
 </c:forEach>	
-
-<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
-	<input type="button" value="메인 페이지로" style="margin-top: 10px;" onclick="document.getElementById('mainFormCheck').click();" />
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>

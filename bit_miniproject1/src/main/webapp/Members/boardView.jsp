@@ -131,7 +131,7 @@ else {%>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="width:20%;">글제목</td>조회 : <%=views %> &nbsp; 추천 : <%=recommends %>
+                        <td style="width:20%;">글제목</td><img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-right:2px; margin-top:3px"/><%=views %> <img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px" style="margin-left: 5px; margin-top:3px"/><%=recommends %>
                         <td colspan="2"><%=title %></td>
                     </tr>
                     <tr>
