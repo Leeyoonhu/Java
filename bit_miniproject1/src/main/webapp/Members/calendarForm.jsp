@@ -23,7 +23,6 @@
 <body>
 <%
 String userId = (String)session.getAttribute("userId");
-
 %>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -43,11 +42,15 @@ $(document).ready(function(){
 	  }); 
 });
 </script>
+<%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
+<%} 
+else {%>
+<jsp:include page="./header.jsp"></jsp:include>
+<%}%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="attendancForm">
-<input type="button" id="check" value="출석체크하기" onclick="" />
 <div id="calendar" style="max-width:900px; margin:40px auto;"></div>
 </div>
 </div>
