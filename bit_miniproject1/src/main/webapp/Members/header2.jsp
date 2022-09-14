@@ -73,16 +73,13 @@ height: 1600px;
 <br>
 <br>
 <div style="background-image: URL('https://i.ibb.co/L99MpYL/A.png'); background-size : cover; position: absolute; width: 1950px; height: 210px; top:4%"> 
-<%
-request.setCharacterEncoding("utf-8");
-String userJob = (String)session.getAttribute("userJob");
-%>
-<%if(userJob.equals("soldier")) {%>
-<a href="./mainForm3.jsp" style="display: none" id="jungunsi2"></a>
-<%} else if(userJob == null){%>
+<%if(session.getAttribute("userJob") == null){%>
 <a href="./mainForm.jsp" style="display: none" id="jungunsi2"></a>
-<%} else { %>
-<a href="./mainForm2.jsp" style="display: none" id="jungunsi2"></a>
+<%} %>
+<%if("soldier".equals((String)session.getAttribute("userJob"))) {%>
+<a href="./mainForm3.jsp" style="display: none" id="jungunsi2"></a>
+<%}else if(session.getAttribute("userJob") != null) { %>
+<a href="./mainForm2.jsp" 	style="display: none" id="jungunsi2"></a>
 <%} %>
 <h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px;" onclick="document.getElementById('jungunsi2').click()">전군시</h1> </div>
 
@@ -94,11 +91,6 @@ String userJob = (String)session.getAttribute("userJob");
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 500px" type="submit" value="자유게시판">
 		</form>
 	</th>
-	<th>
-		<form action="./calendarForm.jsp" method="post" style="position: relative; margin-top: 100px">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="출석체크">
-		</form>
-	</th> 
 	<th>
 		<form action="./screenBoardForm.jsp" method="post" style="position: relative; margin-top: 100px" >
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="사진게시판">
@@ -112,6 +104,11 @@ String userJob = (String)session.getAttribute("userJob");
 	<th>
 		<form action="./informationBoardForm.jsp" method="post" style="position: relative; margin-top: 100px">
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="정보게시판">
+		</form>
+	</th> 
+	<th>
+		<form action="./calendarForm.jsp" method="post" style="position: relative; margin-top: 100px">
+			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="달력">
 		</form>
 	</th> 
 </tr>
