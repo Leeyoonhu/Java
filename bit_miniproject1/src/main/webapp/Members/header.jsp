@@ -103,7 +103,7 @@ height: 1600px;
 		</form>
 	</th> 
 	<th>
-		<form action="" method="post" style="position: relative; margin-top: 100px">
+		<form action="./informationBoardForm.jsp" method="post" style="position: relative; margin-top: 100px">
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="정보게시판">
 		</form>
 	</th> 
