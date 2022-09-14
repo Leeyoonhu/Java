@@ -110,36 +110,35 @@ hr {
 		let idcheck = /^[a-zA-z0-9]{4,12}$/;
 		let passwordcheck = /^[a-zA-z0-9]{8,16}$/;
 		if(form.userId.value.length < 6 || form.userId.value.length > 12 || form.userId.value == "" || !idcheck.test(form.userId.value)){
+			alert("아이디는 영문 대소문자와 숫자 6~12자리로 입력해주세요");
 			form.userId.value = "";
 			form.userPwd.value = "";
 			form.user.checkPwd.value = "";
-			alert("아이디는 영문 대소문자와 숫자 6~12자리로 입력해주세요");
 			form.userId.focus();
 			return false;
 		}
 		
-		if(form.userPwd.value.length < 8 || form.userPwd.value.length > 16 || form.userPwd.value == "" || !passwordcheck.test(form.userPwd.value)){
+		else if(form.userPwd.value.length < 8 || form.userPwd.value.length > 16 || form.userPwd.value == "" || !passwordcheck.test(form.userPwd.value)){
+			alert("비밀번호는 8~16자 사이로 입력해주세요");
 			form.userPwd.value = "";
 			form.checkPwd.value = "";
-			alert("비밀번호는 8~16자 사이로 입력해주세요");
 			form.userPwd.focus();
 			return false;
 		}
-		if(form.checkPwd.value.length < 8 || form.checkPwd.value.length > 16 || form.checkPwd.value == "" || !passwordcheck.test(form.checkPwd.value)){
+		else if(form.checkPwd.value.length < 8 || form.checkPwd.value.length > 16 || form.checkPwd.value == "" || !passwordcheck.test(form.checkPwd.value)){
+			alert("비밀번호 확인은 8~16자 사이로 입력해주세요");
 			form.userPwd.value = "";
 			form.checkPwd.value = "";
-			alert("비밀번호 확인은 8~16자 사이로 입력해주세요");
 			form.checkPwd.focus();
 			return false;
 		}
-		if(form.userPwd.value != form.user.checkPwd.value){
+		else if(form.userPwd.value != form.user.checkPwd.value){
+			alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
 			form.userPwd.value = "";
 			form.checkPwd.value = "";
-			alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
 			return false;
 		}
-		return true;
-	}
+	} 
 </script>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
@@ -150,7 +149,7 @@ else {%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="joinForm">
-<form action="./joinProcess.jsp" method="post" name="joinForm" onsubmit="return checkJoin()">
+<form action="./joinProcess.jsp" method="post" name="joinForm">
 <div id="wrapper">
 <div id="top">
     <ul><h2>가입 정보 입력</h2></ul>
@@ -163,7 +162,6 @@ else {%>
         <ul>
             <li>아이디</li>
             <li><input type="text" name="userId" autofocus="autofocus"></li> 
-             
         </ul>
         <ul>
             <li>비밀번호</li> 
@@ -224,7 +222,7 @@ else {%>
     </form>
     <ul id="btn_line">
     	<a href="./mainForm.jsp" style="display: none" id="gotomainform"></a>
-       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> <input type="submit" value="회원가입">
+       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> <input type="button" value="회원가입" onclick="checkJoin()">
     </ul>
 </div>	
 </form>
