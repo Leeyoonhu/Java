@@ -50,21 +50,16 @@ try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	conn = DriverManager.getConnection(url, user, password);
 	/* 일단 있는 정보인지 먼저 확인 (아이디, 닉네임, 폰번호)*/
-	sql = "select * from Members";
+	sql = "select userId from Members";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	while(rs.next()){
-		mList.add(new Members(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
-				, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
-				, rs.getString(13), rs.getString(14)));
-	}
-	for(int i = 0; i < mList.size(); i++){
-		if(userId.equals(mList.get(i).getUserId())){
+		if(userId.equals(rs.getString(1))){
 			response.sendRedirect("./joinFail.jsp");
 		}
 	}
 	/* 없으면 추가 */
-	sql = "insert into Members 	(userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	sql = "insert into Members (userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, userId);
 	pstmt.setString(2, userPwd);
