@@ -64,6 +64,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		String fileName = multi.getOriginalFileName("fileName");
 		String boardTitle = multi.getParameter("boardTitle");
 		String originalFileName = null;
+		String formUrl = null;
 // 		DB에 저장
 		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 		String sql = null;
@@ -95,11 +96,9 @@ public class BoardUpdateServlet extends HttpServlet {
 			pstmt.setInt(5, number);
 			pstmt.execute();
 
-			if(boardTitle.equals("freeBoard")) {
-				response.sendRedirect("./freeBoardForm.jsp");
-			}
-			if(boardTitle.equals("screenBoard")) {
-				response.sendRedirect("./screenBoardForm.jsp");
+			if(boardTitle != null) {
+				formUrl = String.format("./%sForm.jsp", boardTitle);
+				response.sendRedirect(formUrl);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
