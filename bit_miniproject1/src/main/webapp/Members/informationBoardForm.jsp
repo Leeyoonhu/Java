@@ -40,7 +40,7 @@ else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="freeBoardForm">
 	<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="boardWrite" style="display: none;"></a>
-	<h2>전군시 정보게시판</h2>
+	<h2>ROK ARMY 정보게시판</h2>
 	<br>
 	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
 <%if(session.getAttribute("userId") != null){ %> 

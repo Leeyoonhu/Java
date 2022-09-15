@@ -17,10 +17,12 @@ background-repeat:
 #content {
 width: 1650px;
 height: 1400px;
+position: static;
 }
 #content2 {
 width: 1650px;
 height: 1600px;
+position: static;
 }
 .btn {
   font-size: 25px;
@@ -147,7 +149,7 @@ height: 1600px;
 <br>
 <div style="background-image: URL('https://i.ibb.co/L99MpYL/A.png'); background-size : cover; position: absolute; width: 1950px; height: 210px; top:4%"> 
 <a href="./mainForm.jsp" style="display: none" id="jungunsi"></a>
-<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px;" onclick="document.getElementById('jungunsi').click()">전군시</h1> </div>
+<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px;" onclick="document.getElementById('jungunsi').click()">ROK ARMY</h1> </div>
 
 <br>
 <table>

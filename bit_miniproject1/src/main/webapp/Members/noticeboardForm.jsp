@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>질문게시판</title>
+<title>전체게시판</title>
 <style type="text/css">
 #noticeBoardForm {
 	display: inline-block;
@@ -27,7 +27,7 @@
 	request.setAttribute("questionBoard", "questionBoard");
 	request.setAttribute("screenBoard", "screenBoard");
 	request.setAttribute("informationBoard", "informationBoard");
-	request.setAttribute("questionBoard", "questionBoard");
+	request.setAttribute("freeBoard", "freeBoard");
 %>
 <jsp:include page="./noticeBoardInfo.jsp"></jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
@@ -46,7 +46,9 @@ else {%>
 		<thead>
 			<tr>
 				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
-				<th style="background-color : #eeeeee; text-align:center; width:80px"></th>
+				<th style="background-color : #eeeeee; text-align:center; width:80px">
+					<img alt="" src="https://i.ibb.co/yQ8yXZM/icons8-noticeboard-48.png" width="24px" height="24px">
+				</th>
 				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
 				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
 				<th style="background-color : #eeeeee; text-align:center; width:200px">등록일</th>
@@ -64,7 +66,18 @@ else {%>
 		<td>${item.number}</td>
 		<td>
 		<c:choose>
-		
+		<c:when test="${item.boardTitle eq questionBoard}">
+			<img alt="" src="https://i.ibb.co/cNBBrXT/icons8-question-64.png" width="24px" height="24px">
+		</c:when>
+		<c:when test="${item.boardTitle eq screenBoard}">
+			<img alt="" src="https://i.ibb.co/cyJSqsg/icons8-image-48.png" width="26px" height="24px">
+		</c:when>
+		<c:when test="${item.boardTitle eq informationBoard}">
+			<img alt="" src="https://i.ibb.co/sVDnSPC/icons8-information-64.png" width="24px" height="24px">
+		</c:when>
+		<c:when test="${item.boardTitle eq freeBoard}">
+			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="26px" style="margin-bottom: 2px">
+		</c:when>
 		</c:choose>
 		</td>
 		<td>
