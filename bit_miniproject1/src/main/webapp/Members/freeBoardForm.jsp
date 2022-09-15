@@ -16,6 +16,7 @@
 	margin-top: 200px;
 	text-align: center;
 }
+
 </style>
 </head>
 <body>
@@ -42,14 +43,10 @@ else {%>
 	<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="boardWrite" style="display: none;"></a>
 	<h2>전군시 자유게시판</h2>
 	<br>
-	<input type="button" value="메인 페이지로" style="float: right;margin-right: 20px; margin-bottom: 10px; line-height: 30px; border-radius: 3px; box-sizing: border-box; border: 1px solid #303030;" onclick="document.getElementById('mainFormCheck').click();" />
-	<%if(session.getAttribute("userId") != null){ %>
-	<input type="button" value="글쓰기" style="margin-bottom: 10px; float: right; background: #444;
-    border: 1px solid #303030;
-    color: #fff; border-radius: 3px;
-    box-sizing: border-box; transition: .2s; line-height: 30px;
-    text-align: center; margin-right:20px; width: 120px" onclick="document.getElementById('boardWrite').click();" />
-	<%}%> 
+	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
+<%if(session.getAttribute("userId") != null){ %> 
+	<input type="button" value="글쓰기" class="writeBoard" onclick="document.getElementById('boardWrite').click();" />
+<%}%>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr>
@@ -70,7 +67,7 @@ else {%>
 <!-- item2 가 댓글 -->
 <c:forEach var="item" items="${items}">
 <!-- 이 링크를 누르면 해당 게시글로 가야됨 -->
-	<tr style="text-align: center">
+	<tr class="boardElement" style="text-align: center">
 		<td>${item.number}</td>
 		<td>
 		<a href="./boardView.jsp?number=${item.number}&boardTitle=<%=boardTitle%>" style="text-decoration: none; color: black;">${item.title}</a>
