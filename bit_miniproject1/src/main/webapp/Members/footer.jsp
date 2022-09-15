@@ -34,7 +34,11 @@
             font-size: 15px;
             margin-left: 90px;
         }
-        
+        .footer nav img {
+        	position: absolute;
+        	top: 55px;
+        	left: 135px;
+        }
 
         
     </style>
@@ -42,7 +46,8 @@
 <body>
     <footer class="footer">
         <nav>
-            <a>비트교육센터</a>
+        	<img alt="" src="https://i.ibb.co/6vRsqtw/Kakao-Talk-20220915-202814741.png" width="60px" height="60px">
+            <a>ROK ARMY</a>
         </nav>
       <p>
         <span>서울특별시 서초구 서초대로74길33 비트빌 3층</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

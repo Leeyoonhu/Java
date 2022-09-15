@@ -22,7 +22,7 @@ else {%>
 <!-- <div id="메인내용물">
 	내용물올것임
 </div> -->
-</div>
 <jsp:include page="./footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
