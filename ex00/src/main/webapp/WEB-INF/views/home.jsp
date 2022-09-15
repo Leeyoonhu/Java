@@ -8,7 +8,7 @@
 <h1>
 	Hello world!  
 </h1>
-<!-- HomeController.java에서 넘겨준 serverTime 을 EL tag로 소환 -->
+
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>VOID 타입의 메서드가 날 여기로 이끌었다</h1>
+/ex05..............
 </body>
 </html>

@@ -23,19 +23,24 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-//  root 위치에 get 방식으로 들어오면 home 함수 실행
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		// log에 접속 위치 출력
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		// model에 현재 시간 정보를 add
+		
 		return "home";
-//		home.jsp에 정보를 넘겨줌 (src > main > webapp > WEB-INF > views > home.jsp)
+	}
+	
+	
+	@RequestMapping(value = "/aaa", method = RequestMethod.GET)
+	public String test() {
+		logger.info("aaaaa");
+		return "test";
 	}
 	
 }
