@@ -86,9 +86,10 @@ else {%>
 		</div>
 	</div>
 	<%lineCount++; %>
-	<%if(lineCount == 5){
-			lineCount = 0; 
-		%>	
+	<%
+	if(lineCount == 5){
+		lineCount = 0; 
+	%>	
 			<br><br><br>
 		<%}%>
 </c:forEach>	

@@ -22,7 +22,6 @@ height: 1400px;
 width: 1650px;
 height: 1600px;
 }
-  
 .btn {
   font-size: 25px;
   padding: 10px 30px;
@@ -72,33 +71,32 @@ height: 1600px;
 
 .goToMain:hover {
 	text-transform: uppercase;
-    transition: 0.4s;
+    transition: 0.6s;
     color: black;
     text-align: center;
     width: 120px;
     background: white;
 }
 .writeBoard {
-	margin-bottom: 10px; 
-	float: right; 
-	background: #444; 
-	border: 1px solid #303030; 
-	color: #fff;  
-	border-radius: 3px; 
-	box-sizing: border-box; 
-	line-height: 30px; 
-	text-align: center; 
-	margin-right:20px; 
-	width: 120px
+		margin-bottom: 10px; 
+		float: right; 
+		background: #444; 
+		border: 1px solid #303030; 
+		color: #fff;  
+		border-radius: 3px; 
+		box-sizing: border-box; 
+		line-height: 30px; 
+		text-align: center; 
+		margin-right:20px; 
+		width: 120px
 }
 .writeBoard:hover {
-	text-transform: uppercase;
-    transition: 0.4s;
-    background: black;
-    color: white;
-    text-align: center;  
+		text-transform: uppercase;
+	    transition: 0.4s;
+	    background: black;
+	    color: white;
+	    text-align: center;  
 }
-
 .endWrite {
 	display:inline-block; width: 120px; height: 40px; background: #444;
 	margin-left: 20px;
@@ -125,6 +123,10 @@ height: 1600px;
     text-align: center;
     width: 120px;
     background: white;
+}
+.boardElement:hover {
+	background: #eeeeee;
+	transition: 0.4s;
 }
 </style>
 </head>

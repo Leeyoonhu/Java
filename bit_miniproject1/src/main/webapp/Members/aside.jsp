@@ -49,22 +49,22 @@
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="회원가입">
 		</form>
         <br><br>
-        <form action="" method="post" style=" margin-top: 50px">
+        <form action="./noticeboardForm.jsp" method="post" style=" margin-top: 50px">
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="전체게시판">
 		</form>
-		<form action="" method="post" style=" margin-top: 50px">
+		<form action="./freeBoardForm.jsp" method="post" style=" margin-top: 50px">
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="자유게시판">
 		</form>
-		<form action="" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="정보게시판">
-		</form>
-		<form action="" method="post" style=" margin-top: 50px">
+		<form action="./screenBoardForm.jsp" method="post" style=" margin-top: 50px">
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="사진게시판">
 		</form>
-		<form action="" method="post" style=" margin-top: 50px">
+		<form action="./questionBoardForm.jsp" method="post" style=" margin-top: 50px">
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="질문게시판">
 		</form>
-		<form action="" method="post" style=" margin-top: 50px">
+		<form action="./informationBoardForm.jsp" method="post" style=" margin-top: 50px">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="정보게시판">
+		</form>
+		<form action="./calendarForm.jsp" method="post" style=" margin-top: 50px">
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="달력">
 		</form>
         <br><br>

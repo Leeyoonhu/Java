@@ -126,6 +126,7 @@ height: 1600px;
 }
 .boardElement:hover {
 	background: #eeeeee;
+	transition: 0.4s;
 }
 </style>
 </head>
@@ -151,7 +152,7 @@ height: 1600px;
 <%}else if(session.getAttribute("userJob") != null) { %>
 <a href="./mainForm2.jsp" 	style="display: none" id="jungunsi2"></a>
 <%} %>
-<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px;" onclick="document.getElementById('jungunsi2').click()">전군시</h1> </div>
+<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px;" onclick="document.getElementById('jungunsi2').click()">ROK ARMY</h1> </div>
 
 <br>
 <table>
