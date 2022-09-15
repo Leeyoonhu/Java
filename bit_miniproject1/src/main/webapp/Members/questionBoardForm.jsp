@@ -42,14 +42,10 @@ else {%>
 	<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="boardWrite" style="display: none;"></a>
 	<h2>전군시 질문게시판</h2>
 	<br>
-	<input type="button" value="메인 페이지로" style="float: right;margin-right: 20px; margin-bottom: 10px; line-height: 30px; border-radius: 3px; box-sizing: border-box; border: 1px solid #303030;" onclick="document.getElementById('mainFormCheck').click();" />
-	<%if(session.getAttribute("userId") != null){ %>
-	<input type="button" value="글쓰기" style="margin-bottom: 10px; float: right; background: #444;
-    border: 1px solid #303030;
-    color: #fff; border-radius: 3px;
-    box-sizing: border-box; transition: .2s; line-height: 30px;
-    text-align: center; margin-right:20px; width: 120px" onclick="document.getElementById('boardWrite').click();" />
-	<%}%> 
+	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
+<%if(session.getAttribute("userId") != null){ %> 
+	<input type="button" value="글쓰기" class="writeBoard" onclick="document.getElementById('boardWrite').click();" />
+<%}%>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr>

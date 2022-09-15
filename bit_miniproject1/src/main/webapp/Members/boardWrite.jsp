@@ -60,16 +60,10 @@ String boardTitle = request.getParameter("boardTitle");
  		name="title" autofocus="autofocus" maxlength="50"><br>
 		<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px;" name="content" placeholder="글꼴"></textarea> <br>
 		<input type="file" style="display:none;" id="imageFileName" name="imageFileName" accept="image/*"/>
- 		<input type="button" style="margin-left: 700px; display: inline-block; width: 120px; height: 40px; line-height: 30px;" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
+ 		<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
 <!-- 	<input type="button" style="margin-left: 10px; margin-top: 10px" value="파일 첨부" onclick="document.getElementById('fileName').click();" />
 		<input type="file" style="display:none;"id="fileName" name="fileName"> <br> -->
-		<input style="display:inline-block; width: 120px; height: 40px; background: #444;
-			margin-left: 20px;
-		    border: 1px solid #303030;
-		    color: #fff; border-radius: 3px;
-		    box-sizing: border-box; transition: .2s; line-height: 30px;
-		    text-align: center; 
-		    display: inline-block;" type="submit" value="작성 완료">
+		<input class="endWrite" type="submit" value="작성 완료">
 		<input type="text" style="display: none;" name="boardTitle" value=<%=boardTitle%>>
 </form>
 </div>

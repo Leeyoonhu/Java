@@ -57,6 +57,76 @@ height: 1600px;
   border : 3px solid rgb(228, 49, 49);
 }
 
+.goToMain {
+	width: 120px; 
+	float: right;
+	margin-right: 20px; 
+	margin-bottom: 10px; 
+	line-height: 30px; 
+	border-radius: 3px; 
+	box-sizing: border-box; 
+	border: 1px solid #303030;
+	color: gray;
+}
+
+.goToMain:hover {
+	text-transform: uppercase;
+    transition: 0.6s;
+    color: black;
+    text-align: center;
+    width: 120px;
+    background: white;
+}
+.writeBoard {
+		margin-bottom: 10px; 
+		float: right; 
+		background: #444; 
+		border: 1px solid #303030; 
+		color: #fff;  
+		border-radius: 3px; 
+		box-sizing: border-box; 
+		line-height: 30px; 
+		text-align: center; 
+		margin-right:20px; 
+		width: 120px
+}
+.writeBoard:hover {
+		text-transform: uppercase;
+	    transition: 0.4s;
+	    background: black;
+	    color: white;
+	    text-align: center;  
+}
+.endWrite {
+	display:inline-block; width: 120px; height: 40px; background: #444;
+	margin-left: 20px;
+    border: 1px solid #303030;
+    color: #fff; border-radius: 3px;
+    box-sizing: border-box; transition: .2s; line-height: 30px;
+    text-align: center; 
+    display: inline-block;
+}
+.endWrite:hover {
+	text-transform: uppercase;
+    transition: 0.4s;
+    background: black;
+    color: white;
+    text-align: center;  
+}
+.imageUploaded {
+	margin-left: 700px; display: inline-block; width: 120px; height: 40px; line-height: 30px; border: 1px solid #303030; border-radius: 3px;
+}
+.imageUploaded:hover {
+	text-transform: uppercase;
+    transition: 0.6s;
+    color: black;
+    text-align: center;
+    width: 120px;
+    background: white;
+}
+.boardElement:hover {
+	background: #eeeeee;
+}
 </style>
 </head>
 <body>
