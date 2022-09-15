@@ -63,6 +63,7 @@ String userPwd = request.getParameter("userPwd");
 					session.setAttribute("nickName", memList.get(i).getNickName());
 					/* 군인인지 판별을 위해 job 세션 추가*/
 					session.setAttribute("userJob", memList.get(i).getUserJob());
+					session.setAttribute("userExp", memList.get(i).getUserExp());
 					/* 성공 페이지 이동 */
 					/* 로그인 성공 페이지가아니고.. 메인페이지에 군인인지 아닌지로 보낼까? */
 					if(memList.get(i).getUserJob().equals("soldier")){

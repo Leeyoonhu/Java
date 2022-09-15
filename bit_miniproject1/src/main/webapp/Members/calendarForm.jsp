@@ -49,7 +49,11 @@ else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
 <div id="content">
+<%if(session.getAttribute("userId") != null){ %>
+<jsp:include page="./aside2.jsp"></jsp:include>
+<%}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
+<%}%>
 <div id="attendancForm">
 <div id="calendar" style="max-width:900px; margin:40px auto;"></div>
 </div>

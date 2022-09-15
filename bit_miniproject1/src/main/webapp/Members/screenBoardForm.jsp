@@ -35,7 +35,11 @@ else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
 <div id="content">
+<%if(session.getAttribute("userId") != null){ %>
+<jsp:include page="./aside2.jsp"></jsp:include>
+<%}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
+<%}%>
 <div id="screenBoardForm">
 <h2 style="text-align: center; margin-left: 100px;">ROK ARMY 사진게시판</h2> <br>
 <a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>

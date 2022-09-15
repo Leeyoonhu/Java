@@ -15,7 +15,11 @@ else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
 <div id="content">
+<%if(session.getAttribute("userId") != null){ %>
+<jsp:include page="./aside2.jsp"></jsp:include>
+<%}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
+<%}%>
 <!-- <div id="메인내용물2">
 	내용물올것임2 //  로그인했을때만 보이는 aside.jsp로 교체 필요
 </div> -->

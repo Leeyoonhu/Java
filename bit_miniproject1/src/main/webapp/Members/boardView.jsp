@@ -149,10 +149,9 @@ else {%>
                     </tr>
                 </tbody>
             </table>
+    	</div>
     </div>
-
-    </div>
-<c:set var ="number" value="<%=number %>"></c:set>
+<c:set var ="number" value="<%=number%>"></c:set>
 <form action="./recommendsProcess.do?number=${number}" method="post">
 	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
 	<input style="width: 90px;
