@@ -37,7 +37,7 @@ else {%>
 <div id="content">
 <jsp:include page="./aside.jsp"></jsp:include>
 <div id="screenBoardForm">
-<h2 style="text-align: center; margin-left: 100px;">전군시 사진게시판</h2> <br>
+<h2 style="text-align: center; margin-left: 100px;">ROK ARMY 사진게시판</h2> <br>
 <a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
 <input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
 <!-- 여기다가 boardTitle = screenBoard인 애들 나오게할것 -->

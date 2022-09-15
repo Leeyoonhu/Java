@@ -9,10 +9,10 @@
         .footer{
             width : 1950px;
             height : 250px;
-            position: relative;
             bottom : 0;
             left: 0;
             background-color: #343a40;
+            position : relative;
             color:white;
             padding-top: 15xp;
             font-size: 13px;

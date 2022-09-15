@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호찾기 실패..</title>
 <style type="text/css">
 #findPwdFail {
 display: inline-block;
