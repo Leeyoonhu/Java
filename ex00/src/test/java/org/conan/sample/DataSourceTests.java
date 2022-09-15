@@ -1,8 +1,7 @@
-package org.conan.presistence;
-
-import static org.junit.Assert.fail;
+package org.conan.sample;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
@@ -19,34 +18,30 @@ import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
-// java 설정을 사용하는 경우
-// @ContextConfiguration(classes = {RootConfig.class})
 @Log4j
+
 public class DataSourceTests {
-	@Setter(onMethod_ = {@Autowired})
-	private DataSource dataSource; // DataSource 인터페이스변수
-	
-	@Setter(onMethod_ = {@Autowired})
+	@Setter(onMethod_ = { @Autowired })
+	private DataSource dataSource;
+	@Setter(onMethod_ = { @Autowired })
 	private SqlSessionFactory sqlSessionFactory;
-	
+
+	@Test
+	public void testMyBatis() {
+		try (SqlSession session = sqlSessionFactory.openSession(); Connection con = session.getConnection();) {
+			log.info(session);
+			log.info(con);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 //	@Test
 //	public void testConnection() {
-//		try(Connection conn = dataSource.getConnection()){
-//			log.info(conn);
-//			
-//		} catch(Exception e) {
+//		try (Connection con = dataSource.getConnection()) {
+//			log.info(con);
+//		} catch (Exception e) {
 //			fail(e.getMessage());
 //		}
 //	}
-	
-	@Test
-	public void testMyBatis() {
-		try(SqlSession session = sqlSessionFactory.openSession();
-			Connection conn = session.getConnection();){
-			log.info(session);
-			log.info(conn);
-		} catch (Exception e) {
-			fail(e.getMessage());
-		}
-	}
 }
