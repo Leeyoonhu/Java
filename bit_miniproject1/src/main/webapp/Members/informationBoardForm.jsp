@@ -37,7 +37,11 @@ else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
 <div id="content">
+<%if(session.getAttribute("userId") != null){ %>
+<jsp:include page="./aside2.jsp"></jsp:include>
+<%}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
+<%}%>
 <div id="freeBoardForm">
 	<a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="boardWrite" style="display: none;"></a>
 	<h2>ROK ARMY 정보게시판</h2>

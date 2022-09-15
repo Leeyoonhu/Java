@@ -18,7 +18,11 @@ else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
 <div id="content">
+<%if(session.getAttribute("userId") != null){ %>
+<jsp:include page="./aside2.jsp"></jsp:include>
+<%}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
+<%}%>
 <!-- <div id="메인내용물">
 	내용물올것임
 </div> -->
