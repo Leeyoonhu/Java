@@ -94,7 +94,7 @@ int userExp = (int)session.getAttribute("userExp");
         	<a href="./calendarForm.jsp" style="display: none" id="asideCalendarForm"></a>
         	<button class="asideMain" onclick="document.getElementById('asideToMain').click()">ROK ARMY</button>
         	<h4 style="font-size: 1.2em; margin-top: 10px; margin-left: 30px;"><%=nickName%>'s</h4>
-        	<p style="font-size: 1em; margin-top: 5px; margin-left: 20px; display: inline-block;">현재 경험치 : <%=userExp%></p>
+        	<div style="font-size: 1em; margin-top: 5px; margin-left: 20px; display: inline-block;">현재 경험치 : <%=userExp%></div>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyWrite').click()">내글 보기</button>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyComment').click()">내댓글 보기</button> 
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('asideLogout').click()">로그아웃</button>
