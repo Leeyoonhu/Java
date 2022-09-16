@@ -7,13 +7,6 @@
 <meta charset="UTF-8">
 <title>ROK ARMY</title>
 <style type="text/css">
-
-#header {
-background-image:URL('https://i.ibb.co/L99MpYL/A.png'); 
-background-size: cover;
-background-repeat: 
-}
-
 #content {
 width: 1650px;
 height: 1400px;
@@ -27,9 +20,9 @@ position: static;
 .btn {
   font-size: 25px;
   padding: 10px 30px;
-  border: 3px solid navy;
+  border: 3px solid white;
   background-color: transparent;
-  color: navy;
+  color: white;
   text-transform: uppercase;
   letter-spacing: 5px;
   font-weight: bold;
@@ -55,8 +48,8 @@ position: static;
 }
 
 .btn:hover {
-  color: rgb(228, 49, 49);
-  border : 3px solid rgb(228, 49, 49);
+  color: rgb(170, 240, 170);
+  border : 3px solid rgb(170, 240, 170);
 }
 
 .goToMain {
@@ -136,51 +129,46 @@ position: static;
 <!-- 로그인 이전 메인홈페이지 -->
 <!-- 공용 헤더(수정한 후 src파일로 만들어서 모든곳에 돌려쓸예정)  -->
 <!-- 헤더 백그라운드 -->
-<header id="header">
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-<a class="navbar-brand" href="./joinForm.jsp" style="position:relative; right: -1700px; font-size: 0.8em">회원가입</a>
-&nbsp;
-<a class="navbar-brand" href="./loginForm.jsp" style="position:relative; right: -1700px; font-size: 0.8em">로그인</a>
-</nav>
-</header>
 <!-- 헤더 끝나는 부분 -->
-<br>
-<br>
-<br>
-<div style="background-image: URL('https://i.ibb.co/L99MpYL/A.png'); background-size : cover; position: absolute; width: 1950px; height: 210px; top:4%"> 
+<div style="background-color: #343a40; position: static; width: 1950px; height: 290px;">
+<a href="./joinForm.jsp" style="position:relative; color:white; right: -1700px; font-size: 0.8em; top :4%; text-decoration: none;">회원가입</a> 
+&nbsp;
+<a href="./loginForm.jsp" style="position:relative; color:white; right: -1700px; font-size: 0.8em; top:4%; text-decoration: none">로그인</a>
 <a href="./mainForm.jsp" style="display: none" id="jungunsi"></a>
-<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px;" onclick="document.getElementById('jungunsi').click()">ROK ARMY</h1> </div>
-
+<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px; color:white" onclick="document.getElementById('jungunsi').click()">
+<img alt="" src="https://i.ibb.co/6vRsqtw/Kakao-Talk-20220915-202814741.png" width="120px" height="120px">
+ROK ARMY</h1>
 <br>
 <table>
 <tr style="text-align: center">
 	<th>
-		<form action="./freeBoardForm.jsp" method="post" style="position: relative; margin-top: 100px">
+		<form action="./freeBoardForm.jsp" method="post" style="position: relative;">
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 500px" type="submit" value="자유게시판">
 		</form>
 	</th>
 	<th>
-		<form action="./screenBoardForm.jsp" method="post" style="position: relative; margin-top: 100px" >
+		<form action="./screenBoardForm.jsp" method="post" style="position: relative;" >
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="사진게시판">
 		</form>
 	</th> 
 	<th>
-		<form action="./questionBoardForm.jsp" method="post" style="position: relative; margin-top: 100px">
+		<form action="./questionBoardForm.jsp" method="post" style="position: relative;">
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="질문게시판">
 		</form>
 	</th> 
 	<th>
-		<form action="./informationBoardForm.jsp" method="post" style="position: relative; margin-top: 100px">
+		<form action="./informationBoardForm.jsp" method="post" style="position: relative;">
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="정보게시판">
 		</form>
 	</th> 
 	<th>
-		<form action="./calendarForm.jsp" method="post" style="position: relative; margin-top: 100px" >
+		<form action="./calendarForm.jsp" method="post" style="position: relative;" >
 			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="달력">
 		</form>
 	</th> 
 </tr>
 </table>
+</div>
 
 
 </body>
