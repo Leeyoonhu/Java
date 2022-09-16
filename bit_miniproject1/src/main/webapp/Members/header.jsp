@@ -17,12 +17,12 @@ width: 1650px;
 height: 1600px;
 position: static;
 }
-.btn {
+.bts {
   font-size: 25px;
   padding: 10px 30px;
-  border: 3px solid white;
+  border: 3px solid rgb(170, 240, 170);
   background-color: transparent;
-  color: white;
+  color: rgb(170, 240, 170);
   text-transform: uppercase;
   letter-spacing: 5px;
   font-weight: bold;
@@ -31,11 +31,11 @@ position: static;
   overflow: hidden; 
 }
 
-.btn:focus {
+.bts:focus {
   outline: none;
 }
 
-.btn::before {
+.bts::before {
   content: "";
   position: absolute;
   height: 100%;
@@ -47,9 +47,9 @@ position: static;
   z-index: 0;
 }
 
-.btn:hover {
-  color: rgb(170, 240, 170);
-  border : 3px solid rgb(170, 240, 170);
+.bts:hover {
+  color: white;
+  border : 3px solid white;
 }
 
 .goToMain {
@@ -143,27 +143,27 @@ ROK ARMY</h1>
 <tr style="text-align: center">
 	<th>
 		<form action="./freeBoardForm.jsp" method="post" style="position: relative;">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 500px" type="submit" value="자유게시판">
+			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 500px" type="submit" value="자유게시판">
 		</form>
 	</th>
 	<th>
 		<form action="./screenBoardForm.jsp" method="post" style="position: relative;" >
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="사진게시판">
+			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="사진게시판">
 		</form>
 	</th> 
 	<th>
 		<form action="./questionBoardForm.jsp" method="post" style="position: relative;">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="질문게시판">
+			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="질문게시판">
 		</form>
 	</th> 
 	<th>
 		<form action="./informationBoardForm.jsp" method="post" style="position: relative;">
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="정보게시판">
+			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="정보게시판">
 		</form>
 	</th> 
 	<th>
 		<form action="./calendarForm.jsp" method="post" style="position: relative;" >
-			<input class="btn" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="달력">
+			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="달력">
 		</form>
 	</th> 
 </tr>
