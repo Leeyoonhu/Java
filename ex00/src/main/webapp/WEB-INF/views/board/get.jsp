@@ -8,6 +8,7 @@
 <script type="text/javascript"
 src="https://code.jquery.com/jquery-3.6.1.js">
 </script>
+<script type="text/javascript" src="/resources/js/reply.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,9 +41,7 @@ src="https://code.jquery.com/jquery-3.6.1.js">
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
-
 <body>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -63,7 +62,13 @@ $(document).ready(function(){
 		}
 		operForm.submit();
 	})
-	
+	let bnoValue = '<c:out value="${board.bno}"/>';
+	replyService.add(
+		{reply: "JS Test", replyer:"tester", bno:bnoValue}, 
+		function(result) {
+			alert("RESULT: " + result);
+		}
+	);
 })
 </script>
 <jsp:include page="../includes/header.jsp"></jsp:include>

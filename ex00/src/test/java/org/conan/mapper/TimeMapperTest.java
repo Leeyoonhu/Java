@@ -1,5 +1,8 @@
 package org.conan.mapper;
 
+import java.util.stream.IntStream;
+
+import org.conan.domain.ReplyVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +30,4 @@ public class TimeMapperTest {
 		log.info("getTime2");
 		log.info(timeMapper.getTime2());
 	}
-
 }
