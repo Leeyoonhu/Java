@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전체게시판</title>
+<title>내글 보기</title>
 <style type="text/css">
-#noticeBoardForm {
+#myArticleForm {
 	display: inline-block;
 	float: right;
 	width: 1300px;
@@ -23,13 +23,16 @@
 	String userId = (String)session.getAttribute("userId");
 	String userPwd = (String)session.getAttribute("userPwd");
 	String userJob = (String)session.getAttribute("userJob");
+	String nickName = (String)session.getAttribute("nickName");
 	request.setCharacterEncoding("utf-8");
 	request.setAttribute("questionBoard", "questionBoard");
 	request.setAttribute("screenBoard", "screenBoard");
 	request.setAttribute("informationBoard", "informationBoard");
 	request.setAttribute("freeBoard", "freeBoard");
 %>
-<jsp:include page="./noticeBoardInfo.jsp"></jsp:include>
+<jsp:include page="./myArticleInfo.jsp">
+	<jsp:param value="<%=nickName%>" name="nickName"/>
+</jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
@@ -42,8 +45,8 @@ else {%>
 <%}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <%}%>
-<div id="noticeBoardForm">
-	<h2>ROK ARMY 전체게시판</h2>
+<div id="myArticleForm">
+	<h2><%=nickName%>님이 쓴 글</h2>
 	<br>
 	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">

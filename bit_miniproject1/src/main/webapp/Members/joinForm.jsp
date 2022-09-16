@@ -11,7 +11,7 @@
 	float: right;
 	width: 1400px;
 	height: 1200px;
-	margin-top: 200px;
+	margin-top: 150px;
 	text-align: center;
 }
 html, body{
@@ -82,7 +82,7 @@ hr {
 #btn_line { 
     clear:both;
     width: 100%;
-    margin : 150px 0px 0px 0px;
+    margin : 80px 0px 0px 0px;
     text-align: center;
 }
 #btn_line li{
@@ -157,7 +157,7 @@ else {%>
     <ul>가입 정보를 입력하세요.</ul>
 </div>
 </div>
-<div id="content">
+
     <form class = "form_design">
         <hr/>
         <ul>
@@ -223,11 +223,10 @@ else {%>
     </form>
     <ul id="btn_line">
     	<a href="./mainForm.jsp" style="display: none" id="gotomainform"></a>
-       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> <input type="button" value="회원가입" onclick="checkJoin()">
+       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> &nbsp;&nbsp; <input type="button" value="회원가입" onclick="checkJoin()">
     </ul>
 </div>	
 </form>
-</div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
 </body>

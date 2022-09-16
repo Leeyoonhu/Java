@@ -88,7 +88,7 @@ int userExp = (int)session.getAttribute("userExp");
     <nav id ="nav">
         <div style="height: 185px; width: 200px; color: white">
         	<a href="./mainForm2.jsp" style="display: none" id="asideToMain"></a>
-        	<a href="" style="display: none" id="watchMyWrite"></a>
+        	<a href="./myArticleForm.jsp" style="display: none" id="watchMyWrite"></a>
         	<a href="" style="display: none" id="watchMyComment"></a>
         	<a href="./logoutProcess.jsp" style="display: none" id="asideLogout"></a>
         	<a href="./calendarForm.jsp" style="display: none" id="asideCalendarForm"></a>
