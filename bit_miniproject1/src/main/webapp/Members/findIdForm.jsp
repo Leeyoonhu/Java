@@ -18,7 +18,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" style="margin-top:30px;">
             
-			<h2 class="card-title" style="color:black;"><img src="https://i.ibb.co/7vvTJzc/logo2.png"/>아이디 찾기</h2>
+			<h2 class="card-title" style="color:#f58b34;"><img src="https://i.ibb.co/Xbr9XFs/binocular.png"  width="60px" height="60px"/>아이디 찾기</h2>
 		</div>
 		<div class="card-body">
       <form action="./findIdProcess.jsp" class="form-signin" method="POST">
@@ -26,9 +26,9 @@
         <input type="text" name="firstName" id="firstname" class="form-control" placeholder="성" required autofocus><BR>
         <input type="text" name="lastName" id="lastname" class="form-control" placeholder="이름" required autofocus><BR>
         <input type="text" name="phoneNo" id="phoneNumber" class="form-control" placeholder="전화번호" required><br>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아이디 조회하기</button>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('goToMainForm').click()">메인으로</button> 
-       	<button style="margin-top: 8px" id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('findPwdForm').click()">비밀번호 찾기</button>
+        <button  style = "background-color : #f58b34" id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아이디 조회하기</button>
+        <button style = "background-color : rgb(158, 158, 158)" id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('goToMainForm').click()">메인으로</button> 
+       	<button  style = "background-color : rgb(158, 158, 158)" style= "margin-top: 8px"   id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('findPwdForm').click()">비밀번호 찾기</button>
         <a href="./mainForm.jsp" style="display: none" id="goToMainForm"></a>
        	<a href="./findPwdForm.jsp" style="display: none" id="findPwdForm"></a>
      </form>  

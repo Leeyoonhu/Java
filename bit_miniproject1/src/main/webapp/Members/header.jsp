@@ -134,7 +134,7 @@ position: static;
     }
 .bodywash {
     margin: 0;
-      padding-top: 200px;
+      padding-top: 130px;
       padding-bottom: 40px;
       font-family: "Nanum Gothic", arial, helvetica, sans-serif;
       background-repeat: no-repeat;
@@ -166,10 +166,14 @@ position: static;
 .links{
     text-align: center;
     margin-bottom: 10px;
+    color : black;
 }
 .text2{
     color : blue;
 }
+ .checks{
+    	color : red;
+    }
 </style>
 </head>
 <body>
@@ -183,7 +187,7 @@ position: static;
 <a href="./loginForm.jsp" style="position:relative; color:white; right: -1700px; font-size: 0.8em; top:4%; text-decoration: none">로그인</a>
 <a href="./mainForm.jsp" style="display: none" id="jungunsi"></a>
 <h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px; color:white" onclick="document.getElementById('jungunsi').click()">
-<img alt="" src="https://i.ibb.co/6vRsqtw/Kakao-Talk-20220915-202814741.png" width="120px" height="120px">
+<img alt="" src="https://i.ibb.co/Xbr9XFs/binocular.png" width="120px" height="120px">
 ROK ARMY</h1>
 <br>
 <table>
