@@ -52,7 +52,7 @@ else {%>
 <%}%>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
-			<tr>
+			<tr style="height: 52px">
 				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
 				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
 				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
@@ -70,7 +70,7 @@ else {%>
 <!-- item2 가 댓글 -->
 <c:forEach var="item" items="${items}">
 <!-- 이 링크를 누르면 해당 게시글로 가야됨 -->
-	<tr style="text-align: center" class="boardElement">
+	<tr style="text-align: center; height: 52px" class="boardElement">
 		<td>${item.number}</td>
 		<td>
 		<a href="./boardView.jsp?number=${item.number}&boardTitle=<%=boardTitle%>" style="text-decoration: none; color: black;">${item.title}</a>
