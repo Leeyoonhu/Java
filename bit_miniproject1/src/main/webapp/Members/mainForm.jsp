@@ -9,10 +9,16 @@
 <style type="text/css">
 .mainForm{
 	display: inline-block;
-	float: right;
-	width: 1400px;
+	width: 1450px;
 	height: 1200px;
 	margin-top: 200px;
+	float: right;
+}
+.mainFormContent {
+	display: inline-block;
+	text-align: center;
+	width: 1000px;
+	height: 400px;
 }
 </style>
 </head>
@@ -31,8 +37,9 @@ else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <%}%>
 <div class="mainForm">
-<div> <!-- 인기게시글, 최근 게시글 을 담을거 -->
+<div class="mainFormContent"> <!-- 인기게시글, 최근 게시글 을 담을거 -->
 	<iframe src="./popularBoardForm.jsp" width="400px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
+	<iframe src="./currentBoardForm.jsp" width="400px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
 </div>
 </div>
 </div>

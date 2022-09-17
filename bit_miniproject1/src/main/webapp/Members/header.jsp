@@ -124,6 +124,52 @@ position: static;
 	background: #eeeeee;
 	transition: 0.4s;
 }
+.loginasd{
+    	   display: inline-block;
+		   float: right;
+		   width: 1400px;
+		   height: 1200px;
+		   margin-top: 200px;
+		   text-align: center;
+    }
+.bodywash {
+    margin: 0;
+      padding-top: 200px;
+      padding-bottom: 40px;
+      font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+      background-repeat: no-repeat;
+}
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+#btn-Yes{
+    background-color: #e4932b;
+    border: none;
+}
+
+.form-signin .form-control {
+      position: relative;
+      height: auto;
+      -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+         box-sizing: border-box;
+      padding: 10px;
+      font-size: 16px;
+}
+.card-title{
+    margin-left: 30px;
+}
+.links{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.text2{
+    color : blue;
+}
 </style>
 </head>
 <body>

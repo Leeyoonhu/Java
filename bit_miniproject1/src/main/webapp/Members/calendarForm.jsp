@@ -15,7 +15,7 @@
 	display: inline-block;
 	float: right;
 	width: 1400px;
-	height: 1200px;
+	height: 1200px;	
 	margin-top: 200px;
 }
 </style>
