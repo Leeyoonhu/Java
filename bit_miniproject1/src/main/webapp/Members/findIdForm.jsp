@@ -18,7 +18,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" style="margin-top:30px;">
             
-			<h2 class="card-title" style="color:#f58b34;"><img src="https://i.ibb.co/Xbr9XFs/binocular.png"  width="60px" height="60px"/>아이디 찾기</h2>
+			<h2 class="card-title" style="color:#f58b34;"><img src="https://i.ibb.co/mGCzCtg/soldier.png"  width="60px" height="60px"/>아이디 찾기</h2>
 		</div>
 		<div class="card-body">
       <form action="./findIdProcess.jsp" class="form-signin" method="POST">
