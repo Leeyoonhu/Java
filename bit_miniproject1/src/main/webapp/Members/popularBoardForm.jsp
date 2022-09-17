@@ -37,7 +37,7 @@
 <c:set var="items2" value="${cList}"></c:set>
 <c:forEach var="item" items="${items}">
 	<tr style="text-align: center" class="boardElement">
-		<td style="width:80px">
+		<td style="width:80px; height: 30px">
 		<c:choose>
 		<c:when test="${item.boardTitle eq questionBoard}">
 			<img alt="" src="https://i.ibb.co/cNBBrXT/icons8-question-64.png" width="24px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToQuestionBoard').click()">
@@ -52,12 +52,12 @@
 			<a href="./informationBoardForm.jsp" style="display: none" id="goToInformationBoard" target="_parent"></a>	
 		</c:when>
 		<c:when test="${item.boardTitle eq freeBoard}">
-			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="26px" style="margin-bottom: 2px; cursor: pointer;" onclick="document.getElementById('goToFreeBoard').click()">
+			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="24px" style="margin-bottom: 2px; cursor: pointer;" onclick="document.getElementById('goToFreeBoard').click()">
 			<a href="./freeBoardForm.jsp" style="display: none" id="goToFreeBoard" target="_parent"></a>	
 		</c:when>
 		</c:choose>
 		</td>
-		<td style="width:700px">
+		<td style="width:700px; height: 30px">
 		<a href="./boardView.jsp?number=${item.number}&boardTitle=${item.boardTitle}" style="text-decoration: none; color: black;" target="_parent">${item.title}</a>
 		<c:forEach var="item2" items="${items2}">
 			<c:if test="${item.number eq item2.number}">

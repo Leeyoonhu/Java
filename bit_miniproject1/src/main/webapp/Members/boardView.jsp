@@ -13,7 +13,7 @@
 #freeBoardView {
 	display: inline-block;
 	float: right;
-	width: 1400px;
+	width: 1450px;
 	height: auto;
 	margin-top: 150px;
 	text-align: center;
