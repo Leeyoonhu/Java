@@ -61,7 +61,6 @@ else {%>
 				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
 			</tr>
 		</thead>
-		
 <%!int count = 0;%>
 <c:set var="items" value="${bList}"></c:set>	
 <c:set var="items2" value="${cList}"></c:set>

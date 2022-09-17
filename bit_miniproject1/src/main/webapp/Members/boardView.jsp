@@ -126,12 +126,12 @@ else {%>
             <table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
                 <thead>
                     <tr>
-                        <th colspan="3" style="background-color: #eeeeee; text-align:center;">게시판 글보기</th>
+                        <th colspan="3" style="background-color: #eeeeee; text-align:center;">게시판 글보기 <div style="float: right;">조회 : <%=views %> 추천 : <%=recommends %></div> </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="width:20%;">글제목</td><img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-right:2px; margin-top:3px"/><%=views %> <img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px" style="margin-left: 5px; margin-top:3px"/><%=recommends %>
+                        <td style="width:20%;">글제목</td>
                         <td colspan="2"><%=title %></td>
                     </tr>
                     <tr>
