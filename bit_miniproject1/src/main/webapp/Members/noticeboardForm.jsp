@@ -48,7 +48,7 @@ else {%>
 	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
-			<tr>
+			<tr style="height: 52px">
 				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
 				<th style="background-color : #eeeeee; text-align:center; width:80px">
 					<img alt="" src="https://i.ibb.co/yQ8yXZM/icons8-noticeboard-48.png" width="24px" height="24px">
@@ -65,7 +65,7 @@ else {%>
 <c:set var="items" value="${bList}"></c:set>	
 <c:set var="items2" value="${cList}"></c:set>
 <c:forEach var="item" items="${items}">
-	<tr style="text-align: center" class="boardElement">
+	<tr style="text-align: center; height: 52px" class="boardElement">
 		<td>${item.number}</td>
 		<td>
 		<c:choose>
@@ -82,7 +82,7 @@ else {%>
 			<a href="./informationBoardForm.jsp" style="display: none" id="goToInformationBoard"></a>	
 		</c:when>
 		<c:when test="${item.boardTitle eq freeBoard}">
-			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="26px" style="margin-bottom: 2px; cursor: pointer;" onclick="document.getElementById('goToFreeBoard').click()">
+			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="24px" style="margin-bottom: 2px; cursor: pointer;" onclick="document.getElementById('goToFreeBoard').click()">
 			<a href="./freeBoardForm.jsp" style="display: none" id="goToFreeBoard"></a>	
 		</c:when>
 		</c:choose>
@@ -109,6 +109,8 @@ else {%>
 </c:forEach>	
 </table>
 	<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
+<br>
+<jsp:include page="./searchNoticeBoardForm.jsp"></jsp:include>
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>

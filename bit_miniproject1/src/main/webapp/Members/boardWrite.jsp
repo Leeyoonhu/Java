@@ -51,7 +51,7 @@ String boardTitle = request.getParameter("boardTitle");
     margin-bottom: 50px;
     padding-bottom: 50px;
     border-bottom: 1px solid #323232;
-    ">전군시 글쓰기</h1>
+    ">ROK ARMY 글쓰기</h1>
 <form action="./boardwrite.do?" method="post" enctype="multipart/form-data">
  		<input type="text" style="display: none;" name="writer" readonly="readonly" value=<%=writer%>>
  		<span style="margin-left: 940px; border: 0; font: bold; font-size: 18px; margin-bottom: 10px"><%=writer%></span>

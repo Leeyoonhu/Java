@@ -52,7 +52,7 @@ else {%>
 <%}%>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
-			<tr>
+			<tr style="height: 52px">
 				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
 				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
 				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
@@ -65,7 +65,7 @@ else {%>
 <c:set var="items" value="${bList}"></c:set>	
 <c:set var="items2" value="${cList}"></c:set>
 <c:forEach var="item" items="${items}">
-	<tr style="text-align: center" class="boardElement">
+	<tr style="text-align: center; height: 52px" class="boardElement">
 		<td>${item.number}</td>
 		<td>
 		<a href="./boardView.jsp?number=${item.number}&boardTitle=<%=boardTitle%>" style="text-decoration: none; color: black;">${item.title}</a>
