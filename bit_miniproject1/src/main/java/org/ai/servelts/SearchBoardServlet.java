@@ -65,7 +65,6 @@ public class SearchBoardServlet extends HttpServlet {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				conn = DriverManager.getConnection(url, user, password);
-				System.out.println(content);
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, content);
 				rs = pstmt.executeQuery();
@@ -73,10 +72,6 @@ public class SearchBoardServlet extends HttpServlet {
 					bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
 							rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10).substring(0, 10)));
 				}
-				for(int i = 0; i < bList.size(); i++) {
-					System.out.println(bList.get(i).getTitle());
-				}
-				
 				sql = "select number from comment";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -92,16 +87,33 @@ public class SearchBoardServlet extends HttpServlet {
 			}
 		}
 		else if(searchTitle.equals("닉네임")) {
+			sql = "select * from board where writer like ?";
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				conn = DriverManager.getConnection(url, user, password);
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, content);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
+							rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10).substring(0, 10)));
+				}
+				sql = "select number from comment";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					cList.add(new Comment(rs.getInt(1)));
+				}
+				Collections.reverse(bList);
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("bList", bList);
+				httpSession.setAttribute("cList", cList);
+				response.sendRedirect("./noticeboardForm.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
-		
 		try {
 			conn.close();
 		} catch (SQLException e) {
