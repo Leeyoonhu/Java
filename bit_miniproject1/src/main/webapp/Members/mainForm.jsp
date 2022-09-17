@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>ROK ARMY</title>
 <style type="text/css">
+.mainForm{
+	display: inline-block;
+	float: right;
+	width: 1400px;
+	height: 1200px;
+	margin-top: 200px;
+}
 </style>
 </head>
 <body>
@@ -23,9 +30,11 @@ else {%>
 <%}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <%}%>
-<!-- <div id="메인내용물">
-	내용물올것임
-</div> -->
+<div class="mainForm">
+<div> <!-- 인기게시글, 최근 게시글 을 담을거 -->
+	<iframe src="./popularBoardForm.jsp" width="400px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
+</div>
+</div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
 </body>

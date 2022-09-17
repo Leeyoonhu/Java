@@ -29,7 +29,7 @@
 	request.setAttribute("informationBoard", "informationBoard");
 	request.setAttribute("freeBoard", "freeBoard");
 %>
-<jsp:include page="./noticeBoardInfo.jsp"></jsp:include>
+<jsp:include page="./noticeBoardProcess.jsp"></jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
