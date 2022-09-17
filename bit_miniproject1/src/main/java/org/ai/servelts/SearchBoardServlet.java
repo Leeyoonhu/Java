@@ -6,10 +6,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.util.*;
 import java.sql.*;
 import org.ai.beans.*;
 
+import com.mysql.cj.Session;
 import com.mysql.cj.jdbc.ha.BestResponseTimeBalanceStrategy;
 /**
  * Servlet implementation class SearchBoardServlet
@@ -47,9 +50,7 @@ public class SearchBoardServlet extends HttpServlet {
 		String searchTitle = request.getParameter("searchTitle");
 		String content = request.getParameter("content");
 		String boardTitle = request.getParameter("boardTitle");
-		content = "'%"+content+"%'";
-		String title = null;
-		String writer = null;
+		content = "%"+content+"%";
 		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 		String sql = null;
 		String user = "root";
@@ -60,34 +61,37 @@ public class SearchBoardServlet extends HttpServlet {
 		ArrayList<Board> bList = new ArrayList<Board>();
 		ArrayList<Comment> cList = new ArrayList<Comment>();
 		if(searchTitle.equals("제목")) {
-			title = "title";
+			sql = "select * from board where title like ?";
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				conn = DriverManager.getConnection(url, user, password);
-				sql = "select * from board where ? like ?";
+				System.out.println(content);
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, title);
-				pstmt.setString(2, content);
+				pstmt.setString(1, content);
 				rs = pstmt.executeQuery();
 				while(rs.next()){
 					bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
 							rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10).substring(0, 10)));
 				}
+				for(int i = 0; i < bList.size(); i++) {
+					System.out.println(bList.get(i).getTitle());
+				}
+				
 				sql = "select number from comment";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while(rs.next()){
 					cList.add(new Comment(rs.getInt(1)));
 				}
-				request.setAttribute("bList", bList);
-				request.setAttribute("cList", cList);
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("bList", bList);
+				httpSession.setAttribute("cList", cList);
 				response.sendRedirect("./noticeboardForm.jsp");
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
 		else if(searchTitle.equals("닉네임")) {
-			title = "writer";
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				conn = DriverManager.getConnection(url, user, password);
