@@ -78,6 +78,7 @@ public class SearchBoardServlet extends HttpServlet {
 				while(rs.next()){
 					cList.add(new Comment(rs.getInt(1)));
 				}
+				Collections.reverse(bList);
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("bList", bList);
 				httpSession.setAttribute("cList", cList);

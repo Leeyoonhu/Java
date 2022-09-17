@@ -193,8 +193,8 @@ position: static;
 <a href="./mainForm2.jsp" 	style="display: none" id="jungunsi2"></a>
 <%} %>
 <h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px; color: white;" onclick="document.getElementById('jungunsi2').click()">
-<img alt="" src="https://i.ibb.co/Xbr9XFs/binocular.png" width="120px" height="120px">
-ROK ARMY</h1> 
+<img alt="" src="https://i.ibb.co/mGCzCtg/soldier.png" width="120px" height="120px">
+전지적 군인 시점</h1> 
 
 <br>
 <table>

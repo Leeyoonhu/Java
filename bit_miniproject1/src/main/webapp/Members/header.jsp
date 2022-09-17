@@ -8,6 +8,13 @@
 <title>ROK ARMY</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <style type="text/css">
+* {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
 #content {
 width: 1650px;
 height: 1400px;
@@ -186,9 +193,9 @@ position: static;
 &nbsp;
 <a href="./loginForm.jsp" style="position:relative; color:white; right: -1700px; font-size: 0.8em; top:4%; text-decoration: none">로그인</a>
 <a href="./mainForm.jsp" style="display: none" id="jungunsi"></a>
-<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px; color:white" onclick="document.getElementById('jungunsi').click()">
-<img alt="" src="https://i.ibb.co/Xbr9XFs/binocular.png" width="120px" height="120px">
-ROK ARMY</h1>
+<h1 style="text-align: center; font-size: 3.0em; position: relative; margin-top : 30px; color:white" onclick="document.getElementById('jungunsi').click()">
+<img alt="" src="https://i.ibb.co/mGCzCtg/soldier.png" width="120px" height="120px">
+전지적 군인 시점</h1>
 <br>
 <table>
 <tr style="text-align: center">

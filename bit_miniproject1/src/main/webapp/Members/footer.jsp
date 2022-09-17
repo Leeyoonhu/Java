@@ -46,7 +46,7 @@
 <body>
     <footer class="footer">
         <nav>
-        	<img alt="" src="https://i.ibb.co/Xbr9XFs/binocular.png" width="60px" height="60px">
+        	<img alt="" src="https://i.ibb.co/mGCzCtg/soldier.png" width="60px" height="60px">
             <a>ROK ARMY</a>
         </nav>
       <p>
