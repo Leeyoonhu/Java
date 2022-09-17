@@ -18,7 +18,7 @@
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	ArrayList<Members> mList = new ArrayList<Members>();
-	
+	HashMap<Integer, String> mMap = new HashMap<>();
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(url, user, password);
@@ -31,7 +31,10 @@
 					, rs.getString(13), rs.getString(14)));
 		}
 		request.setAttribute("mList", mList);
-		
+		for(int i = 0; i < mList.size(); i++){
+			mMap.put(i, mList.get(i).getUserId());
+		}
+		request.setAttribute("mMap", mMap);
 	} catch (Exception e){
 		e.printStackTrace();
 	}
