@@ -2,28 +2,25 @@ package org.ai.servelts;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.*;
+import java.sql.*;
 /**
- * Servlet implementation class UserIdCheckServlet
+ * Servlet implementation class PhoneNoCheckServlet
  */
-@WebServlet("/Members/userIdJoinCheck.do")
-public class UserIdCheckServlet extends HttpServlet {
+@WebServlet("/Members/phoneNoCheck.do")
+public class PhoneNoCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserIdCheckServlet() {
+    public PhoneNoCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +30,7 @@ public class UserIdCheckServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -41,19 +38,19 @@ public class UserIdCheckServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		joinidCheckDo(request, response);
+		phoneNoCheckDo(request, response);
 	}
 	
-	public void joinidCheckDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void phoneNoCheckDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		String userId = request.getParameter("userId");
-		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
+		String phoneNo = request.getParameter("phoneNo");
+		boolean result = false;
+		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrievale=true";
+		String sql = null;
 		String user = "root";
 		String password = "1234";
-		String sql = null;
-		boolean result = false;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -61,14 +58,15 @@ public class UserIdCheckServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
-			sql = "select * from members where userId = ?";
+			sql = "select phoneNo from members where phoneNo =?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
+			pstmt.setString(1, phoneNo);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = true;
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
+			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
 			try {
@@ -77,7 +75,8 @@ public class UserIdCheckServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} 
+		}
 		out.print(result);
 	}
+
 }

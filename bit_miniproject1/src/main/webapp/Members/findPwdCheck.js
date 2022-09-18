@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -25,7 +26,7 @@
 	   		$('#checks').text('아이디를 입력해주세요.');
 	   	  	$('#checks').css('color', 'red');
 	     } else if($(this).val().length < 6 || $(this).val().length > 12 || !idCheck.test($(this).val())){
-  			$('#checks').text('6~12의 영문 대소문자, 숫자만 사용가능합니다');
+  			$('#checks').text('6~12의 영문 대소문자, 숫자만 사용가능합니다');
   			$('#checks').css('color', 'red');
 	     }
 	     else {	
@@ -46,9 +47,6 @@
 	    });
 	    
 	    $('button').on('click', function(){
-		console.log(check);
-		console.log(check1);
-		console.log(check2);
 			if(check == true
 			&& check1 == true
 			&& check2 == true){
@@ -58,7 +56,6 @@
 					data : {userId: $('#fPwd_userId').val(), pwdHint: $('#fPwd_pwdHint').val()},
 					dataType : 'text',
 					success : function(result){
-						console.log(result);
 						if(result != 'null'){
 							$('#checks').text('');
 							alert("회원님의 비밀번호는 " + result + " 입니다.");

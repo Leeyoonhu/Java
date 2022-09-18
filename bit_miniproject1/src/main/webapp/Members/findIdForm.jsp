@@ -23,10 +23,12 @@
 		<div class="card-body">
       <form action="./findIdProcess.jsp" class="form-signin" method="POST">
   		 <p class="text2"> ${findid2}</p>
-        <input type="text" name="firstName" id="firstname" class="form-control" placeholder="성" required autofocus><BR>
-        <input type="text" name="lastName" id="lastname" class="form-control" placeholder="이름" required autofocus><BR>
-        <input type="text" name="phoneNo" id="phoneNumber" class="form-control" placeholder="전화번호" required><br>
-        <button  style = "background-color : #f58b34" id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아이디 조회하기</button>
+        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="성" required autofocus><BR>
+        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="이름" required autofocus><BR>
+        <input type="text" name="phoneNo" id="phoneNo" class="form-control" placeholder="전화번호" required><br>
+        <p id="checks" class="checks"></p>
+        <br>
+        <button  style = "background-color : #f58b34" id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="button" name="searchingId">아이디 조회하기</button>
         <button style = "background-color : rgb(158, 158, 158)" id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('goToMainForm').click()">메인으로</button> 
        	<button  style = "background-color : rgb(158, 158, 158)" style= "margin-top: 8px"   id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('findPwdForm').click()">비밀번호 찾기</button>
         <a href="./mainForm.jsp" style="display: none" id="goToMainForm"></a>
@@ -41,4 +43,5 @@
         <br>
       <jsp:include page="./footer.jsp"></jsp:include>
 </body>
+<script type="text/javascript" src="./findIdCheck.js"></script>
 </html>
