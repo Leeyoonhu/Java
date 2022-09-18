@@ -30,13 +30,13 @@
 		</div>
         
 		<div class="card-body">
-      <form action="./findPwdProcess.jsp" class="form-signin" method="POST">
+      <form action="" class="form-signin" method="POST">
         <input type="text" name="userId" id="fPwd_userId" class="form-control" placeholder="아이디" required><br>
         <input type="text" name="pwdHintQ" id="fPwd_pwdHintQ" class="form-control" readonly="readonly" tabindex="-1" required><br>
         <input type="text" name="pwdHint" id="fPwd_pwdHint" class="form-control" placeholder="비밀번호 찾기 답변" required><br>
         <p class="checks" id="checks">${findpw_checkf}</p><br/>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="button" id="find_userPwd">비밀번호 찾기</button>
-      </form>
+        <button type="button" id="btn-Yes" class="btn btn-lg btn-primary btn-block">비밀번호 찾기</button>
+        </form>
 		</div>
         <div class="links">
             <a style="color : black" href="./findIdForm.jsp">아이디 찾기</a> | <a style="color : black" href="./loginForm.jsp">로그인</a> | <a style="color : black" href="./joinForm.jsp">회원가입</a>
