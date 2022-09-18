@@ -202,7 +202,7 @@ else {%>
 </div>	
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
-<script type="text/javascript" src="./joinFormCheck.js">
+<script type="text/javascript" src="../Js/joinFormCheck.js">
 </script>
 </body>
 </html>

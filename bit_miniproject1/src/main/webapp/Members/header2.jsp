@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>ROK ARMY</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <style type="text/css">
 #content {
 width: 1650px;
