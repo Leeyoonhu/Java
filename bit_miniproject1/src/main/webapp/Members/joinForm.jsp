@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="java.sql.*, java.util.*, org.ai.beans.*" %>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <meta charset="UTF-8">
 <title>회원가입</title>
 <style type="text/css">
@@ -102,45 +105,6 @@ hr {
 </style>
 </head>
 <body>
-
-<!-- 비밀번호와 확인비번이 같은지 -->
-<script type="text/javascript">
-	function checkJoin() {
-		let form = document.joinForm;
-		let idcheck = /^[a-zA-z0-9]{4,12}$/;
-		let passwordcheck = /^[a-zA-z0-9]{8,16}$/;
-		if(form.userId.value.length < 6 || form.userId.value.length > 12 || form.userId.value == "" || !idcheck.test(form.userId.value)){
-			alert("아이디는 영문 대소문자와 숫자 6~12자리로 입력해주세요");
-			form.userId.value = "";
-			form.userId.focus();
-			return false;
-		}
-		
-		else if(form.userPwd.value.length < 8 || form.userPwd.value.length > 16 || form.userPwd.value == "" || !passwordcheck.test(form.userPwd.value)){
-			alert("비밀번호는 8~16자 사이로 입력해주세요");
-			form.userPwd.value = "";
-			form.checkPwd.value = "";
-			form.userPwd.focus();
-			return false;
-		}
-		else if(form.checkPwd.value.length < 8 || form.checkPwd.value.length > 16 || form.checkPwd.value == "" || !passwordcheck.test(form.checkPwd.value)){
-			alert("비밀번호 확인은 8~16자 사이로 입력해주세요");
-			form.userPwd.value = "";
-			form.checkPwd.value = "";
-			form.checkPwd.focus();
-			return false;
-		}
-		else if(form.userPwd.value !== form.checkPwd.value){
-			alert("입력하신 비밀번호와 비밀번호 확인이 다릅니다.");
-			form.userPwd.value = "";
-			form.checkPwd.value = "";
-			return false;
-		} 
-		else {
-			form.submit();
-		}
-	} 
-</script>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
@@ -157,36 +121,42 @@ else {%>
     <ul>가입 정보를 입력하세요.</ul>
 </div>
 </div>
-
     <form class = "form_design">
         <hr/>
         <ul>
             <li>아이디</li>
-            <li><input type="text" name="userId" autofocus="autofocus"></li> 
+            <li><input type="text" name="userId" id="join_userId" autofocus="autofocus">
+        	<p class="checks" id="join_userId_check"></p></li> 
         </ul>
         <ul>
             <li>비밀번호</li> 
-            <li><input type="password" name="userPwd"></li>
+            <li><input type="password" name="userPwd" id="join_userPwd">
+            <p class="checks" id="join_userPwd_check"></p></li> 
         </ul>
         <ul>
             <li>비밀번호 확인</li>
-            <li><input type="password" name="checkPwd" ></li>
+            <li><input type="password" name="checkPwd" id="join_checkPwd">
+            <p class="checks" id="join_checkPwd_check"></li>
         </ul>
         <ul>
             <li>닉네임</li>
-            <li><input type="text" name="nickName"></li>
+            <li><input type="text" name="nickName" id="join_nickName">
+            <p class="checks" id="join_nickName_check"></li>
         </ul>
         <ul>
             <li>성</li>
-            <li><input type="text" name="firstName"></li>
+            <li><input type="text" name="firstName" id="join_firstName">
+            <p class="checks" id="join_firstName_check"></li>
         </ul>
         <ul> 
             <li>이름</li>
-            <li><input type="text" name="lastName"></li>          
+            <li><input type="text" name="lastName" id="join_lastName">
+            <p class="checks" id="join_lastName_check"></li>          
         </ul>
         <ul>
             <li>전화번호</li>
-            <li><input type="tel" name="phoneNo" ></li>
+            <li><input type="tel" name="phoneNo" id="join_phoneNo">
+            <p class="checks" id="join_phoneNo_check"></li>
         </ul>
         <ul>
             <li>비밀번호 찾기 질문</li> 
@@ -200,7 +170,8 @@ else {%>
         </ul>
         <ul>
             <li>비밀번호 찾기 답변</li>
-            <li><input type="text" name="pwdHint"></li>
+            <li><input type="text" name="pwdHint" id="join_pwdHint">
+            <p class="checks" id="join_pwdHint_check"></li>
         </ul>
         <ul>
             <li>직업</li>
@@ -223,11 +194,15 @@ else {%>
     </form>
     <ul id="btn_line">
     	<a href="./mainForm.jsp" style="display: none" id="gotomainform"></a>
-       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> &nbsp;&nbsp; <input type="button" value="회원가입" onclick="checkJoin()">
+       <input type="button" value="메인으로" onclick="document.getElementById('gotomainform').click()"> 
+       &nbsp;&nbsp; <input type="button" value="회원가입" id="tryJoin"><br>
+       <p class="checks" id="tryJoin_check"></p>
     </ul>
+    </form>
 </div>	
-</form>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
+<script type="text/javascript" src="./joinFormCheck.js">
+</script>
 </body>
 </html>
