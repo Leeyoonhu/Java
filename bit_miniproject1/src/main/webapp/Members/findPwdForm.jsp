@@ -14,7 +14,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>아이디 찾기</title>
+    <title>비밀번호 찾기</title>
     <style>
         @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
     </style>
@@ -31,17 +31,15 @@
         
 		<div class="card-body">
       <form action="./findPwdProcess.jsp" class="form-signin" method="POST">
-        <input type="text" name="member_id" id="member_id" class="form-control" placeholder="아이디" required><br>
-        <input type="text" name="name" id="name" class="form-control" placeholder="이름" required><BR>
-        <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required><br>
+        <input type="text" name="userId" id="fPwd_userId" class="form-control" placeholder="아이디" required><br>
+        <input type="text" name="pwdHintQ" id="fPwd_pwdHintQ" class="form-control" readonly="readonly" tabindex="-1" required><br>
+        <input type="text" name="pwdHint" id="fPwd_pwdHint" class="form-control" placeholder="비밀번호 찾기 답변" required><br>
         <p class="checks" id="checks">${findpw_checkf}</p><br/>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 찾기</button>
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="button" id="find_userPwd">비밀번호 찾기</button>
       </form>
-      
 		</div>
         <div class="links">
             <a style="color : black" href="./findIdForm.jsp">아이디 찾기</a> | <a style="color : black" href="./loginForm.jsp">로그인</a> | <a style="color : black" href="./joinForm.jsp">회원가입</a>
-
         </div>
 	</div>
 	</div>
@@ -50,42 +48,7 @@
 	<br>
 	<br>
   <jsp:include page="./footer.jsp"></jsp:include>
-  </body>
-    <script type="text/javascript">
-
-	
-	  	//아이디 정규식
-		let idCheck = /^[a-zA-z0-9]{6,12}$/;
-		
-  		$("#member_id").focusout(function(){
-	     if($('#member_id').val() == ""){
-	    	$('#member_id').focus();
-	   		$('#checks').text('아이디를 입력해주세요.');
-	   	  	$('#checks').css('color', 'red');
-	     }
-	     });
-  		
-  		$("#member_id").focusout(function(){
-  			if(!idCheck.test($(this).val())){
-  			$('#member_id').focus();
-  			$('#checks').text('6~12의 영문 대소문자, 숫자만 사용가능합니다');
-  			$('#checks').css('color', 'red');
-  		}
-  		 });
-  		
-  		$("#name").focusout(function(){
-	     if($('#name').val() == ""){
-	   		$('#checks').text('이름을 입력해주세요.');
-	   	  	$('#checks').css('color', 'red');
-	     }
-	     });
-	     
-  		$("#email").focusout(function(){
-	     if($('#email').val() == ""){
-	   		$('#checks').text('이메일을 입력해주세요');
-	   	  	$('#checks').css('color', 'red');
-	     }
-	     });
-  
+    <script type="text/javascript" src="./findPwdCheck.js">
   </script>
+  </body>
 </html>

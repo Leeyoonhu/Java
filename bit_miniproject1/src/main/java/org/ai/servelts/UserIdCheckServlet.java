@@ -13,18 +13,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /**
- * Servlet implementation class nickNameCheckServlet
+ * Servlet implementation class ShowScreenBoard
  */
-@WebServlet("/Members/nickNameJoinCheck.do")
-public class nickNameCheckServlet extends HttpServlet {
+@WebServlet("/Members/userIdJoinCheck.do")
+public class UserIdCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public nickNameCheckServlet() {
+    public UserIdCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +33,7 @@ public class nickNameCheckServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		
 	}
 
 	/**
@@ -42,29 +41,29 @@ public class nickNameCheckServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		joinNickNameCheck(request, response);
+		joinidCheckDo(request, response);
 	}
-
-	public void joinNickNameCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	public void joinidCheckDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		String nickName = request.getParameter("nickName");
+		String userId = request.getParameter("userId");
 		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 		String user = "root";
 		String password = "1234";
 		String sql = null;
+		boolean result = false;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean result = false;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
-			sql = "select * from members where nickName = ?";
+			sql = "select * from members where userId = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, nickName);
+			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = true;
@@ -78,7 +77,7 @@ public class nickNameCheckServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		} 
 		out.print(result);
 	}
 }

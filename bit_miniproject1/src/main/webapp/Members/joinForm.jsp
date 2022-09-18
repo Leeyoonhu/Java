@@ -141,19 +141,22 @@ else {%>
         <ul>
             <li>닉네임</li>
             <li><input type="text" name="nickName" id="join_nickName">
-            <p class="checks" id="join_nickName_check"></li></li>
+            <p class="checks" id="join_nickName_check"></li>
         </ul>
         <ul>
             <li>성</li>
-            <li><input type="text" name="firstName"></li>
+            <li><input type="text" name="firstName" id="join_firstName">
+            <p class="checks" id="join_firstName_check"></li>
         </ul>
         <ul> 
             <li>이름</li>
-            <li><input type="text" name="lastName"></li>          
+            <li><input type="text" name="lastName" id="join_lastName">
+            <p class="checks" id="join_lastName_check"></li>          
         </ul>
         <ul>
             <li>전화번호</li>
-            <li><input type="tel" name="phoneNo" ></li>
+            <li><input type="tel" name="phoneNo" id="join_phoneNo">
+            <p class="checks" id="join_phoneNo_check"></li>
         </ul>
         <ul>
             <li>비밀번호 찾기 질문</li> 
@@ -167,7 +170,8 @@ else {%>
         </ul>
         <ul>
             <li>비밀번호 찾기 답변</li>
-            <li><input type="text" name="pwdHint"></li>
+            <li><input type="text" name="pwdHint" id="join_pwdHint">
+            <p class="checks" id="join_pwdHint_check"></li>
         </ul>
         <ul>
             <li>직업</li>
@@ -190,7 +194,7 @@ else {%>
     </form>
     <ul id="btn_line">
     	<a href="./mainForm.jsp" style="display: none" id="gotomainform"></a>
-       <input type="button" value="이전으로" onclick="document.getElementById('gotomainform').click()"> 
+       <input type="button" value="메인으로" onclick="document.getElementById('gotomainform').click()"> 
        &nbsp;&nbsp; <input type="button" value="회원가입" id="tryJoin"><br>
        <p class="checks" id="tryJoin_check"></p>
     </ul>
@@ -198,103 +202,7 @@ else {%>
 </div>	
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
-<script type="text/javascript">
-$(document).ready(function(){
-    let idCheck = /^[a-zA-z0-9]{6,12}$/;
-    let pwdCheck = /^[a-zA-z0-9]{8,16}$/;
-	let fnCheck = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1}$/;
-	let lnCheck = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1,2}$/;
-	let joinForm = document.joinForm;
-	$("#join_userId").focusout(function(){
-		$.ajax({
-            type : 'POST',
-            url : './userIdJoinCheck.do',
-            data : {userId : $("#join_userId").val()},
-            dataType : "text",
-            success : function(result){
-                if(result == 'false'){
-                	$("#join_userId_check").text("사용 가능한 아이디입니다.");
-                    $("#join_userId_check").css("color", "red");
-                }
-				if(result == 'true') {
-                	$("#join_userId_check").text("이미 사용중인 아이디입니다.");
-                    $("#join_userId_check").css("color", "red");
-				}
-            }
-        });
-        if($(this).val() == ""){
-            $("#join_userId_check").text("아이디를 입력해 주세요.");
-            $("#join_userId_check").css("color", "red");
-        }
-        else if($(this).val().length < 6 || $(this).val().length > 12 || !idCheck.test($(this).val())){
-            $("#join_userId_check").text("6~12의 영문 대소문자, 숫자만 사용가능합니다");
-            $("#join_userId_check").css("color", "red");
-        }
-        else {
-            $("#join_userId_check").text(""); 
-        }
-    });
-
-    $("#join_userPwd").focusout(function(){
-        if($(this).val() == ""){
-            $("#join_userPwd_check").text("비밀번호를 입력해 주세요.");
-            $("#join_userPwd_check").css("color", "red");
-        }
-        else if($(this).val().length < 8 || $(this).val().length > 16 || !pwdCheck.test($(this).val())){
-            $("#join_userPwd_check").text("8~16의 영문 대소문자, 숫자만 사용가능합니다");
-            $("#join_userPwd_check").css("color", "red");
-        }
-        else {
-            $("#join_userPwd_check").text("");
-        }
-    });
-
-    $("#join_checkPwd").focusout(function(){
-        if($(this).val() == ""){
-            $("#join_checkPwd_check").text("비밀번호 확인을 입력해 주세요.");
-            $("#join_checkPwd_check").css("color", "red");
-        }
-        else if($(this).val() != $('#join_userPwd').val()){
-            $("#join_checkPwd_check").text("비밀번호가 일치하지 않습니다.");
-            $("#join_checkPwd_check").css("color", "red");
-        }
-        else {
-        	$("#join_checkPwd_check").text("");
-        }
-    });
-    
-    $("#join_nickName").focusout(function(){
-    	$.ajax({
-            type : 'POST',
-            url : './nickNameJoinCheck.do',
-            data : {nickName : $("#join_nickName").val()},
-            dataType : "text",
-            success : function(result){
-            	console.log(result)
-                if(result == 'false'){
-                	$("#join_nickName_check").text("사용 가능한 닉네임입니다.");
-                    $("#join_nickName_check").css("color", "red");
-				} if(result == 'true'){
-                	$("#join_nickName_check").text("이미 사용중인 닉네임입니다.");
-                    $("#join_nickName_check").css("color", "red");
-				}
-            }
-        });
-        if($(this).val() == ""){
-            $("#join_nickName_check").text("닉네임을 입력해 주세요.");
-            $("#join_nickName_check").css("color", "red");
-        }
-        else {
-        	$("#join_nickName_check").text("");
-        }
-    });
-    
-    $('#tryJoin').on('click', function() {
-        
-        
-
-    });
-});
+<script type="text/javascript" src="./joinFormCheck.js">
 </script>
 </body>
 </html>
