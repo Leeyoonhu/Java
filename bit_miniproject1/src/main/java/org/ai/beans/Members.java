@@ -2,7 +2,7 @@ package org.ai.beans;
 
 public class Members {
 	private int userNum, userExp;
-	private String userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender, regDate;
+	private String userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender, attDate, regDate;
 	public Members() {
 	}
 	// 로그인 할때 판별하는 생성자
@@ -25,10 +25,11 @@ public class Members {
 		this.userJob = userJob;
 		this.gender = gender;
 	}
-	// 회원이 갖고있는 모든 정보 생성자 (14개, 1,2번만 int, 나머지 String)
+	// 회원이 갖고있는 모든 정보 생성자 (15개, 1,2번만 int, 나머지 String)
 	public Members(int userNum, int userExp, String userId, String userPwd, String checkPwd, String nickName,
 			String firstName, String lastName, String phoneNo, String pwdHintQ, String pwdHint, String userJob,
-			String gender, String regDate) {
+			String gender, String attDate, String regDate) {
+		super();
 		this.userNum = userNum;
 		this.userExp = userExp;
 		this.userId = userId;
@@ -42,8 +43,10 @@ public class Members {
 		this.pwdHint = pwdHint;
 		this.userJob = userJob;
 		this.gender = gender;
+		this.attDate = attDate;
 		this.regDate = regDate;
 	}
+	
 	
 	public int getUserNum() {
 		return userNum;
@@ -125,6 +128,13 @@ public class Members {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+	public String getAttDate() {
+		return attDate;
+	}
+	public void setAttDate(String attDate) {
+		this.attDate = attDate;
 	}
 	public String getRegDate() {
 		return regDate;

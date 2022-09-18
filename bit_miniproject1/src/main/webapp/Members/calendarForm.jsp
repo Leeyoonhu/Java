@@ -24,30 +24,13 @@
 <%
 String userId = (String)session.getAttribute("userId");
 %>
-<script type="text/javascript">
-$(document).ready(function(){
-	  $('#calendar').fullCalendar({
-	    header: {
-	      right: 'custom2 prevYear,prev,next,nextYear'
-	    },
-        
-	    eventSources: [
-	    	{
-				// ajax 통신으로 달력 정보 가져오기 
-               // db에서 출석체크 눌렀는지 안눌렀는지 보기 위함
-				color: 'purple',   
-			 	textColor: 'white' 
-	    	}
-	    ]
-	  }); 
-});
-</script>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
 else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
+<button id="userId" value="<%=userId%>" style="display: none"></button>
 <div id="content">
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./aside2.jsp"></jsp:include>
@@ -59,5 +42,6 @@ else {%>
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
+<script type="text/javascript" src="../Js/callendar.js"></script>
 </body>
 </html>

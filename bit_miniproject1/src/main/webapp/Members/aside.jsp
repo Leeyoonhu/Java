@@ -64,8 +64,8 @@
 		<form action="./informationBoardForm.jsp" method="post" style=" margin-top: 50px">
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="정보게시판">
 		</form>
-		<form action="./calendarForm.jsp" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="달력">
+		<form action="" method="post" style=" margin-top: 50px">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="button" value="출석체크" onclick="alert('로그인 후 이용해주세요')">
 		</form>
         <br><br>
     </nav>

@@ -40,7 +40,7 @@ String userPwd = request.getParameter("userPwd");
 		while(rs.next()){
 			memList.add(new Members(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
 					, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
-					, rs.getString(13), rs.getString(14)));
+					, rs.getString(13), rs.getString(14), rs.getString(15)));
 		}
 		for(int i = 0; i< memList.size(); i++){
 			/* 아이디 같을때*/

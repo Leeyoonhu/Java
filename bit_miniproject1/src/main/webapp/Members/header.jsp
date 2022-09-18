@@ -219,8 +219,8 @@ position: static;
 		</form>
 	</th> 
 	<th>
-		<form action="./calendarForm.jsp" method="post" style="position: relative;" >
-			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="달력">
+		<form action="" method="post" style="position: relative;" >
+			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="button" value="출석체크" onclick="alert('로그인 후 이용해주세요')">
 		</form>
 	</th> 
 </tr>
