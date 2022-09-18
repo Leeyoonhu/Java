@@ -15,8 +15,8 @@
 			dataType : 'text',
 			success : function(result){
 				if(result != 'null'){
-                	$("#fPwd_pwdHintQ").val(result);
                     check = true;
+                	$("#fPwd_pwdHintQ").val(result);
 				}			
             }
 		})
@@ -45,17 +45,20 @@
 		}	
 	    });
 	    
-	    $('#find_userPwd').on('click', function(){
+	    $('button').on('click', function(){
+		console.log(check);
+		console.log(check1);
+		console.log(check2);
 			if(check == true
 			&& check1 == true
 			&& check2 == true){
-				$('#checks').text('');
 				$.ajax({
 					type : 'GET',
 					url : './findPwd.do',
 					data : {userId: $('#fPwd_userId').val(), pwdHint: $('#fPwd_pwdHint').val()},
 					dataType : 'text',
 					success : function(result){
+						console.log(result);
 						if(result != 'null'){
 							$('#checks').text('');
 							alert("회원님의 비밀번호는 " + result + " 입니다.");
@@ -66,6 +69,7 @@
 						}	
 					}
 				})
+				$('#checks').text('');
 			}
 			else {
 				$('#checks').text('형식을 확인해 주세요.')	
