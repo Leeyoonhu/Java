@@ -34,7 +34,7 @@
         <input type="text" name="userId" id="fPwd_userId" class="form-control" placeholder="아이디" required><br>
         <input type="text" name="pwdHintQ" id="fPwd_pwdHintQ" class="form-control" readonly="readonly" tabindex="-1" required><br>
         <input type="text" name="pwdHint" id="fPwd_pwdHint" class="form-control" placeholder="비밀번호 찾기 답변" required><br>
-        <p class="checks" id="checks">${findpw_checkf}</p><br/>
+        <p class="checks" id="checks"></p>
         <button type="button" id="btn-Yes" class="btn btn-lg btn-primary btn-block">비밀번호 찾기</button>
         </form>
 		</div>

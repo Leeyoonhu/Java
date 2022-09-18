@@ -125,6 +125,19 @@ $(document).ready(function(){
 	});
     
     $("#join_phoneNo").focusout(function() {
+		$.ajax({
+			type : "POST",
+			url : "./phoneNoCheck.do",
+			data : {phoneNo : $(this).val()},
+			dataType : "text",
+			success : function(result){
+				if(result == 'true'){
+					$("#join_phoneNo_check").text("이미 사용중인 전화번호입니다.");
+                    $("#join_phoneNo_check").css("color", "red");
+                    check6 = false;
+				}
+			}
+		})
     	if($(this).val() == ""){
     		$("#join_phoneNo_check").text("전화번호를 입력해 주세요.");
     		$("#join_phoneNo_check").css("color", "red");

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 /**
  * Servlet implementation class BoardUpdateServlet
  */
