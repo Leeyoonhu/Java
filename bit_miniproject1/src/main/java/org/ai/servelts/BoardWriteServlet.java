@@ -18,7 +18,6 @@ import com.oreilly.servlet.*;
 import com.oreilly.servlet.multipart.*;
 import java.util.*;
 import java.sql.*;
-
 /**
  * Servlet implementation class BoardWriteServlet
  */
