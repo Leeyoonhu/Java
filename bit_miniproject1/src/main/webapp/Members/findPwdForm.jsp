@@ -48,7 +48,7 @@
 	<br>
 	<br>
   <jsp:include page="./footer.jsp"></jsp:include>
-    <script type="text/javascript" src="./findPwdCheck.js">
+    <script type="text/javascript" src="../Js/findPwdCheck.js">
   </script>
   </body>
 </html>

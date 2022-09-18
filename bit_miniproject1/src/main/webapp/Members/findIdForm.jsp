@@ -10,6 +10,7 @@
     <style>
         @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
 <jsp:include page="./header.jsp"></jsp:include>
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
@@ -43,5 +44,5 @@
         <br>
       <jsp:include page="./footer.jsp"></jsp:include>
 </body>
-<script type="text/javascript" src="./findIdCheck.js"></script>
+<script type="text/javascript" src="../Js/findIdCheck.js"></script>
 </html>
