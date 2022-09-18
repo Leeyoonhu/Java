@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import java.sql.*;
-
 /**
  * Servlet implementation class SaveCommentServlet
  */
