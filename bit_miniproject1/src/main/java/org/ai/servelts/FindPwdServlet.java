@@ -14,16 +14,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /**
- * Servlet implementation class ShowScreenBoard
+ * Servlet implementation class FindPwdServlet
  */
-@WebServlet("/Members/userIdJoinCheck.do")
-public class userIdCheckServlet extends HttpServlet {
+@WebServlet("/Members/findPwd.do")
+public class FindPwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public userIdCheckServlet() {
+    public FindPwdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,44 +33,35 @@ public class userIdCheckServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		joinidCheckDo(request, response);
-	}
-	
-	public void joinidCheckDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String userId = request.getParameter("userId");
+		String pwdHint = request.getParameter("pwdHint");
 		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
+		String sql = null;
 		String user = "root";
 		String password = "1234";
-		String sql = null;
-		boolean result = false;
+		String result = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
-			sql = "select * from members where userId = ?";
+			sql = "select userPwd from members where userId = ? and pwdHint = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
+			pstmt.setString(2, pwdHint);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				result = true;
+			while(rs.next()) {
+				result = rs.getString(1);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -77,7 +70,55 @@ public class userIdCheckServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} 
+		}
 		out.print(result);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		findPwdDo(request, response);
+	}
+	
+	public void findPwdDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		String userId = request.getParameter("userId");
+		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
+		String sql = null;
+		String user = "root";
+		String password = "1234";
+		String result = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, password);
+			sql = "select pwdHintQ from members where userId = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result = rs.getString(1);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		out.print(result);
+		
 	}
 }
