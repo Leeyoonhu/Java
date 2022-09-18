@@ -116,7 +116,7 @@ int userExp = (int)session.getAttribute("userExp");
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="정보게시판">
 		</form>
 		<form action="./calendarForm.jsp" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="달력">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="출석체크">
 		</form>
         <br><br>
     </nav>
