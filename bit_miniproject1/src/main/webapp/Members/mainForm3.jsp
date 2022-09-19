@@ -20,9 +20,12 @@ else {%>
 <%}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <%}%>
-<!-- <div id="메인내용물2">
-	내용물올것임2 //  로그인했을때만 보이는 aside.jsp로 교체 필요
-</div> -->
+<div class="mainForm">
+<div class="mainFormContent"> <!-- 인기게시글, 최근 게시글 을 담을거 -->
+	<iframe src="./popularBoardForm.jsp" width="400px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
+	<iframe src="./currentBoardForm.jsp" width="400px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
+</div>
+</div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
 </body>

@@ -180,6 +180,19 @@ position: static;
  .checks{
     	color : red;
     }
+.mainForm{
+	display: inline-block;
+	width: 1450px;
+	height: 1200px;
+	margin-top: 200px;
+	float: right;
+}
+.mainFormContent {
+	display: inline-block;
+	text-align: center;
+	width: 1000px;
+	height: 400px;
+}
 </style>
 </head>
 <body>
