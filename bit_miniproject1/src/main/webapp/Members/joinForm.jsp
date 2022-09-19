@@ -112,7 +112,6 @@ else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
 <div id="content">
-<jsp:include page="./aside.jsp"></jsp:include>
 <div id="joinForm">
 <form action="./joinProcess.jsp" method="post" name="joinForm">
 <div id="wrapper">
