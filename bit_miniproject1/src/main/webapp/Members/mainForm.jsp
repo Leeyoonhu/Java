@@ -18,9 +18,13 @@ else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
 <div id="content">
-<%if(session.getAttribute("userId") != null){ %>
-<jsp:include page="./aside2.jsp"></jsp:include>
-<%}else {%>
+<%if(session.getAttribute("userId") != null){ 
+	if("soldier".equals((String)session.getAttribute("userJob"))){ %>
+		<jsp:include page="./aside3.jsp"></jsp:include>
+	<%} else { %>
+		<jsp:include page="./aside2.jsp"></jsp:include>
+	<% }
+}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <%}%>
 <div class="mainForm">

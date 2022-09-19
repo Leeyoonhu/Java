@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <meta charset="UTF-8">
 <title>회원가입</title>
@@ -14,11 +13,10 @@
 	display: inline-block;
 	float: right;
 	width: 1400px;
-	height: 150px;
-	margin-top: 100px;
+	height: 1200px;
+	margin-top: 150px;
 	text-align: center;
 }
-
 html, body{
     padding : 0;
     margin : 0;
@@ -50,10 +48,7 @@ hr {
     width: 100%;
     text-align: center;
     clear: both;
-    margin: 0px 0px -1200px 0px;
-}
-.backcolor{
-background-color : #80808021;
+    margin: 0px 0px 30px 0px;
 }
 
 /* #content{ */
@@ -90,7 +85,7 @@ background-color : #80808021;
 #btn_line { 
     clear:both;
     width: 100%;
-    margin : 60px 0px 0px 0px;
+    margin : 80px 0px 0px 0px;
     text-align: center;
 }
 #btn_line li{
@@ -116,65 +111,55 @@ background-color : #80808021;
 else {%>
 <jsp:include page="./header.jsp"></jsp:include>
 <%}%>
-<div class="backcolor">
 <div id="content">
 <div id="joinForm">
 <form action="./joinProcess.jsp" method="post" name="joinForm">
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-    <ul style="position:relative; right:-850px;"><h2>가입 정보 입력</h2></ul>
-    <ul style="position:relative; right:-870px;">가입 정보를 입력하세요.</ul>
-    
 <div id="wrapper">
 <div id="top">
+    <ul><h2>가입 정보 입력</h2></ul>
+    <ul>가입 정보를 입력하세요.</ul>
 </div>
 </div>
     <form class = "form_design">
         <hr/>
-        <br>
-        <br>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;아이디</li> 
-            <li><input style="width:300px; height:35px;" type="text" name="userId" id="join_userId">
-            <p class="checks" id="join_userId_check"></li> 
+        <ul>
+            <li>아이디</li>
+            <li><input type="text" name="userId" id="join_userId" autofocus="autofocus">
+        	<p class="checks" id="join_userId_check"></p></li> 
         </ul>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;비밀번호</li> 
-            <li><input style="width:300px; height:35px;" type="password" name="userPwd" id="join_userPwd">
-            <p class="checks" id="join_userPwd_check"></li> 
+        <ul>
+            <li>비밀번호</li> 
+            <li><input type="password" name="userPwd" id="join_userPwd">
+            <p class="checks" id="join_userPwd_check"></p></li> 
         </ul>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;비밀번호 확인</li>
-            <li><input style="width:300px; height:35px;" type="password" name="checkPwd" id="join_checkPwd">
+        <ul>
+            <li>비밀번호 확인</li>
+            <li><input type="password" name="checkPwd" id="join_checkPwd">
             <p class="checks" id="join_checkPwd_check"></li>
-        </ul >
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;닉네임</li>
-            <li><input style="width:300px; height:35px;" type="text" name="nickName" id="join_nickName">
+        </ul>
+        <ul>
+            <li>닉네임</li>
+            <li><input type="text" name="nickName" id="join_nickName">
             <p class="checks" id="join_nickName_check"></li>
         </ul>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;성</li>
-            <li><input style="width:300px; height:35px;" type="text" name="firstName" id="join_firstName">
+        <ul>
+            <li>성</li>
+            <li><input type="text" name="firstName" id="join_firstName">
             <p class="checks" id="join_firstName_check"></li>
         </ul>
-        <ul style="position:relative; right:-800px;"> 
-            <li>&nbsp;&nbsp;이름</li>
-            <li><input style="width:300px; height:35px;" type="text" name="lastName" id="join_lastName">
+        <ul> 
+            <li>이름</li>
+            <li><input type="text" name="lastName" id="join_lastName">
             <p class="checks" id="join_lastName_check"></li>          
         </ul>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;전화번호</li>
-            <li><input style="width:300px; height:35px;" type="tel" name="phoneNo" id="join_phoneNo">
+        <ul>
+            <li>전화번호</li>
+            <li><input type="tel" name="phoneNo" id="join_phoneNo">
             <p class="checks" id="join_phoneNo_check"></li>
         </ul>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;비밀번호 찾기 질문</li> 
-            <li><select  style="width:300px;" name="pwdHintQ"></li>
+        <ul>
+            <li>비밀번호 찾기 질문</li> 
+            <li><select name="pwdHintQ"></li>
                 <option>내가 태어난 곳은?</option>
 	            <option>내가 졸업한 초등학교는?</option>
 	            <option>내가 사는 지역은?</option>
@@ -182,13 +167,13 @@ else {%>
 	            <option>나의 보물 1호는?</option>
 	            </select>
         </ul>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;비밀번호 찾기 답변</li>
-            <li><input style="width:300px; height:35px;" type="text" name="pwdHint" id="join_pwdHint">
+        <ul>
+            <li>비밀번호 찾기 답변</li>
+            <li><input type="text" name="pwdHint" id="join_pwdHint">
             <p class="checks" id="join_pwdHint_check"></li>
         </ul>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;직업</li>
+        <ul>
+            <li>직업</li>
             <input type="radio" name="userJob" id="soldier" value="soldier" checked="checked"><label for="soldier">군인</label>
             <input type="radio" name="userJob" id="family" value="family"><label for="family">가족</label>
                 
@@ -197,8 +182,8 @@ else {%>
                 <input type="radio" name="userJob" id="girlfriend" value="girlfriend">
                 <label for="girlfriend">여자친구</label>
         </ul>
-        <ul style="position:relative; right:-800px;">
-            <li>&nbsp;&nbsp;성별</li>
+        <ul>
+            <li>성별</li>
                 <input type="radio" name="gender" id="male" value="male" checked="checked">
                 <label for="male">남자</label>
                 <input type="radio" name="gender" id="female" value="female"> 
@@ -208,12 +193,13 @@ else {%>
     </form>
     <ul id="btn_line">
     	<a href="./mainForm.jsp" style="display: none" id="gotomainform"></a>
-       <input style="position:relative; right:-120px;" type="button" value="메인으로" onclick="document.getElementById('gotomainform').click()"> 
-       &nbsp;&nbsp; <input style="position:relative; right:-120px;" type="button" value="회원가입" id="tryJoin"><br>
+       <input type="button" value="메인으로" onclick="document.getElementById('gotomainform').click()"> 
+       &nbsp;&nbsp; <input type="button" value="회원가입" id="tryJoin"><br>
        <p class="checks" id="tryJoin_check"></p>
     </ul>
     </form>
 </div>	
+</div>
 <jsp:include page="./footer.jsp"></jsp:include>
 <script type="text/javascript" src="../Js/joinFormCheck.js">
 </script>

@@ -18,13 +18,11 @@
 width: 1650px;
 height: 1400px;
 position: static;
-
 }
 #content2 {
 width: 1650px;
 height: 1600px;
 position: static;
-
 }
 .bts {
   font-size: 25px;
@@ -207,7 +205,7 @@ position: static;
 &nbsp;
 <a href="./loginForm.jsp" style="position:relative; color:white; right: -1700px; font-size: 0.8em; top:4%; text-decoration: none">로그인</a>
 <a href="./mainForm.jsp" style="display: none" id="jungunsi"></a>
-<h1 style="text-align: center; font-weight:bold; font-size: 3.5em; position: relative; margin-top : 30px; color:white; cursor: pointer;" onclick="document.getElementById('jungunsi').click()">
+<h1 style="text-align: center; font-size: 3.0em; position: relative; margin-top : 30px; color:white; cursor: pointer;" onclick="document.getElementById('jungunsi').click()">
 <img alt="" src="https://i.ibb.co/mGCzCtg/soldier.png" width="120px" height="120px">
 전지적 군인 시점</h1>
 <br>

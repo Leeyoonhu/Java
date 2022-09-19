@@ -36,16 +36,16 @@ String pwdHint = request.getParameter("pwdHint");
 		while(rs.next()){
 			memList.add(new Members(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
 					, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
-					, rs.getString(13), rs.getString(14)));
+					, rs.getString(13), rs.getString(14), rs.getString(15)));
 		}
 		/* db에서 아이디,힌트,힌트답변이 같을때만 비밀번호 알려줌 */
 		for(int i = 0; i < memList.size(); i++){
 			if(userId.equals(memList.get(i).getUserId()) &&
 					pwdHintQ.equals(memList.get(i).getPwdHintQ()) &&
 					pwdHint.equals(memList.get(i).getPwdHint())){
-				Cookie cookie = new Cookie("userPwd", memList.get(i).getUserPwd());
-				response.addCookie(cookie);
-				response.sendRedirect("./findPwdSuccess.jsp");
+					Cookie cookie = new Cookie("userPwd", memList.get(i).getUserPwd());
+					response.addCookie(cookie);
+					response.sendRedirect("./findPwdSuccess.jsp");
 			}
 		}
 		response.sendRedirect("./findPwdFail.jsp");
