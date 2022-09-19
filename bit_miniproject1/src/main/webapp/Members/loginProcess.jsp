@@ -75,9 +75,18 @@ String userPwd = request.getParameter("userPwd");
 				}
 			}
 		}
+		for(int i = 0; i< memList.size(); i++){
+			if(userId.equals(memList.get(i).getUserId())){
+				/* 아이디 같고 */
+				if(!userPwd.equals(memList.get(i).getUserPwd())){
+					/*  비밀번호 다를때 */
+					response.sendRedirect("./loginFail.jsp");
+				}
+			}
+		}
 			/* 아이디조차 없을때 */
 			/* 같은 아이디를 찾지 못했을때 없다는 것을 알려주고, 메인 / 회원가입 을 선택할수 있는 페이지로 이동 */
-		
+		response.sendRedirect("./loginFail2.jsp");
 	} catch (Exception e){
 		e.printStackTrace();
 	}
