@@ -23,6 +23,7 @@
 <body>
 <%
 String userId = (String)session.getAttribute("userId");
+String userJob = (String)session.getAttribute("userJob");
 %>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
@@ -32,9 +33,13 @@ else {%>
 <%}%>
 <button id="userId" value="<%=userId%>" style="display: none"></button>
 <div id="content">
-<%if(session.getAttribute("userId") != null){ %>
-<jsp:include page="./aside2.jsp"></jsp:include>
-<%}else {%>
+<%if(session.getAttribute("userId") != null){ 
+	if("soldier".equals(userJob)){ %>
+		<jsp:include page="./aside2.jsp"></jsp:include>
+	<%} else { %>
+		<jsp:include page="./aside3.jsp"></jsp:include>
+	<% }
+}else {%>
 <jsp:include page="./aside.jsp"></jsp:include>
 <%}%>
 <div id="attendancForm">

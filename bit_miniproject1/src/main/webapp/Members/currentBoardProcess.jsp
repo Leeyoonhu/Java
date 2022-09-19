@@ -31,8 +31,15 @@
 			bList.add(new Board(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
 					rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10).substring(0, 10)));
 		}
-		for(int i = 0; i < 5; i++){
-			bList2.add(bList.get(i));
+		if(bList.size() < 5){
+			for(int i = 0; i < bList.size(); i++){
+				bList2.add(bList.get(i));
+			}
+		}
+		else {
+			for(int i = 0; i < 5; i++){
+				bList2.add(bList.get(i));
+			}
 		}
 		sql = "select number from comment";
 		pstmt = conn.prepareStatement(sql);

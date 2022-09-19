@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>어사이드2</title>
+<title>어사이드3</title>
 <style>
-/* 로그인했을때 보이는 화면(군인x) */
+/* 로그인했을때 보이는 화면(군인) */
     #nav{
 		display : inline-block;
         width : 200px;
@@ -95,6 +95,8 @@ String nickName = (String)session.getAttribute("nickName");
         	<a href="" style="display: none" id="watchMyComment"></a>
         	<a href="./logoutProcess.jsp" style="display: none" id="asideLogout"></a>
         	<a href="./calendarForm.jsp" style="display: none" id="asideCalendarForm"></a>
+        	<a href="./boardWrite.jsp?boardTitle=diary" style="display: none" id="writeDiary"></a>
+        	<a href="./diaryBoardForm.jsp" style="display: none" id="diaryBoardForm"></a>
         	<button class="asideMain" onclick="document.getElementById('asideToMain').click()">ROK ARMY</button>
         	<div style="font-size: 1.2em; margin-left: 30px; margin-top: 8px"><%=nickName%>'s</div>
         	<div style="font-size: 1em; margin-left: 20px; margin-top: 8px; display: inline-block;">현재 경험치 : ${userExp}</div>
@@ -102,6 +104,8 @@ String nickName = (String)session.getAttribute("nickName");
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyComment').click()">내댓글 보기</button> 
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('asideLogout').click()">로그아웃</button>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('asideCalendarForm').click()">출석체크</button>
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('writeDiary').click()">일기 쓰기</button>
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('diaryBoardForm').click()">내 일기장</button>
         </div>
         <form action="./noticeboardForm.jsp" method="post" style=" margin-top: 50px">
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="전체게시판">
