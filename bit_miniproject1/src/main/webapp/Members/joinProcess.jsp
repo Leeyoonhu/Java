@@ -49,16 +49,6 @@ ArrayList<Members> mList = new ArrayList<Members>();
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	conn = DriverManager.getConnection(url, user, password);
-	/* 일단 있는 정보인지 먼저 확인 (아이디, 닉네임, 폰번호)*/
-	sql = "select userId from Members";
-	pstmt = conn.prepareStatement(sql);
-	rs = pstmt.executeQuery();
-	while(rs.next()){
-		if(userId.equals(rs.getString(1))){
-			response.sendRedirect("./joinFail.jsp");
-		}
-	}
-	/* 없으면 추가 */
 	sql = "insert into Members (userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, userId);
@@ -73,7 +63,7 @@ try {
 	pstmt.setString(10, userJob);
 	pstmt.setString(11, gender);
 	pstmt.executeUpdate();
-	response.sendRedirect("./joinSuccess.jsp");
+	response.sendRedirect("./mainForm.jsp");
 } catch (Exception e){
 	e.printStackTrace();
 }
