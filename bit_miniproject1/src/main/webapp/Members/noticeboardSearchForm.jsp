@@ -130,7 +130,7 @@ else {%>
 		}
 	}
 </script>
-<form action="./searchNoticeBoard.do?pages=1" method="post" style="text-align: center;" name = "searchForm">
+<form action="./searchNoticeBoard.do?pages=<%=pages%>" method="post" style="text-align: center;" name = "searchForm">
 <select name="searchTitle" style="padding-left: 5px; width: 120px; height: 38px;  box-sizing: border-box; border: 1px solid #ccc;">
 	<option selected="selected">제목</option>
 	<option>닉네임</option>
@@ -160,9 +160,9 @@ else {
 }
 for(int i = 1; i <= lastPage; i++){
 	if(i == 1){%>
-	<a style="text-decoration: none; color: black" href="./noticeboardForm.jsp?pages=<%=i%>"><%=i%></a>
+	<a style="text-decoration: none; color: black" href="./searchNoticeBoard.do?pages=<%=i%>"><%=i%></a>
 	<% } else if(i > 1){ %>
-	<a style="text-decoration: none; color: black" href="./noticeboardForm.jsp?pages=<%=i%>"> | <%=i%></a>
+	<a style="text-decoration: none; color: black" href="./searchNoticeBoard.do?pages=<%=i%>"> | <%=i%></a>
 	<% }
 }%>
 

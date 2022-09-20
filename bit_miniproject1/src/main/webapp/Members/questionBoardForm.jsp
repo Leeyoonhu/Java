@@ -13,7 +13,7 @@
 	float: right;
 	width: 1300px;
 	height: 1200px;
-	margin-top: 200px;
+	margin-top: 150px;
 	text-align: center;
 }
 </style>

@@ -40,7 +40,7 @@ int recommends = 0;
 try {
 	number= Integer.parseInt(request.getParameter("number"));
 } catch (Exception e){
-	response.sendRedirect("./freeBoardForm.jsp");
+	response.sendRedirect("./freeBoardForm.jsp?pages=1");
 }
 %>
 <%	

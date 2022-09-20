@@ -13,7 +13,7 @@
 	float: right;
 	width: 1400px;
 	height: 1200px;
-	margin-top: 200px;
+	margin-top: 150px;
 }
 </style>
 </head>
@@ -24,9 +24,14 @@
 	String userJob = (String)session.getAttribute("userJob");
 	String path = request.getServletContext().getContextPath()+"/upload/";
 	String boardTitle = "screenBoard";
+	ArrayList<Board> bList = new ArrayList<Board>();
+	ArrayList<Board> bList2 = new ArrayList<Board>();
+	ArrayList<Comment> cList = new ArrayList<Comment>();
+	int pages = Integer.parseInt(request.getParameter("pages"));
 %>
 <jsp:include page="./boardInfo.jsp" flush="false">
 	<jsp:param value="<%=boardTitle%>" name="boardTitle"/>
+	<jsp:param value="<%=pages%>" name="pages"/>
 </jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
@@ -98,9 +103,28 @@ else {%>
 	if(lineCount == 5){
 		lineCount = 0; 
 	%>	
-			<br><br><br>
+			<br><br><br><br><br>
 		<%}%>
 </c:forEach>	
+<%
+int size = (int)session.getAttribute("size");
+int lastPage = 0;
+if(size / 10 > 0) {
+	lastPage = (size / 10) + 1;
+}
+else {
+	lastPage = 1;
+}%>
+<div style="text-align: center">
+<%for(int i = 1; i <= lastPage; i++){
+	if(i == 1){%>
+	
+	<a style="text-decoration: none; color: black; text-align: center" href="./screenBoardForm.jsp?pages=<%=i%>"><%=i%></a>
+	<% } else if(i > 1){ %>
+	<a style="text-decoration: none; color: black; text-align: center" href="./screenBoardForm.jsp?pages=<%=i%>"> | <%=i%></a>
+	<% }
+}%>
+</div>
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
