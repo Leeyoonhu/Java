@@ -54,7 +54,7 @@ public class DeleteBoardServlet extends HttpServlet {
 		boolean result = false;
 		
 		try {
-			Class.forName("com.mysql.cd.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
 //			number 를 조회해서 있으면?
 			sql = "select * from board where number = ?";

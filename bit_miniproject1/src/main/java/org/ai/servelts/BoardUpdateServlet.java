@@ -96,7 +96,7 @@ public class BoardUpdateServlet extends HttpServlet {
 			pstmt.execute();
 
 			if(boardTitle != null) {
-				formUrl = String.format("./%sForm.jsp", boardTitle);
+				formUrl = String.format("./%sForm.jsp?pages=1", boardTitle);
 				response.sendRedirect(formUrl);
 			}
 		} catch (Exception e) {

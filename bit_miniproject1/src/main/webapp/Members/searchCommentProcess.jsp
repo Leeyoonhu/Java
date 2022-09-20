@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -61,6 +62,7 @@ try {
 }
 /* 댓글 작성자가 글 작성자와 같을 경우 작성자 표시*/
 %>
+<script type="text/javascript" src="../Js/deleteComment.js"></script>
 <div style="height: auto">
 <img alt="" src="https://i.ibb.co/C96m34C/image.jpg" width="17" height="15" style="margin-bottom: 5px; margin-right:2px" > <strong style="font-size: 1.1em">댓글 (<%=cList2.size()%>)</strong><br>
 <hr>
@@ -71,7 +73,12 @@ try {
 	<c:if test="${comment.writer eq writer}">
 		<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:2px;margin-bottom:2px" border="0">
 	</c:if>
-<span style="color: gray">(${comment.regDate})</span><br>
+<span style="color: gray">(${comment.regDate})</span>
+	<c:if test="${comment.writer eq writer}">
+		<img src="https://i.ibb.co/jM9Tyxf/image.png" style="cursor: pointer;" id="deleteImage">
+		<input id="deleteWriterInfo" type="button" value="${writer}" style="display: none"></input>
+	</c:if>
+<br>
 ${comment.comment}
 </div>
 

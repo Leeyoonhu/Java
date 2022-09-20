@@ -11,7 +11,7 @@
 <body>
 <%
 request.setCharacterEncoding("utf-8");
-String nickName = request.getParameter("nickName");
+String nickName = (String)session.getAttribute("nickName");
 int userExp = 0;
 String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 String sql = null;

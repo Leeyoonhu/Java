@@ -16,7 +16,7 @@
 <%} 
 else {%>
 <jsp:include page="./header.jsp"></jsp:include>
-<%}%>
+<%}%>	
 <div id="content">
 <%if(session.getAttribute("userId") != null){ 
 	if("soldier".equals((String)session.getAttribute("userJob"))){ %>
