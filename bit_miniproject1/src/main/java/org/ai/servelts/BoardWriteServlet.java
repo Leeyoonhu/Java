@@ -87,7 +87,7 @@ public class BoardWriteServlet extends HttpServlet {
 			pstmt.setString(6, boardTitle);
 			pstmt.execute();
 			if(boardTitle != null) {
-				formUrl = String.format("./%sForm.jsp", boardTitle);
+				formUrl = String.format("./%sForm.jsp?pages=1", boardTitle);
 				response.sendRedirect(formUrl);
 			}
 		} catch (Exception e) {

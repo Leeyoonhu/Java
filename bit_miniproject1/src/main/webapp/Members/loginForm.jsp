@@ -1,43 +1,127 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<style>
+ 
+        .bodyshower{
+            display : flex;
+            justify-content: center;
+            align-items: center;
+            height : 100vh;
+            background : url("https://i.ibb.co/r38wVRd/login.webp") no-repeat center;
+            background-size: cover;
+        }
+/*         .bodyshower::before{ */
+/*             content:""; */
+/*             position: absolute; z-index: 1; */
+/*             top:0; right:0; bottom:0; left:0; */
+/*             background-color: rgba(0,0,0,.7); */
+        }
+        .login-form {
+            position: relative;
+            z-index: 2;
+        }
+        .login-form h1 {
+            font-size: 32px;
+            color:black;
+            text-align: center;
+        }
+        .int-area{width: 400px; position: relative;
+        margin-top: 20px;}
+        .int-area:first-child{
+            margin-top: 0;
+        }
+        .int-area input {
+            width : 100%;
+            padding: 20px 10px 10px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid black;
+            font-size: 18px;
+            color : black;
+            outline: none;
+            margin-bottom: 60px;
+        }
+        .int-area label {
+            position: absolute;
+            left : 10px;
+            top : 15px;
+            font-size: 18px;
+            color : #999;
+            transition: all .5s ease;
+        }
 
-<style type="text/css">
+        .int-area label.warning {
+            color : red !important;
+            animation: warning .3s ease;
+            animation-iteration-count: 3;
+        }
+        @keyframes warning{
+            0%{transform: translateX(-8px);}
+            25%{transform: translateX(8px);}
+            50%{transform: translateX(-8px);}
+            75%{transform: translateX(8px);}
+        }
+/*         .int-area input :focus + label, */
+/*         .int-area input :valid + label { */
+/*             top: 0; */
+/*             font-size: 13px; */
+/*             color : #166cea; */
+        }
+        .btn-area{
+            margin-top: 30px;
+        }
+        .btn-area button{
+            width: 100%;
+            height: 50px;
+            background: #166cea;
+            font-size: 20px;
+            border:none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .caption{
+            margin-top: 20px;
+            text-align: center;
+        }
+        .caption a {
+            font-size: 15px;
+            color: #fff;
+            text-decoration: none;
+        }
 
-#loginForm {
-display: inline-block;
-	width: 1950px;
-	height: AUTO;
-	margin-bottom: 100px;
-	text-align: center;
-}
-</style>
-</head>
+    </style>
+    </head>
+    <jsp:include page="./header.jsp"></jsp:include>
 <body>
-	<jsp:include page="./header.jsp"></jsp:include>
-	<div id="loginForm">
-		<h1 style="text-align: center; margin-bottom : 2.0rem; margin-top : 10.0rem;">로그인</h1>
-		<h4 style="text-align: center">로그인 하시면 전군시의 모든 서비스를 이용 하실 수 있습니다.</h4>
-		<h4 style="text-align: center; margin-bottom : 2.0rem;">아직 회원이 아니시면 회원가입을 해주세요.</h4>
-		<form action="./loginProcess.jsp" method="post">
-				<input type="text" placeholder="아이디" name="userId"
-				style="width: 490px; height: 30px; margin-bottom: 20px;"
-				autofocus="autofocus"> <br> 
-				<input type="password"
-				placeholder="패스워드" name="userPwd"
-				style="width: 490px; height: 30px; margin-bottom: 20px"> <br>
-				<input type="submit" value="로그인"
-				style="opacity: 0.8; width: 490px; height: 30px; margin-bottom: 30px; background-color: rgb(167, 230, 167);"><br>		
-			<div style="text-align: center; margin-bottom : 5.0rem;">
-				<a href="./findIdForm.jsp">아이디 찾기</a> | <a href="./findPwdForm.jsp">비밀번호
-					찾기</a> | <a href="./joinForm.jsp">회원가입</a>
-			</div>
-		</form>
-	</div>
-	<jsp:include page="./footer.jsp"></jsp:include>
+<section class="bodyshower">
+    <section class="login-form">
+        <h1 style="color : black; font-weight:bold">로그인</h1>
+        <form action="./loginProcess.jsp" name="loginForm">
+            <div class="int-area">
+                <input placeholder="USER NAME" type="text" name="userId" id="loginUserId" autocomplete="off" required>
+                <label for="id"></label>
+            <div class="int-area">
+                <input style="color:black" placeholder="PASSWORD" type="password" name="userPwd" id="loginUserPwd" autocomplete="off" required>
+                <label for="pw" style="color:black"></label>
+            </div>
+            <div class="btn-area">
+                <button id ="tryLogin" type="button">LOGIN</button>
+            </div>
+        </form>
+        <div class="caption">
+            <a href="./findIdForm.jsp" style="color: white; text-decoration: none">아이디 찾기</a> | 
+            <a href="./findPwdForm.jsp" style="color: white; text-decoration: none">비밀번호 찾기</a> | 
+            <a href="./mainForm.jsp" style="color: white; text-decoration: none">메인으로</a> 
+        </div> 
+        </section>
+    </section>
+    <script type="text/javascript" src="../Js/loginCheck.js"></script>
+        <jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

@@ -212,27 +212,27 @@ position: static;
 <table>
 <tr style="text-align: center">
 	<th>
-		<form action="./freeBoardForm.jsp" method="post" style="position: relative;">
+		<form action="./freeBoardForm.jsp?pages=1" method="post" style="position: relative;">
 			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 500px" type="submit" value="자유게시판">
 		</form>
 	</th>
 	<th>
-		<form action="./screenBoardForm.jsp" method="post" style="position: relative;" >
+		<form action="./screenBoardForm.jsp?pages=1" method="post" style="position: relative;" >
 			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="사진게시판">
 		</form>
 	</th> 
 	<th>
-		<form action="./questionBoardForm.jsp" method="post" style="position: relative;">
+		<form action="./questionBoardForm.jsp?pages=1" method="post" style="position: relative;">
 			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="질문게시판">
 		</form>
 	</th> 
 	<th>
-		<form action="./informationBoardForm.jsp" method="post" style="position: relative;">
+		<form action="./informationBoardForm.jsp?pages=1" method="post" style="position: relative;">
 			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="정보게시판">
 		</form>
 	</th> 
 	<th>
-		<form action="./calendarForm.jsp" method="post" style="position: relative;">
+		<form action="./calendarForm.jsp?pages=1" method="post" style="position: relative;">
 			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="출석체크">
 		</form>
 	</th> 
