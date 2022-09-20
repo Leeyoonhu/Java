@@ -130,7 +130,7 @@ else {%>
 		}
 	}
 </script>
-<form action="./searchNoticeBoard.do?pages=1" method="post" style="text-align: center;" name = "searchForm">
+<form action="./searchSession.jsp" method="post" style="text-align: center;" name = "searchForm">
 <select name="searchTitle" style="padding-left: 5px; width: 120px; height: 38px;  box-sizing: border-box; border: 1px solid #ccc;">
 	<option selected="selected">제목</option>
 	<option>닉네임</option>

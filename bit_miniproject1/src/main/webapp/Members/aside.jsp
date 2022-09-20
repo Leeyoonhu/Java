@@ -18,10 +18,9 @@
     }
     .btn1 {
   		font-size: 25px;
- 		padding: 10px 30px;
-  		border: 1px solid white;
-  		border-radius:20px;
-		background-color: transparent;
+  		padding: 0; 
+   		border: none; 
+		background-color: transparent; 
 		text-transform: uppercase;
 	    letter-spacing: 5px;
 	    color: white;
@@ -31,9 +30,9 @@
 	}
 	.btn1:hover {
 		font-weight: bold;
-		background: white;
+/* 		background: white; */
 		color: black;
-		border: 1px solid black;
+/* 		border: 1px solid black; */
 		transition: 0.4s;
 		position: relative;
 	}

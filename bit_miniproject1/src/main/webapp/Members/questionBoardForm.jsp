@@ -26,9 +26,14 @@
 	String userPwd = (String)session.getAttribute("userPwd");
 	String userJob = (String)session.getAttribute("userJob");
 	String boardTitle = "questionBoard";
+	ArrayList<Board> bList = new ArrayList<Board>();
+	ArrayList<Board> bList2 = new ArrayList<Board>();
+	ArrayList<Comment> cList = new ArrayList<Comment>();
+	int pages = Integer.parseInt(request.getParameter("pages"));
 %>
 <jsp:include page="./boardInfo.jsp" flush="false">
 	<jsp:param value="<%=boardTitle%>" name="boardTitle"/>
+	<jsp:param value="<%=pages%>" name="pages"/>
 </jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
@@ -92,6 +97,22 @@ else {%>
 	</tr>
 </c:forEach>	
 </table>
+<%
+int size = (int)session.getAttribute("size");
+int lastPage = 0;
+if(size / 15 > 0) {
+	lastPage = (size / 15) + 1;
+}
+else {
+	lastPage = 1;
+}
+for(int i = 1; i <= lastPage; i++){
+	if(i == 1){%>
+	<a style="text-decoration: none; color: black" href="./questionBoardForm.jsp?pages=<%=i%>"><%=i%></a>
+	<% } else if(i > 1){ %>
+	<a style="text-decoration: none; color: black" href="./questionBoardForm.jsp?pages=<%=i%>"> | <%=i%></a>
+	<% }
+}%>
 	<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
 </div>
 </div>

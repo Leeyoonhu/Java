@@ -10,6 +10,38 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+.wrappp {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonmn {
+  width: 140px;
+  height: 45px;
+  font-family: "Roboto", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.buttonmn:hover {
+  background-color: #f1d1cf;
+  box-shadow: 0px 15px 20px #f1d1cf;
+  color: navy;
+  transform: translateY(-7px);
+}
+
 #freeBoardView {
 	display: inline-block;
 	float: right;
@@ -163,18 +195,7 @@ else {%>
     background-position:center;" type="submit" value="">
 </form> <br>
 <a href="./<%=boardTitle%>Form.jsp" id="freeBoardForm" style="display: none;"></a>
-<input type="button" value="목록" style="
-	border: 1px solid black;
-	background-color: #74bbbe;
-	padding: 9px 0 10px;
-    font-size: 13px;
-    line-height: 16px;
-    text-align: center;
-    color: #fff;
-    border-radius: 5px;
-    width: 46px;
-	" onclick="document.getElementById('freeBoardForm').click();"
-	/>
+	
 <%if(writer.equals((String)session.getAttribute("nickName"))){
 session.setAttribute("title", title);
 session.setAttribute("content", content);
@@ -182,10 +203,11 @@ session.setAttribute("imageFileName", imageFileName);
 session.setAttribute("number", number);
 %>
 <a href="./boardUpdate.jsp?boardTitle=<%=boardTitle%>"id="boardUpdate" style="display: none;"></a>
-<input type="button" value="수정하기" style="
-	border: 1px solid black;
-	" onclick="document.getElementById('boardUpdate').click();"
-	/>
+<div class="wrappp">
+<button class="buttonmn" onclick="document.getElementById('freeBoardForm').click();"/>목록</button>
+<button class="buttonmn" onclick="document.getElementById('boardUpdate').click();"/>글 수정</button>
+<button class="buttonmn" onclick="document.getElementById('boardUpdate').click();"/>글 삭제</button>
+</div>
 <%} %>
 <hr>
 

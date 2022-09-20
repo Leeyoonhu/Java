@@ -20,22 +20,21 @@
     }
     .btn1 {
   		font-size: 25px;
- 		padding: 10px 30px;
-  		border: 1px solid white;
-  		border-radius:20px;
-		background-color: transparent;
+  		padding: 0; 
+   		border: none; 
+		background-color: transparent; 
 		text-transform: uppercase;
+	    letter-spacing: 5px;
 	    color: white;
 		font-weight: bold;
 		overflow: hidden; 
 		position: relative;
-		letter-spacing: 5px;
 	}
 	.btn1:hover {
 		font-weight: bold;
-		background: white;
+/* 		background: white; */
 		color: black;
-		border: 1px solid black;
+/* 		border: 1px solid black; */
 		transition: 0.4s;
 		position: relative;
 	}
@@ -95,8 +94,6 @@ String nickName = (String)session.getAttribute("nickName");
         	<a href="" style="display: none" id="watchMyComment"></a>
         	<a href="./logoutProcess.jsp" style="display: none" id="asideLogout"></a>
         	<a href="./calendarForm.jsp" style="display: none" id="asideCalendarForm"></a>
-        	<a href="./boardWrite.jsp?boardTitle=diary" style="display: none" id="writeDiary"></a>
-        	<a href="./diaryBoardForm.jsp" style="display: none" id="diaryBoardForm"></a>
         	<button class="asideMain" onclick="document.getElementById('asideToMain').click()">ROK ARMY</button>
         	<div style="font-size: 1.2em; margin-left: 30px; margin-top: 8px"><%=nickName%>'s</div>
         	<div style="font-size: 1em; margin-left: 20px; margin-top: 8px; display: inline-block;">현재 경험치 : ${userExp}</div>
@@ -104,26 +101,26 @@ String nickName = (String)session.getAttribute("nickName");
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyComment').click()">내댓글 보기</button> 
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('asideLogout').click()">로그아웃</button>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('asideCalendarForm').click()">출석체크</button>
-        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('writeDiary').click()">일기 쓰기</button>
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onClick="window.open('./diaryForm.jsp', '', 'width=1000, height=700'); return false;">일기 쓰기</button>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('diaryBoardForm').click()">내 일기장</button>
         </div>
-        <form action="./noticeboardForm.jsp?pages=1" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="전체게시판">
+        <form action="./noticeboardForm.jsp?pages=1" method="post" style=" margin-top: 100px">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-top: 30px; margin-left: 9px;" type="submit" value="전체게시판">
 		</form>
 		<form action="./freeBoardForm.jsp?pages=1" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="자유게시판">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-top: 30px; margin-left: 9px;" type="submit" value="자유게시판">
 		</form>
 		<form action="./screenBoardForm.jsp?pages=1" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="사진게시판">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-top: 30px; margin-left: 9px;" type="submit" value="사진게시판">
 		</form>
 		<form action="./questionBoardForm.jsp?pages=1" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="질문게시판">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-top: 30px; margin-left: 9px;" type="submit" value="질문게시판">
 		</form>
 		<form action="./informationBoardForm.jsp?pages=1" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="정보게시판">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-top: 30px; margin-left: 9px;" type="submit" value="정보게시판">
 		</form>
 		<form action="./calendarForm.jsp" method="post" style=" margin-top: 50px">
-			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="출석체크">
+			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-top: 30px; margin-left: 9px;" type="submit" value="출석체크">
 		</form>
         <br><br>
     </nav>
