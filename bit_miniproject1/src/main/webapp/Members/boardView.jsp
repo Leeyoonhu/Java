@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <style type="text/css">
 .wrappp {
   height: 100%;
@@ -54,6 +55,7 @@
 </style>
 </head>
 <body>
+<script type="text/javascript" src="../Js/deleteBoard.js"></script>
 <%
 request.setCharacterEncoding("utf-8");  
 int number = 0; 
@@ -158,7 +160,8 @@ else {%>
             <table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
                 <thead>
                     <tr>
-                        <th colspan="3" style="background-color: #eeeeee; text-align:center;">게시판 글보기 <div style="float: right;">조회 : <%=views %> 추천 : <%=recommends %></div> </th>
+                    	<th colspan="3" style="background-color: #ffdfdf; font-weight: bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;게시판글보기
+                        	<a style="float: right;"> 조회 : <%=views %> 추천 : <%=recommends %></a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -194,8 +197,10 @@ else {%>
     background: url(https://i.ibb.co/vVmM42G/image.jpg) no-repeat;
     background-position:center;" type="submit" value="">
 </form> <br>
-<a href="./<%=boardTitle%>Form.jsp" id="freeBoardForm" style="display: none;"></a>
+<a href="./<%=boardTitle%>Form.jsp?pages=1" id="boardForm" style="display: none;"></a>
 	
+<div class="wrappp">
+<button class="buttonmn" onclick="document.getElementById('boardForm').click();">목록</button>
 <%if(writer.equals((String)session.getAttribute("nickName"))){
 session.setAttribute("title", title);
 session.setAttribute("content", content);
@@ -203,12 +208,12 @@ session.setAttribute("imageFileName", imageFileName);
 session.setAttribute("number", number);
 %>
 <a href="./boardUpdate.jsp?boardTitle=<%=boardTitle%>"id="boardUpdate" style="display: none;"></a>
-<div class="wrappp">
-<button class="buttonmn" onclick="document.getElementById('freeBoardForm').click();"/>목록</button>
-<button class="buttonmn" onclick="document.getElementById('boardUpdate').click();"/>글 수정</button>
-<button class="buttonmn" onclick="document.getElementById('boardUpdate').click();"/>글 삭제</button>
-</div>
+<button class="buttonmn" onclick="document.getElementById('boardUpdate').click();">글 수정</button>
+<input id="deleteNumber" value="<%=number%>" type="text" style="display: none">
+<input id="boardTitle" value="<%=boardTitle%>" type="text" style="display: none">
+<button class="buttonmn" id="deleteBoard">글 삭제</button>
 <%} %>
+</div>
 <hr>
 
 <div style="height: auto">
@@ -228,7 +233,8 @@ session.setAttribute("number", number);
 	    border: 1px solid #303030;
 	    color: #fff; border-radius: 3px;
 	    box-sizing: border-box;  margin-right: 230px;" value="등록">
-		<textarea style="border: 1px solid #abadb3; height: 85px; margin-right: 20px; float: right;" rows="" cols="100" name="comment"></textarea>
+		<textarea style="border: 1px solid #abadb3; height: 85px; margin-right: 20px; float: right; resize: none;"
+		placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 이용약관에 의한 제재는 영창으로 갑니다." rows="" cols="100" name="comment"></textarea>
 		<strong style="float: right; margin-right: 20px; margin-top: 30px; font-size: 1.2em">${nickName}</strong>
 	</form>
 	</div>

@@ -46,6 +46,6 @@ else {%>
 </div>
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>
-<script type="text/javascript" src="../Js/callendar.js"></script>
+<script type="text/javascript" src="../Js/callendarSearch.js"></script>
 </body>
 </html>
