@@ -9,18 +9,21 @@
 <style>
  
         .bodyshower{
-            display : flex;
+           display : flex;
             justify-content: center;
             align-items: center;
-            height : 100vh;
-            background : url("https://i.ibb.co/r38wVRd/login.webp") no-repeat center;
+            height : 68vh;
+            width : 1950px;
+            background : url("https://i.ibb.co/84Hg9bq/back.png") no-repeat center;                    
             background-size: cover;
+            
         }
-/*         .bodyshower::before{ */
-/*             content:""; */
-/*             position: absolute; z-index: 1; */
-/*             top:0; right:0; bottom:0; left:0; */
-/*             background-color: rgba(0,0,0,.7); */
+        .bodyshower::before{ 
+           content:""; 
+          position: absolute; z-index: 1; 
+          top:290px; right:0; bottom:0; left:0; 
+          background-color: rgba(0,0,0,.8);
+          width: 1950px; 
         }
         .login-form {
             position: relative;
@@ -28,7 +31,7 @@
         }
         .login-form h1 {
             font-size: 32px;
-            color:black;
+            color:#999;
             text-align: center;
         }
         .int-area{width: 400px; position: relative;
@@ -41,9 +44,9 @@
             padding: 20px 10px 10px;
             background-color: transparent;
             border: none;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #999;
             font-size: 18px;
-            color : black;
+            color : white;
             outline: none;
             margin-bottom: 60px;
         }
@@ -96,18 +99,20 @@
         }
 
     </style>
+    <script type="text/javascript" src="../Js/loginCheck.js"></script>
     </head>
     <jsp:include page="./header.jsp"></jsp:include>
 <body>
 <section class="bodyshower">
     <section class="login-form">
-        <h1 style="color : black; font-weight:bold">로그인</h1>
-        <form action="./loginProcess.jsp" name="loginForm">
+        <h1 style="color : white; font-weight:bold">로그인</h1>
+        <form name="loginForm" action="./loginProcess.jsp">
             <div class="int-area">
                 <input placeholder="USER NAME" type="text" name="userId" id="loginUserId" autocomplete="off" required>
                 <label for="id"></label>
+            </div>
             <div class="int-area">
-                <input style="color:black" placeholder="PASSWORD" type="password" name="userPwd" id="loginUserPwd" autocomplete="off" required>
+                <input placeholder="PASSWORD" onkeypress="if(event.keyCode==13){document.getElementById('tryLogin').click()}" type="password"  name="userPwd" id="loginUserPwd" autocomplete="off" required>
                 <label for="pw" style="color:black"></label>
             </div>
             <div class="btn-area">
@@ -121,7 +126,6 @@
         </div> 
         </section>
     </section>
-    <script type="text/javascript" src="../Js/loginCheck.js"></script>
         <jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

@@ -1,11 +1,11 @@
 $(document).ready(function () {
   let today = new Date();
-  let year = today.getFullYear(); // 년도
-  let month = today.getMonth() + 1; // 월
+  let year = today.getFullYear(); 
+  let month = today.getMonth() + 1; 
   if (month < 10) {
     month = "0" + month;
   }
-  let date = today.getDate(); // 날짜
+  let date = today.getDate(); 
   let total = year + "-" + month + "-" + date;
 
   $("#calendar").fullCalendar({
@@ -18,6 +18,9 @@ $(document).ready(function () {
         text: "출석체크하기",
         id: "check",
         click: function () {
+			$('td[class=*today]').css(
+				color = "red"
+			)
           $.ajax({
             type: "POST",
             url: "./calendarController.do",

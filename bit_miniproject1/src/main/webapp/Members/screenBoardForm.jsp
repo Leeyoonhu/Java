@@ -74,7 +74,7 @@ else {%>
 				<img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="198px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
 			</c:when>
 			<c:otherwise>
-				<img alt="" src="<%=path%>${item.imageFileName}" width="198px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()" style="border-bottom: 1px solid gray; overflow: hidden"> <br>
+				<img alt="" src="<%=path%>${item.imageFileName}" width="198px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
 			</c:otherwise>
 		</c:choose>
 		</div>

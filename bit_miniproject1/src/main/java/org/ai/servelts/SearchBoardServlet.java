@@ -34,39 +34,15 @@ public class SearchBoardServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		searchBoard(request, response);
-		
-	}
-	public void searchBoard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		HttpSession httpSession = request.getSession();
 		String content = null;
 		String searchTitle = null;
 		String boardTitle = null;
-		HttpSession httpSession = null;
 		int pages = Integer.parseInt(request.getParameter("pages"));
-		if(pages == 1) {
-			searchTitle = request.getParameter("searchTitle");
-			request.getSession();
-			content = request.getParameter("content");
-			boardTitle = request.getParameter("boardTitle");
-			httpSession.setAttribute(searchTitle, "searchTitle");
-			httpSession.setAttribute(content, "content");
-			httpSession.setAttribute(boardTitle, "boardTitle");
-		}
-		else if(pages > 1) {
-			httpSession = request.getSession();
-			searchTitle = (String)httpSession.getAttribute("searchTitle");
-			content = (String)httpSession.getAttribute("content");
-			boardTitle = (String)httpSession.getAttribute("boardTitle");
-		}
+		searchTitle = (String)httpSession.getAttribute("searchTitle");
+		content = (String)httpSession.getAttribute("content");
+		boardTitle = (String)httpSession.getAttribute("boardTitle");
 		content = "%"+content+"%";
 		String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 		String sql = null;
@@ -75,8 +51,6 @@ public class SearchBoardServlet extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		System.out.println(searchTitle);
-		System.out.println(content);
 		ArrayList<Board> bList = new ArrayList<Board>();
 		ArrayList<Board> bList2 = new ArrayList<Board>();
 		ArrayList<Board> bList3 = new ArrayList<Board>();
@@ -98,11 +72,11 @@ public class SearchBoardServlet extends HttpServlet {
 				Collections.reverse(bList);
 				size = bList.size();
 				
-					if(bList.size() < 15){
-						for(int i = 0; i < bList.size(); i++){
-							bList2.add(bList.get(i));
-						}
+				if(bList.size() < 15){
+					for(int i = 0; i < bList.size(); i++){
+						bList2.add(bList.get(i));
 					}
+				}
 				
 				else {
 					int firstBoard = (15 * pages) - 15;
@@ -119,8 +93,7 @@ public class SearchBoardServlet extends HttpServlet {
 					}
 					
 				}
-				
-				
+
 				sql = "select number from comment";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -195,5 +168,13 @@ public class SearchBoardServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}	
 	
 }

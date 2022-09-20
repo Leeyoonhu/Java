@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>ROK ARMY</title>
 <style type="text/css">
+* {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
 #content {
 width: 1650px;
 height: 1400px;
@@ -173,7 +180,7 @@ position: static;
  .checks{
     	color : red;
     }
- .mainForm{
+.mainForm{
 	display: inline-block;
 	width: 1450px;
 	height: 1200px;
@@ -183,8 +190,16 @@ position: static;
 .mainFormContent {
 	display: inline-block;
 	text-align: center;
-	width: 1000px;
+	width: 1560px;
 	height: 400px;
+	right:-500px;
+}
+.mainFormContent2 {
+	display: inline-block;
+	text-align: center;
+	width: 1560px;
+	height: 400px;
+	right:-500px;
 }
 </style>
 </head>
@@ -204,7 +219,7 @@ position: static;
 <%}else if(session.getAttribute("userJob") != null) { %>
 <a href="./mainForm2.jsp" 	style="display: none" id="jungunsi2"></a>
 <%} %>
-<h1 style="text-align: center; font-size: 4.5em; position: relative; margin-top : 30px; color: white; cursor: pointer;" onclick="document.getElementById('jungunsi2').click()">
+<h1 style="text-align: center; font-size: 3.5em; font-weight:bold; position: relative; margin-top : 30px; color: white; cursor: pointer;" onclick="document.getElementById('jungunsi2').click()">
 <img alt="" src="https://i.ibb.co/mGCzCtg/soldier.png" width="120px" height="120px">
 전지적 군인 시점</h1> 
 
@@ -232,7 +247,7 @@ position: static;
 		</form>
 	</th> 
 	<th>
-		<form action="./calendarForm.jsp?pages=1" method="post" style="position: relative;">
+		<form action="./calendarForm.jsp" method="post" style="position: relative;">
 			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="출석체크">
 		</form>
 	</th> 

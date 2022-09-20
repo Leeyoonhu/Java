@@ -69,7 +69,6 @@ else {%>
 				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
 			</tr>
 		</thead>
-
 <%!int count = 0;%>
 <c:set var="items" value="${bList}"></c:set>	
 <c:set var="items2" value="${cList}"></c:set>
@@ -130,7 +129,7 @@ else {%>
 		}
 	}
 </script>
-<form action="./searchNoticeBoard.do?pages=<%=pages%>" method="post" style="text-align: center;" name = "searchForm">
+<form action="./searchSession.jsp" method="post" style="text-align: center;" name = "searchForm">
 <select name="searchTitle" style="padding-left: 5px; width: 120px; height: 38px;  box-sizing: border-box; border: 1px solid #ccc;">
 	<option selected="selected">제목</option>
 	<option>닉네임</option>
