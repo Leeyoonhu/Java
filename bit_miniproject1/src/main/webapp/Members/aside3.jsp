@@ -82,6 +82,7 @@
 </head>
 <%
 String nickName = (String)session.getAttribute("nickName"); 
+request.setAttribute("nickName", nickName);
 %>
 <jsp:include page="./asideProcess.jsp">
 	<jsp:param value="<%=nickName%>" name="nickName"/>
@@ -95,7 +96,44 @@ String nickName = (String)session.getAttribute("nickName");
         	<a href="./logoutProcess.jsp" style="display: none" id="asideLogout"></a>
         	<a href="./calendarForm.jsp" style="display: none" id="asideCalendarForm"></a>
         	<button class="asideMain" onclick="document.getElementById('asideToMain').click()">ROK ARMY</button>
-        	<div style="font-size: 1.2em; margin-left: 30px; margin-top: 8px"><%=nickName%>'s</div>
+        	<div style="font-size: 1.2em; margin-left: 30px; margin-top: 8px">
+        	<c:forEach var="member" items="${mList}">
+			<c:if test="${member.nickName eq nickName}">
+				<c:choose>
+					<c:when test="${member.userExp == 0}">
+						<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 100}">
+						<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 200}">
+						<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 300}">
+						<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 400}">
+						<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 500}">
+						<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 600}">
+						<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 700}">
+						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 800}">
+						<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp > 800}">
+						<img src="https://i.ibb.co/QrPKh3V/image.jpg" width="18px" height="18px">
+					</c:when>
+				</c:choose>
+			</c:if>
+		</c:forEach>
+        	<%=nickName%>'s</div>
         	<div style="font-size: 1em; margin-left: 20px; margin-top: 8px; display: inline-block;">현재 경험치 : ${userExp}</div>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyWrite').click()">내글 보기</button>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyComment').click()">내댓글 보기</button> 

@@ -22,7 +22,7 @@
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(url, user, password);
-		sql = "select * from board";
+		sql = "select * from members";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		while(rs.next()){
@@ -31,10 +31,6 @@
 					, rs.getString(13), rs.getString(14), rs.getString(15)));
 		}
 		request.setAttribute("mList", mList);
-		for(int i = 0; i < mList.size(); i++){
-			mMap.put(i, mList.get(i).getUserId());
-		}
-		request.setAttribute("mMap", mMap);
 	} catch (Exception e){
 		e.printStackTrace();
 	}

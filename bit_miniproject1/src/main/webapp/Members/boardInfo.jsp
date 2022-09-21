@@ -20,11 +20,13 @@
 	ArrayList<Board> bList = new ArrayList<Board>();
 	ArrayList<Board> bList2 = new ArrayList<Board>();
 	ArrayList<Comment> cList = new ArrayList<Comment>();
+	ArrayList<Members> mList = new ArrayList<Members>();
 	String boardTitle = request.getParameter("boardTitle");
 	int pages = Integer.parseInt(request.getParameter("pages"));
 	int size = 0;
 	int firstBoard = (15 * pages) - 15;
 	int lastBoard = 15 * pages;
+	int userIcon = 1;
 	
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -76,6 +78,16 @@
 		session.setAttribute("size", size);	
 		request.setAttribute("bList", bList2);
 		request.setAttribute("cList", cList);
+	
+		sql = "select * from members";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		while(rs.next()){
+			mList.add(new Members(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
+					, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
+					, rs.getString(13), rs.getString(14), rs.getString(15)));
+		}
+		request.setAttribute("mList", mList);
 	} catch (Exception e){
 		e.printStackTrace();
 	}

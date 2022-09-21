@@ -13,6 +13,7 @@
 request.setCharacterEncoding("utf-8");
 String nickName = (String)session.getAttribute("nickName");
 int userExp = 0;
+int userIcon = 1;
 String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 String sql = null;
 String user = "root";
@@ -20,6 +21,7 @@ String password = "1234";
 Connection conn = null;
 PreparedStatement pstmt = null;
 ResultSet rs = null;
+ArrayList<Members> mList = new ArrayList<Members>();
 %>
 <%
 	try {
@@ -32,7 +34,15 @@ ResultSet rs = null;
 		while(rs.next()){
 			userExp = rs.getInt(1);
 		}
-		request.setAttribute("userExp", userExp);
+		sql = "select * from members";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		while(rs.next()){
+			mList.add(new Members(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
+					, rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12)
+					, rs.getString(13), rs.getString(14), rs.getString(15)));
+		}
+		request.setAttribute("mList", mList);
 	} catch (Exception e){
 		e.printStackTrace();
 	}

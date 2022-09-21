@@ -33,6 +33,7 @@
 	<jsp:param value="<%=boardTitle%>" name="boardTitle"/>
 	<jsp:param value="<%=pages%>" name="pages"/>
 </jsp:include>
+<jsp:include page="./memberInfo.jsp"></jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
@@ -93,7 +94,44 @@ else {%>
 		<%} count = 0; %>
 		</li>
 		<br>
-		<li style="color: gray; margin-left:7px;">${item.writer}</li>
+		<li style="color: gray; margin-left:7px;">
+		<c:forEach var="member" items="${mList}">
+			<c:if test="${member.nickName eq item.writer}}">
+				<c:choose>
+					<c:when test="${member.userExp == 0}">
+						<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 100}">
+						<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 200}">
+						<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 300}">
+						<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 400}">
+						<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 500}">
+						<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 600}">
+						<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 700}">
+						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 800}">
+						<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp > 800}">
+						<img src="https://i.ibb.co/QrPKh3V/image.jpg" width="18px" height="18px">
+					</c:when>
+				</c:choose>
+			</c:if>
+		</c:forEach>
+		${item.writer}</li>
 		<li style="float: left; display: inline-block; margin-left:7px;"><img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-bottom:2px; margin-right:2px"/>${item.views} </li><li style="float: right; display: inline-block; color: navy; margin-right: 7px"> <img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px"/> ${item.recommends} </li>
 		</ul>	
 		</div>

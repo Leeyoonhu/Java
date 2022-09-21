@@ -134,7 +134,7 @@ sql = "select * from Comment";
 pstmt = conn.prepareStatement(sql);
 rs = pstmt.executeQuery();
 while(rs.next()){
-	cList.add(new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+	cList.add(new Comment(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 }
 for(int i = 0; i < cList.size(); i++){
 	if(cList.get(i).getNumber() == number){
@@ -146,7 +146,7 @@ if(cList2 != null){
 }
 request.setAttribute("writer", writer);
 %>
-
+<jsp:include page="./memberInfo.jsp"></jsp:include>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 
@@ -171,7 +171,44 @@ else {%>
                     </tr>
                     <tr>
                         <td>작성자</td>
-                        <td colspan="2"><%=writer %></td>
+                        <td colspan="2">
+        <c:forEach var="member" items="${mList}">
+			<c:if test="${member.nickName eq writer}">
+				<c:choose>
+					<c:when test="${member.userExp == 0}">
+						<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 100}">
+						<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 200}">
+						<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 300}">
+						<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 400}">
+						<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 500}">
+						<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 600}">
+						<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 700}">
+						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 800}">
+						<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp > 800}">
+						<img src="https://i.ibb.co/b1CtsSW/image.png" width="18px" height="18px">
+					</c:when>
+				</c:choose>
+			</c:if>
+		</c:forEach>
+                        <%=writer %></td>
                     </tr>
                     <tr>
                         <td>작성일자</td>
@@ -235,7 +272,45 @@ session.setAttribute("number", number);
 	    box-sizing: border-box;  margin-right: 230px;" value="등록">
 		<textarea style="border: 1px solid #abadb3; height: 85px; margin-right: 20px; float: right; resize: none;"
 		placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 이용약관에 의한 제재는 영창으로 갑니다." rows="" cols="100" name="comment"></textarea>
-		<strong style="float: right; margin-right: 20px; margin-top: 30px; font-size: 1.2em">${nickName}</strong>
+		<strong style="float: right; margin-right: 20px; margin-top: 30px; font-size: 1.2em">
+		<c:forEach var="member" items="${mList}">
+			<c:if test="${member.nickName eq nickName}">
+				<c:choose>
+					<c:when test="${member.userExp == 0}">
+						<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 100}">
+						<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 200}">
+						<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 300}">
+						<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 400}">
+						<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 500}">
+						<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 600}">
+						<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 700}">
+						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 800}">
+						<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp > 800}">
+						<img src="https://i.ibb.co/QrPKh3V/image.jpg" width="18px" height="18px">
+					</c:when>
+				</c:choose>
+			</c:if>
+		</c:forEach>
+		${nickName}
+		</strong>
 	</form>
 	</div>
 </div>
