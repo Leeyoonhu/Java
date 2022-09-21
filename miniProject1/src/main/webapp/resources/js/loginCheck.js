@@ -7,7 +7,7 @@ $(document).ready(function(){
 			data : {userId: $('#loginUserId').val(), userPwd: $('#loginUserPwd').val()},
 			dataType : "text",
 			success : function(result){
-				if(result != "null"){
+				if(result == "false"){
 					alert(result + "님 어서오세요!");
 					form.submit();
 				}

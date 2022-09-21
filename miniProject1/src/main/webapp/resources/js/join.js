@@ -15,16 +15,19 @@ $(document).ready(function(){
 	$("#join_userId").focusout(function(){
 		$.ajax({
             type : 'POST',
-            url : './userIdJoinCheck.do',
+            url : 'idCheck',
             data : {userId : $("#join_userId").val()},
             dataType : "text",
             success : function(result){
-				if(result == 'true') {
+				if(result != "null") {
                 	$("#join_userId_check").text("이미 사용중인 아이디입니다.");
                     $("#join_userId_check").css("color", "red");
                     check = false;
 				}
-            }
+            },
+          	error : function(result){
+				conlose.log("idCheck error : " + result);
+			}
         });
         if($(this).val() == ""){
             $("#join_userId_check").text("아이디를 입력해 주세요.");
@@ -79,11 +82,11 @@ $(document).ready(function(){
     $("#join_nickName").focusout(function(){
     	$.ajax({
             type : 'POST',
-            url : './nickNameJoinCheck.do',
+            url : 'nickCheck',
             data : {nickName : $("#join_nickName").val()},
             dataType : "text",
             success : function(result){
-				if(result == 'true'){
+				if(result != 'null'){
                 	$("#join_nickName_check").text("이미 사용중인 닉네임입니다.");
                     $("#join_nickName_check").css("color", "red");
                     check3 = false;
@@ -128,11 +131,11 @@ $(document).ready(function(){
     $("#join_phoneNo").focusout(function() {
 		$.ajax({
 			type : "POST",
-			url : "./phoneNoCheck.do",
+			url : "pNCheck",
 			data : {phoneNo : $(this).val()},
 			dataType : "text",
 			success : function(result){
-				if(result == 'true'){
+				if(result != 'null'){
 					$("#join_phoneNo_check").text("이미 사용중인 전화번호입니다.");
                     $("#join_phoneNo_check").css("color", "red");
                     check6 = false;

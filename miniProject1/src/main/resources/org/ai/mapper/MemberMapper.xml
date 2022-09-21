@@ -11,4 +11,16 @@
 	 insert into Members (userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender) 
 	 values (#{userId}, #{userPwd}, #{checkPwd}, #{nickName}, #{firstName}, #{lastName}, #{phoneNo}, #{pwdHintQ}, #{pwdHint}, #{userJob}, #{gender})
    	</insert>
+   	
+   	<select id="idCheck" resultType="String">
+   		select userId from members where userId = #{userId}
+   	</select>
+   	
+   	<select id="nickCheck" resultType="String">
+   		select nickName from members where nickName = #{nickName}
+   	</select>
+   	
+   	<select id="pNCheck" resultType="String">
+   		select phoneNo from members where phoneNo = #{phoneNo}
+   	</select>
 </mapper>
