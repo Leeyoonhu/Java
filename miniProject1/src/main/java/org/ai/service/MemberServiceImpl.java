@@ -29,6 +29,25 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.join(vo) == 1 ? true : false;
 	}
+
+	@Override
+	public String idCheck(String userId) {
+		// TODO Auto-generated method stub
+		// js에서 받은 result가 notnull이면 존재..
+		return mapper.idCheck(userId);
+	}
+
+	@Override
+	public String nickCheck(String nickName) {
+		// TODO Auto-generated method stub
+		return mapper.nickCheck(nickName);
+	}
+
+	@Override
+	public String pNCheck(String phoneNo) {
+		// TODO Auto-generated method stub
+		return mapper.pNCheck(phoneNo);
+	}
 	
 	
 

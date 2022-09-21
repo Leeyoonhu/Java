@@ -1,6 +1,11 @@
 package org.ai.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.http.HttpResponse;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.ai.domain.MemberVO;
@@ -32,6 +37,25 @@ public class MemberController {
 		service.join(vo);
 		return "redirect:/board/main";
 	}
+	@PostMapping("/idCheck")
+	public void idCheck(String userId, HttpServletResponse response) throws IOException {
+		log.info("아이디체크..");
+		PrintWriter out = response.getWriter();
+		out.print(service.idCheck(userId));
+	}
+	@PostMapping("/nickCheck")
+	public void nickCheck(String nickName, HttpServletResponse response) throws IOException {
+		log.info("닉네임체크..");
+		PrintWriter out = response.getWriter();
+		out.print(service.nickCheck(nickName));
+	}
+	@PostMapping("/pNCheck")
+	public void pNCheck(String phoneNo, HttpServletResponse response) throws IOException {
+		log.info("전화번호체크..");
+		PrintWriter out = response.getWriter();
+		out.print(service.pNCheck(phoneNo));
+	}
+	
 	
 	@GetMapping("/login")
 	public void getLogin() {

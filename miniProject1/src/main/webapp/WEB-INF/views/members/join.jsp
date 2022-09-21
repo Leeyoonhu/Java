@@ -7,6 +7,7 @@
 <head>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="/resources/js/join.js"></script>
 <meta charset="UTF-8">
 <title>회원가입</title>
 <style type="text/css">
@@ -211,7 +212,7 @@ background-color : #80808021;
     <ul id="btn_line">
     	<a href="./mainForm.jsp" style="display: none" id="gotomainform"></a>
        <input style="position:relative; right:-120px;" type="button" value="메인으로" onclick="document.getElementById('gotomainform').click()"> 
-       &nbsp;&nbsp; <input style="position:relative; right:-120px;" type="submit" value="회원가입" id="tryJoin"><br>
+       &nbsp;&nbsp; <input style="position:relative; right:-120px;" type="button" value="회원가입" id="tryJoin"><br>
        <p class="checks" id="tryJoin_check"></p>
     </ul>
     </form>
