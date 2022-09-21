@@ -139,37 +139,37 @@ else {%>
         <br>
         <ul style="position:relative; right:-800px;">
             <li>&nbsp;&nbsp;아이디</li> 
-            <li><input style="width:300px; height:35px;" type="text" name="userId" id="join_userId">
+            <li><input style="width:300px; height:35px;" type="text" name="userId" id="join_userId" autocomplete="off" autofocus="autofocus">
             <p class="checks" id="join_userId_check"></li> 
         </ul>
         <ul style="position:relative; right:-800px;">
             <li>&nbsp;&nbsp;비밀번호</li> 
-            <li><input style="width:300px; height:35px;" type="password" name="userPwd" id="join_userPwd">
+            <li><input style="width:300px; height:35px;" type="password" name="userPwd" id="join_userPwd" autocomplete="off">
             <p class="checks" id="join_userPwd_check"></li> 
         </ul>
         <ul style="position:relative; right:-800px;">
             <li>&nbsp;&nbsp;비밀번호 확인</li>
-            <li><input style="width:300px; height:35px;" type="password" name="checkPwd" id="join_checkPwd">
+            <li><input style="width:300px; height:35px;" type="password" name="checkPwd" id="join_checkPwd" autocomplete="off">
             <p class="checks" id="join_checkPwd_check"></li>
         </ul >
         <ul style="position:relative; right:-800px;">
             <li>&nbsp;&nbsp;닉네임</li>
-            <li><input style="width:300px; height:35px;" type="text" name="nickName" id="join_nickName">
+            <li><input style="width:300px; height:35px;" type="text" name="nickName" id="join_nickName" autocomplete="off">
             <p class="checks" id="join_nickName_check"></li>
         </ul>
         <ul style="position:relative; right:-800px;">
             <li>&nbsp;&nbsp;성</li>
-            <li><input style="width:300px; height:35px;" type="text" name="firstName" id="join_firstName">
+            <li><input style="width:300px; height:35px;" type="text" name="firstName" id="join_firstName" autocomplete="off">
             <p class="checks" id="join_firstName_check"></li>
         </ul>
         <ul style="position:relative; right:-800px;"> 
             <li>&nbsp;&nbsp;이름</li>
-            <li><input style="width:300px; height:35px;" type="text" name="lastName" id="join_lastName">
+            <li><input style="width:300px; height:35px;" type="text" name="lastName" id="join_lastName" autocomplete="off">
             <p class="checks" id="join_lastName_check"></li>          
         </ul>
         <ul style="position:relative; right:-800px;">
             <li>&nbsp;&nbsp;전화번호</li>
-            <li><input style="width:300px; height:35px;" type="tel" name="phoneNo" id="join_phoneNo">
+            <li><input style="width:300px; height:35px;" type="tel" name="phoneNo" id="join_phoneNo" autocomplete="off">
             <p class="checks" id="join_phoneNo_check"></li>
         </ul>
         <ul style="position:relative; right:-800px;">
@@ -184,7 +184,7 @@ else {%>
         </ul>
         <ul style="position:relative; right:-800px;">
             <li>&nbsp;&nbsp;비밀번호 찾기 답변</li>
-            <li><input style="width:300px; height:35px;" type="text" name="pwdHint" id="join_pwdHint">
+            <li><input style="width:300px; height:35px;" type="text" name="pwdHint" id="join_pwdHint" autocomplete="off">
             <p class="checks" id="join_pwdHint_check"></li>
         </ul>
         <ul style="position:relative; right:-800px;">

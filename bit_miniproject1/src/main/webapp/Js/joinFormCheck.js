@@ -3,6 +3,7 @@ $(document).ready(function(){
     let pwdCheck = /^[a-zA-z0-9]{8,16}$/;
     let pNCheck = /^[0-9]{9,11}$/;
 	let joinForm = document.joinForm;
+	let nickName = $("#join_nickName").val();
 	let check = false;
 	let check1 = false;
 	let check2 = false;
@@ -191,6 +192,7 @@ $(document).ready(function(){
 		&& check6 == true
 		&& check7 == true
 		){	
+			alert(nickName + "님 어서오세요!");
 			joinForm.submit();
 		} else {
 			$("#tryJoin_check").text("형식을 확인해 주세요.")

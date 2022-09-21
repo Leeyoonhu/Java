@@ -78,6 +78,7 @@ else {%>
 <!-- item 이 보드 -->
 <c:set var="items2" value="${cList}"></c:set>
 <!-- item2 가 댓글 -->
+<c:set var="mList" value="${mList}"></c:set>
 <c:forEach var="item" items="${items}">
 <!-- 이 링크를 누르면 해당 게시글로 가야됨 -->
 	<tr class="boardElement" style="text-align: center; height: 52px">
@@ -98,7 +99,45 @@ else {%>
 			<img src="https://i.ibb.co/JjjkzJB/imageicon.jpg" style="width:15px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
 		</c:if>
 		</td>
-		<td>${item.writer}</td>
+		<td>
+		<c:forEach var="member" items="${mList}">
+			<c:if test="${member.nickName eq item.writer}">
+				<c:choose>
+					<c:when test="${member.userExp == 0}">
+						<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 100}">
+						<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 200}">
+						<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 300}">
+						<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 400}">
+						<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 500}">
+						<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 600}">
+						<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 700}">
+						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 800}">
+						<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp > 800}">
+						<img src="https://i.ibb.co/QrPKh3V/image.jpg" width="18px" height="18px">
+					</c:when>
+				</c:choose>
+			</c:if>
+		</c:forEach>
+		${item.writer}
+		</td>
 		<td>${item.regDate}</td>
 		<td>${item.views}</td>
 		<td>${item.recommends}</td>

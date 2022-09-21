@@ -1,7 +1,7 @@
 package org.ai.beans;
 
 public class Comment {
-	private int number;
+	private int cNumber, number;
 	private String writer, comment, regDate;
 	public Comment() {
 	}
@@ -9,19 +9,28 @@ public class Comment {
 	public Comment(int number) {
 		this.number = number;
 	}
-
-	public Comment(int number, String writer, String comment, String regDate) {
+	public Comment(int cNumber, int number,  String writer, String comment, String regDate) {
+		this.cNumber = cNumber;
 		this.number = number;
 		this.writer = writer;
 		this.comment = comment;
 		this.regDate = regDate;
 	}
+
 	public int getNumber() {
 		return number;
 	}
 	public String getWriter() {
 		return writer;
 	}
+	public int getcNumber() {
+		return cNumber;
+	}
+
+	public void setcNumber(int cNumber) {
+		this.cNumber = cNumber;
+	}
+
 	public String getComment() {
 		return comment;
 	}

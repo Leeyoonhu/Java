@@ -62,7 +62,7 @@ public class SaveCommentServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
-			sql = "insert into comment value(?, ?, ?, now())";
+			sql = "insert into comment (number, writer, comment, regDate) value(?, ?, ?, now())";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
 			pstmt.setString(2, writer);

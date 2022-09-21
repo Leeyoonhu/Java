@@ -11,6 +11,7 @@
 </head>
 <body>
 <!-- 로그인 이전 메인홈페이지 -->
+<%log((String)session.getAttribute("userId")); %>
 <%if(session.getAttribute("userId") != null){ %>
 <jsp:include page="./header2.jsp"></jsp:include>
 <%} 

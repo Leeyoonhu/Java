@@ -108,7 +108,7 @@
         <h1 style="color : white; font-weight:bold">로그인</h1>
         <form name="loginForm" action="./loginProcess.jsp">
             <div class="int-area">
-                <input placeholder="USER NAME" type="text" name="userId" id="loginUserId" autocomplete="off" required>
+                <input placeholder="USER NAME" type="text" name="userId" id="loginUserId" autocomplete="off" required autofocus="autofocus">
                 <label for="id"></label>
             </div>
             <div class="int-area">

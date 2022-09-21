@@ -73,7 +73,6 @@
 		</td>
 	</tr>
 </c:forEach>
-	
 </table>
 	<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
 </div>
