@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ai.mapper.MemberMapper">
+	<select id="login" resultType="org.ai.domain.MemberVO">
+		select * from members where userId = #{userId} and userPwd = #{userPwd}
+	</select>
+	
+	<insert id="join">
+	 insert into Members (userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender) 
+	 values (#{userId}, #{userPwd}, #{checkPwd}, #{nickName}, #{firstName}, #{lastName}, #{phoneNo}, #{pwdHintQ}, #{pwdHint}, #{userJob}, #{gender})
+   	</insert>
+</mapper>
