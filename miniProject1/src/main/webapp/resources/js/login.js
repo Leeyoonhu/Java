@@ -3,11 +3,12 @@ $(document).ready(function(){
 	$('#tryLogin').on('click', function(){
 		$.ajax({
 			type : "POST",
-			url : "./loginCheck.do",
+			url : "loginCheck",
 			data : {userId: $('#loginUserId').val(), userPwd: $('#loginUserPwd').val()},
 			dataType : "text",
 			success : function(result){
-				if(result == "false"){
+				// 아이디 비번 있나없나 조회
+				if(result != "null"){
 					alert(result + "님 어서오세요!");
 					form.submit();
 				}

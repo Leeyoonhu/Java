@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.*, java.sql.*, org.ai.beans.*" %>
+    <%@ page import="java.util.*, java.sql.*" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,40 +20,37 @@
 </style>
 </head>
 <body>
-<%
-	String userId = (String)session.getAttribute("userId");
-	String userPwd = (String)session.getAttribute("userPwd");
-	String userJob = (String)session.getAttribute("userJob");
-	String nickName = (String)session.getAttribute("nickName");
-	request.setCharacterEncoding("utf-8");
-	request.setAttribute("questionBoard", "questionBoard");
-	request.setAttribute("screenBoard", "screenBoard");
-	request.setAttribute("informationBoard", "informationBoard");
-	request.setAttribute("freeBoard", "freeBoard");
-%>
-<jsp:include page="./myArticleProcess.jsp">
-	<jsp:param value="<%=nickName%>" name="nickName"/>
-</jsp:include>
-<%if(session.getAttribute("userId") != null){ %>
-<jsp:include page="./header2.jsp"></jsp:include>
-<%} 
-else {%>
-<jsp:include page="./header.jsp"></jsp:include>
-<%}%>
+<!-- header -->
+<c:choose>
+	<c:when test="${empty userInfo.userId}">
+		<%@ include file="../includes/header.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../includes/header2.jsp" %>
+	</c:otherwise>
+</c:choose>
 <div id="content">
-<%if(session.getAttribute("userId") != null){ 
-	if("soldier".equals((String)session.getAttribute("userJob"))){ %>
-		<jsp:include page="./aside3.jsp"></jsp:include>
-	<%} else { %>
-		<jsp:include page="./aside2.jsp"></jsp:include>
-	<% }
-}else {%>
-<jsp:include page="./aside.jsp"></jsp:include>
-<%}%>
+<c:choose>
+	<c:when test="${empty userInfo.userId}">
+		<%@ include file="../includes/aside.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<c:choose>
+			<c:when test="${userInfo.userJob eq 'soldier'}">
+				<%@include file="../includes/aside3.jsp"%>
+			</c:when>
+			<c:otherwise>
+				<%@ include file="../includes/aside2.jsp" %>
+			</c:otherwise>
+		</c:choose>
+	</c:otherwise>
+</c:choose>
 <div id="myArticleForm">
-	<h2><%=nickName%>님이 쓴 글</h2>
+	<h2> <c:out value="${userInfo.nickName}"></c:out>님이 쓴 글</h2>
 	<br>
-	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
+	<a href="../board/main" id="mainFormCheck" style="display: none"></a>
+	<button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
+	<span>Click!</span><span>메인으로</span></button>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr>
@@ -69,55 +67,54 @@ else {%>
 		</thead>
 
 <%!int count = 0;%>
-<c:set var="items" value="${bList}"></c:set>	
-<c:set var="items2" value="${cList}"></c:set>
-<c:forEach var="item" items="${items}">
+<%-- <c:set var="items2" value="${cList}"></c:set> --%>
+<c:forEach var="item" items="${bList}">
 	<tr style="text-align: center" class="boardElement">
 		<td>${item.number}</td>
 		<td>
 		<c:choose>
-		<c:when test="${item.boardTitle eq questionBoard}">
+		<c:when test="${item.boardTitle eq 'question'}">
 			<img alt="" src="https://i.ibb.co/cNBBrXT/icons8-question-64.png" width="24px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToQuestionBoard').click()">
-			<a href="./questionBoardForm.jsp" style="display: none" id="goToQuestionBoard"></a>	
+			<a href="./question" style="display: none" id="goToQuestionBoard"></a>	
 		</c:when>
-			<c:when test="${item.boardTitle eq screenBoard}">
+			<c:when test="${item.boardTitle eq 'screen'}">
 				<img alt="" src="https://i.ibb.co/cyJSqsg/icons8-image-48.png" width="26px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToScreenBoard').click()">
-			<a href="./screenBoardForm.jsp" style="display: none" id="goToScreenBoard"></a>	
+			<a href="./screen" style="display: none" id="goToScreenBoard"></a>	
 		</c:when>
-		<c:when test="${item.boardTitle eq informationBoard}">
+		<c:when test="${item.boardTitle eq 'info'}">
 			<img alt="" src="https://i.ibb.co/sVDnSPC/icons8-information-64.png" width="24px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToInformationBoard').click()">
-			<a href="./informationBoardForm.jsp" style="display: none" id="goToInformationBoard"></a>	
+			<a href="./info" style="display: none" id="goToInformationBoard"></a>	
 		</c:when>
-		<c:when test="${item.boardTitle eq freeBoard}">
-			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="26px" style="margin-bottom: 2px; cursor: pointer;" onclick="document.getElementById('goToFreeBoard').click()">
-			<a href="./freeBoardForm.jsp" style="display: none" id="goToFreeBoard"></a>	
+		<c:when test="${item.boardTitle eq 'free'}">
+			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="24px" style="margin-bottom: 2px; cursor: pointer;" onclick="document.getElementById('goToFreeBoard').click()">
+			<a href="./free" style="display: none" id="goToFreeBoard"></a>	
 		</c:when>
 		</c:choose>
 		</td>
 		<td>
-		<a href="./boardView.jsp?number=${item.number}&boardTitle=${item.boardTitle}" style="text-decoration: none; color: black;">${item.title}</a>
-		<c:forEach var="item2" items="${items2}">
+		<a href="../board/view?number=${item.number}" style="text-decoration: none; color: black;">${item.title}</a>
+		<%-- <c:forEach var="item2" items="${items2}">
 			<c:if test="${item.number eq item2.number}">
 				<%count++;%>
 			</c:if>
-		</c:forEach>
-		<%if(count != 0){ %>
+		</c:forEach> --%>
+		<%-- <%if(count != 0){ %>
 		<a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
-		<%} count = 0; %>
+		<%} count = 0; %> --%>
 		<c:if test="${item.imageFileName ne null}">
 			<img src="https://i.ibb.co/JjjkzJB/imageicon.jpg" style="width:15px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
 		</c:if>
 		</td>
 		<td>${item.writer}</td>
-		<td>${item.regDate}</td>
+		<td><fmt:formatDate value="${item.regDate}" pattern="yyyy-MM-dd"/></td>
 		<td>${item.views}</td>
 		<td>${item.recommends}</td>
 	</tr>
 </c:forEach>	
 </table>
-	<a href="./mainForm.do?userId=<%=userId%>&userPwd=<%=userPwd%>&userJob=<%=userJob%>" id="mainFormCheck" style="display: none;"></a>
 </div>
 </div>
-<jsp:include page="./footer.jsp"></jsp:include>
+<!-- footer -->
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

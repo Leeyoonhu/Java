@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/butnn.css">
 <meta charset="UTF-8">
 <title>정보게시판</title>
 <style type="text/css">
@@ -52,7 +53,7 @@ String userId = (String)session.getAttribute("userId");
 	<c:when test="${empty userInfo.userId}">
 		<%@ include file="../includes/aside.jsp" %>
 	</c:when>
-	<%-- <c:otherwise>
+	<c:otherwise>
 		<c:choose>
 			<c:when test="${userInfo.userJob eq 'soldier'}">
 				<%@include file="../includes/aside3.jsp"%>
@@ -61,7 +62,7 @@ String userId = (String)session.getAttribute("userId");
 				<%@ include file="../includes/aside2.jsp" %>
 			</c:otherwise>
 		</c:choose>
-	</c:otherwise> --%>
+	</c:otherwise>
 </c:choose>
 
 
@@ -70,10 +71,14 @@ String userId = (String)session.getAttribute("userId");
 <%-- <a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="boardWrite" style="display: none;"></a> --%>
 	<h2>ROK ARMY 정보게시판</h2>
 	<br>
-	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
-<%-- <%if(session.getAttribute("userId") != null){ %> 
-	<input type="button" value="글쓰기" class="writeBoard" onclick="document.getElementById('boardWrite').click();" />
-<%}%> --%>
+	<a href="../board/main" id="mainFormCheck" style="display: none"></a>
+   <button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
+   <span>Click!</span><span>메인으로</span></button>
+<c:if test="${not empty userInfo.userId}">
+	<a href="../board/write" id="boardWrite" style="display: none"></a>
+	 <button class="custom-btn btn-12" onclick="document.getElementById('boardWrite').click();" >
+	 <span>Click!</span><span>글쓰기</span></button>
+</c:if>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr style="height: 52px">
@@ -135,7 +140,6 @@ for(int i = 1; i <= lastPage; i++){
 	<a style="text-decoration: none; color: black" href="./informationBoardForm.jsp?pages=<%=i%>"> | <%=i%></a>
 	<% }
 }%> --%>
-	<a href="../board/main" id="mainFormCheck" style="display: none;"></a>
 </div>
 </div>
 <%@ include file="../includes/footer.jsp" %>

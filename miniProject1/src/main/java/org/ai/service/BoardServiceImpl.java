@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.ai.domain.BoardVO;
 import org.ai.mapper.BoardMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,15 +61,27 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> search(String searchTitle, String content) {
+	public List<BoardVO> search(@Param("title") String title, @Param("content") String content) {
 		// TODO Auto-generated method stub
-		return mapper.search(searchTitle, content);
+		if(title.equals("제목")) {
+			title = "title";
+		}
+		if(title.equals("닉네임")) {
+			title = "writer";
+		}
+		return mapper.search(title, content);
 	}
 
 	@Override
 	public void plusReco(Integer number) {
 		// TODO Auto-generated method stub
 		mapper.plusReco(number);
+	}
+
+	@Override
+	public List<BoardVO> getMyArticle(String nickname) {
+		// TODO Auto-generated method stub
+		return mapper.getMyArticle(nickname);
 	}
 
 	

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript" src="/resources/js/login.js"></script>
 <style>
  
         .bodyshower{
@@ -116,7 +117,7 @@
                 <label for="pw" style="color:black"></label>
             </div>
             <div class="btn-area">
-                <button id ="tryLogin" type="submit">LOGIN</button>
+                <button id ="tryLogin" type="button">LOGIN</button>
             </div>
         </form>
         <div class="caption">

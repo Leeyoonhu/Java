@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>글 쓰기</title>
 <style type="text/css">
 #freeBoardWrite {
    display: inline-block;
@@ -71,10 +71,8 @@ String boardTitle = request.getParameter("boardTitle");
 		<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px;" name="content" placeholder="글꼴"></textarea> <br>
 		<input type="file" style="display:none;" id="imageFileName" name="imageFileName" accept="image/*"/>
  		<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
-<!-- 	<input type="button" style="margin-left: 10px; margin-top: 10px" value="파일 첨부" onclick="document.getElementById('fileName').click();" />
-		<input type="file" style="display:none;"id="fileName" name="fileName"> <br> -->
+		<input type="text" style="display: none;" name="boardTitle" value="${boardTitle}">
 		<input class="endWrite" type="submit" value="작성 완료">
-		<input type="text" style="display: none;" name="boardTitle" value="${boardTitle}">>
 </form>
 </div>
 </div>

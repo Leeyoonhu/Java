@@ -3,6 +3,7 @@ package org.ai.mapper;
 import java.util.List;
 
 import org.ai.domain.BoardVO;
+import org.apache.ibatis.annotations.Param;
 
 public interface BoardMapper {
 	// 특정 보드 조회
@@ -19,8 +20,9 @@ public interface BoardMapper {
 	public void plusView(int number);
 	public BoardVO getBoardView(int number);
 	// 글검색
-	public List<BoardVO> search(String searchTitle, String content);
+	public List<BoardVO> search(@Param("title")String title, @Param("content")String content);
 	// 추천수
 	public void plusReco(Integer number);
-	
+	// 내글보기
+	public List<BoardVO> getMyArticle(String nickname);
 }

@@ -96,8 +96,15 @@ public class MemberController {
 		log.info("login....");
 	}
 	
+	@PostMapping("/loginCheck")
+	public void loginCheck(@Param("userId")String userId, @Param("userPwd")String userPwd, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(service.loginCheck(userId, userPwd));
+	}
+	
 	@PostMapping("/loginProc")
-	public String postLogin(MemberVO vo, HttpSession session, RedirectAttributes rttr) {
+	public String loginProc(MemberVO vo, HttpSession session, RedirectAttributes rttr) {
 		log.info("vo : " +vo);
 		log.info("service : " + service.login(vo));
 		session.setAttribute("userInfo", service.login(vo));
@@ -108,6 +115,14 @@ public class MemberController {
 	public String postLogout(HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		session.invalidate();
+		return "redirect:/board/main";
+	}
+	
+	@PostMapping("/attend")
+	public String attendDate(String userId, HttpSession session) {
+		service.attend(userId);
+		session.removeAttribute("userInfo");
+		session.setAttribute("userInfo", service.renew(userId));
 		return "redirect:/board/main";
 	}
 	

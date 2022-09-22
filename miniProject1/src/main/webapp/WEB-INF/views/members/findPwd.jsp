@@ -22,6 +22,7 @@
     </style>
   </head>
    <!-- header -->
+<body>
 <c:choose>
 	<c:when test="${empty userInfo.userId}">
 		<%@ include file="../includes/header.jsp" %>
@@ -30,7 +31,6 @@
 		<%@ include file="../includes/header2.jsp" %>
 	</c:otherwise>
 </c:choose>
-  <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
 <div class="content">
 <div class="bodywash">
 	<div class="card align-middle" style="width:25rem;">
@@ -45,8 +45,8 @@
         <input type="text" name="pwdHintQ" id="fPwd_pwdHintQ" class="form-control" readonly="readonly" tabindex="-1" required><br>
         <input type="text" name="pwdHint" id="fPwd_pwdHint" class="form-control" placeholder="비밀번호 찾기 답변" required><br>
         <p class="checks" id="checks"></p>
-        <button type="button" id="btn-Yes" class="btn btn-lg btn-primary btn-block">비밀번호 찾기</button>
-        </form>
+        <input type="button" id="fwdBtn" class="btn btn-lg btn-primary btn-block" style="background: #f58b34;" value="비밀번호 찾기" name="fwdBtn">
+       </form>
 		</div>
         <div class="links">
             <a style="color : black" href="findId">아이디 찾기</a> | <a style="color : black" href="login">로그인</a> | <a style="color : black" href="join">회원가입</a>

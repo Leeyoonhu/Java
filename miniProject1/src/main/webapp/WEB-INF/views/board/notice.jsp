@@ -46,7 +46,7 @@
 	<c:when test="${empty userInfo.userId}">
 		<%@ include file="../includes/aside.jsp" %>
 	</c:when>
-	<%-- <c:otherwise>
+	<c:otherwise>
 		<c:choose>
 			<c:when test="${userInfo.userJob eq 'soldier'}">
 				<%@include file="../includes/aside3.jsp"%>
@@ -55,15 +55,10 @@
 				<%@ include file="../includes/aside2.jsp" %>
 			</c:otherwise>
 		</c:choose>
-	</c:otherwise> --%>
+	</c:otherwise>
 </c:choose>
-<%-- <%if(session.getAttribute("bList") == null){ %>
-<jsp:include page="./noticeBoardProcess.jsp">
-	<jsp:param value="<%=pages%>" name="pages"/>
-</jsp:include>
-<%} %> --%>
 <div id="noticeBoardForm">
-	<h2>ROK ARMY 전체게시판</h2>
+	<h2>전지적 군인 시점 전체게시판</h2>
 	<br>
 	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
@@ -128,7 +123,7 @@
 	</tr>
 </c:forEach>	
 </table>	
-	<a href="./main" id="mainFormCheck" style="display: none;"></a>
+	<a href="../board/main" id="mainFormCheck" style="display: none;"></a>
 <br>
 <script type="text/javascript">
 	function checkContent(){
@@ -141,10 +136,10 @@
 		}
 	}
 </script>
-<form action="../board/search" method="get" style="text-align: center;" name = "searchForm">
+<form action="../board/search" method="post" style="text-align: center;" name = "searchForm">
 <select name="title" style="padding-left: 5px; width: 120px; height: 38px;  box-sizing: border-box; border: 1px solid #ccc;">
 	<option selected="selected">제목</option>
-	<option>닉네임</option>
+	<option >닉네임</option>
 </select>
 <input type="text" name="content" style="padding: 0px 5px; width: 400px; height: 38px; box-sizing: border-box; border: 1px solid #ccc; padding-left: 6px">
 <button type="button" style=" 

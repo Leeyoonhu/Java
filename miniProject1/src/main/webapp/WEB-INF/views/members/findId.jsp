@@ -34,17 +34,17 @@
 			<h2 class="card-title" style="color:#f58b34;"><img src="https://i.ibb.co/mGCzCtg/soldier.png"  width="60px" height="60px"/>아이디 찾기</h2>
 		</div>
 		<div class="card-body">
-      <form action="/findIdProc" class="form-signin" method="POST">
+      <form class="form-signin" onSubmit="return false;">
   		 <p class="text2"> ${findid2}</p>
         <input type="text" name="firstName" id="firstName" class="form-control" placeholder="성" required autofocus><BR>
         <input type="text" name="lastName" id="lastName" class="form-control" placeholder="이름" required autofocus><BR>
-        <input type="text" name="phoneNo" id="phoneNo" class="form-control" placeholder="전화번호" required><br>
+        <input type="text" name="phoneNo" id="phoneNo" class="form-control" placeholder="전화번호" required onkeypress="if(event.keyCode==13){document.getElementById('tryfindId').click()}"><br>
         <p id="checks" class="checks"></p>
         <br>
-        <button  style = "background-color : #f58b34" id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="button" name="searchingId">아이디 조회하기</button>
-        <button style = "background-color : rgb(158, 158, 158)" id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('goToMainForm').click()">메인으로</button> 
-       	<button  style = "background-color : rgb(158, 158, 158)" style= "margin-top: 8px"   id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('findPwdForm').click()">비밀번호 찾기</button>
-        <a href="../board/main" style="display: none" id="goToMainForm"></a>
+        <button style = "background-color : #f58b34" id="tryfindId" class="btn btn-lg btn-primary btn-block" type="button" name="searchingId">아이디 조회하기</button>
+        <button style = "background-color : rgb(158, 158, 158)" id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick="document.getElementById('goToMainForm3').click()">메인으로</button> 
+       	<button style = "background-color : rgb(158, 158, 158)" style= "margin-top: 8px"   id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('findPwdForm').click()">비밀번호 찾기</button>
+        <a href="../board/main" style="display: none" id="goToMainForm3"></a>
        	<a href="../members/findPwd" style="display: none" id="findPwdForm"></a>
      </form>  
      </div>

@@ -21,26 +21,6 @@
 </style>
 </head>
 <body>
-<%
-String userId = (String)session.getAttribute("userId");
-%>
-<%if(session.getAttribute("userId") != null){ %>
-<jsp:include page="./header2.jsp"></jsp:include>
-<%} 
-else {%>
-<jsp:include page="./header.jsp"></jsp:include>
-<%}%>
-<button id="userId" value="<%=userId%>" style="display: none"></button>
-<div id="content">
-<%if(session.getAttribute("userId") != null){ 
-	if("soldier".equals((String)session.getAttribute("userJob"))){ %>
-		<jsp:include page="./aside3.jsp"></jsp:include>
-	<%} else { %>
-		<jsp:include page="./aside2.jsp"></jsp:include>
-	<% }
-}else {%>
-<jsp:include page="./aside.jsp"></jsp:include>
-<%}%>
 <div id="attendancForm">
 <div id="calendar" style="max-width:900px; margin:40px auto;"></div>
 </div>
