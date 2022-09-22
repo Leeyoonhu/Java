@@ -68,7 +68,21 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.findPwdProc(userId, pwdHint);
 	}
 
-	
-	
+	@Override
+	public void attend(String userId) {
+		// TODO Auto-generated method stub
+		mapper.attend(userId);
+	}
 
+	@Override
+	public MemberVO renew(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.renew(userId);
+	}
+
+	@Override
+	public String loginCheck(@Param("userId")String userId, @Param("userPwd")String userPwd) {
+		// TODO Auto-generated method stub
+		return mapper.loginCheck(userId, userPwd);
+	}
 }

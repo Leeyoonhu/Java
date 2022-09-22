@@ -1,22 +1,18 @@
 package org.ai.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.ai.domain.BoardVO;
 import org.ai.service.BoardService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.log4j.Log4j;
@@ -62,6 +58,11 @@ public class BoardController {
 		session.setAttribute("boardTitle", "screen");
 		model.addAttribute("bList", service.getList("screen"));
 	}
+	@GetMapping("/myArticle")
+	public void getMyArticle(Model model, String nickName) {
+		model.addAttribute("bList", service.getMyArticle(nickName));
+	}
+	
 	@GetMapping("/calendar")
 	public void getCalendar() {
 		log.info("calendar");
@@ -85,14 +86,31 @@ public class BoardController {
 
 	// 글쓰기 보류
 	@PostMapping("/writeProc")
-	public String writeBoard (BoardVO vo, HttpSession session, RedirectAttributes rttr) {
+	public String writeBoard (@Param("writer") String writer, @Param("title") String title, @Param("content") String content, 
+			@Param("imageFileName") MultipartFile File, @Param("boardTitle") String boardTitle, Model model, HttpSession session, RedirectAttributes rttr) {
+		String imageFileName = null;
+		String imageFilePath = null;
+		if(File.isEmpty()) {
+			
+		}
+		else {
+			imageFileName = File.getOriginalFilename();
+			
+		}
+		
+		BoardVO vo = new BoardVO();
+		vo.setWriter(writer);
+		vo.setTitle(title);
+		vo.setContent(content);
+		vo.setBoardTitle(boardTitle);
+		vo.setImageFileName(imageFileName);
+		vo.setImageFilePath(imageFilePath);
 		service.write(vo);
-		String boardTitle = (String)session.getAttribute("boardTitle");
-		return "redirect: ../board/" + boardTitle;
+		return "redirect: ../board/" + (String)session.getAttribute("boardTitle");
 	}
 	
-	@GetMapping("/search")
-	public void search(@RequestParam("searchTitle")String title, @RequestParam("content")String content, Model model) {
+	@PostMapping("/search")
+	public void search(@Param("title")String title, @Param("content")String content, Model model) {
 		model.addAttribute("bList", service.search(title, content));
 	}
 	

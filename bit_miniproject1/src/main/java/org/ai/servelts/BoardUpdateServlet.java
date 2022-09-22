@@ -89,7 +89,7 @@ public class BoardUpdateServlet extends HttpServlet {
 			sql = "update board set title=?, content=?, imageFileName=?, fileName=? where number= ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
-			pstmt.setString(2, content);
+			pstmt.setString(2, content); 
 			pstmt.setString(3, imageFileName);
 			pstmt.setString(4, fileName);
 			pstmt.setInt(5, number);

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/butnn.css">
 <meta charset="UTF-8">
 <title>사진 게시판</title>
 <style type="text/css">
@@ -14,6 +15,10 @@
 	width: 1400px;
 	height: 1200px;
 	margin-top: 150px;
+}
+.but {
+   text-align: center;
+   margin-bottom : -40px;
 }
 </style>
 </head>
@@ -32,7 +37,7 @@
 	<c:when test="${empty userInfo.userId}">
 		<%@ include file="../includes/aside.jsp" %>
 	</c:when>
-	<%-- <c:otherwise>
+	<c:otherwise>
 		<c:choose>
 			<c:when test="${userInfo.userJob eq 'soldier'}">
 				<%@include file="../includes/aside3.jsp"%>
@@ -41,18 +46,21 @@
 				<%@ include file="../includes/aside2.jsp" %>
 			</c:otherwise>
 		</c:choose>
-	</c:otherwise> --%>
+	</c:otherwise>
 </c:choose>
 <div id="screenBoardForm">
-<h2 style="text-align: center; margin-left: 100px;">ROK ARMY 사진게시판</h2> <br>
-<form action="../board/main">
-<input type="submit" value="메인으로">
-</form>
+<div class="but">
+<h2 style="text-align: center; margin-left: 100px;">전지적 군인 시점 사진게시판</h2> <br>
+   <a href="../board/main" id="mainFormCheck" style="display: none"></a>
+   <button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
+   <span>Click!</span><span>메인으로</span></button>
 <!-- 여기다가 boardTitle = screenBoard인 애들 나오게할것 -->
-<%-- <a href="./boardWrite.jsp?boardTitle=<%=boardTitle%>" id="boardWrite" style="display: none;"></a>
-<%if(session.getAttribute("userId") != null){ %> 
-	<input type="button" value="글쓰기" class="writeBoard" onclick="document.getElementById('boardWrite').click();" />
-<%}%> --%>
+<c:if test="${not empty userInfo.userId}">
+   <a href="../board/write" id="boardWrite" style="display: none"></a>
+    <button class="custom-btn btn-12" onclick="document.getElementById('boardWrite').click();" >
+    <span>Click!</span><span>글쓰기</span></button>
+</c:if>
+</div>
 <br>
 	<hr>
 	<br>

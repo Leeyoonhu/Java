@@ -35,4 +35,16 @@
    	<select id="findPwdProc" resultType="String">
    		select userPwd from members where userId = #{userId} and pwdHint = #{pwdHint}
    	</select>
+   	
+   	<update id="attend">
+   		update members set attDate = now(), userExp = userExp + 100 where userId = #{userId}
+   	</update>
+   	
+   	<select id="renew" resultType="org.ai.domain.MemberVO">
+   		select * from members where userId = #{userId}
+   	</select>
+   	
+   	<select id="loginCheck" resultType="String">
+   		select nickName from members where userId = #{userId} and userPwd = #{userPwd}
+   	</select>
 </mapper>

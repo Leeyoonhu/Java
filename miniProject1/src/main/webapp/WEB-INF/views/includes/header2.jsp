@@ -4,9 +4,13 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/resources/css/butl.css">
 <meta charset="UTF-8">
 <title>ROK ARMY</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript" src="/resources/js/attend.js"></script>
 <style type="text/css">
+
 * {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -24,40 +28,7 @@ width: 1650px;
 height: 1600px;
 position: static;
 }
-.bts {
-  font-size: 25px;
-  padding: 10px 30px;
-  border: 3px solid rgb(170, 240, 170);
-  background-color: transparent;
-  color: rgb(170, 240, 170);
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: bold;
-  position: relative;
-  transition: all 0.4s;
-  overflow: hidden; 
-}
 
-.bts:focus {
-  outline: none;
-}
-
-.bts::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: gold;
-  top: 100%;
-  left: 0;
-  transition: all 0.4s;
-  z-index: 0;
-}
-
-.bts:hover {
-  color: white;
-  border : 3px solid white;
-}
 
 .goToMain {
 	width: 120px; 
@@ -191,15 +162,15 @@ position: static;
 	display: inline-block;
 	text-align: center;
 	width: 1560px;
-	height: 400px;
-	right:-500px;
+	margin-top : -190px;
+	
 }
 .mainFormContent2 {
 	display: inline-block;
 	text-align: center;
-	width: 1560px;
+	width: 1300px;
 	height: 400px;
-	right:-500px;
+	margin-left:270px;
 }
 </style>
 </head>
@@ -239,8 +210,10 @@ position: static;
 		</form>
 	</th>  
 	<th>
-		<form action="../board/calendar" method="get" style="position: relative;">
-			<input class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="submit" value="출석체크">
+		<form style="position: relative;">
+			<input type="hidden" value="${userInfo.attDate}" id="attDate">
+			<input type="hidden" value="${userInfo.userId}" id="loginedId">
+			<input id="attend" class="bts" style="width: 180px; height: 50px; font-size: 1.0em; margin-left: 10px" type="button" value="출석체크">
 		</form>
 	</th> 
 </tr>

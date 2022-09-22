@@ -4,6 +4,8 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/resources/css/butl.css">
+
 <meta charset="UTF-8">
 <title>ROK ARMY</title>
 <style type="text/css">
@@ -24,52 +26,18 @@ width: 1650px;
 height: 1600px;
 position: static;
 }
-.bts {
-  font-size: 25px;
-  padding: 10px 30px;
-  border: 3px solid rgb(170, 240, 170);
-  background-color: transparent;
-  color: rgb(170, 240, 170);
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: bold;
-  position: relative;
-  transition: all 0.4s;
-  overflow: hidden; 
-}
 
-.bts:focus {
-  outline: none;
-}
-
-.bts::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: gold;
-  top: 100%;
-  left: 0;
-  transition: all 0.4s;
-  z-index: 0;
-}
-
-.bts:hover {
-  color: white;
-  border : 3px solid white;
-}
-
-.goToMain {
-	width: 120px; 
-	float: right;
-	margin-right: 20px; 
-	margin-bottom: 10px; 
-	line-height: 30px; 
-	border-radius: 3px; 
-	box-sizing: border-box; 
-	border: 1px solid #303030;
-	color: gray;
-}
+/* .goToMain { */
+/* 	width: 120px;  */
+/* 	float: right; */
+/* 	margin-right: 20px;  */
+/* 	margin-bottom: 10px;  */
+/* 	line-height: 30px;  */
+/* 	border-radius: 3px;  */
+/* 	box-sizing: border-box;  */
+/* 	border: 1px solid #303030; */
+/* 	color: gray; */
+/* } */
 
 .goToMain:hover {
 	text-transform: uppercase;
@@ -191,16 +159,17 @@ position: static;
 	display: inline-block;
 	text-align: center;
 	width: 1560px;
-	height: 400px;
-	right:-500px;
+	margin-top : -190px;
+	
 }
 .mainFormContent2 {
 	display: inline-block;
 	text-align: center;
-	width: 1560px;
-	height: 400px;
-	right:-500px;
+	width: 1300px;
+	height: 1000px;
+	margin-left:270px;
 }
+
 </style>
 </head>
 <body>

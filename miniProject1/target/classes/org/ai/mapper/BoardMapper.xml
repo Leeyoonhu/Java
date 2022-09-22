@@ -52,6 +52,10 @@
 
 	<select id="search" resultType="org.ai.domain.BoardVO">
 		select * from board where
-		${searchTitle} LIKE CONCAT('%',#{content},'%')
+		${title} LIKE CONCAT('%',#{content},'%')
+	</select>
+			
+	<select id="getMyArticle" resultType="org.ai.domain.BoardVO">
+		select * from board where writer = #{nickName}
 	</select>
 </mapper>

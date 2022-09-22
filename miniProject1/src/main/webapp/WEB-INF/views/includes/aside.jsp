@@ -27,11 +27,13 @@
 		font-weight: bold;
 		overflow: hidden; 
 		position: relative;
+		border-top : 2px solid #d0d0d0;
+		border-bottom : 2px solid #d0d0d0;
 	}
 	.btn1:hover {
 		font-weight: bold;
 /* 		background: white; */
-		color: black;
+		color: #C8E6A8;
 /* 		border: 1px solid black; */
 		transition: 0.4s;
 		position: relative;

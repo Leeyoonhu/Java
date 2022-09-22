@@ -1,0 +1,40 @@
+.bts {
+  background: #C8E6A8;
+  color: black;
+  font-weight: bold;
+  border: none;
+  position: relative;
+  height: 60px;
+  font-size: 1.6em;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+}
+.bts:hover {
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+.bts:before,
+.bts:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 4px;
+  width: 0;
+  background: beige;
+  transition: 400ms ease all;
+}
+.bts:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.bts:hover:before,
+.bts:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
