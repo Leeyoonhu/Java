@@ -4,31 +4,54 @@
 
 <mapper namespace="org.ai.mapper.BoardMapper">
 	<select id="getList" resultType="org.ai.domain.BoardVO">
-		select * from board where boardTitle = #{title}
+		select * from board where
+		boardTitle = #{title}
 	</select>
-	
+
 	<select id="getNoticeList" resultType="org.ai.domain.BoardVO">
 		select * from board
 	</select>
-	
+
 	<select id="getPopularList" resultType="org.ai.domain.BoardVO">
-		select * from board order by recommends desc limit 5
+		select * from board order
+		by recommends desc limit 5
 	</select>
-	
+
 	<select id="getCurrentList" resultType="org.ai.domain.BoardVO">
-		select * from board order by regDate desc limit 5
+		select * from board order
+		by regDate desc limit 5
 	</select>
-	
+
 	<insert id="write">
-		insert into board (title, content, writer, imageFileName, fileName, boardTitle) values
-		(#{title}, #{content}, #{writer}, #{imageFileName}, #{fileName}, #{boardTitle})
+		insert into board (title, content, writer,
+		imageFileName, fileName, boardTitle) values
+		(#{title}, #{content},
+		#{writer}, #{imageFileName}, #{fileName}, #{boardTitle})
 	</insert>
-	
+
+	<update id="plusView">
+		update
+		board
+		set
+		views = views + 1
+		where number = #{number}
+	</update>
+
+	<update id="plusReco">
+		update
+		board
+		set
+		recommends = recommends + 1
+		where number = #{number}
+	</update>
+
 	<select id="getBoardView" resultType="org.ai.domain.BoardVO">
-		select * from board where number = #{number}
+		select * from board where
+		number = #{number}
 	</select>
-	
+
 	<select id="search" resultType="org.ai.domain.BoardVO">
-		select * from board where ${searchTitle} LIKE CONCAT('%',#{content},'%')
+		select * from board where
+		${searchTitle} LIKE CONCAT('%',#{content},'%')
 	</select>
 </mapper>

@@ -195,7 +195,7 @@ $(document).ready(function(){
 		&& check6 == true
 		&& check7 == true
 		){	
-			alert(nickName + "님 어서오세요!");
+			alert("회원 가입을 축하드립니다!");
 			joinForm.submit();
 		} else {
 			$("#tryJoin_check").text("형식을 확인해 주세요.")

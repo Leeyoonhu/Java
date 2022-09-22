@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.ai.domain.MemberVO;
 import org.ai.mapper.MemberMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,25 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.pNCheck(phoneNo);
 	}
+
+	@Override
+	public String findIdProc(@Param("firstName")String firstName, @Param("lastName")String lastName, @Param("phoneNo")String phoneNo) {
+		// TODO Auto-generated method stub
+		return mapper.findIdProc(firstName, lastName, phoneNo);
+	}
+	
+	@Override
+	public String idToPwdHintQ(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.idToPwdHintQ(userId);
+	}
+
+	@Override
+	public String findPwdProc(@Param("userId")String userId, @Param("pwdHint")String pwdHint) {
+		// TODO Auto-generated method stub
+		return mapper.findPwdProc(userId, pwdHint);
+	}
+
 	
 	
 

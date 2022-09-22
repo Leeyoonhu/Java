@@ -16,7 +16,11 @@ public interface BoardMapper {
 	// 글쓰기	
 	public int write(BoardVO vo);
 	// 글보기
+	public void plusView(int number);
 	public BoardVO getBoardView(int number);
 	// 글검색
 	public List<BoardVO> search(String searchTitle, String content);
+	// 추천수
+	public void plusReco(Integer number);
+	
 }

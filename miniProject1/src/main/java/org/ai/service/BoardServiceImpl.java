@@ -48,6 +48,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+	public void plusView(int number) {
+		// TODO Auto-generated method stub
+		mapper.plusView(number);
+	}
+	
+	@Override
 	public BoardVO getBoardView(int number) {
 		// TODO Auto-generated method stub
 		return mapper.getBoardView(number);
@@ -58,6 +64,13 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return mapper.search(searchTitle, content);
 	}
+
+	@Override
+	public void plusReco(Integer number) {
+		// TODO Auto-generated method stub
+		mapper.plusReco(number);
+	}
+
 	
 	
 

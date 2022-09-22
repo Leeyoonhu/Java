@@ -5,6 +5,8 @@
 <html lang="ko">
   <head>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript" src="/resources/js/findPwd.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +21,15 @@
         @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
     </style>
   </head>
-   <jsp:include page="./header.jsp"></jsp:include>
+   <!-- header -->
+<c:choose>
+	<c:when test="${empty userInfo.userId}">
+		<%@ include file="../includes/header.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../includes/header2.jsp" %>
+	</c:otherwise>
+</c:choose>
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
 <div class="content">
 <div class="bodywash">
@@ -39,7 +49,7 @@
         </form>
 		</div>
         <div class="links">
-            <a style="color : black" href="./findIdForm.jsp">아이디 찾기</a> | <a style="color : black" href="./loginForm.jsp">로그인</a> | <a style="color : black" href="./joinForm.jsp">회원가입</a>
+            <a style="color : black" href="findId">아이디 찾기</a> | <a style="color : black" href="login">로그인</a> | <a style="color : black" href="join">회원가입</a>
         </div>
 	</div>
 	</div>
@@ -47,8 +57,7 @@
 	<br>
 	<br>
 	<br>
-  <jsp:include page="./footer.jsp"></jsp:include>
-    <script type="text/javascript" src="../Js/findPwdCheck.js">
-  </script>
+<!-- footer -->
+<%@ include file="../includes/footer.jsp" %>
   </body>
 </html>

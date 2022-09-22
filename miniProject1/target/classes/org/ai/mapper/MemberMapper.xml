@@ -23,4 +23,16 @@
    	<select id="pNCheck" resultType="String">
    		select phoneNo from members where phoneNo = #{phoneNo}
    	</select>
+   	
+   	<select id="findIdProc" resultType="String">
+   		select userId from members where firstName = #{firstName} and lastName = #{lastName} and phoneNo = #{phoneNo}
+   	</select>
+   	
+   	<select id="idToPwdHintQ" resultType="String">
+   		select pwdHintQ from members where userId = #{userId}
+   	</select>
+   	
+   	<select id="findPwdProc" resultType="String">
+   		select userPwd from members where userId = #{userId} and pwdHint = #{pwdHint}
+   	</select>
 </mapper>
