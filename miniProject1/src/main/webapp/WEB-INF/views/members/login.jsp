@@ -120,9 +120,9 @@
             </div>
         </form>
         <div class="caption">
-            <a href="./findIdForm.jsp" style="color: white; text-decoration: none">아이디 찾기</a> | 
-            <a href="./findPwdForm.jsp" style="color: white; text-decoration: none">비밀번호 찾기</a> | 
-            <a href="./mainForm.jsp" style="color: white; text-decoration: none">메인으로</a> 
+            <a href="findId" style="color: white; text-decoration: none">아이디 찾기</a> | 
+            <a href="findPwd" style="color: white; text-decoration: none">비밀번호 찾기</a> | 
+            <a href="../board/main" style="color: white; text-decoration: none">메인으로</a> 
         </div> 
         </section>
     </section>

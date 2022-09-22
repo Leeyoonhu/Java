@@ -10,10 +10,10 @@
 <body>
 <%	
 	request.setCharacterEncoding("utf-8");
-	String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
+	String url = "jdbc:mysql://192.168.0.93:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
 	String sql = null;
-	String user = "root";
-	String password = "1234";
+	String user = "scott";
+	String password = "tiger";
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;

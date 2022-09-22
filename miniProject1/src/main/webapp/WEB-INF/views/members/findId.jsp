@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +12,19 @@
         @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
     </style>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script type="text/javascript" src="/resources/js/findId.js"></script>
 </head>
-<jsp:include page="./header.jsp"></jsp:include>
+<!-- header -->
+<c:choose>
+	<c:when test="${empty userInfo.userId}">
+		<%@ include file="../includes/header.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../includes/header2.jsp" %>
+	</c:otherwise>
+</c:choose>
+
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
 <div class="content">
 <div class="bodywash">
@@ -22,7 +34,7 @@
 			<h2 class="card-title" style="color:#f58b34;"><img src="https://i.ibb.co/mGCzCtg/soldier.png"  width="60px" height="60px"/>아이디 찾기</h2>
 		</div>
 		<div class="card-body">
-      <form action="./findIdProcess.jsp" class="form-signin" method="POST">
+      <form action="/findIdProc" class="form-signin" method="POST">
   		 <p class="text2"> ${findid2}</p>
         <input type="text" name="firstName" id="firstName" class="form-control" placeholder="성" required autofocus><BR>
         <input type="text" name="lastName" id="lastName" class="form-control" placeholder="이름" required autofocus><BR>
@@ -32,8 +44,8 @@
         <button  style = "background-color : #f58b34" id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="button" name="searchingId">아이디 조회하기</button>
         <button style = "background-color : rgb(158, 158, 158)" id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('goToMainForm').click()">메인으로</button> 
        	<button  style = "background-color : rgb(158, 158, 158)" style= "margin-top: 8px"   id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="document.getElementById('findPwdForm').click()">비밀번호 찾기</button>
-        <a href="./mainForm.jsp" style="display: none" id="goToMainForm"></a>
-       	<a href="./findPwdForm.jsp" style="display: none" id="findPwdForm"></a>
+        <a href="../board/main" style="display: none" id="goToMainForm"></a>
+       	<a href="../members/findPwd" style="display: none" id="findPwdForm"></a>
      </form>  
      </div>
       </div>
@@ -42,7 +54,7 @@
       <br>
         <br>
         <br>
-      <jsp:include page="./footer.jsp"></jsp:include>
+<!-- footer -->
+<%@ include file="../includes/footer.jsp" %>
 </body>
-<script type="text/javascript" src="../Js/findIdCheck.js"></script>
 </html>

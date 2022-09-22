@@ -99,9 +99,15 @@ public class BoardController {
 	@GetMapping("/view")
 	public void getBoardView(@RequestParam("number") int number, Model model){
 		log.info("getList > > > >" + number);
+		service.plusView(number);
 		model.addAttribute("bList", service.getBoardView(number));
 	}
 	
+	@PostMapping("plusreco")
+	public String plusReco(Integer number) {
+		service.plusReco(number);
+		return "redirect: ../board/view?number=" + number;
+	}
 	//======================================REMOVEME
 	@GetMapping("/test")
 	public void getTest() {

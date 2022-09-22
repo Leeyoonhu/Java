@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@page import="java.util.*, java.sql.*" %>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -214,7 +215,9 @@ request.setAttribute("writer", writer);
                     </tr>
                     <tr>
                         <td>작성일자</td>
-                        <td colspan="2">${bList.regDate}</td>
+                        <td colspan="2">
+                        <fmt:formatDate value="${bList.regDate}" pattern="yyyy년 MM월 dd일 hh시 mm분"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>내용</td>
@@ -225,12 +228,12 @@ request.setAttribute("writer", writer);
             </table>
     	</div>
     </div>
-    </div>
-    </div>
     
-<%-- <c:set var ="number" value="<%=number%>"></c:set>
-<form action="./recommendsProcess.do?number=${number}" method="post">
+    
+<%-- <c:set var ="number" value="<%=number%>"></c:set> --%>
+<form action="./plusreco" method="post">
 	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
+	<input type="hidden" name ="number" value="${bList.number}" >
 	<input style="width: 90px;
     height: 55px;
     border: 1px solid #ccc;
@@ -239,8 +242,11 @@ request.setAttribute("writer", writer);
     background: url(https://i.ibb.co/vVmM42G/image.jpg) no-repeat;
     background-position:center;" type="submit" value="">
 </form> <br>
+
+</div>
+</div>
+<%-- 	
 <a href="./<%=boardTitle%>Form.jsp?pages=1" id="boardForm" style="display: none;"></a>
-	
 <div class="wrappp">
 <button class="buttonmn" onclick="document.getElementById('boardForm').click();">목록</button>
 <%if(writer.equals((String)session.getAttribute("nickName"))){

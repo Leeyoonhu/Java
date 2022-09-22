@@ -45,7 +45,7 @@ $(document).ready(function(){
 			&& check2 == true){
 				$.ajax({
 					type : 'POST',
-					url : './findId.do',
+					url : 'findIdProc',
 					data : {firstName: $('#firstName').val(), lastName: $('#lastName').val(), phoneNo: $('#phoneNo').val()},
 					dataType : 'text',
 					success : function(result){
@@ -53,8 +53,9 @@ $(document).ready(function(){
 							$('#checks').text('');
 							alert("회원님의 아이디는 " + result + " 입니다.");
 						}
-						if(result == 'null'){
-							$('#checks').text('형식을 확인해 주세요.')	
+						else {
+							
+							$('#checks').text('정보가 일치하지 않습니다.')	
 							$('#checks').css('color', 'red');
 						}	
 					}

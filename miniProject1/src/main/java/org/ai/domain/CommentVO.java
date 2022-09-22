@@ -1,10 +1,12 @@
 package org.ai.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Data
 public class CommentVO {
 	private int cNumber, number;
 	private String writer, comment, regDate;

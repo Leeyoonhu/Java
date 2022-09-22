@@ -1,10 +1,12 @@
 package org.ai.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Data
 public class MemberVO {
 	private int userNum, userExp;
 	private String userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender, attDate, regDate;
@@ -39,7 +41,7 @@ public class MemberVO {
 		this.userExp = userExp;
 		this.userId = userId;
 		this.userPwd = userPwd;
-		this.checkPwd = checkPwd;
+		this.checkPwd = checkPwd;	
 		this.nickName = nickName;
 		this.firstName = firstName;
 		this.lastName = lastName;

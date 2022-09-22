@@ -11,7 +11,7 @@
   		$('#fPwd_userId').focusout(function(){
 	     $.ajax({
 			type : 'POST',
-			url : './findPwd.do',
+			url : 'idToPwdHintQ',
 			data : {userId : $(this).val()},
 			dataType : 'text',
 			success : function(result){
@@ -52,7 +52,7 @@
 			&& check2 == true){
 				$.ajax({
 					type : 'GET',
-					url : './findPwd.do',
+					url : 'findPwdProc',
 					data : {userId: $('#fPwd_userId').val(), pwdHint: $('#fPwd_pwdHint').val()},
 					dataType : 'text',
 					success : function(result){

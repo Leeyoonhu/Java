@@ -63,7 +63,7 @@
 		<div>
 		<a href="./view?number=${item.number}" id="goScreenView" style="display: none;"></a>
 		<c:choose>
-			<c:when test="${item.imageFileName eq null}">
+			<c:when test="${item.imageFileName eq null || item.imageFilePath eq null}">
 				<img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="198px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden; cursor: pointer;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
 			</c:when>
 			<c:otherwise>
