@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>전체게시판</title>
+<link rel="stylesheet" href="/resources/css/butnn3.css">
 <style type="text/css">
 #noticeBoardForm {
 	display: inline-block;
@@ -60,7 +61,9 @@
 <div id="noticeBoardForm">
 	<h2>전지적 군인 시점 전체게시판</h2>
 	<br>
-	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
+	<a href="../board/main" id="mainFormCheck" style="display: none"></a>
+	<button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
+	<span>Click!</span><span>메인으로</span></button>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr style="height: 52px">
@@ -69,7 +72,7 @@
 					<img alt="" src="https://i.ibb.co/yQ8yXZM/icons8-noticeboard-48.png" width="24px" height="24px">
 				</th>
 				<th style="background-color : #C8E6A8; text-align:center; width:700px">제목</th>
-				<th style="background-color : #C8E6A8; text-align:center; width:100px">닉네임</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:200px">닉네임</th>
 				<th style="background-color : #C8E6A8; text-align:center; width:200px">등록일</th>
 				<th style="background-color : #C8E6A8; text-align:center; width:100px">조회</th>
 				<th style="background-color : #C8E6A8; text-align:center; width:100px">추천</th>
@@ -116,7 +119,45 @@
 			<img src="https://i.ibb.co/JjjkzJB/imageicon.jpg" style="width:15px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
 		</c:if>
 		</td>
-		<td>${item.writer}</td>
+		<!-- 닉네임 옆 경험치에따른 계급표 -->
+		<td>
+		<c:forEach var="member" items="${mList}">
+			<c:if test="${item.writer eq member.nickName}">
+				<c:choose>
+					<c:when test="${member.userExp == 0}">
+						<img src="https://i.ibb.co/DYQFRjq/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 100}">
+						<img src="https://i.ibb.co/Hnhvny8/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 200}">
+						<img src="https://i.ibb.co/NKXW0C9/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 300}">
+						<img src="https://i.ibb.co/HNzQDJT/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 400}">
+						<img src="https://i.ibb.co/M6PwMcC/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 500}">
+						<img src="https://i.ibb.co/QkmbTmL/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 600}">
+						<img src="https://i.ibb.co/WHGk9tW/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 700}">
+						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 800}">
+						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp > 800}">
+						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					</c:when>
+				</c:choose>
+			</c:if>
+		</c:forEach>
+		${item.writer}</td>
 		<td><fmt:formatDate value="${item.regDate}" pattern="yyyy-MM-dd"/></td>
 		<td>${item.views}</td>
 		<td>${item.recommends}</td>

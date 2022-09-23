@@ -1,5 +1,7 @@
 package org.ai.service;
 
+import java.util.List;
+
 import org.ai.domain.MemberVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,4 +17,6 @@ public interface MemberService {
 	public void attend(String userId);
 	public MemberVO renew(String userId);
 	public String loginCheck(@Param("userId")String userId, @Param("userPwd")String userPwd);
+	
+	public List<MemberVO> getList();
 }

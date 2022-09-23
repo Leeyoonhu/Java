@@ -3,6 +3,7 @@ package org.ai.service;
 import java.util.List;
 
 import org.ai.domain.BoardVO;
+import org.ai.domain.MemberVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface BoardService {
@@ -16,4 +17,5 @@ public interface BoardService {
 	public List<BoardVO> search(@Param("title") String title, @Param("content") String content);
 	public void plusReco(Integer number);
 	public List<BoardVO> getMyArticle(String nickname);
+	public void deleteBoard(Integer number);
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.ai.domain.BoardVO;
 import org.ai.service.BoardService;
+import org.ai.service.MemberService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -19,13 +20,11 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.log4j.Log4j;
@@ -36,6 +35,8 @@ import lombok.extern.log4j.Log4j;
 public class BoardController {
 	@Autowired
 	BoardService service;
+	@Autowired
+	MemberService mService;
 	
 	// 년/월/일 폴더 (파일 path앞에 system time 의 y-M-d폴더 생성)
 	private String getFolder() {
@@ -56,28 +57,33 @@ public class BoardController {
 		log.info("free.......");
 		session.setAttribute("boardTitle", "free");
 		model.addAttribute("bList", service.getList("free"));
+		model.addAttribute("mList", mService.getList());
 	}
 	@GetMapping("/question")
 	public void getQuestion(Model model, HttpSession session, RedirectAttributes rttr) {
 		log.info("question");
 		session.setAttribute("boardTitle", "question");
 		model.addAttribute("bList", service.getList("question"));
+		model.addAttribute("mList", mService.getList());
 	}
 	@GetMapping("/info")
 	public void getInfo(Model model, HttpSession session, RedirectAttributes rttr) {
 		log.info("info");
 		session.setAttribute("boardTitle", "info");
 		model.addAttribute("bList", service.getList("info"));
+		model.addAttribute("mList", mService.getList());
 	}
 	@GetMapping("/screen")
 	public void getScreen(Model model, HttpSession session, RedirectAttributes rttr) {
 		log.info("screen............ ");
 		session.setAttribute("boardTitle", "screen");
 		model.addAttribute("bList", service.getList("screen"));
+		model.addAttribute("mList", mService.getList());
 	}
 	@GetMapping("/myArticle")
 	public void getMyArticle(Model model, String nickName) {
 		model.addAttribute("bList", service.getMyArticle(nickName));
+		model.addAttribute("mList", mService.getList());
 	}
 	
 	@GetMapping("/calendar")
@@ -89,6 +95,7 @@ public class BoardController {
 	public void getNotice(Model model) {
 		log.info("notice");
 		model.addAttribute("bList", service.getNoticeList());
+		model.addAttribute("mList", mService.getList());
 	}
 	@GetMapping("/current")
 	public void getCurrentList(Model model) {
@@ -101,7 +108,8 @@ public class BoardController {
 		model.addAttribute("bList", service.getPopularList());
 	}
 	@GetMapping("/write")	// uploadForm역할 p494부터
-	public void getBoardWrite() {
+	public void getBoardWrite(Model model) {
+		model.addAttribute("mList", mService.getList());
 		log.info("write");
 	}
 	// 글쓰기(write)에서 이미지 첨부(글쓰기 jsp에서 ajax로 보냄)
@@ -194,6 +202,7 @@ public class BoardController {
 	@PostMapping("/search")
 	public void search(@Param("title")String title, @Param("content")String content, Model model) {
 		model.addAttribute("bList", service.search(title, content));
+		model.addAttribute("mList", mService.getList());
 	}
 	
 	@GetMapping("/view")
@@ -201,6 +210,7 @@ public class BoardController {
 		log.info("getList > > > >" + number);
 		service.plusView(number);
 		model.addAttribute("bList", service.getBoardView(number));
+		model.addAttribute("mList", mService.getList());
 	}
 	
 	@PostMapping("plusreco")
@@ -212,6 +222,11 @@ public class BoardController {
 	@GetMapping("/test")
 	public void getTest() {
 		log.info("check main");
+	}
+	@PostMapping("/delete")
+	public String deleteBoard(@Param("number")Integer number, @Param("boardTitle")String boardTitle) {
+		service.deleteBoard(number);
+		return "redirect: ../board/"+boardTitle;
 	}
 	
 	

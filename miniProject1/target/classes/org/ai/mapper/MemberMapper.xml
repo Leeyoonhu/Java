@@ -47,4 +47,8 @@
    	<select id="loginCheck" resultType="String">
    		select nickName from members where userId = #{userId} and userPwd = #{userPwd}
    	</select>
+   	
+   	<select id="getList" resultType="org.ai.domain.MemberVO">
+   		select * from members;
+   	</select>
 </mapper>

@@ -69,19 +69,21 @@
 <c:forEach var="item" items="${bList}">
 	<div style="width: 200px; height: 320px; display: inline-block; margin-left: 70px; border: 1px solid gray; box-sizing: border-box; border-radius: 3px;" >
 		<div>
-		<a href="./view?number=${item.number}" id="goScreenView" style="display: none;"></a>
-		<c:choose>
-			<c:when test="${item.imageFileName eq null || item.imageFilePath eq null}">
-				<img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="198px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden; cursor: pointer;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
-			</c:when>
-			<c:otherwise>
-				<img alt="" src="/board/display?fileName=${item.imageFilePath}${item.imageFileName}" width="198px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
-			</c:otherwise>
-		</c:choose>
+			<a href="./view?number=${item.number}" id="goScreenView" style="display: none;"></a>
+			<c:choose>
+				<c:when test="${item.imageFileName eq null || item.imageFilePath eq null}">
+					<img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="198px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden; cursor: pointer;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
+				</c:when>
+				<c:otherwise>
+					<img alt="" src="/board/display?fileName=${item.imageFilePath}${item.imageFileName}" width="198px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div>
 		<ul style="list-style:none; padding-left:0px;">
-		<li style="margin-top:12px; margin-left:7px;"><a href="./view?number=${item.number}" style="font-family:'Malgun Gothic', '맑은 고딕', helvetica, 'Apple SD Gothic Neo', sans-serif; font-size: 100%; color: black;">${item.title}</a>
+		<li style="margin-top:12px; margin-left:7px;">
+		<a href="./view?number=${item.number}" style="font-family:'Malgun Gothic', '맑은 고딕', helvetica, 'Apple SD Gothic Neo', sans-serif; font-size: 100%; color: black;">
+		${item.title}</a>
 		<!-- 2중 for문으로 댓글 숫자 보여줘야함 -->
 		<!-- 두 글 번호가 같을경우.. 카운트가 올라가고.. 다를경우에 출력.. -->
 		<%-- <c:forEach var="item2" items="${items2}">
@@ -95,38 +97,43 @@
 		</li>
 		<br>
 		<li style="color: gray; margin-left:7px;">
-				<%-- <c:choose>
-					<c:when test="${userInfo.userExp == 0}">
-						<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp == 100}">
-						<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp == 200}">
-						<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp == 300}">
-						<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp == 400}">
-						<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp == 500}">
-						<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp == 600}">
-						<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp == 700}">
-						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp == 800}">
-						<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
-					</c:when>
-					<c:when test="${userInfo.userExp > 800}">
-						<img src="https://i.ibb.co/QrPKh3V/image.jpg" width="18px" height="18px">
-					</c:when>
-				</c:choose> --%>
+			<!-- 닉네임 옆 경험치에따른 계급표 -->	
+				<c:forEach var="member" items="${mList}">
+					<c:if test="${item.writer eq member.nickName}">
+						<c:choose>
+							<c:when test="${member.userExp == 0}">
+								<img src="https://i.ibb.co/DYQFRjq/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 100}">
+								<img src="https://i.ibb.co/Hnhvny8/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 200}">
+								<img src="https://i.ibb.co/NKXW0C9/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 300}">
+								<img src="https://i.ibb.co/HNzQDJT/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 400}">
+								<img src="https://i.ibb.co/M6PwMcC/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 500}">
+								<img src="https://i.ibb.co/QkmbTmL/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 600}">
+								<img src="https://i.ibb.co/WHGk9tW/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 700}">
+								<img src="https://i.ibb.co/4PJ9wVk/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 800}">
+								<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp > 800}">
+								<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+							</c:when>
+						</c:choose>
+					</c:if>
+				</c:forEach>
 		${item.writer}</li>
 		<li style="float: left; display: inline-block; margin-left:7px;"><img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-bottom:2px; margin-right:2px"/>${item.views} </li><li style="float: right; display: inline-block; color: navy; margin-right: 7px"> <img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px"/> ${item.recommends} </li>
 		</ul>	
@@ -134,7 +141,7 @@
 	</div>
 	<%lineCount++; %>
 	<%
-	if(lineCount == 5){
+	if(lineCount == 4){
 		lineCount = 0; 
 	%>	
 			<br><br><br><br><br>
