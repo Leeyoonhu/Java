@@ -3,9 +3,8 @@ package org.ai.mapper;
 import java.util.List;
 
 import org.ai.domain.BoardVO;
-import org.ai.domain.MemberVO;
+import org.ai.domain.Criteria;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.multipart.MultipartFile;
 
 public interface BoardMapper {
 	// 특정 보드 조회
@@ -35,4 +34,7 @@ public interface BoardMapper {
 			@Param("imageFileName") String imageFileName, @Param("imageFilePath") String imageFilePath);
 	// 글 수정(이미지 x)
 	public void update2(@Param("number") Integer number, @Param("title") String title, @Param("content") String content);
+	
+	public List<BoardVO> getNoticeListWithPaging(Criteria cri); 
+
 }

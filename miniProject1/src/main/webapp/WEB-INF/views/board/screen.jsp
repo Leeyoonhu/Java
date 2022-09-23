@@ -77,7 +77,7 @@
                   <div class="thumbnail">
                       <c:choose>
                         <c:when test="${item.imageFileName eq null || item.imageFilePath eq null}">
-                          <img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="198px" height="115px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden; cursor: pointer;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
+                          <img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" style="border-bottom: 1px solid gray; width: 198px; height:115px; text-align: center; overflow: hidden; cursor: pointer;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
                           <a href="./view?number=${item.number}" id="goScreenView" style="display: none;"></a>
                         </c:when>
                         <c:otherwise>

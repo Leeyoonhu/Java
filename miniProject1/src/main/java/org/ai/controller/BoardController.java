@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.ai.domain.BoardVO;
 import org.ai.service.BoardService;
+import org.ai.service.CommentService;
 import org.ai.service.MemberService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,8 @@ public class BoardController {
 	BoardService service;
 	@Autowired
 	MemberService mService;
+	@Autowired
+	CommentService cService;
 	
 	// 년/월/일 폴더 (파일 path앞에 system time 의 y-M-d폴더 생성)
 	private String getFolder() {
@@ -211,6 +214,7 @@ public class BoardController {
 		service.plusView(number);
 		model.addAttribute("bList", service.getBoardView(number));
 		model.addAttribute("mList", mService.getList());
+		model.addAttribute("cList", cService.getList());
 	}
 	
 	@PostMapping("plusreco")
