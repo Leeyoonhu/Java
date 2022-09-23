@@ -6,6 +6,9 @@
 	<select id="getList" resultType="org.ai.domain.CommentVO">
 		select * from comment
 	</select>
+	<select id="get" resultType="org.ai.domain.CommentVO">
+		select * from comment where number = #{number}
+	</select>
 	<insert id="insert">
 		insert into comment (number, writer, comment) values (#{number}, #{writer}, #{comment})
 	</insert>

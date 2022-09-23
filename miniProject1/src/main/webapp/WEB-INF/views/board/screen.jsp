@@ -5,24 +5,39 @@
 <html>
   <head>
     <link rel="stylesheet" href="/resources/css/thumbnail.css" />
+    <link rel="stylesheet" href="/resources/css/butnn4.css">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+	<style>
+ 	* { 
+     font-family: 'Pretendard-Regular'; 
+     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff'); 
+     font-weight: 400; 
+     font-style: normal; 
+ } 
+ .but{
+ text-align: center;
+ }
+ #screenBoardForm{
+ margin-left : 310px;
+ }
+	
+	</style>
     <title>사진 게시판</title>
-
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css"
-    />
+	
+<!--     <link -->
+<!--       rel="stylesheet" -->
+<!--       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" -->
+<!--     /> -->
+<!--     <link -->
+<!--       href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" -->
+<!--       rel="stylesheet" -->
+<!--     /> -->
+<!--     <link -->
+<!--       rel="stylesheet" -->
+<!--       href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css" -->
+<!--     /> -->
   </head>
   <body>
     <%-- header --%>
@@ -55,7 +70,13 @@
     <div id="screenBoardForm">
       <div class="container gallery-container">
           <div class="but">
-            <h1>전지적 군인 시점 사진게시판</h1>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+            <h2>전지적 군인 시점 사진게시판</h2>
               <%-- buttons --%>
               <a href="../board/main" id="mainFormCheck" style="display: none"></a>
                 <button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
@@ -77,11 +98,11 @@
                   <div class="thumbnail">
                       <c:choose>
                         <c:when test="${item.imageFileName eq null || item.imageFilePath eq null}">
-                          <img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" style="border-bottom: 1px solid gray; width: 198px; height:115px; text-align: center; overflow: hidden; cursor: pointer;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
+                          <img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="323.33px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden; cursor: pointer; color:black;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
                           <a href="./view?number=${item.number}" id="goScreenView" style="display: none;"></a>
                         </c:when>
                         <c:otherwise>
-                          <img alt="" src="/board/display?fileName=${item.imageFilePath}${item.imageFileName}" width="198px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView2').click()" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
+                          <img alt="" src="/board/display?fileName=${item.imageFilePath}${item.imageFileName}" width="323.33px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView2').click()" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
                           <a href="./view?number=${item.number}" id="goScreenView2" style="display: none;"></a>
                         </c:otherwise>
                       </c:choose>
@@ -150,7 +171,7 @@
     </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script> -->
     <script>
       baguetteBox.run(".tz-gallery");
     </script>
