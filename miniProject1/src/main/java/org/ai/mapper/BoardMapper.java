@@ -15,7 +15,7 @@ public interface BoardMapper {
 	// 전체 게시판에서 최근 게시판 위주
 	public List<BoardVO> getCurrentList();
 	// 글쓰기	
-	public int write(BoardVO vo);
+	public void write(BoardVO vo);
 	// 글보기
 	public void plusView(int number);
 	public BoardVO getBoardView(int number);

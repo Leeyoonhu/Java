@@ -10,7 +10,7 @@ public interface BoardService {
 	public List<BoardVO> getNoticeList();
 	public List<BoardVO> getPopularList();
 	public List<BoardVO> getCurrentList();
-	public boolean write(BoardVO vo);
+	public void write(BoardVO vo);
 	public void plusView(int number);
 	public BoardVO getBoardView (int number);
 	public List<BoardVO> search(@Param("title") String title, @Param("content") String content);

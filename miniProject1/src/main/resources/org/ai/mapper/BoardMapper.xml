@@ -24,9 +24,9 @@
 
 	<insert id="write">
 		insert into board (title, content, writer,
-		imageFileName, fileName, boardTitle) values
+		imageFileName, imageFilePath, boardTitle) values
 		(#{title}, #{content},
-		#{writer}, #{imageFileName}, #{fileName}, #{boardTitle})
+		#{writer}, #{imageFileName}, #{imageFilePath}, #{boardTitle})
 	</insert>
 
 	<update id="plusView">

@@ -64,15 +64,15 @@
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr style="height: 52px">
-				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
-				<th style="background-color : #eeeeee; text-align:center; width:80px">
+				<th style="background-color : #C8E6A8; text-align:center; width:80px">글번호</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:80px">
 					<img alt="" src="https://i.ibb.co/yQ8yXZM/icons8-noticeboard-48.png" width="24px" height="24px">
 				</th>
-				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
-				<th style="background-color : #eeeeee; text-align:center; width:200px">등록일</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">조회</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:700px">제목</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:100px">닉네임</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:200px">등록일</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:100px">조회</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:100px">추천</th>
 			</tr>
 		</thead>
 
