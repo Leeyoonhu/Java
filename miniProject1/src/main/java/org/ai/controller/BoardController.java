@@ -4,6 +4,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -62,6 +63,7 @@ public class BoardController {
 		session.setAttribute("boardTitle", "free");
 		model.addAttribute("bList", service.getList("free"));
 		model.addAttribute("mList", mService.getList());
+		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/question")
 	public void getQuestion(Model model, HttpSession session, RedirectAttributes rttr) {
@@ -69,6 +71,7 @@ public class BoardController {
 		session.setAttribute("boardTitle", "question");
 		model.addAttribute("bList", service.getList("question"));
 		model.addAttribute("mList", mService.getList());
+		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/info")
 	public void getInfo(Model model, HttpSession session, RedirectAttributes rttr) {
@@ -76,6 +79,7 @@ public class BoardController {
 		session.setAttribute("boardTitle", "info");
 		model.addAttribute("bList", service.getList("info"));
 		model.addAttribute("mList", mService.getList());
+		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/screen")
 	public void getScreen(Model model, HttpSession session, RedirectAttributes rttr) {
@@ -88,6 +92,7 @@ public class BoardController {
 	public void getMyArticle(Model model, String nickName) {
 		model.addAttribute("bList", service.getMyArticle(nickName));
 		model.addAttribute("mList", mService.getList());
+		model.addAttribute("cList", cService.getList());
 	}
 	
 	@GetMapping("/calendar")
@@ -100,16 +105,19 @@ public class BoardController {
 		log.info("notice");
 		model.addAttribute("bList", service.getNoticeList());
 		model.addAttribute("mList", mService.getList());
+		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/current")
 	public void getCurrentList(Model model) {
 		log.info("current");
 		model.addAttribute("bList", service.getCurrentList());
+		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/popular")
 	public void getPopular(Model model) {
 		log.info("popular");
 		model.addAttribute("bList", service.getPopularList());
+		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/write")	// uploadForm역할 p494부터
 	public void getBoardWrite(Model model) {
@@ -207,6 +215,7 @@ public class BoardController {
 	public void search(@Param("title")String title, @Param("content")String content, Model model) {
 		model.addAttribute("bList", service.search(title, content));
 		model.addAttribute("mList", mService.getList());
+		model.addAttribute("cList", cService.getList());
 	}
 	
 	@GetMapping("/view")

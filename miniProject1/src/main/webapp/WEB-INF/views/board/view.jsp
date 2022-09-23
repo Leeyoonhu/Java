@@ -12,6 +12,9 @@
 <meta charset="UTF-8">
 <title>글 보기</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript" src="/resources/js/delete.js"></script>
+<script type="text/javascript" src="/resources/js/delComment.js"></script>
+<script type="text/javascript" src="/resources/js/addComment.js"></script>
 <style type="text/css">
 .wrappp {
   height: 100%;
@@ -148,13 +151,10 @@
 </form> <br>
 <a href="../board/${boardTitle}" id="boardForm" style="display: none;"></a>
 
-
 <div class="wrappp">
 <!-- 목록 버튼 -->
 <button class="buttonmn" onclick="document.getElementById('boardForm').click();">목록</button>
-
 <!-- 글 작성자와 현재 접속자가 동일하면 글 수정 버튼 -->
-<script type="text/javascript" src="/resources/js/delete.js"></script>
 <c:if test="${bList.writer eq userInfo.nickName}">
    <a href="../board/update?number=${bList.number}" id="boardUpdate" style="display: none;"></a>
    <button class="buttonmn" onclick="document.getElementById('boardUpdate').click();">글 수정</button>
@@ -164,8 +164,7 @@
 </div>
 <hr>
 
-<!-- 댓글 보여줌 -->
-
+<!-- 댓글 보여주기(삭제도 가능) -->
 <div style="height: auto">
 <img alt="" src="https://i.ibb.co/C96m34C/image.jpg" width="17" height="15" style="margin-bottom: 5px; margin-right:2px" > <strong style="font-size: 1.1em">
 댓글 (<c:out value="${fn:length(cList)}"></c:out>)
@@ -211,13 +210,15 @@
 			</c:if>
 		</c:forEach>
 ${comment.writer}</strong>
+<!-- 작성자 표시 -->
 	<c:if test="${comment.writer eq bList.writer}">
 		<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:2px;margin-bottom:2px" border="0">
 	</c:if>
 <span style="color: gray">(${comment.regDate})</span>
+<!-- 삭제 버튼 표시 -->
 	<c:if test="${comment.writer eq userInfo.nickName}">
 		<img src="https://i.ibb.co/jM9Tyxf/image.png" style="cursor: pointer;" id="deleteImage">
-		<input type="text" value="${comment.number}" style="display: none" id="deletecNumber"></input>
+		<input type="text" value="${comment.comNumber}" style="display: none" id="deletecNumber"></input>
 	</c:if>
 <br>
 ${comment.comment}
@@ -228,7 +229,6 @@ ${comment.comment}
 
 
 <!-- 댓글 달기 (로그인 된 사람만 보이게) -->
-<script type="text/javascript" src="/resources/js/addComment.js"></script>
 <c:if test="${not empty userInfo.userId}">
 	<div style="height: auto">
 	   <form method = "post"> 

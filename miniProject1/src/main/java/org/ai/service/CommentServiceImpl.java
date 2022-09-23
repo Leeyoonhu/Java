@@ -32,6 +32,11 @@ public class CommentServiceImpl implements CommentService {
 		// TODO Auto-generated method stub
 		mapper.insert(number, writer, comment);
 	}
+	@Override
+	public void delete(@Param("comNumber")Integer comNumber) {
+		// TODO Auto-generated method stub
+		mapper.delete(comNumber);
+	}
 
 	
 	

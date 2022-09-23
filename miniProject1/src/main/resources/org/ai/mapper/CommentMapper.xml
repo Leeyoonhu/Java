@@ -12,4 +12,7 @@
 	<insert id="insert">
 		insert into comment (number, writer, comment) values (#{number}, #{writer}, #{comment})
 	</insert>
+	<delete id="delete">
+		delete from comment where comNumber = #{comNumber}
+	</delete>
 </mapper>
