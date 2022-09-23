@@ -3,6 +3,7 @@ package org.ai.service;
 import java.util.List;
 
 import org.ai.domain.BoardVO;
+import org.ai.domain.MemberVO;
 import org.ai.mapper.BoardMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class BoardServiceImpl implements BoardService {
 		log.info("service : " +mapper.getList(title).size());
 		return mapper.getList(title);
 	}
-
+	
 	@Override
 	public List<BoardVO> getNoticeList() {
 		// TODO Auto-generated method stub
@@ -82,6 +83,12 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> getMyArticle(String nickname) {
 		// TODO Auto-generated method stub
 		return mapper.getMyArticle(nickname);
+	}
+
+	@Override
+	public void deleteBoard(Integer number) {
+		// TODO Auto-generated method stub
+		mapper.deleteBoard(number);
 	}
 
 	

@@ -11,24 +11,11 @@
 </style>
 </head>
 <body>
-<%-- <jsp:include page="./popularBoardProcess.jsp"></jsp:include> --%>
-
-<%
-	String userId = (String)session.getAttribute("userId");
-	String userPwd = (String)session.getAttribute("userPwd");
-	String userJob = (String)session.getAttribute("userJob");
-	request.setCharacterEncoding("utf-8");
-	request.setAttribute("questionBoard", "questionBoard");
-	request.setAttribute("screenBoard", "screenBoard");
-	request.setAttribute("informationBoard", "informationBoard");
-	request.setAttribute("freeBoard", "freeBoard");
-%>
-
 <div>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr>
-				<th colspan="2" style="background-color : #295298; z-index: 1; width:780px; height: 40px; color: white">인기 게시글</th>
+				<th colspan="3" style="background-color : #295298; z-index: 1; width:780px; height: 40px; color: white">인기 게시글</th>
 			</tr>
 		</thead>
 
@@ -70,6 +57,13 @@
 		<c:if test="${item.imageFileName ne null}">
 			<img src="https://i.ibb.co/JjjkzJB/imageicon.jpg" style="width:15px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
 		</c:if>
+			
+			<img src="https://i.ibb.co/vVmM42G/image.jpg" width="20px" height="20px" style="float: right"/>
+		</td>
+		<td>
+			<div style="float: right; width: auto; margin-right: 10px">
+				<c:out value="${item.recommends}"></c:out>
+			</div>
 		</td>
 	</tr>
 </c:forEach>

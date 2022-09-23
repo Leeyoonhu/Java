@@ -1,5 +1,7 @@
 package org.ai.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.ai.domain.MemberVO;
@@ -84,5 +86,11 @@ public class MemberServiceImpl implements MemberService {
 	public String loginCheck(@Param("userId")String userId, @Param("userPwd")String userPwd) {
 		// TODO Auto-generated method stub
 		return mapper.loginCheck(userId, userPwd);
+	}
+
+	@Override
+	public List<MemberVO> getList() {
+		// TODO Auto-generated method stub
+		return mapper.getList();
 	}
 }

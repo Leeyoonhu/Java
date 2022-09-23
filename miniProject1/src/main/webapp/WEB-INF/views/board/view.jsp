@@ -56,97 +56,6 @@
 </style>
 </head>
 <body>
-<script type="text/javascript" src="../Js/deleteBoard.js"></script>
-<%-- <%
-request.setCharacterEncoding("utf-8");  
-int number = 0; 
-String writer = null;
-String title = null;
-String regDate = null;
-String content = null;
-String imageFileName = null;
-String fileName = null;
-/* String path = request.getServletContext().getContextPath()+"/upload/"; */
-String boardTitle = request.getParameter("boardTitle");
-/* 상대경로 지정 */
-int views = 0;
-int recommends = 0;
-
-try {
-	number= Integer.parseInt(request.getParameter("number"));
-} catch (Exception e){
-	response.sendRedirect("./freeBoardForm.jsp?pages=1");
-}
-%>
-<%
-/* db내에서 글번호 조회 */
-	String url = "jdbc:mysql://localhost:3306/miniProject1?useSSL=false&allowPublicKeyRetrieval=true";
-	String sql = null;
-	String user = "root";
-	String password = "1234";
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-/* 	ArrayList<BoardVO> bList = new ArrayList<BoardVO>(); */
-	try {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		conn = DriverManager.getConnection(url, user, password);
-		sql = "select * from board";
-		pstmt = conn.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		while(rs.next()){
-	bList.add(new BoardVO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
-			rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
-		}
-		for(int i = 0; i < bList.size(); i++){
-	if(number == bList.get(i).getNumber()){
-		writer = bList.get(i).getWriter();
-		title = bList.get(i).getTitle();
-		regDate = bList.get(i).getRegDate();
-		content = bList.get(i).getContent();
-		views = bList.get(i).getViews();
-		recommends = bList.get(i).getRecommends();
-		if(bList.get(i).getImageFileName() != null){
-			request.setAttribute("imageFileName", bList.get(i).getImageFileName());
-		}
-		if(bList.get(i).getFileName() != null){
-			request.setAttribute("fileName", bList.get(i).getFileName());
-		}
-	}
-		}
-		views += 1;
-		sql = "update board set views = ? where number = ?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, views);
-		pstmt.setInt(2, number);
-		pstmt.executeUpdate();
-	} catch (Exception e){
-		e.printStackTrace();
-	}
-%> --%>
-<%-- <%
-String nickName = (String)session.getAttribute("nickName");
-ArrayList<Comment> cList = new ArrayList<Comment>();
-ArrayList<Comment> cList2 = new ArrayList<Comment>();
-request.setAttribute("nickName", nickName);  
-// 댓글이 있는지 찾기 위해서 댓글 db에서 서치
-sql = "select * from Comment";
-pstmt = conn.prepareStatement(sql);
-rs = pstmt.executeQuery();
-while(rs.next()){
-	cList.add(new Comment(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
-}
-for(int i = 0; i < cList.size(); i++){
-	if(cList.get(i).getNumber() == number){
-		cList2.add(cList.get(i));
-	}
-}
-if(cList2 != null){
-	request.setAttribute("cList", cList2);
-}
-request.setAttribute("writer", writer);
-<jsp:include page="./memberInfo.jsp"></jsp:include>
---%> 
 <!-- header -->
 <c:choose>
 	<c:when test="${empty userInfo.userId}">
@@ -175,8 +84,8 @@ request.setAttribute("writer", writer);
                     <tr>
                         <td>작성자</td>
                         <td colspan="2">
-        <%-- <c:forEach var="member" items="${mList}">
-			<c:if test="${member.nickName eq writer}">
+        <c:forEach var="member" items="${mList}">
+			<c:if test="${member.nickName eq bList.writer}">
 				<c:choose>
 					<c:when test="${member.userExp == 0}">
 						<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
@@ -210,7 +119,7 @@ request.setAttribute("writer", writer);
 					</c:when>
 				</c:choose>
 			</c:if>
-		</c:forEach> --%>
+		</c:forEach>
                         ${bList.writer}</td>
                     </tr>
                     <tr>
@@ -230,40 +139,33 @@ request.setAttribute("writer", writer);
     </div>
     	
     
-<%-- <c:set var ="number" value="<%=number%>"></c:set> --%>
+<!-- 추천 버튼 -->
 <form action="./plusreco" method="post">
 	<!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
-	<input type="hidden" name ="number" value="${bList.number}" >
-	<input style="width: 90px;
-    height: 55px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background: url(https://i.ibb.co/vVmM42G/image.jpg) no-repeat;
-    background-position:center;" type="submit" value="">
+	<input type="hidden" name ="number" value="${bList.number}" id="boardNumber" >
+	<input style="width: 90px; height: 55px;border: 1px solid #ccc;border-radius: 5px;box-sizing: border-box;background: url(https://i.ibb.co/vVmM42G/image.jpg) no-repeat;background-position:center;" type="submit" value="">
 </form> <br>
+<a href="../board/${boardTitle}" id="boardForm" style="display: none;"></a>
 
-</div>
-</div>
-<%-- 	
-<a href="./<%=boardTitle%>Form.jsp?pages=1" id="boardForm" style="display: none;"></a>
+
 <div class="wrappp">
+<!-- 목록 버튼 -->
 <button class="buttonmn" onclick="document.getElementById('boardForm').click();">목록</button>
-<%if(writer.equals((String)session.getAttribute("nickName"))){
-session.setAttribute("title", title);
-session.setAttribute("content", content);
-session.setAttribute("imageFileName", imageFileName);
-session.setAttribute("number", number);
-%>
-<a href="./boardUpdate.jsp?boardTitle=<%=boardTitle%>"id="boardUpdate" style="display: none;"></a>
-<button class="buttonmn" onclick="document.getElementById('boardUpdate').click();">글 수정</button>
-<input id="deleteNumber" value="<%=number%>" type="text" style="display: none">
-<input id="boardTitle" value="<%=boardTitle%>" type="text" style="display: none">
-<button class="buttonmn" id="deleteBoard">글 삭제</button>
-<%} %>
+
+
+<!-- 글 작성자와 현재 접속자가 동일하면 글 수정 버튼 -->
+<script type="text/javascript" src="/resources/js/delete.js"></script>
+<c:if test="${bList.writer eq userInfo.nickName}">
+	<a href="../board/update?number=${bList.number}" id="boardUpdate" style="display: none;"></a>
+	<button class="buttonmn" onclick="document.getElementById('boardUpdate').click();">글 수정</button>
+	<input id="boardTitle" value="${boardTitle}" type="text" style="display: none">
+	<button class="buttonmn" id="deleteBoard">글 삭제</button>
+</c:if>
+</div>
+</div>
 </div>
 <hr>
-
+<%--
 <div style="height: auto">
 <jsp:include page="./searchCommentProcess.jsp">
 	<jsp:param value="${number}" name="number"/>

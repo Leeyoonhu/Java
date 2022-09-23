@@ -65,11 +65,50 @@ String boardTitle = request.getParameter("boardTitle");
     ">ROK ARMY 글쓰기</h1>
    <!-- db에 어느 보드에서 작성됬는지 알려줘야해 -->
 	<input type="text" style="display: none;" name="writer" readonly="readonly" value="${userInfo.nickName}">
-	<span style="margin-left: 940px; border: 0; font: bold; font-size: 18px; margin-bottom: 10px">${userInfo.nickName}</span>
+	<span style="margin-left: 940px; border: 0; font: bold; font-size: 18px; margin-bottom: 10px">
+	<!-- 닉네임 옆 경험치에따른 계급표 -->
+		<td>
+		<c:forEach var="member" items="${mList}">
+			<c:if test="${userInfo.nickName eq member.nickName}">
+				<c:choose>
+					<c:when test="${member.userExp == 0}">
+						<img src="https://i.ibb.co/DYQFRjq/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 100}">
+						<img src="https://i.ibb.co/Hnhvny8/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 200}">
+						<img src="https://i.ibb.co/NKXW0C9/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 300}">
+						<img src="https://i.ibb.co/HNzQDJT/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 400}">
+						<img src="https://i.ibb.co/M6PwMcC/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 500}">
+						<img src="https://i.ibb.co/QkmbTmL/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 600}">
+						<img src="https://i.ibb.co/WHGk9tW/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 700}">
+						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp == 800}">
+						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp > 800}">
+						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					</c:when>
+				</c:choose>
+			</c:if>
+		</c:forEach>
+	${userInfo.nickName}</span>
 	<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
 	style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
 	name="title" autofocus="autofocus" maxlength="50"><br>
-	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px;" name="content" placeholder="글꼴"></textarea> <br>
+	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" name="content" placeholder="글꼴"></textarea> <br>
 	<input type="file" style="display:none;" id="addImage" name="uploadFile" accept="image/*"/>
 	<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('addImage').click();" />
 	<input type="text" style="display: none;" name="boardTitle" value="${boardTitle}">
