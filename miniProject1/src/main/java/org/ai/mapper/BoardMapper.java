@@ -5,6 +5,7 @@ import java.util.List;
 import org.ai.domain.BoardVO;
 import org.ai.domain.MemberVO;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface BoardMapper {
 	// 특정 보드 조회
@@ -29,4 +30,9 @@ public interface BoardMapper {
 	public List<BoardVO> getMyArticle(String nickname);
 	// 글 삭제
 	public void deleteBoard(Integer number);
+	// 글 수정(이미지 o)
+	public void update(@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
+			@Param("imageFileName") String imageFileName, @Param("imageFilePath") String imageFilePath);
+	// 글 수정(이미지 x)
+	public void update2(@Param("number") Integer number, @Param("title") String title, @Param("content") String content);
 }

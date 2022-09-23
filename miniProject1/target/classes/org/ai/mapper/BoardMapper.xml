@@ -62,5 +62,12 @@
 	<delete id="deleteBoard">
 		delete from board where number = #{number}
 	</delete>
+		
+	<update id="update">
+		update board set title = #{title}, content = #{content}, imageFileName = #{imageFileName}, imageFilePath = #{imageFilePath} where number = #{number}
+	</update>
 	
+	<update id="update2">
+		update board set title = #{title}, content = #{content} where number = #{number}
+	</update>
 </mapper>

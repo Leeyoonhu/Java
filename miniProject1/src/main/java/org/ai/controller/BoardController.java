@@ -228,6 +228,52 @@ public class BoardController {
 		service.deleteBoard(number);
 		return "redirect: ../board/"+boardTitle;
 	}
+	@GetMapping("/update")
+	public void getUpdate(@Param("number")Integer number, Model model) {
+		model.addAttribute("bList", service.getBoardView(number));
+		model.addAttribute("mList", mService.getList());
+	}
 	
+	// 글수정 에서 이미지 첨부했을 경우
+		@RequestMapping(value = "/updateAjax", method = RequestMethod.POST)
+		public String updateAjax (@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
+		MultipartFile uploadFile, @Param("boardTitle") String boardTitle, Model model, HttpSession session, RedirectAttributes rttr) {
+			log.info("글수정 완료 버튼.. upload..(이미지있음)");
+			String imageFilePath = null;
+			String imageFileName = null;
+			File saveFile = null;
+			if(!uploadFile.isEmpty()) {
+				String uploadFolder = "C:\\upload";	
+				File uploadPath = new File(uploadFolder, getFolder());
+				if(uploadPath.exists() == false) {
+					uploadPath.mkdirs();
+				}
+				imageFilePath = getFolder() + "/";
+				imageFilePath = imageFilePath.replace("\\", "/");
+				log.info("이미지 경로 : " + imageFilePath);
+				imageFileName = uploadFile.getOriginalFilename();
+				saveFile = new File(uploadPath, imageFileName);
+			}
+			log.info("수정된 파일 명 : " + imageFileName);
+			try {
+				if(!uploadFile.isEmpty()) {
+					uploadFile.transferTo(saveFile);
+				}
+				service.update(number, title, content, imageFileName, imageFilePath);
+				return "redirect:../board/"+boardTitle;
+			} catch (Exception e) {
+				// TODO: handle exception
+				log.error(e.getMessage());
+			}
+			return "redirect:../board/"+boardTitle;
+		}
+		// 이미지 첨부x
+		@RequestMapping(value = "/updateAjax2", method = RequestMethod.POST)
+		public String updateAjax2 (@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
+		@Param("boardTitle") String boardTitle, Model model, HttpSession session, RedirectAttributes rttr) {
+			log.info("글수정 완료 버튼.. upload..(이미지없음)");
+			service.update2(number, title, content);
+			return "redirect:../board/"+boardTitle;
+		}
 	
 }
