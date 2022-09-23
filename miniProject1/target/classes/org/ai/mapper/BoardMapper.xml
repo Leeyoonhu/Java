@@ -5,11 +5,11 @@
 <mapper namespace="org.ai.mapper.BoardMapper">
 	<select id="getList" resultType="org.ai.domain.BoardVO">
 		select * from board where
-		boardTitle = #{title}
+		boardTitle = #{title} order by number desc
 	</select>
 
 	<select id="getNoticeList" resultType="org.ai.domain.BoardVO">
-		select * from board
+		select * from board order by number desc
 	</select>
 
 	<select id="getPopularList" resultType="org.ai.domain.BoardVO">
@@ -56,7 +56,7 @@
 	</select>
 			
 	<select id="getMyArticle" resultType="org.ai.domain.BoardVO">
-		select * from board where writer = #{nickName}
+		select * from board where writer = #{nickName} order by number desc
 	</select>
 	
 	<delete id="deleteBoard">

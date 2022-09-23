@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 
 import org.ai.domain.BoardVO;
+import org.ai.domain.CommentVO;
 import org.ai.service.BoardService;
 import org.ai.service.CommentService;
 import org.ai.service.MemberService;
@@ -214,7 +215,7 @@ public class BoardController {
 		service.plusView(number);
 		model.addAttribute("bList", service.getBoardView(number));
 		model.addAttribute("mList", mService.getList());
-		model.addAttribute("cList", cService.getList());
+		model.addAttribute("cList", cService.get(number));
 	}
 	
 	@PostMapping("plusreco")

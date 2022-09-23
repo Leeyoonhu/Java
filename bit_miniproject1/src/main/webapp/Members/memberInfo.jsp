@@ -35,6 +35,5 @@
 		e.printStackTrace();
 	}
 %>
-<%conn.close(); %>
 </body>
 </html>

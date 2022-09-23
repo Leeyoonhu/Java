@@ -22,11 +22,17 @@ public class CommentServiceImpl implements CommentService {
 		// TODO Auto-generated method stub
 		return mapper.getList();
 	}
-
+	@Override
+	public List<CommentVO> get(Integer number) {
+		// TODO Auto-generated method stub
+		return mapper.get(number);
+	}			
 	@Override
 	public void insert(@Param("number")Integer number, @Param("writer") String writer, @Param("comment") String comment) {
 		// TODO Auto-generated method stub
 		mapper.insert(number, writer, comment);
 	}
+
+	
 	
 }
