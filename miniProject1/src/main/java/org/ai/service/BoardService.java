@@ -18,4 +18,7 @@ public interface BoardService {
 	public void plusReco(Integer number);
 	public List<BoardVO> getMyArticle(String nickname);
 	public void deleteBoard(Integer number);
+	public void update(@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
+			@Param("imageFileName") String imageFileName, @Param("imageFilePath") String imageFilePath);
+	public void update2(@Param("number") Integer number, @Param("title") String title, @Param("content") String content);
 }

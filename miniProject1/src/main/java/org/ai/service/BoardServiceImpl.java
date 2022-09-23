@@ -91,7 +91,17 @@ public class BoardServiceImpl implements BoardService {
 		mapper.deleteBoard(number);
 	}
 
-	
-	
+	@Override
+	public void update(@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
+			@Param("imageFileName") String imageFileName, @Param("imageFilePath") String imageFilePath) {
+		// TODO Auto-generated method stub
+		mapper.update(number, title, content, imageFileName, imageFilePath);
+	}
 
+	@Override
+	public void update2(@Param("number") Integer number, @Param("title") String title, @Param("content") String content) {
+		// TODO Auto-generated method stub
+		mapper.update2(number, title, content);
+	}
+	
 }
