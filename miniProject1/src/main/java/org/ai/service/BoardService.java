@@ -3,6 +3,7 @@ package org.ai.service;
 import java.util.List;
 
 import org.ai.domain.BoardVO;
+import org.ai.domain.Criteria;
 import org.ai.domain.MemberVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -21,4 +22,5 @@ public interface BoardService {
 	public void update(@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
 			@Param("imageFileName") String imageFileName, @Param("imageFilePath") String imageFilePath);
 	public void update2(@Param("number") Integer number, @Param("title") String title, @Param("content") String content);
+	public List<BoardVO> getNoticeListWithPaging(Criteria cri);
 }

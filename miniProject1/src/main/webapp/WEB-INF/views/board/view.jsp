@@ -152,7 +152,6 @@
 <!-- 목록 버튼 -->
 <button class="buttonmn" onclick="document.getElementById('boardForm').click();">목록</button>
 
-
 <!-- 글 작성자와 현재 접속자가 동일하면 글 수정 버튼 -->
 <script type="text/javascript" src="/resources/js/delete.js"></script>
 <c:if test="${bList.writer eq userInfo.nickName}">
@@ -161,77 +160,127 @@
    <input id="boardTitle" value="${boardTitle}" type="text" style="display: none">
    <button class="buttonmn" id="deleteBoard">글 삭제</button>
 </c:if>
+<hr>
 </div>
 </div>
+
+<!-- 댓글 달기 (로그인 된 사람만 보이게) -->
+<script type="text/javascript" src="/resources/js/addComment.js"></script>
+<c:if test="${not empty userInfo.userId}">
+	<div style="height: auto">
+	   <form method = "post"> 
+	      <input type="button" style="font: 13px; font-weight: bold; float: right; height: 85px; width: 80px; background: #444;
+	       border: 1px solid #303030;
+	       color: #fff; border-radius: 3px;
+	       box-sizing: border-box;  margin-right: 230px;" id="addComment" value="등록">
+	      <textarea style="border: 1px solid #abadb3; height: 85px; margin-right: 20px; float: right; resize: none;"
+	      	placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 이용약관에 의한 제재는 영창으로 갑니다." rows="" cols="100" name="comment"></textarea>
+	      	<strong style="float: right; margin-right: 20px; margin-top: 30px; font-size: 1.2em">
+		      	<c:forEach var="member" items="${mList}">
+		         	<c:if test="${member.nickName eq userInfo.nickName}">
+			            <c:choose>
+			               <c:when test="${member.userExp == 0}">
+			                  <img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp == 100}">
+			                  <img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp == 200}">
+			                  <img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp == 300}">
+			                  <img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp == 400}">
+			                  <img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp == 500}">
+			                  <img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp == 600}">
+			                  <img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp == 700}">
+			                  <img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp == 800}">
+			                  <img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+			               </c:when>
+			               <c:when test="${member.userExp > 800}">
+			                  <img src="https://i.ibb.co/QrPKh3V/image.jpg" width="18px" height="18px">
+			               </c:when>
+			            </c:choose>
+			         </c:if>
+			      </c:forEach>
+			      <input type="hidden" value="${userInfo.nickName}" name="commentWriter">
+		      	${userInfo.nickName}
+	      		</strong>
+   			</form>
+   		</div>
+	</c:if>	
+<!-- 댓글 보여줌 -->
+<%-- 
+<script type="text/javascript" src="../Js/deleteComment.js"></script>
+<div style="height: auto">
+<img alt="" src="https://i.ibb.co/C96m34C/image.jpg" width="17" height="15" style="margin-bottom: 5px; margin-right:2px" > <strong style="font-size: 1.1em">댓글 (<%=cList2.size()%>)</strong><br>
+<hr>
+<c:forEach var="comment" items="${cList2}">
+<c:set var="writer" value="<%=writer%>"></c:set>
+<div style="margin-left: 20px">
+<strong style="font-size: 1em">
+		<c:forEach var="member" items="${mList}">
+			<c:if test="${member.nickName eq comment.writer}">
+				<c:choose>
+					<c:when test="${member.userExp == 0}">
+						<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 100}">
+						<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 200}">
+						<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 300}">
+						<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 400}">
+						<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 500}">
+						<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 600}">
+						<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 700}">
+						<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp == 800}">
+						<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+					</c:when>
+					<c:when test="${member.userExp > 800}">
+						<img src="https://i.ibb.co/QrPKh3V/image.jpg" width="18px" height="18px">
+					</c:when>
+				</c:choose>
+			</c:if>
+		</c:forEach>
+${comment.writer}</strong>
+	<c:if test="${comment.writer eq writer}">
+		<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:2px;margin-bottom:2px" border="0">
+	</c:if>
+<span style="color: gray">(${comment.regDate})</span>
+	<c:if test="${comment.writer eq nickName}">
+		<img src="https://i.ibb.co/jM9Tyxf/image.png" style="cursor: pointer;" id="deleteImage">
+		<input type="text" value="${comment.number}" style="display: none" id="deletecNumber"></input>
+	</c:if>
+<br>
+${comment.comment}
 </div>
 <hr>
-<%--
-<div style="height: auto">
-<jsp:include page="./searchCommentProcess.jsp">
-   <jsp:param value="${number}" name="number"/>
-   <jsp:param value="${writer}" name="writer"/>
-</jsp:include>
+</c:forEach>
 </div>
-UserID : <c:out value="${session.userId}"></c:out>
-   <!-- 댓글을 달면, 글번호(number), 글작성자(nickname), 댓글내용은 새로받은 내용(comment), 댓글 단 시간이 regDate -->
-<%if(session.getAttribute("userId") != null){%>
-<div style="height: auto">
-   <div>
-   </div>
-   <div>
-   <form action="./saveComment.do?number=${number}&writer=${nickName}" method = "post"> 
-      <input type="submit" style="font: 13px; font-weight: bold; float: right; height: 85px; width: 80px; background: #444;
-       border: 1px solid #303030;
-       color: #fff; border-radius: 3px;
-       box-sizing: border-box;  margin-right: 230px;" value="등록">
-      <textarea style="border: 1px solid #abadb3; height: 85px; margin-right: 20px; float: right; resize: none;"
-      placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 이용약관에 의한 제재는 영창으로 갑니다." rows="" cols="100" name="comment"></textarea>
-      <strong style="float: right; margin-right: 20px; margin-top: 30px; font-size: 1.2em">
-      <c:forEach var="member" items="${mList}">
-         <c:if test="${member.nickName eq nickName}">
-            <c:choose>
-               <c:when test="${member.userExp == 0}">
-                  <img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 100}">
-                  <img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 200}">
-                  <img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 300}">
-                  <img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 400}">
-                  <img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 500}">
-                  <img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 600}">
-                  <img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 700}">
-                  <img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 800}">
-                  <img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp > 800}">
-                  <img src="https://i.ibb.co/QrPKh3V/image.jpg" width="18px" height="18px">
-               </c:when>
-            </c:choose>
-         </c:if>
-      </c:forEach>
-      ${nickName}
-      </strong>
-   </form>
-   </div>
+--%>
 </div>
-<%}%>
-</div>
-</div>
-<%conn.close(); %> --%>
 <!-- footer -->
 <%@ include file="../includes/footer.jsp" %>
 </body>

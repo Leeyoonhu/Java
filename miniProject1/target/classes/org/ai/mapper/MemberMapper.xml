@@ -8,7 +8,7 @@
 	</select>
 	
 	<insert id="join">
-	 insert into Members (userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender) 
+	 insert into members (userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender) 
 	 values (#{userId}, #{userPwd}, #{checkPwd}, #{nickName}, #{firstName}, #{lastName}, #{phoneNo}, #{pwdHintQ}, #{pwdHint}, #{userJob}, #{gender})
    	</insert>
    	

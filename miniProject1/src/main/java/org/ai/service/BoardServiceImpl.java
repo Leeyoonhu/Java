@@ -3,7 +3,7 @@ package org.ai.service;
 import java.util.List;
 
 import org.ai.domain.BoardVO;
-import org.ai.domain.MemberVO;
+import org.ai.domain.Criteria;
 import org.ai.mapper.BoardMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,5 +103,13 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		mapper.update2(number, title, content);
 	}
+	
+	
+	@Override 
+	public List<BoardVO> getNoticeListWithPaging(Criteria cri) {
+	   log.info("getList with criteria : "+cri); 
+	   return mapper.getNoticeListWithPaging(cri); 
+	}
+
 	
 }
