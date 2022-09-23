@@ -40,7 +40,7 @@
 <!--     /> -->
   </head>
   <body>
-    <%-- header --%>
+    <!-- header -->
     <c:choose>
       <c:when test="${empty userInfo.userId}">
         <%@ include file="../includes/header.jsp" %>
@@ -49,9 +49,11 @@
         <%@ include file="../includes/header2.jsp" %>
       </c:otherwise>
     </c:choose>
-    <%-- content --%>
+    
+    <!-- body -->
     <div id="content">
-    <%-- aside --%>
+    
+    <!-- aside -->
     <c:choose>
       <c:when test="${empty userInfo.userId}">
         <%@ include file="../includes/aside.jsp" %>
@@ -67,17 +69,13 @@
         </c:choose>
       </c:otherwise>
     </c:choose>
+    
+    <!-- content -->
     <div id="screenBoardForm">
       <div class="container gallery-container">
-          <div class="but">
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+          <div class="but"><br><br><br><br><br><br>
             <h2>전지적 군인 시점 사진게시판</h2>
-              <%-- buttons --%>
+              <!-- buttons -->
               <a href="../board/main" id="mainFormCheck" style="display: none"></a>
                 <button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
                 <span>Click!</span><span>메인으로</span></button>
@@ -87,28 +85,28 @@
                 <span>Click!</span><span>글쓰기</span></button>
               </c:if>
           </div>
-          <%-- 반복되기 전 원래 속성 --%>
+          <!-- before forEach property -->
           <p class="page-description text-center"></p>
             <div class="tz-gallery">
               <div class="row">
               <%!int count = 0;%>
-              <%-- 반복 될 내용 --%>
-              <c:forEach var="item" items="${bList}">
+              <!-- need forEach -->
+              <c:forEach var="board" items="${bList}">
                 <div class="col-sm-6 col-md-4">
                   <div class="thumbnail">
                       <c:choose>
-                        <c:when test="${item.imageFileName eq null || item.imageFilePath eq null}">
+                        <c:when test="${board.imageFileName eq null || board.imageFilePath eq null}">
                           <img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="323.33px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden; cursor: pointer; color:black;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
-                          <a href="./view?number=${item.number}" id="goScreenView" style="display: none;"></a>
+                          <a href="./view?number=${board.number}" id="goScreenView" style="display: none;"></a>
                         </c:when>
                         <c:otherwise>
-                          <img alt="" src="/board/display?fileName=${item.imageFilePath}${item.imageFileName}" width="323.33px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView2').click()" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
-                          <a href="./view?number=${item.number}" id="goScreenView2" style="display: none;"></a>
+                          <img alt="" src="/board/display?fileName=${board.imageFilePath}${board.imageFileName}" width="323.33px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView2').click()" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
+                          <a href="./view?number=${board.number}" id="goScreenView2" style="display: none;"></a>
                         </c:otherwise>
                       </c:choose>
-                    </a>
+                    
                     <div class="caption">
-                      <h3><a href="./view?number=${item.number}">${item.title}</a></h3>
+                      <h3><a href="./view?number=${board.number}">${board.title}</a></h3>
                       <%-- 
                       title 옆에 댓글 보여주기, 필요시 a태그 안에 넣을것
                       <c:forEach var="item2" items="${items2}">
@@ -120,9 +118,9 @@
                     <a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank" onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
                     <%} count = 0; %> --%>
                       <br>
-                      <%-- 글내용위치에 작성자, 조회, 추천 --%>
+                     <!-- start forEach for mList -->
                       <p><c:forEach var="member" items="${mList}">
-					<c:if test="${item.writer eq member.nickName}">
+					<c:if test="${board.writer eq member.nickName}">
 						<c:choose>
 							<c:when test="${member.userExp == 0}">
 								<img src="https://i.ibb.co/DYQFRjq/image.png" width="20px" height="20px">
@@ -157,21 +155,21 @@
 						</c:choose>
 					</c:if>
 				</c:forEach>
-		${item.writer}</p>
-    <img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-bottom:2px; margin-right:2px"/>${item.views}</p>
-    <img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px"/> ${item.recommends}</p>
+		${board.writer}</p>
+    <p><img src="https://i.ibb.co/fHKtYnX/image.jpg" width="20px" height="16px" style="margin-bottom:2px; margin-right:2px"/>${board.views}</p>
+    <p><img alt="" src="https://i.ibb.co/2Y2ghNY/image.jpg" width="19px" height="18px"/> ${board.recommends}</p>
                     </div>
                   </div>
                 </div>
               </c:forEach>
-              <!-- 반복 끝 -->
+              <!-- end forEach -->
           </div>
         </div>
       </div>
     </div>
+    <!-- end content -->
     </div>
-
-<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script> -->
+    <!-- end body -->
     <script>
       baguetteBox.run(".tz-gallery");
     </script>

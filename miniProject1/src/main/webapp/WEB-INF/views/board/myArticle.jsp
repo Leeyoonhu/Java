@@ -68,48 +68,47 @@
 		</thead>
 
 <%!int count = 0;%>
-<%-- <c:set var="items2" value="${cList}"></c:set> --%>
-<c:forEach var="item" items="${bList}">
-	<tr style="text-align: center" class="boardElement">
-		<td>${item.number}</td>
+<!-- start table body -->
+<c:forEach var="board" items="${bList}">
+	<tr style="text-align: center; height: 52px" class="boardElement">
+		<td>${board.number}</td>
 		<td>
 		<c:choose>
-		<c:when test="${item.boardTitle eq 'question'}">
+		<c:when test="${board.boardTitle eq 'question'}">
 			<img alt="" src="https://i.ibb.co/cNBBrXT/icons8-question-64.png" width="24px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToQuestionBoard').click()">
 			<a href="./question" style="display: none" id="goToQuestionBoard"></a>	
 		</c:when>
-			<c:when test="${item.boardTitle eq 'screen'}">
+			<c:when test="${board.boardTitle eq 'screen'}">
 				<img alt="" src="https://i.ibb.co/cyJSqsg/icons8-image-48.png" width="26px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToScreenBoard').click()">
 			<a href="./screen" style="display: none" id="goToScreenBoard"></a>	
 		</c:when>
-		<c:when test="${item.boardTitle eq 'info'}">
+		<c:when test="${board.boardTitle eq 'info'}">
 			<img alt="" src="https://i.ibb.co/sVDnSPC/icons8-information-64.png" width="24px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToInformationBoard').click()">
 			<a href="./info" style="display: none" id="goToInformationBoard"></a>	
 		</c:when>
-		<c:when test="${item.boardTitle eq 'free'}">
+		<c:when test="${board.boardTitle eq 'free'}">
 			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="24px" style="margin-bottom: 2px; cursor: pointer;" onclick="document.getElementById('goToFreeBoard').click()">
 			<a href="./free" style="display: none" id="goToFreeBoard"></a>	
 		</c:when>
 		</c:choose>
 		</td>
-		<td>
-		<a href="../board/view?number=${item.number}" style="text-decoration: none; color: black;">${item.title}</a>
-		<%-- <c:forEach var="item2" items="${items2}">
-			<c:if test="${item.number eq item2.number}">
-				<%count++;%>
+		<td><a href="./view?number=${board.number}" style="text-decoration: none; color: black;">${board.title}</a>
+		<c:forEach var="comment" items="${cList}">
+			<c:if test="${board.number eq comment.number}">
+			 <%count++;%>
 			</c:if>
-		</c:forEach> --%>
-		<%-- <%if(count != 0){ %>
-		<a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
-		<%} count = 0; %> --%>
-		<c:if test="${item.imageFileName ne null}">
+		</c:forEach>
+		<%if(count != 0){ %>
+		<a href="../comment/view?number=${board.number}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">
+		 [<%=count%>]</a><%}%>
+		<%count = 0;%>
+		<c:if test="${board.imageFileName ne null && board.imageFilePath ne null}">
 			<img src="https://i.ibb.co/JjjkzJB/imageicon.jpg" style="width:15px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
 		</c:if>
 		</td>
-		<!-- 닉네임 옆 경험치에따른 계급표 -->
 		<td>
 		<c:forEach var="member" items="${mList}">
-			<c:if test="${item.writer eq member.nickName}">
+			<c:if test="${board.writer eq member.nickName}">
 				<c:choose>
 					<c:when test="${member.userExp == 0}">
 						<img src="https://i.ibb.co/DYQFRjq/image.png" width="20px" height="20px">
@@ -144,14 +143,17 @@
 				</c:choose>
 			</c:if>
 		</c:forEach>
-		${item.writer}
+		${board.writer}
 		</td>
-		<td><fmt:formatDate value="${item.regDate}" pattern="yyyy-MM-dd"/></td>
-		<td>${item.views}</td>
-		<td>${item.recommends}</td>
+		<td>
+			<fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd"/>
+		</td>
+		<td>${board.views}</td>
+		<td>${board.recommends}</td>
 	</tr>
-</c:forEach>	
+</c:forEach>
 </table>
+<!-- end table -->	
 </div>
 </div>
 <!-- footer -->

@@ -9,4 +9,6 @@ public interface CommentService {
 	public List<CommentVO> getList();
 	public List<CommentVO> get(Integer number);
 	public void insert(@Param("number")Integer number, @Param("writer") String writer, @Param("comment") String comment);
+	public void delete(@Param("comNumber")Integer comNumber);
+
 }

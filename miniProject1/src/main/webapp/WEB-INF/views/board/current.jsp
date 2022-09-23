@@ -9,57 +9,56 @@
 <title>최근게시판</title>
 </head>
 <body>
-
-
 <div>
-		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
-		<thead>
-			<tr>
-				<th colspan="2" style="background-color : #295298; z-index: 1; width:780px; height: 40px; color: white">최근 게시글</th>
-			</tr>
-		</thead>
-
+	<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
+	<thead>
+		<tr>
+			<th colspan="2" style="background-color : #295298; z-index: 1; width:780px; height: 40px; color: white">최근 게시글</th>
+		</tr>
+	</thead>
 <%!int count = 0;%>
-<c:set var="items2" value="${cList}"></c:set>
-<c:forEach var="item" items="${bList}">
-	<tr style="text-align: center" class="boardElement">
+<!-- start table body -->
+<c:forEach var="board" items="${bList}">
+	<tr style="text-align: center; height: 52px" class="boardElement">
 		<td style="width:80px; height: 30px">
 		<c:choose>
-		<c:when test="${item.boardTitle eq 'question'}">
+		<c:when test="${board.boardTitle eq 'question'}">
 			<img alt="" src="https://i.ibb.co/cNBBrXT/icons8-question-64.png" width="24px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToQuestionBoard').click()">
-			<a href="../board/question" style="display: none" id="goToQuestionBoard" target="_parent"></a>	
+			<a href="question" style="display: none" id="goToQuestionBoard" target="_parent"></a>	
 		</c:when>
-			<c:when test="${item.boardTitle eq 'screen'}">
+			<c:when test="${board.boardTitle eq 'screen'}">
 				<img alt="" src="https://i.ibb.co/cyJSqsg/icons8-image-48.png" width="26px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToScreenBoard').click()">
-			<a href="../board/screen" style="display: none" id="goToScreenBoard" target="_parent"></a>	
+			<a href="screen" style="display: none" id="goToScreenBoard" target="_parent"></a>	
 		</c:when>
-		<c:when test="${item.boardTitle eq 'info'}">
+		<c:when test="${board.boardTitle eq 'info'}">
 			<img alt="" src="https://i.ibb.co/sVDnSPC/icons8-information-64.png" width="24px" height="24px" style="cursor: pointer;" onclick="document.getElementById('goToInformationBoard').click()">
-			<a href="../board/info" style="display: none" id="goToInformationBoard" target="_parent"></a>	
+			<a href="info" style="display: none" id="goToInformationBoard" target="_parent"></a>	
 		</c:when>
-		<c:when test="${item.boardTitle eq 'free'}">
+		<c:when test="${board.boardTitle eq 'free'}">
 			<img alt="" src="https://i.ibb.co/Dwxw9bX/icons8-cheque-58.png" width="22px" height="24px" style="margin-bottom: 2px; cursor: pointer;" onclick="document.getElementById('goToFreeBoard').click()">
-			<a href="../board/free" style="display: none" id="goToFreeBoard" target="_parent"></a>	
+			<a href="free" style="display: none" id="goToFreeBoard" target="_parent"></a>	
 		</c:when>
 		</c:choose>
 		</td>
 		<td style="width:700px; height: 30px">
-		<a href="../board/view?number=${item.number}" style="text-decoration: none; color: black;" target="_parent">${item.title}</a>
-		<%-- <c:forEach var="item2" items="${items2}">
-			<c:if test="${item.number eq item2.number}">
-				<%count++;%>
+		<a href="../board/view?number=${board.number}" style="text-decoration: none; color: black;" target="_parent">${board.title}</a>
+		<c:forEach var="comment" items="${cList}">
+			<c:if test="${board.number eq comment.number}">
+			 <%count++;%>
 			</c:if>
 		</c:forEach>
 		<%if(count != 0){ %>
-		<a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
-		<%} count = 0; %> --%>
-		<c:if test="${item.imageFileName ne null}">
+		<a href="../comment/view?number=${board.number}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">
+		 [<%=count%>]</a><%}%>
+		<%count = 0;%>
+		<c:if test="${board.imageFileName ne null && board.imageFilePath ne null}">
 			<img src="https://i.ibb.co/JjjkzJB/imageicon.jpg" style="width:15px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
 		</c:if>
 		</td>
 	</tr>
-</c:forEach>	
+</c:forEach>
 </table>
+<!-- end table -->
 </div>
 </body>
 </html>
