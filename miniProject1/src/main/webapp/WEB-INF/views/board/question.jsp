@@ -65,7 +65,6 @@ String userId = (String)session.getAttribute("userId");
 	</c:otherwise>
 </c:choose>
 <div id="questionBoardForm">
-	<a href="./boardWrite" id="boardWrite" style="display: none;"></a>
 	<h2>ROK ARMY 질문게시판</h2>
 	<br>
 	<a href="../board/main" id="mainFormCheck" style="display: none"></a>
@@ -79,12 +78,12 @@ String userId = (String)session.getAttribute("userId");
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr style="height: 52px">
-				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
-				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
-				<th style="background-color : #eeeeee; text-align:center; width:200px">등록일</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">조회</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
+				<th style="background-color : rgb(245, 244, 187); text-align:center; width:80px">글번호</th>
+				<th style="background-color : rgb(245, 244, 187); text-align:center; width:700px">제목</th>
+				<th style="background-color : rgb(245, 244, 187); text-align:center; width:100px">닉네임</th>
+				<th style="background-color : rgb(245, 244, 187); text-align:center; width:200px">등록일</th>
+				<th style="background-color : rgb(245, 244, 187); text-align:center; width:100px">조회</th>
+				<th style="background-color : rgb(245, 244, 187); text-align:center; width:100px">추천</th>
 			</tr>
 		</thead>
 <%!int count = 0;%>
@@ -103,9 +102,10 @@ String userId = (String)session.getAttribute("userId");
 		<%if(count != 0){ %>
 		<a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank"  onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
 		<%} count = 0; %>
+		--%>
 		<c:if test="${item.imageFileName ne null}">
 			<img src="https://i.ibb.co/JjjkzJB/imageicon.jpg" style="width:15px;height:12px;margin-left:1px; margin-bottom: 2px" border="0">
-		</c:if> --%>
+		</c:if>
 		</td>
 		<td>${item.writer}</td>
 		<td><fmt:formatDate value="${item.regDate}" pattern="yyyy-MM-dd"/></td>

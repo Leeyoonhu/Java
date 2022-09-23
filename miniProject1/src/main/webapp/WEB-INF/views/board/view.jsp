@@ -221,14 +221,14 @@ request.setAttribute("writer", writer);
                     </tr>
                     <tr>
                         <td>내용</td>
-                        <td colspan="2" style="min-height:200px; text-align:left;"><img alt="" src="<%-- <%=path%>${imageFileName} --%>" onerror="this.style.display='none'"> <br>
-		<p>${bList.content}</p></td>
+                       <td colspan="2" style="min-height:200px; text-align:left;"><img alt="" src="/board/display?fileName=${bList.imageFilePath}${bList.imageFileName}" onerror="this.style.display='none'"><br>
+ <p>${bList.content}</p></td>
                     </tr>
                 </tbody>
             </table>
     	</div>
     </div>
-    
+    	
     
 <%-- <c:set var ="number" value="<%=number%>"></c:set> --%>
 <form action="./plusreco" method="post">

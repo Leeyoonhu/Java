@@ -43,9 +43,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public boolean write(BoardVO vo) {
+	public void write(BoardVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.write(vo) == 1? true : false;
+		mapper.write(vo);
 	}
 
 	@Override

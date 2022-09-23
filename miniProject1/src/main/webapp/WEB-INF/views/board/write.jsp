@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript" src="/resources/js/upload.js"></script>
 <title>글 쓰기</title>
 <style type="text/css">
 #freeBoardWrite {
@@ -62,18 +64,17 @@ String boardTitle = request.getParameter("boardTitle");
     border-bottom: 1px solid #323232;
     ">ROK ARMY 글쓰기</h1>
    <!-- db에 어느 보드에서 작성됬는지 알려줘야해 -->
-<form action="../board/writeProc" method="post" enctype="multipart/form-data">
- 		<input type="text" style="display: none;" name="writer" readonly="readonly" value="${userInfo.nickName}">
- 		<span style="margin-left: 940px; border: 0; font: bold; font-size: 18px; margin-bottom: 10px">${userInfo.nickName}</span>
- 		<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
- 		style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
- 		name="title" autofocus="autofocus" maxlength="50"><br>
-		<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px;" name="content" placeholder="글꼴"></textarea> <br>
-		<input type="file" style="display:none;" id="imageFileName" name="imageFileName" accept="image/*"/>
- 		<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('imageFileName').click();" />
-		<input type="text" style="display: none;" name="boardTitle" value="${boardTitle}">
-		<input class="endWrite" type="submit" value="작성 완료">
-</form>
+	<input type="text" style="display: none;" name="writer" readonly="readonly" value="${userInfo.nickName}">
+	<span style="margin-left: 940px; border: 0; font: bold; font-size: 18px; margin-bottom: 10px">${userInfo.nickName}</span>
+	<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
+	style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
+	name="title" autofocus="autofocus" maxlength="50"><br>
+	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px;" name="content" placeholder="글꼴"></textarea> <br>
+	<input type="file" style="display:none;" id="addImage" name="uploadFile" accept="image/*"/>
+	<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('addImage').click();" />
+	<input type="text" style="display: none;" name="boardTitle" value="${boardTitle}">
+	<input class="endWrite" type="button" id="uploadBtn" value="작성 완료">
+
 </div>
 </div>
 <!-- footer -->

@@ -82,12 +82,12 @@ String userId = (String)session.getAttribute("userId");
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr style="height: 52px">
-				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
-				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
-				<th style="background-color : #eeeeee; text-align:center; width:200px">등록일</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">조회</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
+				<th style="background-color : rgb(160, 90, 90); text-align:center; width:80px">글번호</th>
+				<th style="background-color : rgb(160, 90, 90); text-align:center; width:700px">제목</th>
+				<th style="background-color : rgb(160, 90, 90); text-align:center; width:100px">닉네임</th>
+				<th style="background-color : rgb(160, 90, 90); text-align:center; width:200px">등록일</th>
+				<th style="background-color : rgb(160, 90, 90); text-align:center; width:100px">조회</th>
+				<th style="background-color : rgb(160, 90, 90); text-align:center; width:100px">추천</th>
 			</tr>
 		</thead>
 			<!-- board db에서 가져와서 10줄씩 테이블 생성 -->
