@@ -19,7 +19,7 @@
 <%!int count = 0;%>
 <!-- start table body -->
 <c:forEach var="board" items="${bList}">
-	<tr style="text-align: center; height: 52px" class="boardElement">
+	<tr style="text-align: center;" class="boardElement">
 		<td style="width:80px; height: 30px">
 		<c:choose>
 		<c:when test="${board.boardTitle eq 'question'}">

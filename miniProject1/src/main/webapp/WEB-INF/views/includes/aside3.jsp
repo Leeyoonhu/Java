@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>어사이드3</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <style>
 /* 로그인했을때 보이는 화면(군인) */
     #nav{
@@ -87,7 +86,7 @@
     <nav id ="nav">
         <div style="height: 185px; width: 200px; color: white">
         	<a href="../board/main" style="display: none" id="asideToMain"></a>
-        	<a href="../board/myArticle?nickName=${userInfo.nickName}" style="display: none" id="watchMyWrite"></a>
+        	<a href="../board/myArticle" style="display: none" id="watchMyWrite"></a>
         	<a href="" style="display: none" id="watchMyComment"></a>
         	<a href="../members/logout" style="display: none" id="asideLogout"></a>
         	<button class="asideMain" onclick="document.getElementById('asideToMain').click()">ROK ARMY</button>

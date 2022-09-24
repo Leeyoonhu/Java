@@ -23,4 +23,7 @@ public interface BoardService {
 			@Param("imageFileName") String imageFileName, @Param("imageFilePath") String imageFilePath);
 	public void update2(@Param("number") Integer number, @Param("title") String title, @Param("content") String content);
 	public List<BoardVO> getNoticeListWithPaging(Criteria cri);
+	public List<BoardVO> getListPaging(@Param("title")String title, @Param("cri")Criteria cri);
+	public List<BoardVO> getMyArticlePaging(@Param("nickName") String nickName, @Param("cri") Criteria cri);
+	public List<BoardVO> getSearchPaging(@Param("title")String title, @Param("content")String content, @Param("cri") Criteria cri);
 }

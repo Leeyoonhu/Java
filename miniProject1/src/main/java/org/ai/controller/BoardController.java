@@ -9,7 +9,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.ai.domain.BoardVO;
-import org.ai.domain.CommentVO;
+import org.ai.domain.Criteria;
+import org.ai.domain.MemberVO;
+import org.ai.domain.PageDTO;
 import org.ai.service.BoardService;
 import org.ai.service.CommentService;
 import org.ai.service.MemberService;
@@ -58,39 +60,61 @@ public class BoardController {
 	}
 	
 	@GetMapping("/free")
-	public void getFree(Model model, HttpSession session, RedirectAttributes rttr) {
+	public void getFree(Criteria cri, Model model, HttpSession session, RedirectAttributes rttr) {
 		log.info("free.......");
 		session.setAttribute("boardTitle", "free");
-		model.addAttribute("bList", service.getList("free"));
+		List<BoardVO> bList = service.getList("free");
+		cri.setAmount(15);
+		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
+		model.addAttribute("bList", service.getListPaging("free", cri));
+		model.addAttribute("pageMaker", pageDTO);
 		model.addAttribute("mList", mService.getList());
 		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/question")
-	public void getQuestion(Model model, HttpSession session, RedirectAttributes rttr) {
+	public void getQuestion(Criteria cri, Model model, HttpSession session, RedirectAttributes rttr) {
 		log.info("question");
 		session.setAttribute("boardTitle", "question");
-		model.addAttribute("bList", service.getList("question"));
+		List<BoardVO> bList = service.getList("question");
+		cri.setAmount(15);
+		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
+		model.addAttribute("bList", service.getListPaging("question", cri));
+		model.addAttribute("pageMaker", pageDTO);
 		model.addAttribute("mList", mService.getList());
 		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/info")
-	public void getInfo(Model model, HttpSession session, RedirectAttributes rttr) {
+	public void getInfo(Criteria cri, Model model, HttpSession session, RedirectAttributes rttr) {
 		log.info("info");
 		session.setAttribute("boardTitle", "info");
-		model.addAttribute("bList", service.getList("info"));
+		List<BoardVO> bList = service.getList("info");
+		cri.setAmount(15);
+		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
+		model.addAttribute("bList", service.getListPaging("info", cri));
+		model.addAttribute("pageMaker", pageDTO);
 		model.addAttribute("mList", mService.getList());
 		model.addAttribute("cList", cService.getList());
 	}
 	@GetMapping("/screen")
-	public void getScreen(Model model, HttpSession session, RedirectAttributes rttr) {
+	public void getScreen(Criteria cri, Model model, HttpSession session, RedirectAttributes rttr) {
 		log.info("screen............ ");
 		session.setAttribute("boardTitle", "screen");
-		model.addAttribute("bList", service.getList("screen"));
+		List<BoardVO> bList = service.getList("screen");
+		cri.setAmount(6);
+		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
+		model.addAttribute("bList", service.getListPaging("screen", cri));
+		model.addAttribute("pageMaker", pageDTO);
 		model.addAttribute("mList", mService.getList());
 	}
 	@GetMapping("/myArticle")
-	public void getMyArticle(Model model, String nickName) {
-		model.addAttribute("bList", service.getMyArticle(nickName));
+	public void getMyArticle(Criteria cri, Model model, HttpSession session) {
+		MemberVO vo = (MemberVO)session.getAttribute("userInfo");
+		String nickName = vo.getNickName();
+		List<BoardVO> bList = service.getMyArticle(nickName);
+		cri.setAmount(15);
+		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
+		model.addAttribute("bList", service.getMyArticlePaging(nickName ,cri));
+		model.addAttribute("pageMaker", pageDTO);
 		model.addAttribute("mList", mService.getList());
 		model.addAttribute("cList", cService.getList());
 	}
@@ -101,9 +125,14 @@ public class BoardController {
 	}
 	
 	@GetMapping("/notice")
-	public void getNotice(Model model) {
+	public void getNotice(Criteria cri, Model model) {
 		log.info("notice");
-		model.addAttribute("bList", service.getNoticeList());
+		List<BoardVO> bList = service.getNoticeList();
+		cri.setAmount(15);
+		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
+		model.addAttribute("bList", service.getNoticeListWithPaging(cri));
+		model.addAttribute("pageMaker", pageDTO);
+//		model.addAttribute("bList", service.getNoticeList());
 		model.addAttribute("mList", mService.getList());
 		model.addAttribute("cList", cService.getList());
 	}
@@ -193,6 +222,7 @@ public class BoardController {
 	
 	@GetMapping("/display")
 	@ResponseBody
+//	로컬 저장소에서 보안상의 이유로 가져올 수 없으므로 display를 통해 화면을 띄울것임
 //	서버에 파일 있는걸 넣고 가져오기
 	public ResponseEntity<byte[]>getFile(String fileName){
 		log.info("fileName : " + fileName);
@@ -211,9 +241,26 @@ public class BoardController {
 		return result;
 	}
 	
-	@PostMapping("/search")
-	public void search(@Param("title")String title, @Param("content")String content, Model model) {
-		model.addAttribute("bList", service.search(title, content));
+	@RequestMapping("/search")
+	public void search(@Param("cri")Criteria cri, @Param("title")String title, @Param("content")String content, Model model, HttpSession session) {
+		String searchTitle = null;
+		String searchContent = null;
+		List<BoardVO> bList = null;
+		if(title == null || content == null) {
+			searchTitle = (String)session.getAttribute("title");
+			searchContent = (String)session.getAttribute("content");
+			bList = service.search(searchTitle, searchContent);
+			model.addAttribute("bList", service.getSearchPaging(searchTitle, searchContent, cri));
+		}
+		else {
+			session.setAttribute("title", title);
+			session.setAttribute("content", content);
+			bList = service.search(title, content);
+			model.addAttribute("bList", service.getSearchPaging(title, content, cri));
+		}
+		cri.setAmount(15);
+		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
+		model.addAttribute("pageMaker", pageDTO);
 		model.addAttribute("mList", mService.getList());
 		model.addAttribute("cList", cService.getList());
 	}
@@ -249,45 +296,45 @@ public class BoardController {
 	}
 	
 	// 글수정 에서 이미지 첨부했을 경우
-		@RequestMapping(value = "/updateAjax", method = RequestMethod.POST)
-		public String updateAjax (@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
-		MultipartFile uploadFile, @Param("boardTitle") String boardTitle, Model model, HttpSession session, RedirectAttributes rttr) {
-			log.info("글수정 완료 버튼.. upload..(이미지있음)");
-			String imageFilePath = null;
-			String imageFileName = null;
-			File saveFile = null;
+	@RequestMapping(value = "/updateAjax", method = RequestMethod.POST)
+	public String updateAjax (@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
+	MultipartFile uploadFile, @Param("boardTitle") String boardTitle, Model model, HttpSession session, RedirectAttributes rttr) {
+		log.info("글수정 완료 버튼.. upload..(이미지있음)");
+		String imageFilePath = null;
+		String imageFileName = null;
+		File saveFile = null;
+		if(!uploadFile.isEmpty()) {
+			String uploadFolder = "C:\\upload";	
+			File uploadPath = new File(uploadFolder, getFolder());
+			if(uploadPath.exists() == false) {
+				uploadPath.mkdirs();
+			}
+			imageFilePath = getFolder() + "/";
+			imageFilePath = imageFilePath.replace("\\", "/");
+			log.info("이미지 경로 : " + imageFilePath);
+			imageFileName = uploadFile.getOriginalFilename();
+			saveFile = new File(uploadPath, imageFileName);
+		}
+		log.info("수정된 파일 명 : " + imageFileName);
+		try {
 			if(!uploadFile.isEmpty()) {
-				String uploadFolder = "C:\\upload";	
-				File uploadPath = new File(uploadFolder, getFolder());
-				if(uploadPath.exists() == false) {
-					uploadPath.mkdirs();
-				}
-				imageFilePath = getFolder() + "/";
-				imageFilePath = imageFilePath.replace("\\", "/");
-				log.info("이미지 경로 : " + imageFilePath);
-				imageFileName = uploadFile.getOriginalFilename();
-				saveFile = new File(uploadPath, imageFileName);
+				uploadFile.transferTo(saveFile);
 			}
-			log.info("수정된 파일 명 : " + imageFileName);
-			try {
-				if(!uploadFile.isEmpty()) {
-					uploadFile.transferTo(saveFile);
-				}
-				service.update(number, title, content, imageFileName, imageFilePath);
-				return "redirect:../board/"+boardTitle;
-			} catch (Exception e) {
-				// TODO: handle exception
-				log.error(e.getMessage());
-			}
+			service.update(number, title, content, imageFileName, imageFilePath);
 			return "redirect:../board/"+boardTitle;
+		} catch (Exception e) {
+			// TODO: handle exception
+			log.error(e.getMessage());
 		}
-		// 이미지 첨부x
-		@RequestMapping(value = "/updateAjax2", method = RequestMethod.POST)
-		public String updateAjax2 (@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
-		@Param("boardTitle") String boardTitle, Model model, HttpSession session, RedirectAttributes rttr) {
-			log.info("글수정 완료 버튼.. upload..(이미지없음)");
-			service.update2(number, title, content);
-			return "redirect:../board/"+boardTitle;
-		}
+		return "redirect:../board/"+boardTitle;
+	}
+	// 이미지 첨부x
+	@RequestMapping(value = "/updateAjax2", method = RequestMethod.POST)
+	public String updateAjax2 (@Param("number") Integer number, @Param("title") String title, @Param("content") String content, 
+	@Param("boardTitle") String boardTitle, Model model, HttpSession session, RedirectAttributes rttr) {
+		log.info("글수정 완료 버튼.. upload..(이미지없음)");
+		service.update2(number, title, content);
+		return "redirect:../board/"+boardTitle;
+	}
 	
 }

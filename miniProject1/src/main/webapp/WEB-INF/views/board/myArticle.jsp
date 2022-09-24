@@ -60,7 +60,7 @@
 					<img alt="" src="https://i.ibb.co/yQ8yXZM/icons8-noticeboard-48.png" width="24px" height="24px">
 				</th>
 				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
+				<th style="background-color : #eeeeee; text-align:center; width:200px">닉네임</th>
 				<th style="background-color : #eeeeee; text-align:center; width:200px">등록일</th>
 				<th style="background-color : #eeeeee; text-align:center; width:100px">조회</th>
 				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
@@ -154,6 +154,27 @@
 </c:forEach>
 </table>
 <!-- end table -->	
+<!-- start paging -->
+<ul class="pagination">
+	<c:if test="${pageMaker.prev}">
+		<li class="page-item"><a class="page-link"
+			href="${pageMaker.startPage-1}">Previous</a></li>
+	</c:if>
+	<c:forEach var="num" begin="${pageMaker.startPage }"
+		end="${pageMaker.endPage }">
+		<li class="page-item ${pageMaker.cri.pageNum==num?"active":"" }"><a
+			class="page-link" href="${num}">${num}</a></li>
+	</c:forEach>
+	<c:if test="${pageMaker.next}">
+		<li class="page-item"><a class="page-link"
+			href="${pageMaker.endPage+1 }">Next</a></li>
+	</c:if>
+</ul>
+<form id='actionForm' action="/board/myArticle" method='get'>
+	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+	<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+</form>
+<!-- end paging -->
 </div>
 </div>
 <!-- footer -->

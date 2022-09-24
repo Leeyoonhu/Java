@@ -34,7 +34,12 @@ public interface BoardMapper {
 			@Param("imageFileName") String imageFileName, @Param("imageFilePath") String imageFilePath);
 	// 글 수정(이미지 x)
 	public void update2(@Param("number") Integer number, @Param("title") String title, @Param("content") String content);
-	
+	// 전체게시판 페이징 조회
 	public List<BoardVO> getNoticeListWithPaging(Criteria cri); 
-
+	// 특정게시판 페이징 조회
+	public List<BoardVO> getListPaging(@Param("title")String title, @Param("cri")Criteria cri);
+	// 내 글 보기 페이징 조회
+	public List<BoardVO> getMyArticlePaging(@Param("nickName") String nickName, @Param("cri") Criteria cri);
+	// 전체게시판 페이징 조회
+	public List<BoardVO> getSearchPaging(@Param("title")String title, @Param("content")String content, @Param("cri") Criteria cri);
 }

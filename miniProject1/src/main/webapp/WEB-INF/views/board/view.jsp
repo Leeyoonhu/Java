@@ -217,8 +217,8 @@ ${comment.writer}</strong>
 <span style="color: gray">(${comment.regDate})</span>
 <!-- 삭제 버튼 표시 -->
 	<c:if test="${comment.writer eq userInfo.nickName}">
-		<img src="https://i.ibb.co/jM9Tyxf/image.png" style="cursor: pointer;" id="deleteImage">
-		<input type="text" value="${comment.comNumber}" style="display: none" id="deletecNumber"></input>
+		<img src="https://i.ibb.co/jM9Tyxf/image.png" style="cursor: pointer;" name="deleteImage">
+		<input type="text" value="${comment.comNumber}" style="display: none" name="deletecNumber"></input>
 	</c:if>
 <br>
 ${comment.comment}

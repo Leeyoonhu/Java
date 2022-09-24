@@ -52,7 +52,7 @@
 
 	<select id="search" resultType="org.ai.domain.BoardVO">
 		select * from board where
-		${title} LIKE CONCAT('%',#{content},'%')
+		${title} like CONCAT('%',#{content},'%') order by number desc
 	</select>
 			
 	<select id="getMyArticle" resultType="org.ai.domain.BoardVO">
@@ -70,4 +70,30 @@
 	<update id="update2">
 		update board set title = #{title}, content = #{content} where number = #{number}
 	</update>
+	
+	<select id="getNoticeListWithPaging"
+		resultType="org.ai.domain.BoardVO">
+		<![CDATA[
+			select * from board order by number desc limit #{pageStart}, #{amount}
+		]]>
+	</select>
+	
+	<select id="getListPaging" resultType="org.ai.domain.BoardVO">
+		<![CDATA[
+			select * from board where boardTitle = #{title} order by number desc limit #{cri.pageStart}, #{cri.amount}
+		]]>
+	</select>
+	
+	<select id="getMyArticlePaging" resultType="org.ai.domain.BoardVO">
+		<![CDATA[
+			select * from board where writer = #{nickName} order by number desc limit #{cri.pageStart}, #{cri.amount}
+		]]>
+	</select>
+	
+	<select id="getSearchPaging" resultType="org.ai.domain.BoardVO">
+		<![CDATA[
+			select * from board where ${title} like CONCAT('%',#{content},'%') order by number desc limit #{cri.pageStart}, #{cri.amount}
+		]]>
+		
+	</select>
 </mapper>

@@ -9,6 +9,10 @@
 <meta charset="UTF-8">
 <title>전체 게시판</title>
 <link rel="stylesheet" href="/resources/css/butnn3.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 <style type="text/css">
 #noticeBoardForm {
 	display: inline-block;
@@ -179,22 +183,30 @@
 background-position:center;cursor: pointer;padding: 0px 6px;"onclick="checkContent()">&nbsp;</button>
 </form>
 <br>
-<%-- <%
-int size = (int)session.getAttribute("size");
-int lastPage = 0;
-if(size / 15 > 0) {
-	lastPage = (size / 15) + 1;
-}
-else {
-	lastPage = 1;
-}
-for(int i = 1; i <= lastPage; i++){
-	if(i == 1){%>
-	<a style="text-decoration: none; color: black" href="./noticeboardForm.jsp?pages=<%=i%>"><%=i%></a>
-	<% } else if(i > 1){ %>
-	<a style="text-decoration: none; color: black" href="./noticeboardForm.jsp?pages=<%=i%>"> | <%=i%></a>
-	<% }
-}%> --%>
+<!-- end search -->
+
+<!-- start paging -->
+<ul class="pagination">
+	<c:if test="${pageMaker.prev}">
+		<li class="page-item"><a class="page-link"
+			href="${pageMaker.startPage-1}">Previous</a></li>
+	</c:if>
+	<c:forEach var="num" begin="${pageMaker.startPage }"
+		end="${pageMaker.endPage }">
+		<li class="page-item ${pageMaker.cri.pageNum==num?"active":"" }"><a
+			class="page-link" href="${num}">${num}</a></li>
+	</c:forEach>
+	<c:if test="${pageMaker.next}">
+		<li class="page-item"><a class="page-link"
+			href="${pageMaker.endPage+1 }">Next</a></li>
+	</c:if>
+</ul>
+<form id='actionForm' action="/board/notice" method='get'>
+	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+	<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+</form>
+<!-- end paging -->
+<!-- end body  -->
 </div>
 </div>
 <%@ include file="../includes/footer.jsp" %>

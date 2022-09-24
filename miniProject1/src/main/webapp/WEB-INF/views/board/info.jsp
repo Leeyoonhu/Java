@@ -143,22 +143,27 @@
 </c:forEach>
 </table>
 <!-- end table -->
-<%-- <%
-int size = (int)session.getAttribute("size");
-int lastPage = 0;
-if(size / 15 > 0) {
-	lastPage = (size / 15) + 1;
-}
-else {
-	lastPage = 1;
-}
-for(int i = 1; i <= lastPage; i++){
-	if(i == 1){%>
-	<a style="text-decoration: none; color: black" href="./informationBoardForm.jsp?pages=<%=i%>"><%=i%></a>
-	<% } else if(i > 1){ %>
-	<a style="text-decoration: none; color: black" href="./informationBoardForm.jsp?pages=<%=i%>"> | <%=i%></a>
-	<% }
-}%> --%>
+<!-- start paging -->
+<ul class="pagination">
+	<c:if test="${pageMaker.prev}">
+		<li class="page-item"><a class="page-link"
+			href="${pageMaker.startPage-1}">Previous</a></li>
+	</c:if>
+	<c:forEach var="num" begin="${pageMaker.startPage }"
+		end="${pageMaker.endPage }">
+		<li class="page-item ${pageMaker.cri.pageNum==num?"active":"" }"><a
+			class="page-link" href="${num}">${num}</a></li>
+	</c:forEach>
+	<c:if test="${pageMaker.next}">
+		<li class="page-item"><a class="page-link"
+			href="${pageMaker.endPage+1 }">Next</a></li>
+	</c:if>
+</ul>
+<form id='actionForm' action="/board/info" method='get'>
+	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+	<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+</form>
+<!-- end paging -->
 </div>
 </div>
 <%@ include file="../includes/footer.jsp" %>
