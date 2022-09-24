@@ -132,7 +132,6 @@ public class BoardController {
 		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
 		model.addAttribute("bList", service.getNoticeListWithPaging(cri));
 		model.addAttribute("pageMaker", pageDTO);
-//		model.addAttribute("bList", service.getNoticeList());
 		model.addAttribute("mList", mService.getList());
 		model.addAttribute("cList", cService.getList());
 	}
@@ -151,6 +150,10 @@ public class BoardController {
 	@GetMapping("/write")	// uploadForm역할 p494부터
 	public void getBoardWrite(Model model) {
 		model.addAttribute("mList", mService.getList());
+		File uploadFolderPath = new File("C:\\upload");
+		if(uploadFolderPath.exists() == false) {
+			uploadFolderPath.mkdirs();
+		}
 		log.info("write");
 	}
 	// 글쓰기(write)에서 이미지 첨부(글쓰기 jsp에서 ajax로 보냄)
