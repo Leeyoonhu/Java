@@ -42,10 +42,17 @@
 <div class="mainFormContent"> <!-- 인기게시글, 최근 게시글 을 담을거 -->
 	<iframe style="margin-right : 50px"src="popular" width="600px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
 	<iframe style="margin-left : 50px" src="current" width="600px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
-    
 </div>
-
-
+<!-- start ranking -->
+<div class="card bg-light" style="width: 400px">
+	<div class="card-body">
+        <p class="m-0 text-center text-black">랭킹목록</p>
+    </div>
+    <div class="py-5 bg-dark">
+        <p class="m-0 text-center text-white">랭킹목록</p>
+    </div>
+</div>
+<!-- end ranking -->
 <div class="mainFormContent2">
 <iframe style="margin-right : 700px"
       width="1000"

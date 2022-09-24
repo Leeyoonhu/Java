@@ -5,6 +5,8 @@
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/butl.css">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link href="/resources/css/view.css" rel="stylesheet"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="/resources/js/paging.js"></script>
 <meta charset="UTF-8">
@@ -24,7 +26,7 @@ position: static;
 }
 #content2 {
 width: 1650px;
-height: 1600px;
+height: 1800px;
 position: static;
 }
 
@@ -170,14 +172,13 @@ position: static;
 	height: 1000px;
 	margin-left:270px;
 }
+.pagination {
+	justify-content : center;
+}
 
 </style>
 </head>
 <body>
-<!-- 로그인 이전 메인홈페이지 -->
-<!-- 공용 헤더(수정한 후 src파일로 만들어서 모든곳에 돌려쓸예정)  -->
-<!-- 헤더 백그라운드 -->
-<!-- 헤더 끝나는 부분 -->
 <div style="background-color: #343a40; position: static; width: 1950px; height: 290px;">
 <a href="../members/join" style="position:relative; color:white; right: -1700px; font-size: 0.8em; top :4%; text-decoration: none;">회원가입</a> 
 &nbsp;
