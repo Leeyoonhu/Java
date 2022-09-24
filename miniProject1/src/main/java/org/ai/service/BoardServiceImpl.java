@@ -111,5 +111,28 @@ public class BoardServiceImpl implements BoardService {
 	   return mapper.getNoticeListWithPaging(cri); 
 	}
 
+	@Override
+	public List<BoardVO> getListPaging(@Param("title")String title, @Param("cri")Criteria cri) {
+		// TODO Auto-generated method stub
+		return mapper.getListPaging(title, cri);
+	}
+	
+	@Override
+	public List<BoardVO> getMyArticlePaging(@Param("nickName") String nickName, @Param("cri") Criteria cri){
+		return mapper.getMyArticlePaging(nickName, cri);
+	}
+
+	@Override
+	public List<BoardVO> getSearchPaging(@Param("title")String title, @Param("content")String content, @Param("cri") Criteria cri) {
+		// TODO Auto-generated method stub
+		if(title.equals("제목")) {
+			title = "title";
+		}
+		if(title.equals("닉네임")) {
+			title = "writer";
+		}
+		return mapper.getSearchPaging(title, content, cri);
+	}
+	
 	
 }
