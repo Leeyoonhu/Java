@@ -187,18 +187,18 @@ background-position:center;cursor: pointer;padding: 0px 6px;"onclick="checkConte
 
 <!-- start paging -->
 <ul class="pagination">
-	<c:if test="${pageMaker.prev}">
-		<li class="page-item"><a class="page-link"
-			href="${pageMaker.startPage-1}">Previous</a></li>
+	<c:if test="${pageMaker.next}">
+		<li class="page-item" style="text-align: center"><a class="page-link"
+			href="${pageMaker.endPage+1}">Next</a></li>
 	</c:if>
 	<c:forEach var="num" begin="${pageMaker.startPage }"
 		end="${pageMaker.endPage }">
-		<li class="page-item ${pageMaker.cri.pageNum==num?"active":"" }"><a
+		<li class="page-item ${pageMaker.cri.pageNum==num?"active":"" }" style="text-align: center"><a
 			class="page-link" href="${num}">${num}</a></li>
 	</c:forEach>
-	<c:if test="${pageMaker.next}">
-		<li class="page-item"><a class="page-link"
-			href="${pageMaker.endPage+1 }">Next</a></li>
+	<c:if test="${pageMaker.prev}">
+		<li class="page-item" style="text-align: center"><a class="page-link"
+			href="${pageMaker.startPage-1}">Previous</a></li>
 	</c:if>
 </ul>
 <form id='actionForm' action="/board/notice" method='get'>
@@ -210,5 +210,6 @@ background-position:center;cursor: pointer;padding: 0px 6px;"onclick="checkConte
 </div>
 </div>
 <%@ include file="../includes/footer.jsp" %>
+<!-- end footer -->
 </body>
 </html>

@@ -2,6 +2,7 @@ package org.ai.service;
 
 import java.util.List;
 
+import org.ai.domain.Criteria;
 import org.ai.domain.MemberVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,4 +20,6 @@ public interface MemberService {
 	public String loginCheck(@Param("userId")String userId, @Param("userPwd")String userPwd);
 	
 	public List<MemberVO> getList();
+	public List<MemberVO> getRankListWithPaging(Criteria cri);
+	public List<MemberVO> getRankList();
 }

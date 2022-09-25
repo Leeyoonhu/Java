@@ -42,9 +42,54 @@
 <div class="mainFormContent"> <!-- 인기게시글, 최근 게시글 을 담을거 -->
 	<iframe style="margin-right : 50px"src="popular" width="600px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
 	<iframe style="margin-left : 50px" src="current" width="600px" height="300px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
-    
 </div>
 
+<!-- start ranking -->
+<div>
+       <table style="border: 1px solid black">
+       	<tr><th colspan="1" style="background-color : #295298; z-index: 1; width:200px; height: 40px; color: white">랭킹 목록</th></tr>
+       		<c:forEach var="member" items="${mList}">
+       			<tr>
+       				<td>
+		        		<c:choose>
+							<c:when test="${member.userExp == 0}">
+								<img src="https://i.ibb.co/DYQFRjq/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 100}">
+								<img src="https://i.ibb.co/Hnhvny8/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 200}">
+								<img src="https://i.ibb.co/NKXW0C9/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 300}">
+								<img src="https://i.ibb.co/HNzQDJT/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 400}">
+								<img src="https://i.ibb.co/M6PwMcC/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 500}">
+								<img src="https://i.ibb.co/QkmbTmL/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 600}">
+								<img src="https://i.ibb.co/WHGk9tW/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 700}">
+								<img src="https://i.ibb.co/4PJ9wVk/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp == 800}">
+								<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp > 800}">
+								<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+							</c:when>
+						</c:choose>
+						${member.nickName}
+					</td>
+				</tr>
+       		</c:forEach>
+       </table>
+   </div>
+<!-- end ranking -->
 
 <div class="mainFormContent2">
 <iframe style="margin-right : 700px"
