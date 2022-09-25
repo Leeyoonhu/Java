@@ -1,5 +1,7 @@
 package org.ai.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +11,8 @@ import lombok.Setter;
 @Data
 public class MemberVO {
 	private int userNum, userExp;
-	private String userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender, attDate, regDate;
+	private String userId, userPwd, checkPwd, nickName, firstName, lastName, phoneNo, pwdHintQ, pwdHint, userJob, gender, attDate;
+	private Date regDate;
 	public MemberVO() {
 	}
 	// 로그인 할때 판별하는 생성자
@@ -35,7 +38,7 @@ public class MemberVO {
 	// 회원이 갖고있는 모든 정보 생성자 (15개, 1,2번만 int, 나머지 String)
 	public MemberVO(int userNum, int userExp, String userId, String userPwd, String checkPwd, String nickName,
 			String firstName, String lastName, String phoneNo, String pwdHintQ, String pwdHint, String userJob,
-			String gender, String attDate, String regDate) {
+			String gender, String attDate, Date regDate) {
 		super();
 		this.userNum = userNum;
 		this.userExp = userExp;

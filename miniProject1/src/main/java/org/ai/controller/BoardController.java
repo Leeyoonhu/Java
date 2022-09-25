@@ -282,11 +282,7 @@ public class BoardController {
 		service.plusReco(number);
 		return "redirect: ../board/view?number=" + number;
 	}
-	//======================================REMOVEME
-	@GetMapping("/test")
-	public void getTest() {
-		log.info("check main");
-	}
+
 	@PostMapping("/delete")
 	public String deleteBoard(@Param("number")Integer number, @Param("boardTitle")String boardTitle) {
 		service.deleteBoard(number);
@@ -326,7 +322,7 @@ public class BoardController {
 			service.update(number, title, content, imageFileName, imageFilePath);
 			return "redirect:../board/"+boardTitle;
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			log.error(e.getMessage());
 		}
 		return "redirect:../board/"+boardTitle;
@@ -340,4 +336,17 @@ public class BoardController {
 		return "redirect:../board/"+boardTitle;
 	}
 	
+	@GetMapping("/rank")
+	public void getGanking(Criteria cri, Model model) {
+		List<MemberVO> mList = mService.getList();
+		cri.setAmount(15);
+		PageDTO pageDTO = new PageDTO(cri, mList.size());
+		model.addAttribute("mList", mService.getRankListWithPaging(cri));
+		model.addAttribute("pageMaker", pageDTO);
+	}
+	
+	@GetMapping("/discharge")
+	public void getDischarge() {
+		
+	}
 }
