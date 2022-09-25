@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.ai.domain.Criteria;
 import org.ai.domain.MemberVO;
 import org.ai.mapper.MemberMapper;
 import org.apache.ibatis.annotations.Param;
@@ -93,4 +94,18 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.getList();
 	}
+
+	@Override
+	public List<MemberVO> getRankListWithPaging(Criteria cri) {
+		// TODO Auto-generated method stub
+		return mapper.getRankListWithPaging(cri);
+	}
+
+	@Override
+	public List<MemberVO> getRankList() {
+		// TODO Auto-generated method stub
+		return mapper.getRankList();
+	}
+
+	
 }

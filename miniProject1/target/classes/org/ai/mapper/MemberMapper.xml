@@ -51,4 +51,14 @@
    	<select id="getList" resultType="org.ai.domain.MemberVO">
    		select * from members;
    	</select>
+   	
+   	<select id="getRankListWithPaging" resultType="org.ai.domain.MemberVO">
+   		<![CDATA[
+   			select * from members order by userExp desc limit #{pageStart}, #{amount}
+   		]]>
+   	</select>
+   	
+   	<select id="getRankList" resultType="org.ai.domain.MemberVO">
+   		select * from members order by userExp desc limit 5
+   	</select>
 </mapper>

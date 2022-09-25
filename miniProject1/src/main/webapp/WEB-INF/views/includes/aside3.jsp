@@ -86,10 +86,11 @@
     <nav id ="nav">
         <div style="height: 185px; width: 200px; color: white">
         	<a href="../board/main" style="display: none" id="asideToMain"></a>
-        	<a href="../board/myArticle" style="display: none" id="watchMyWrite"></a>
-        	<a href="" style="display: none" id="watchMyComment"></a>
+        	<a href="../board/myArticle" style="display: none" id="watchMyArticle"></a>
+        	<a href="../board/rank" style="display: none" id="watchRanking"></a>
         	<a href="../members/logout" style="display: none" id="asideLogout"></a>
-        	<button class="asideMain" onclick="document.getElementById('asideToMain').click()">ROK ARMY</button>
+        	<a href="../board/discharge" style="display: none" id="dischargeCalc"></a>
+        	<button class="asideMain" onclick="document.getElementById('asideToMain').click()">전 군 시</button>
         	<div style="font-size: 1.2em; margin-left: 30px; margin-top: 8px">
         	<c:choose>
 					<c:when test="${userInfo.userExp == 0}">
@@ -125,12 +126,12 @@
 				</c:choose>
         	<c:out value="${userInfo.nickName}"></c:out> 's</div>
         	<div style="font-size: 1em; margin-left: 20px; margin-top: 8px; display: inline-block;">현재 경험치 : ${userInfo.userExp}</div>
-        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyWrite').click()">내글 보기</button>
-        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyComment').click()">내댓글 보기</button> 
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyArticle').click()">내 글 보기</button>
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchRanking').click()">랭킹 보기</button> 
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('asideLogout').click()">로그아웃</button>
         	<button id="attend3" class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" >출석체크</button>
-        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onClick="window.open('./diaryForm.jsp', '', 'width=1000, height=700'); return false;">일기 쓰기</button>
-        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('diaryBoardForm').click()">내 일기장</button>
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="window.open('./diary', '', 'width=1000, height=700'); return false;">내 일기장</button>
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('dischargeCalc').click()">전역일 계산</button>
         </div>
         <form action="../board/notice" method="get" style=" margin-top: 50px">
 			<input class="btn1" style="width: 180px; height: 40px; font-size: 1.0em; margin-left: 9px;" type="submit" value="전체게시판">

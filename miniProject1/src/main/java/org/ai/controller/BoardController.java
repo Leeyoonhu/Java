@@ -14,6 +14,7 @@ import org.ai.domain.MemberVO;
 import org.ai.domain.PageDTO;
 import org.ai.service.BoardService;
 import org.ai.service.CommentService;
+import org.ai.service.DiaryService;
 import org.ai.service.MemberService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,8 @@ public class BoardController {
 	MemberService mService;
 	@Autowired
 	CommentService cService;
+	@Autowired
+	DiaryService dService;
 	
 	// 년/월/일 폴더 (파일 path앞에 system time 의 y-M-d폴더 생성)
 	private String getFolder() {
@@ -55,8 +58,9 @@ public class BoardController {
 	}
 	
 	@GetMapping("/main")
-	public void getMain() {
-		log.info("check main");
+	public void getMain(Model model) {
+		model.addAttribute("mList", mService.getRankList());
+		
 	}
 	
 	@GetMapping("/free")
@@ -132,7 +136,6 @@ public class BoardController {
 		PageDTO pageDTO = new PageDTO(cri, bList.size()); 
 		model.addAttribute("bList", service.getNoticeListWithPaging(cri));
 		model.addAttribute("pageMaker", pageDTO);
-//		model.addAttribute("bList", service.getNoticeList());
 		model.addAttribute("mList", mService.getList());
 		model.addAttribute("cList", cService.getList());
 	}
@@ -151,6 +154,10 @@ public class BoardController {
 	@GetMapping("/write")	// uploadForm역할 p494부터
 	public void getBoardWrite(Model model) {
 		model.addAttribute("mList", mService.getList());
+		File uploadFolderPath = new File("C:\\upload");
+		if(uploadFolderPath.exists() == false) {
+			uploadFolderPath.mkdirs();
+		}
 		log.info("write");
 	}
 	// 글쓰기(write)에서 이미지 첨부(글쓰기 jsp에서 ajax로 보냄)
@@ -279,11 +286,7 @@ public class BoardController {
 		service.plusReco(number);
 		return "redirect: ../board/view?number=" + number;
 	}
-	//======================================REMOVEME
-	@GetMapping("/test")
-	public void getTest() {
-		log.info("check main");
-	}
+
 	@PostMapping("/delete")
 	public String deleteBoard(@Param("number")Integer number, @Param("boardTitle")String boardTitle) {
 		service.deleteBoard(number);
@@ -323,7 +326,7 @@ public class BoardController {
 			service.update(number, title, content, imageFileName, imageFilePath);
 			return "redirect:../board/"+boardTitle;
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			log.error(e.getMessage());
 		}
 		return "redirect:../board/"+boardTitle;
@@ -337,4 +340,27 @@ public class BoardController {
 		return "redirect:../board/"+boardTitle;
 	}
 	
+	@GetMapping("/rank")
+	public void getGanking(Criteria cri, Model model) {
+		List<MemberVO> mList = mService.getList();
+		cri.setAmount(15);
+		PageDTO pageDTO = new PageDTO(cri, mList.size());
+		model.addAttribute("mList", mService.getRankListWithPaging(cri));
+		model.addAttribute("pageMaker", pageDTO);
+	}
+	
+	@GetMapping("/discharge")
+	public void getDischarge() {
+		
+	}
+	
+	@GetMapping("/diary")
+	public void getDiary() {
+		
+	}
+	
+	@GetMapping("/diaryWrite")
+	public void getDiaryWrite(){
+		
+	}
 }
