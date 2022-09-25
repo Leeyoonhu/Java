@@ -146,12 +146,14 @@
        
     
 <!-- 추천 버튼 -->
-<form action="./plusreco" method="post">
-   <!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
-   <input type="hidden" name ="number" value="${bList.number}" id="boardNumber" >
-   <input style="width: 90px; height: 55px;border: 1px solid #ccc;border-radius: 5px;box-sizing: border-box;background: url(https://i.ibb.co/vVmM42G/image.jpg) no-repeat;background-position:center;" type="submit" value="">
-</form> <br>
-<a href="../board/${boardTitle}" id="boardForm" style="display: none;"></a>
+<c:if test="${not empty userInfo.userId}">
+	<form action="./plusreco" method="post">
+	   <!-- 추천을 누르면 현재 게시글 정보의 추천이 process로 가서 1 올라서 다시 일로와야해 -->
+	   <input type="hidden" name ="number" value="${bList.number}" id="boardNumber" >
+	   <input style="width: 90px; height: 55px;border: 1px solid #ccc;border-radius: 5px;box-sizing: border-box;background: url(https://i.ibb.co/vVmM42G/image.jpg) no-repeat;background-position:center;" type="submit" value="">
+	</form> <br>
+</c:if>
+	<a href="../board/${boardTitle}" id="boardForm" style="display: none;"></a>
 
 <div class="wrappp">
 <!-- 목록 버튼 -->
@@ -194,7 +196,7 @@
 	            </div>
 	            <div class="ms-4">
 	            <!-- writer -->
-	                <div class="fw-bold">
+	                <div>
 	                	<c:forEach var="member" items="${mList}">
 							<c:if test="${member.nickName eq comment.writer}">
 								<c:choose>

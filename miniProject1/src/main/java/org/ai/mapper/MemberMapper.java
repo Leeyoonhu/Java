@@ -21,4 +21,6 @@ public interface MemberMapper {
 	public String loginCheck(@Param("userId")String userId, @Param("userPwd")String userPwd);
 	public List<MemberVO> getList();
 	public List<MemberVO> getRankListWithPaging(Criteria cri);
+	// 내림차순 랭킹 조회
+	public List<MemberVO> getRankList();
 }

@@ -101,5 +101,11 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.getRankListWithPaging(cri);
 	}
 
+	@Override
+	public List<MemberVO> getRankList() {
+		// TODO Auto-generated method stub
+		return mapper.getRankList();
+	}
+
 	
 }
