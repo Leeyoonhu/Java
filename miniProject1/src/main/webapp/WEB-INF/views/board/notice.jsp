@@ -210,5 +210,6 @@ background-position:center;cursor: pointer;padding: 0px 6px;"onclick="checkConte
 </div>
 </div>
 <%@ include file="../includes/footer.jsp" %>
+<!-- end footer -->
 </body>
 </html>
