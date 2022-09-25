@@ -19,7 +19,7 @@ $("button[class='dischargeCalc']").on("click", function name() {
 		alert("날짜 형식에 맞지 않습니다.")
 		return false;
 	}
-	else if(startYear < 1900){
+	else if(startYear < 1932){
 		alert("이세상 사람이 아니시군요?")
 		return false;
 	}

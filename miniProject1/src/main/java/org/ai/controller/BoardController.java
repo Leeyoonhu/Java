@@ -14,6 +14,7 @@ import org.ai.domain.MemberVO;
 import org.ai.domain.PageDTO;
 import org.ai.service.BoardService;
 import org.ai.service.CommentService;
+import org.ai.service.DiaryService;
 import org.ai.service.MemberService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,8 @@ public class BoardController {
 	MemberService mService;
 	@Autowired
 	CommentService cService;
+	@Autowired
+	DiaryService dService;
 	
 	// 년/월/일 폴더 (파일 path앞에 system time 의 y-M-d폴더 생성)
 	private String getFolder() {
@@ -55,8 +58,9 @@ public class BoardController {
 	}
 	
 	@GetMapping("/main")
-	public void getMain() {
-		log.info("check main");
+	public void getMain(Model model) {
+		model.addAttribute("mList", mService.getRankList());
+		
 	}
 	
 	@GetMapping("/free")
@@ -347,6 +351,16 @@ public class BoardController {
 	
 	@GetMapping("/discharge")
 	public void getDischarge() {
+		
+	}
+	
+	@GetMapping("/diary")
+	public void getDiary() {
+		
+	}
+	
+	@GetMapping("/diaryWrite")
+	public void getDiaryWrite(){
 		
 	}
 }

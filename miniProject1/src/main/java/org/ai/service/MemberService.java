@@ -21,4 +21,5 @@ public interface MemberService {
 	
 	public List<MemberVO> getList();
 	public List<MemberVO> getRankListWithPaging(Criteria cri);
+	public List<MemberVO> getRankList();
 }

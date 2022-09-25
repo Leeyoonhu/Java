@@ -126,11 +126,11 @@
 				</c:choose>
         	<c:out value="${userInfo.nickName}"></c:out> 's</div>
         	<div style="font-size: 1em; margin-left: 20px; margin-top: 8px; display: inline-block;">현재 경험치 : ${userInfo.userExp}</div>
-        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyArticle').click()">내글 보기</button>
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchMyArticle').click()">내 글 보기</button>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('watchRanking').click()">랭킹 보기</button> 
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('asideLogout').click()">로그아웃</button>
         	<button id="attend3" class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" >출석체크</button>
-        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onClick="window.open('./diaryForm.jsp', '', 'width=1000, height=700'); return false;">일기 쓰기</button>
+        	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="window.open('./diary', '', 'width=1000, height=700'); return false;">내 일기장</button>
         	<button class="aside2btn" style="width: 80px; height: 25px; margin-left: 10px; margin-top: 5px" onclick="document.getElementById('dischargeCalc').click()">전역일 계산</button>
         </div>
         <form action="../board/notice" method="get" style=" margin-top: 50px">

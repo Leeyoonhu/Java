@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>일기쓰기</title>
+<title>Insert title here</title>
  <link rel="stylesheet" href="/resources/css/diary.css" />
 </head>
 <body class="bodybody">
@@ -39,20 +37,10 @@
                         <div class="album-box">
                             <div class="forming">
                                 <div class="headerone">
-                                    <table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
-										<thead>
-											<tr style="height: 30px">
-												<th style="background-color : #c6e7f5; text-align:center; width:400px">제목</th>
-												<th style="background-color : #c6e7f5; text-align:center; width:150px">등록일</th>
-											</tr>
-										</thead>
-										<c:forEach var="diary" items="${dList}">
-											<tr>
-												<td>${diary.title}</td>
-												<td><fmt:formatDate value="${diary.regDate}" pattern="yyyy-MM-dd"/></td>
-											</tr>
-										</c:forEach>
-									</table>
+                                    <input class="table_input" placeholder="제목을 입력 하세요." type="text" style="width: 430px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: 0px;" 
+ 									name="title" autofocus="autofocus" maxlength="50"><br>
+         							<textarea class="table_input" rows="" cols="" style="width: 430px; height: 330px; position:relative; right:0px; resize:none; overflow-y:scroll" 
+         							name="content"></textarea>
                                 </div>
                                 
                             </div>
