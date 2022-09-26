@@ -6,12 +6,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/butl.css">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<link href="/resources/css/view.css" rel="stylesheet"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="/resources/js/paging.js"></script>
 <meta charset="UTF-8">
 <title>ROK ARMY</title>
 <style type="text/css">
+* {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
 * {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -30,17 +37,18 @@ height: 1800px;
 position: static;
 }
 
-/* .goToMain { */
-/* 	width: 120px;  */
-/* 	float: right; */
-/* 	margin-right: 20px;  */
-/* 	margin-bottom: 10px;  */
-/* 	line-height: 30px;  */
-/* 	border-radius: 3px;  */
-/* 	box-sizing: border-box;  */
-/* 	border: 1px solid #303030; */
-/* 	color: gray; */
-/* } */
+
+.goToMain {
+	width: 120px; 
+	float: right;
+	margin-right: 20px; 
+	margin-bottom: 10px; 
+	line-height: 30px; 
+	border-radius: 3px; 
+	box-sizing: border-box; 
+	border: 1px solid #303030;
+	color: gray;
+}
 
 .goToMain:hover {
 	text-transform: uppercase;
@@ -160,21 +168,23 @@ position: static;
 }
 .mainFormContent {
 	display: inline-block;
-	text-align: center;
-	width: 1560px;
-	margin-top : -190px;
+	text-align : center;
+	width: 1700px;
+	margin-top : -110px;
+	margin-left:-20px;
 	
 }
 .mainFormContent2 {
 	display: inline-block;
 	text-align: center;
-	width: 1300px;
-	height: 1000px;
-	margin-left:270px;
+	width: 1700px;
+	marign-top : -200px;
+	margin-left:-20px;
 }
 .pagination {
 	justify-content : center;
 }
+
 
 </style>
 </head>

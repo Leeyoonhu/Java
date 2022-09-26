@@ -86,8 +86,11 @@
 					<c:when test="${member.userExp == 800}">
 						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 					</c:when>
-					<c:when test="${member.userExp > 800}">
-						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+						<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp >= 10000}">
+						<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 					</c:when>
 				</c:choose>
 			</c:if>

@@ -13,7 +13,7 @@
 <title>글 보기</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="/resources/js/delete.js"></script>
-<script type="text/javascript" src="/resources/js/delComment.js"></script>
+<!-- <script type="text/javascript" src="/resources/js/delComment.js"></script> -->
 <script type="text/javascript" src="/resources/js/addComment.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="/resources/js/view.js"></script>
@@ -93,37 +93,40 @@
         <c:forEach var="member" items="${mList}">
          <c:if test="${member.nickName eq bList.writer}">
             <c:choose>
-               <c:when test="${member.userExp == 0}">
-                  <img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 100}">
-                  <img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 200}">
-                  <img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 300}">
-                  <img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 400}">
-                  <img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 500}">
-                  <img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 600}">
-                  <img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 700}">
-                  <img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp == 800}">
-                  <img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
-               </c:when>
-               <c:when test="${member.userExp > 800}">
-                  <img src="https://i.ibb.co/b1CtsSW/image.png" width="18px" height="18px">
-               </c:when>
-            </c:choose>
+				<c:when test="${member.userExp == 0}">
+					<img src="https://i.ibb.co/DYQFRjq/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp == 100}">
+					<img src="https://i.ibb.co/Hnhvny8/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp == 200}">
+					<img src="https://i.ibb.co/NKXW0C9/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp == 300}">
+					<img src="https://i.ibb.co/HNzQDJT/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp == 400}">
+					<img src="https://i.ibb.co/M6PwMcC/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp == 500}">
+					<img src="https://i.ibb.co/QkmbTmL/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp == 600}">
+					<img src="https://i.ibb.co/WHGk9tW/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp == 700}">
+					<img src="https://i.ibb.co/4PJ9wVk/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp == 800}">
+					<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+					<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+				</c:when>
+				<c:when test="${member.userExp >= 10000}">
+					<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
+				</c:when>
+			</c:choose>
          </c:if>
       </c:forEach>
                         ${bList.writer}</td>
@@ -157,13 +160,13 @@
 
 <div class="wrappp">
 <!-- 목록 버튼 -->
-<button class="buttonmn" onclick="document.getElementById('boardForm').click();">목록</button>
+<button style="font-size:13px; font-weight: bold;"class="buttonmn" onclick="document.getElementById('boardForm').click();">목록</button>
 <!-- 글 작성자와 현재 접속자가 동일하면 글 수정 버튼 -->
 <c:if test="${bList.writer eq userInfo.nickName}">
    <a href="../board/update?number=${bList.number}" id="boardUpdate" style="display: none;"></a>
-   <button class="buttonmn" onclick="document.getElementById('boardUpdate').click();">글 수정</button>
+   <button style="font-size:13px; font-weight: bold;" class="buttonmn" onclick="document.getElementById('boardUpdate').click();">글 수정</button>
    <input id="boardTitle" value="${boardTitle}" type="text" style="display: none">
-   <button class="buttonmn" id="deleteBoard">글 삭제</button>
+   <button style="font-size:13px; font-weight: bold;" class="buttonmn" id="deleteBoard">글 삭제</button>
 </c:if>
 </div>
 <hr>
@@ -194,57 +197,60 @@
 	                <!-- char image -->
 	                <img class="rounded-circle" src="https://i.ibb.co/mGCzCtg/soldier.png" style="width: 50px; height: 50px;">
 	            </div>
-	            <div class="ms-4">
+	            <div>
 	            <!-- writer -->
 	                <div>
 	                	<c:forEach var="member" items="${mList}">
 							<c:if test="${member.nickName eq comment.writer}">
 								<c:choose>
 									<c:when test="${member.userExp == 0}">
-										<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/DYQFRjq/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 									<c:when test="${member.userExp == 100}">
-										<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/Hnhvny8/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 									<c:when test="${member.userExp == 200}">
-										<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/NKXW0C9/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 									<c:when test="${member.userExp == 300}">
-										<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/HNzQDJT/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 									<c:when test="${member.userExp == 400}">
-										<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/M6PwMcC/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 									<c:when test="${member.userExp == 500}">
-										<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/QkmbTmL/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 									<c:when test="${member.userExp == 600}">
-										<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/WHGk9tW/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 									<c:when test="${member.userExp == 700}">
-										<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/4PJ9wVk/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 									<c:when test="${member.userExp == 800}">
-										<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/M7SJqZW/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
-									<c:when test="${member.userExp > 800}">
-										<img src="https://i.ibb.co/b1CtsSW/image.png" width="18px" height="18px">
+									<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+										<img src="https://i.ibb.co/XpZfLv1/image.png" style="float:left" width="20px" height="20px">
+									</c:when>
+									<c:when test="${member.userExp >= 10000}">
+										<img src="https://i.ibb.co/Yy9cYn3/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 								</c:choose>
 							</c:if>
 						</c:forEach>
-						<strong>${comment.writer}</strong>
+						<strong style="float:left">${comment.writer}</strong>
 						<!-- writer check -->
 						<c:if test="${comment.writer eq bList.writer}">
-							<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:2px;margin-bottom:2px" border="0">
+							<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:2px;margin-bottom:2px; float:left; margin-top: 5px; margin-left: 5px;" border="0">
 						</c:if>
 						<!-- delete check -->
 						<c:if test="${comment.writer eq userInfo.nickName}">
-							<img src="https://i.ibb.co/jM9Tyxf/image.png" style="cursor: pointer;" name="deleteImage">
-							<input type="text" value="${comment.comNumber}" style="display: none" name="deletecNumber"></input>
+							<input type="text" value="${comment.comNumber}" style="display: none;" name="deletecNumber"></input>
+							<img src="https://i.ibb.co/jM9Tyxf/image.png" name="deleteImage" style="cursor: pointer; float:left; margin-top: 5px; margin-left: 5px;">
 						</c:if>
 						<br>
-						${comment.comment}
+						<div style="float:left">${comment.comment}</div> 
 	                </div>
 	            </div>
 	        </div>
@@ -257,4 +263,32 @@
 </div>
 <%@ include file="../includes/footer.jsp" %> 
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+	let img = $("img[name='deleteImage']");
+	let delNum = $("input[name='deletecNumber']");
+	for(let i = 0; i < img.length; i++){
+		$(img[i]).on("click", function(){
+		let url = "../board/view?number=" + $("#boardNumber").val();
+		if(confirm("댓글을 삭제하시겠습니까?")){
+			alert("삭제되었습니다.");
+			$.ajax({
+				type : "POST",
+				url : "../comment/delete",
+				data : {comNumber : $(delNum[i]).val()},
+				dataType : "text",
+				success : function(){
+					location.href = url;
+				},
+				error : function(){
+					location.href = url;
+				}
+			})
+		}
+		
+	})
+	}
+	
+})
+</script>
 </html>
