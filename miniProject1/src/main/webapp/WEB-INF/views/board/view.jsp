@@ -185,7 +185,7 @@
         <!-- write comment -->
         <c:if test="${not empty userInfo.userId}">
 	        <form action="mb-4">
-	            <textarea class="form-control" name="comment" id="" cols="30" rows="3" style="height: 64px; resize: none;"placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 이용약관에 의한 제재는 영창으로 갑니다."></textarea>
+	            <textarea class="form-control" name="comment" id="" cols="30" rows="3" style="height: 64px; resize: none;"placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 이용약관에 의한 제재는 영창으로 갑니다." maxlength="50"></textarea>
 	        </form>
         </c:if>
         <!-- end write comment -->
