@@ -32,39 +32,42 @@
 							<c:if test="${member.nickName eq comment.writer}">
 								<c:choose>
 									<c:when test="${member.userExp == 0}">
-										<img src="https://i.ibb.co/DYQFRjq/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/DYQFRjq/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
 									<c:when test="${member.userExp == 100}">
-										<img src="https://i.ibb.co/Hnhvny8/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/Hnhvny8/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
 									<c:when test="${member.userExp == 200}">
-										<img src="https://i.ibb.co/NKXW0C9/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/NKXW0C9/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
 									<c:when test="${member.userExp == 300}">
-										<img src="https://i.ibb.co/HNzQDJT/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/HNzQDJT/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
 									<c:when test="${member.userExp == 400}">
-										<img src="https://i.ibb.co/M6PwMcC/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/M6PwMcC/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
 									<c:when test="${member.userExp == 500}">
-										<img src="https://i.ibb.co/QkmbTmL/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/QkmbTmL/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
 									<c:when test="${member.userExp == 600}">
-										<img src="https://i.ibb.co/WHGk9tW/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/WHGk9tW/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
 									<c:when test="${member.userExp == 700}">
-										<img src="https://i.ibb.co/4PJ9wVk/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/4PJ9wVk/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
 									<c:when test="${member.userExp == 800}">
-										<img src="https://i.ibb.co/M7SJqZW/image.png" width="18px" height="18px">
+										<img src="https://i.ibb.co/M7SJqZW/image.png" style="float:left" width="18px" height="18px">
 									</c:when>
-									<c:when test="${member.userExp > 800}">
-										<img src="https://i.ibb.co/b1CtsSW/image.png" width="18px" height="18px">
+									<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+										<img src="https://i.ibb.co/XpZfLv1/image.png" style="float:left" width="20px" height="20px">
+									</c:when>
+									<c:when test="${member.userExp >= 10000}">
+										<img src="https://i.ibb.co/Yy9cYn3/image.png" style="float:left" width="20px" height="20px">
 									</c:when>
 								</c:choose>
 							</c:if>
 						</c:forEach>
-						<strong>${comment.writer}</strong>
+						<strong style="float:left">${comment.writer}</strong>
 						<!-- writer check -->
 						<c:if test="${comment.writer eq bList.writer}">
 							<img src="https://i.ibb.co/gZ2Pww5/icon-writer-42x15.png" style="width:42px;height:15px;margin-left:2px;margin-bottom:2px" border="0">
