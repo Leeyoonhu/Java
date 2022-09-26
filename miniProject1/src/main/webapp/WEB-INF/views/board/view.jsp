@@ -11,12 +11,8 @@
 <head>
 <meta charset="UTF-8">
 <title>글 보기</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="/resources/js/delete.js"></script>
-<!-- <script type="text/javascript" src="/resources/js/delComment.js"></script> -->
-<script type="text/javascript" src="/resources/js/addComment.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="/resources/js/view.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <style type="text/css">
 .wrappp {
   height: 100%;
@@ -263,32 +259,9 @@
 </div>
 <%@ include file="../includes/footer.jsp" %> 
 </body>
-<script type="text/javascript">
-$(document).ready(function(){
-	let img = $("img[name='deleteImage']");
-	let delNum = $("input[name='deletecNumber']");
-	for(let i = 0; i < img.length; i++){
-		$(img[i]).on("click", function(){
-		let url = "../board/view?number=" + $("#boardNumber").val();
-		if(confirm("댓글을 삭제하시겠습니까?")){
-			alert("삭제되었습니다.");
-			$.ajax({
-				type : "POST",
-				url : "../comment/delete",
-				data : {comNumber : $(delNum[i]).val()},
-				dataType : "text",
-				success : function(){
-					location.href = url;
-				},
-				error : function(){
-					location.href = url;
-				}
-			})
-		}
-		
-	})
-	}
-	
-})
+<script type="text/javascript" src="/resources/js/delete.js"></script>
+<script type="text/javascript" src="/resources/js/addComment.js"></script>
+<script type="text/javascript" src="/resources/js/view.js"></script>
+<script type="text/javascript" src="/resources/js/delComment.js">
 </script>
 </html>

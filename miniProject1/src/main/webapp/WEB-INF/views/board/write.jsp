@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="/resources/js/upload.js"></script>
 <title>글 쓰기</title>
 <style type="text/css">
 #freeBoardWrite {
@@ -100,7 +99,7 @@
 	<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
 	style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
 	name="title" autofocus="autofocus" maxlength="50"><br>
-	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" name="content" placeholder="글꼴"></textarea> <br>
+	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" maxlength="500" name="content" placeholder="내용을 입력하세요."></textarea> <br>
 	<input type="file" style="display:none;" id="addImage" name="uploadFile" accept="image/*"/>
 	<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('addImage').click();" />
 	<input type="text" style="display: none;" name="boardTitle" value="${boardTitle}">
@@ -111,4 +110,7 @@
 <!-- footer -->
 <%@ include file="../includes/footer.jsp" %>
 </body>
+<script type="text/javascript" src="/resources/js/upload.js">
+
+</script>
 </html>

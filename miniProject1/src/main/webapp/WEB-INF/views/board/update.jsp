@@ -97,10 +97,10 @@
 			</c:if>
 		</c:forEach>
 	${userInfo.nickName}</span>
-	<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
+	<input class="table_input" type="text" placeholder="제목을 입력 하세요." 
 	style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
 	name="title" autofocus="autofocus" maxlength="50" value="${bList.title}"><br>
-	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" name="content" placeholder="글꼴">${bList.content}</textarea> <br>
+	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" name="content" placeholder="내용을 입력하세요.">${bList.content}</textarea> <br>
 	<input type="file" style="display:none;" id="addImage" name="uploadFile" accept="image/*"/>
 	<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('addImage').click();" />
 	<input type="text" style="display: none;" name="boardTitle" value="${bList.boardTitle}">

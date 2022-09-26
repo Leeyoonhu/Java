@@ -15,52 +15,62 @@ $(document).ready(function(){
       }
       return true;
    }
-   
+  
    $("#uploadBtn").on("click", function(e){
-      let formData = new FormData();
-      let writer = $("input[name='writer']").val();
-      let title = $("input[name='title']").val();
-      let content = $("textarea[name='content']").val();
-      let inputFile = $("input[name='uploadFile']");
-      let files = inputFile[0].files;
-      let boardTitle = $("input[name='boardTitle']").val();
-      if(!checkExtension(files.name, files.size)){
-         return false;
-      }
-      formData.append("writer", writer)
-      formData.append("title", title)
-      formData.append("content", content)
-      formData.append("boardTitle", boardTitle)
-      if(files[0] != null){
-         formData.append("uploadFile", files[0])
-            $.ajax({
-            url: "../board/uploadAjax",
-            type: "POST",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(result){
-               alert("글을 등록하였습니다");
-               location.href = "../board/" + boardTitle;
-            }
-         })
-      }
-      else {
-            $.ajax({
-            url: "../board/uploadAjax2",
-            type: "POST",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(result){
-               alert("글을 등록하였습니다");
-               location.href = "../board/" + boardTitle;
-            }
-         })
-      }
-      
-      
-      
-   })
-   
+	  if($("input[name='title']").val() == ""){
+		  alert("제목을 입력하세요")
+		  $("input[name='title']").focus();
+	  }
+	  else if($("textarea[name='content']").val() == ""){
+		  alert("내용을 입력하세요")
+		  $("textarea[name='content']").focus();
+	  }
+	  else {	  
+		  let formData = new FormData();
+	      let writer = $("input[name='writer']").val();
+	      let title = $("input[name='title']").val();
+	      let content = $("textarea[name='content']").val();
+	      let inputFile = $("input[name='uploadFile']");
+	      let files = inputFile[0].files;
+	      let boardTitle = $("input[name='boardTitle']").val();
+	      formData.append("writer", writer)
+	      formData.append("title", title)
+	      formData.append("content", content)
+	      formData.append("boardTitle", boardTitle)  
+	      
+	      if(files[0] != null){
+	      // 정규식 체크
+		      for(let i = 0; i < files.length; i++){
+			      if(!checkExtension(files[i].name, files[i].size)){
+			         return false;
+			      }
+			      formData.append("uploadFile", files[0])
+		      }
+	            $.ajax({
+	            url: "../board/uploadAjax",
+	            type: "POST",
+	            data: formData,
+	            processData: false,
+	            contentType: false,
+	            success: function(result){
+	               alert("글을 등록하였습니다");
+	               location.href = "../board/" + boardTitle;
+	            }
+	         })
+	      }
+	      else {
+	            $.ajax({
+	            url: "../board/uploadAjax2",
+	            type: "POST",
+	            data: formData,
+	            processData: false,
+	            contentType: false,
+	            success: function(result){
+	               alert("글을 등록하였습니다");
+	               location.href = "../board/" + boardTitle;
+	            }
+	         })
+	      }
+	  }
+   })   
 })
