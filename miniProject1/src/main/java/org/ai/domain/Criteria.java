@@ -11,7 +11,7 @@ public class Criteria {
 	private int amount; 
 	
 	public Criteria() {
-		this(1, 10);
+		this(1, 15);
 	}
 	
 	// mySQL에서 limit을 고려함

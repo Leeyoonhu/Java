@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내글 보기</title>
-<link rel="stylesheet" href="/resources/css/butnn.css">
+<link rel="stylesheet" href="/resources/css/butnn6.css">
 <style type="text/css">
 #myArticleForm {
 	display: inline-block;
@@ -55,15 +55,15 @@
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr>
-				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
-				<th style="background-color : #eeeeee; text-align:center; width:80px">
+				<th style="background-color : rgb(184, 241, 215); text-align:center; width:80px; font-weight:bold;">글번호</th>
+				<th style="background-color : rgb(184, 241, 215); text-align:center; width:80px; font-weight:bold;">
 					<img alt="" src="https://i.ibb.co/yQ8yXZM/icons8-noticeboard-48.png" width="24px" height="24px">
 				</th>
-				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
-				<th style="background-color : #eeeeee; text-align:center; width:200px">닉네임</th>
-				<th style="background-color : #eeeeee; text-align:center; width:200px">등록일</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">조회</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
+				<th style="background-color : rgb(184, 241, 215); text-align:center; width:700px; font-weight:bold;">제목</th>
+				<th style="background-color : rgb(184, 241, 215); text-align:center; width:200px; font-weight:bold;">닉네임</th>
+				<th style="background-color : rgb(184, 241, 215); text-align:center; width:200px; font-weight:bold;">등록일</th>
+				<th style="background-color : rgb(184, 241, 215); text-align:center; width:100px; font-weight:bold;">조회</th>
+				<th style="background-color : rgb(184, 241, 215); text-align:center; width:100px; font-weight:bold;">추천</th>
 			</tr>
 		</thead>
 
@@ -137,8 +137,11 @@
 					<c:when test="${member.userExp == 800}">
 						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 					</c:when>
-					<c:when test="${member.userExp > 800}">
-						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+						<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp >= 10000}">
+						<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 					</c:when>
 				</c:choose>
 			</c:if>

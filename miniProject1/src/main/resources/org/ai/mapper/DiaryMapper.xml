@@ -3,6 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.ai.mapper.DiaryMapper">
-
-
+	<insert id="insert">
+		insert into diary(writer, title, content) values
+		(#{writer}, #{title}, #{content})
+	</insert>
+	<select id="show" resultType="org.ai.domain.DiaryVO">
+		select * from diary where writer = #{writer} order by diaryNumber desc
+	</select>
+	<select id="showPaging" resultType="org.ai.domain.DiaryVO">
+		<![CDATA[
+			select * from diary where writer = #{writer} order by diaryNumber desc limit #{cri.pageStart}, #{cri.amount}
+		]]>
+	</select>
+	<select id="get" resultType="org.ai.domain.DiaryVO">
+		select * from diary where diaryNumber = #{diaryNumber}
+	</select>
 </mapper>

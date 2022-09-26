@@ -133,6 +133,18 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return mapper.getSearchPaging(title, content, cri);
 	}
+
+	@Override
+	public BoardVO getOne(@Param("boardTitle")String boardTitle) {
+		// TODO Auto-generated method stub
+		return mapper.getOne(boardTitle);
+	}
+
+	@Override
+	public List<BoardVO> getThree(@Param("boardTitle")String boardTitle) {
+		// TODO Auto-generated method stub
+		return mapper.getThree(boardTitle);
+	}
 	
 	
 }

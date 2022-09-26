@@ -35,17 +35,6 @@
 </style>
 </head>
 <body>
-<!-- multipart/form-data를 상요해 파일 정보를 넘겨서 업로딩 할 예정 -->
-<!-- 반드시 관련 파일들 import 해주어야 함-->
-<!-- 
-import com.oreilly.servlet.*;
-import com.oreilly.servlet.multipart.*;
- -->
-<%-- <%
-request.setCharacterEncoding("utf-8");
-String writer = (String)session.getAttribute("nickName");
-String boardTitle = request.getParameter("boardTitle");
-%> --%>
 <!-- header -->
 <c:choose>
 	<c:when test="${empty userInfo.userId}">
@@ -98,8 +87,11 @@ String boardTitle = request.getParameter("boardTitle");
 					<c:when test="${member.userExp == 800}">
 						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 					</c:when>
-					<c:when test="${member.userExp > 800}">
-						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+						<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp >= 10000}">
+						<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 					</c:when>
 				</c:choose>
 			</c:if>

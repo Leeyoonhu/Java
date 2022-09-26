@@ -25,19 +25,6 @@
 	
 	</style>
     <title>사진 게시판</title>
-	
-<!--     <link -->
-<!--       rel="stylesheet" -->
-<!--       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" -->
-<!--     /> -->
-<!--     <link -->
-<!--       href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" -->
-<!--       rel="stylesheet" -->
-<!--     /> -->
-<!--     <link -->
-<!--       rel="stylesheet" -->
-<!--       href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css" -->
-<!--     /> -->
   </head>
   <body>
     <!-- header -->
@@ -74,7 +61,7 @@
     <div id="screenBoardForm">
       <div class="container gallery-container">
           <div class="but"><br><br><br><br><br><br>
-            <h2>전지적 군인 시점 사진게시판</h2>
+            <h2 style="font-weight:bold;">전지적 군인 시점 사진게시판</h2>
               <!-- buttons -->
               <a href="../board/main" id="mainFormCheck" style="display: none"></a>
                 <button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
@@ -96,27 +83,19 @@
                   <div class="thumbnail">
                       <c:choose>
                         <c:when test="${board.imageFileName eq null || board.imageFilePath eq null}">
-                          <img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="323.33px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden; cursor: pointer; color:black;" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView').click()"> <br>
-                          <a href="./view?number=${board.number}" id="goScreenView" style="display: none;"></a>
+                          <a href="./view?number=${board.number}">
+                          <img alt="" src="https://i.ibb.co/58bQ29v/noimage.jpg" width="323.33px" height="200px" style="border-bottom: 1px solid gray; text-align: center; overflow: hidden; cursor: pointer; color:black;" onerror="this.style.display='none'"> <br>
+                          </a>
                         </c:when>
                         <c:otherwise>
-                          <img alt="" src="/board/display?fileName=${board.imageFilePath}${board.imageFileName}" width="323.33px" height="200px" onerror="this.style.display='none'" onclick="document.getElementById('goScreenView2').click()" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
-                          <a href="./view?number=${board.number}" id="goScreenView2" style="display: none;"></a>
+                          <a href="./view?number=${board.number}">
+                          <img alt="" src="/board/display?fileName=${board.imageFilePath}${board.imageFileName}" width="323.33px" height="200px" onerror="this.style.display='none'" style="border-bottom: 1px solid gray; overflow: hidden; cursor: pointer;"> <br>
+                          </a>
                         </c:otherwise>
                       </c:choose>
                     
                     <div class="caption">
-                      <h3><a href="./view?number=${board.number}">${board.title}</a></h3>
-                      <%-- 
-                      title 옆에 댓글 보여주기, 필요시 a태그 안에 넣을것
-                      <c:forEach var="item2" items="${items2}">
-                      <c:if test="${item.number eq item2.number}">
-                        <%count++;%>
-                      </c:if>
-                    </c:forEach>
-                    <%if(count != 0){ %>
-                    <a href="./searchCommentProcess.jsp?number=${item.number}&writer=${item.writer}" target="_blank" onClick="window.open(this.href, '', 'width=600, height=400'); return false;" style="text-decoration: none; color: red;">[<%=count%>]</a>
-                    <%} count = 0; %> --%>
+                      <h3><a href="./view?number=${board.number}" style="color: #ff4e1f; text-decoration: none; font-weight: bold; font-size: 15px;">${board.title}</a></h3>
                       <br>
                      <!-- start forEach for mList -->
                       <p><c:forEach var="member" items="${mList}">
@@ -149,8 +128,11 @@
 							<c:when test="${member.userExp == 800}">
 								<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 							</c:when>
-							<c:when test="${member.userExp > 800}">
-								<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+							<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+								<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+							</c:when>
+							<c:when test="${member.userExp >= 10000}">
+								<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 							</c:when>
 						</c:choose>
 					</c:if>
