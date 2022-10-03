@@ -4,6 +4,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
+<link rel="stylesheet" href="/resources/css/butnn5.css">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -49,19 +50,21 @@
 <div id="noticeBoardForm">
 	<h2>전지적 군인 시점 전체게시판</h2>
 	<br>
-	<input type="button" value="메인으로" class="goToMain" onclick="document.getElementById('mainFormCheck').click();" />
+		<a href="../board/main" id="mainFormCheck" style="display: none"></a>
+	<button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
+	<span>Click!</span><span>메인으로</span></button>
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr style="height: 52px">
-				<th style="background-color : #eeeeee; text-align:center; width:80px">글번호</th>
-				<th style="background-color : #eeeeee; text-align:center; width:80px">
+				<th style="background-color : #fcd5b1; text-align:center; width:80px; font-weight:bold;">글번호</th>
+				<th style="background-color : #fcd5b1; text-align:center; width:80px; font-weight:bold;">
 					<img alt="" src="https://i.ibb.co/yQ8yXZM/icons8-noticeboard-48.png" width="24px" height="24px">
 				</th>
-				<th style="background-color : #eeeeee; text-align:center; width:700px">제목</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">닉네임</th>
-				<th style="background-color : #eeeeee; text-align:center; width:200px">등록일</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">조회</th>
-				<th style="background-color : #eeeeee; text-align:center; width:100px">추천</th>
+				<th style="background-color : #fcd5b1; text-align:center; width:700px; font-weight:bold;">제목</th>
+				<th style="background-color : #fcd5b1; text-align:center; width:150px; font-weight:bold;">닉네임</th>
+				<th style="background-color : #fcd5b1; text-align:center; width:200px; font-weight:bold;">등록일</th>
+				<th style="background-color : #fcd5b1; text-align:center; width:100px; font-weight:bold;">조회</th>
+				<th style="background-color : #fcd5b1; text-align:center; width:100px; font-weight:bold;">추천</th>
 			</tr>
 		</thead>
 
@@ -135,8 +138,11 @@
 					<c:when test="${member.userExp == 800}">
 						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 					</c:when>
-					<c:when test="${member.userExp > 800}">
-						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+						<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp >= 10000}">
+						<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 					</c:when>
 				</c:choose>
 			</c:if>
@@ -173,10 +179,10 @@
 <input type="text" name="content" style="padding: 0px 5px; width: 400px; height: 38px; box-sizing: border-box; border: 1px solid #ccc; padding-left: 6px">
 <button type="button" style=" 
 	width: 60px;
-    height: 38px;
+    height: 39px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    background: url(https://i.ibb.co/q1QvKRf/image.png) no-repeat;
+    background: url(https://i.ibb.co/KFJZ3bB/image.png) no-repeat;
     background-position:center;
     cursor: pointer;
     padding: 0px 6px;

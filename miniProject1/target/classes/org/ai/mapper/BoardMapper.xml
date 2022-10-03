@@ -94,6 +94,13 @@
 		<![CDATA[
 			select * from board where ${title} like CONCAT('%',#{content},'%') order by number desc limit #{cri.pageStart}, #{cri.amount}
 		]]>
-		
+	</select>
+	
+	<select id="getOne" resultType="org.ai.domain.BoardVO">
+		select * from board where boardTitle = #{boardTitle} order by number desc limit 1
+	</select>
+	
+	<select id="getThree" resultType="org.ai.domain.BoardVO">
+		select * from board where boardTitle = #{boardTitle} order by number desc limit 3
 	</select>
 </mapper>

@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="/resources/js/upload.js"></script>
 <title>글 쓰기</title>
 <style type="text/css">
 #freeBoardWrite {
@@ -35,17 +34,6 @@
 </style>
 </head>
 <body>
-<!-- multipart/form-data를 상요해 파일 정보를 넘겨서 업로딩 할 예정 -->
-<!-- 반드시 관련 파일들 import 해주어야 함-->
-<!-- 
-import com.oreilly.servlet.*;
-import com.oreilly.servlet.multipart.*;
- -->
-<%-- <%
-request.setCharacterEncoding("utf-8");
-String writer = (String)session.getAttribute("nickName");
-String boardTitle = request.getParameter("boardTitle");
-%> --%>
 <!-- header -->
 <c:choose>
 	<c:when test="${empty userInfo.userId}">
@@ -98,8 +86,11 @@ String boardTitle = request.getParameter("boardTitle");
 					<c:when test="${member.userExp == 800}">
 						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 					</c:when>
-					<c:when test="${member.userExp > 800}">
-						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+						<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp >= 10000}">
+						<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 					</c:when>
 				</c:choose>
 			</c:if>
@@ -108,7 +99,7 @@ String boardTitle = request.getParameter("boardTitle");
 	<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
 	style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
 	name="title" autofocus="autofocus" maxlength="50"><br>
-	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" name="content" placeholder="글꼴"></textarea> <br>
+	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" maxlength="500" name="content" placeholder="내용을 입력하세요."></textarea> <br>
 	<input type="file" style="display:none;" id="addImage" name="uploadFile" accept="image/*"/>
 	<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('addImage').click();" />
 	<input type="text" style="display: none;" name="boardTitle" value="${boardTitle}">
@@ -119,4 +110,7 @@ String boardTitle = request.getParameter("boardTitle");
 <!-- footer -->
 <%@ include file="../includes/footer.jsp" %>
 </body>
+<script type="text/javascript" src="/resources/js/upload.js">
+
+</script>
 </html>

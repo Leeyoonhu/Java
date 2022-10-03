@@ -13,7 +13,7 @@
 <body>
 <div>
 <!-- table start -->
-<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
+<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd; height:390px;" >
 	<thead>
 		<tr>
 			<th colspan="3" style="background-color : #295298; z-index: 1; width:780px; height: 40px; color: white">인기 게시글</th>

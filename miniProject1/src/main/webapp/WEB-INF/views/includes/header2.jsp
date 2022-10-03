@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/butl.css">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- <link href="/resources/css/view.css" rel="stylesheet"/> -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="/resources/js/paging.js"></script>
 <script type="text/javascript" src="/resources/js/attend.js"></script>
@@ -163,17 +162,18 @@ position: static;
 }
 .mainFormContent {
 	display: inline-block;
-	text-align: center;
-	width: 1560px;
-	margin-top : -190px;
+	text-align : center;
+	width: 1700px;
+	margin-top : -110px;
+	margin-left:-20px;
 	
 }
 .mainFormContent2 {
 	display: inline-block;
 	text-align: center;
-	width: 1300px;
-	height: 400px;
-	margin-left:270px;
+	width: 1700px;
+	marign-top : -200px;
+	margin-left:-20px;
 }
 .pagination {
 	justify-content : center;
