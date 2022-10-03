@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Data
 public class DiaryVO {
-	private int dNumber;
+	private int diaryNumber;
 	private String intro, nickName, title, content;
 	private Date regDate;
 }

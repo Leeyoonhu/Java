@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>
-	<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
+	<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd; height:390px;">
 	<thead>
 		<tr>
 			<th colspan="2" style="background-color : #295298; z-index: 1; width:780px; height: 40px; color: white">최근 게시글</th>

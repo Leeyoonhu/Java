@@ -42,4 +42,8 @@ public interface BoardMapper {
 	public List<BoardVO> getMyArticlePaging(@Param("nickName") String nickName, @Param("cri") Criteria cri);
 	// 전체게시판 페이징 조회
 	public List<BoardVO> getSearchPaging(@Param("title")String title, @Param("content")String content, @Param("cri") Criteria cri);
+	// 게시판에서 최근 1개만 조회
+	public BoardVO getOne(@Param("boardTitle")String boardTitle);
+	// 게시판에서 최근 3개만 조회
+	public List<BoardVO> getThree(@Param("boardTitle") String boardTitle);
 }

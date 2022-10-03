@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.ai.domain.BoardVO;
 import org.ai.domain.Criteria;
+import org.ai.domain.DiaryVO;
 import org.ai.domain.MemberVO;
 import org.ai.domain.PageDTO;
 import org.ai.service.BoardService;
@@ -60,7 +61,7 @@ public class BoardController {
 	@GetMapping("/main")
 	public void getMain(Model model) {
 		model.addAttribute("mList", mService.getRankList());
-		
+		model.addAttribute("bList2", service.getThree("screen"));
 	}
 	
 	@GetMapping("/free")
@@ -281,7 +282,7 @@ public class BoardController {
 		model.addAttribute("cList", cService.get(number));
 	}
 	
-	@PostMapping("plusreco")
+	@PostMapping("/plusreco")
 	public String plusReco(Integer number) {
 		service.plusReco(number);
 		return "redirect: ../board/view?number=" + number;
@@ -355,12 +356,27 @@ public class BoardController {
 	}
 	
 	@GetMapping("/diary")
-	public void getDiary() {
-		
+	public void getDiary(@Param("cri")Criteria cri, Model model, HttpSession session) {
+		MemberVO vo = (MemberVO)session.getAttribute("userInfo");
+		String writer = vo.getNickName();
+		List<DiaryVO> dList = dService.show(writer);
+		cri.setAmount(6);
+		PageDTO pageDTO = new PageDTO(cri, dList.size());
+		model.addAttribute("dList", dService.showPaging(writer, cri));
+		model.addAttribute("pageMaker", pageDTO);
 	}
 	
 	@GetMapping("/diaryWrite")
 	public void getDiaryWrite(){
 		
+	}
+	@PostMapping("/diaryWrite")
+	public String addDiary(@Param("title")String title, @Param("writer")String writer, @Param("content") String content) {
+		dService.insert(title, writer, content);
+		return "redirect:../board/diary";
+	}
+	@GetMapping("/diaryView")
+	public void getDiary(@Param("diaryNumber") Integer diaryNumber, Model model) {
+		model.addAttribute("diary", dService.get(diaryNumber));
 	}
 }

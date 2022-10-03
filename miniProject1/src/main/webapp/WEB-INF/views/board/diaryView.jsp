@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>일기 쓰기</title>
+<title>일기 보기</title>
  <link rel="stylesheet" href="/resources/css/diary.css" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="/resources/js/diary.js"></script>
@@ -39,13 +40,11 @@
                         <div class="album-box">
                             <div class="forming">
                                 <div class="headerone">
-                                    <input class="table_input" placeholder="제목을 입력 하세요." type="text" style="width: 430px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: 0px;" 
- 									name="title" autofocus="autofocus" maxlength="50"><br>
+                                    <input class="table_input" type="text" style="width: 430px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: 0px; background-color: #C6E7F5; font-weight: bold; text-align: center;" 
+ 									name="title" autofocus="autofocus" maxlength="50" readonly="readonly" value="${diary.title}"><br>
          							<textarea class="table_input" rows="" cols="" style="width: 430px; height: 330px; position:relative; right:0px; resize:none; overflow-y:scroll" 
-         							name="content"></textarea>
+         							name="content" readonly="readonly">${diary.content}</textarea>
                                 </div>
-                                <input type="text" name="writer" value="${userInfo.nickName}" style="display: none;"/>
-                                <input class="endWrite2" type="button" id="uploadBtn2" value="작성 완료">
                             </div>
                         </div>
                     </div>  

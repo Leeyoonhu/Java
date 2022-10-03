@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ page import="org.ai.domain.PageDTO, org.ai.domain.Criteria" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,7 @@
 	</c:otherwise>
 </c:choose>
 <div id="ranking">
-	<h2>전지적 군인 시점 랭킹게시판</h2>
+	<h2 style="font-weight:bold;">전지적 군인 시점 랭킹게시판</h2>
 	<br>
 	<a href="../board/main" id="mainFormCheck" style="display: none"></a>
 	<button class="custom-btn btn-12" onclick="document.getElementById('mainFormCheck').click();">
@@ -59,23 +60,35 @@
 		<table class="table talbe-striped" style="text-align : center; border: 1px solid #dddddd">
 		<thead>
 			<tr style="height: 52px">
-				<th style="background-color : #C8E6A8; text-align:center; width:80px">순위</th>
-				<th style="background-color : #C8E6A8; text-align:center; width:400px">닉네임</th>
-				<th style="background-color : #C8E6A8; text-align:center; width:200px">가입일</th>
-				<th style="background-color : #C8E6A8; text-align:center; width:100px">직업</th>
-				<th style="background-color : #C8E6A8; text-align:center; width:100px">성별</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:80px; font-weight:bold;">순위</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:400px; font-weight:bold;">닉네임</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:200px; font-weight:bold;">가입일</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:100px; font-weight:bold;">직업</th>
+				<th style="background-color : #C8E6A8; text-align:center; width:100px; font-weight:bold;">경험치</th>
 			</tr>
 		</thead>
+		
+<!-- start rankingCount logic -->
+<c:set var="pageInfo" value="${pageMaker}"></c:set>
 <%
 	int rankingCount = 0;
+	try { 
+		PageDTO pagedto = (PageDTO)pageContext.getAttribute("pageInfo");
+		Criteria cri = pagedto.getCri();
+		rankingCount = (cri.getPageNum () - 1) * 15;
+	} catch (Exception e) {
+		rankingCount = 0;
+	}
 %>
+<!-- end rankingCount logic -->
+
 <!-- start table body -->
 <c:forEach var="member" items="${mList}">
 	<%rankingCount++;%>
 	<!-- if userInfo.nickName eq member.nickName // else -->
 	<c:choose>
 		<c:when test="${userInfo.nickName eq member.nickName}">
-			<tr style="background: #343A40; text-align: center; height: 52px" class="boardElement">
+			<tr style="background: rgb(245, 252, 237); text-align: center; height: 52px" class="boardElement">
 			<td><%=rankingCount%></td>
 			<td>
 				<c:choose>
@@ -106,8 +119,11 @@
 					<c:when test="${member.userExp == 800}">
 						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 					</c:when>
-					<c:when test="${member.userExp > 800}">
-						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+						<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp >= 10000}">
+						<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 					</c:when>
 				</c:choose>
 					${member.nickName}
@@ -115,8 +131,48 @@
 				<td>
 					<fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd"/>
 				</td>
-				<td>${member.userJob}</td>
-				<td>${member.gender}</td>
+				<!-- start job, gender change -->
+				<td>
+					<c:choose>
+						<c:when test="${member.userExp == 0}">
+							<c:out value="하사"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 100}">
+							<c:out value="중사"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 200}">
+							<c:out value="상사"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 300}">
+							<c:out value="소위"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 400}">
+							<c:out value="중위"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 500}">
+							<c:out value="대위"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 600}">
+							<c:out value="소령"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 700}">
+							<c:out value="중령"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 800}">
+							<c:out value="대령"></c:out>
+						</c:when>
+						<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+							<c:out value="준장"></c:out>
+						</c:when>
+						<c:when test="${member.userExp >= 10000}">
+							<c:out value="관리자"></c:out>
+						</c:when>
+					</c:choose>
+				</td>
+				<td>
+					${member.userExp}
+				</td>
+				<!-- end job, gender change -->
 			</tr>
 		</c:when>
 		<c:otherwise>
@@ -151,8 +207,11 @@
 						<c:when test="${member.userExp == 800}">
 							<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 						</c:when>
-						<c:when test="${member.userExp > 800}">
-							<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+						<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+							<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+						</c:when>
+						<c:when test="${member.userExp >= 10000}">
+							<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 						</c:when>
 					</c:choose>
 					${member.nickName}
@@ -160,8 +219,48 @@
 				<td>
 					<fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd"/>
 				</td>
-				<td>${member.userJob}</td>
-				<td>${member.gender}</td>
+				<!-- start job, gender change -->
+				<td>
+					<c:choose>
+						<c:when test="${member.userExp == 0}">
+							<c:out value="하사"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 100}">
+							<c:out value="중사"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 200}">
+							<c:out value="상사"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 300}">
+							<c:out value="소위"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 400}">
+							<c:out value="중위"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 500}">
+							<c:out value="대위"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 600}">
+							<c:out value="소령"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 700}">
+							<c:out value="중령"></c:out>
+						</c:when>
+						<c:when test="${member.userExp == 800}">
+							<c:out value="대령"></c:out>
+						</c:when>
+						<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+							<c:out value="준장"></c:out>
+						</c:when>
+						<c:when test="${member.userExp >= 10000}">
+							<c:out value="관리자"></c:out>
+						</c:when>
+					</c:choose>
+				</td>
+				<td>
+					${member.userExp}
+				</td>
+				<!-- end job, gender change -->
 			</tr>
 		</c:otherwise>
 	</c:choose>

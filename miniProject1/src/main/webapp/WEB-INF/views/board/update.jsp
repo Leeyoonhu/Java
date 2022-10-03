@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="/resources/js/update.js"></script>
 <title>글 쓰기</title>
 <style type="text/css">
@@ -86,17 +87,20 @@
 					<c:when test="${member.userExp == 800}">
 						<img src="https://i.ibb.co/M7SJqZW/image.png" width="20px" height="20px">
 					</c:when>
-					<c:when test="${member.userExp > 800}">
-						<img src="https://i.ibb.co/b1CtsSW/image.png" width="20px" height="20px">
+					<c:when test="${member.userExp > 800 && member.userExp < 10000}">
+						<img src="https://i.ibb.co/XpZfLv1/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${member.userExp >= 10000}">
+						<img src="https://i.ibb.co/Yy9cYn3/image.png" width="20px" height="20px">
 					</c:when>
 				</c:choose>
 			</c:if>
 		</c:forEach>
 	${userInfo.nickName}</span>
-	<input class="table_input" placeholder="제목을 입력 하세요." type="text" 
+	<input class="table_input" type="text" placeholder="제목을 입력 하세요." 
 	style="width: 1040px; height: 30px; margin-right: 280px; margin-top: 4px; position:relative; right: -180px;" 
 	name="title" autofocus="autofocus" maxlength="50" value="${bList.title}"><br>
-	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" name="content" placeholder="글꼴">${bList.content}</textarea> <br>
+	<textarea class="table_input" rows="" cols="" style="width: 1040px; height: 600px; position:relative; right: -180px; resize: none;" name="content" placeholder="내용을 입력하세요.">${bList.content}</textarea> <br>
 	<input type="file" style="display:none;" id="addImage" name="uploadFile" accept="image/*"/>
 	<input type="button" class="imageUploaded" value="이미지 첨부" onclick="document.getElementById('addImage').click();" />
 	<input type="text" style="display: none;" name="boardTitle" value="${bList.boardTitle}">

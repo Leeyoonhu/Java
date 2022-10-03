@@ -26,4 +26,6 @@ public interface BoardService {
 	public List<BoardVO> getListPaging(@Param("title")String title, @Param("cri")Criteria cri);
 	public List<BoardVO> getMyArticlePaging(@Param("nickName") String nickName, @Param("cri") Criteria cri);
 	public List<BoardVO> getSearchPaging(@Param("title")String title, @Param("content")String content, @Param("cri") Criteria cri);
+	public BoardVO getOne(@Param("boardTitle")String boardTitle);
+	public List<BoardVO> getThree(@Param("boardTitle") String boardTitle);
 }

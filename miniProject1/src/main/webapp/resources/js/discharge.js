@@ -136,16 +136,20 @@ $("button[class='dischargeCalc']").on("click", function name() {
 		} else {
 			get_id('rem-day').innerHTML = remining_day + '일';
 		}
-        if(remining_day/7 < 0 || remining_day%7 == 0){
+		console.log(remining_day)
+        if(remining_day/7 < 0){
 			get_id('rem-week').innerHTML = "진심으로 전역을 축하드립니다."
 		} else {
         	get_id('rem-week').innerHTML = parseInt(remining_day/7) + '주 ' + remining_day%7 + '일';		
-		}
+		}	
         
-        if(total < 100){
+        if(total <= 100 || total >= 0){
 			get_id('per').innerHTML = total + '%';
 		}
-        else{
+		if(total < 0){
+			get_id('per').innerHTML = 0 + '%';
+		}
+        if(total > 100){
 			get_id('per').innerHTML = "감사합니다.";
 		}
 	}

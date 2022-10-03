@@ -120,8 +120,11 @@
 					<c:when test="${userInfo.userExp == 800}">
 						<img src="https://i.ibb.co/Y7br6gn/image.png" width="20px" height="20px">
 					</c:when>
-					<c:when test="${userInfo.userExp > 800}">
-						<img src="https://i.ibb.co/K2HXhb2/image.png" width="20px" height="20px">
+					<c:when test="${userInfo.userExp > 800 && userInfo.userExp < 10000}">
+						<img src="https://i.ibb.co/L1h74YX/image.png" width="20px" height="20px">
+					</c:when>
+					<c:when test="${userInfo.userExp > 10000}">
+						<img src="https://i.ibb.co/Lhj3FNf/image.png" width="20px" height="20px">
 					</c:when>
 				</c:choose>
         	<c:out value="${userInfo.nickName}"></c:out> 's</div>

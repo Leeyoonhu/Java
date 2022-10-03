@@ -1,0 +1,55 @@
+'CREATE TABLE `board` (
+  `number` int NOT NULL AUTO_INCREMENT,
+  `views` int unsigned NOT NULL DEFAULT ''0'',
+  `recommends` int unsigned NOT NULL DEFAULT ''0'',
+  `title` varchar(200) DEFAULT NULL,
+  `content` varchar(10000) DEFAULT NULL,
+  `writer` varchar(30) DEFAULT NULL,
+  `imageFileName` varchar(50) DEFAULT NULL,
+  `imageFilePath` varchar(500) DEFAULT NULL,
+  `boardTitle` varchar(50) DEFAULT NULL,
+  `regDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`number`)
+) ENGINE=InnoDB AUTO_INCREMENT=590 DEFAULT CHARSET=utf8mb3'
+
+
+'CREATE TABLE `members` (
+  `userNum` int NOT NULL AUTO_INCREMENT,
+  `userExp` int DEFAULT ''0'',
+  `userId` varchar(20) DEFAULT NULL,
+  `userPwd` varchar(20) DEFAULT NULL,
+  `checkPwd` varchar(20) DEFAULT NULL,
+  `nickName` varchar(20) DEFAULT NULL,
+  `firstName` varchar(20) DEFAULT NULL,
+  `lastName` varchar(20) DEFAULT NULL,
+  `phoneNo` varchar(20) DEFAULT NULL,
+  `pwdHintQ` varchar(50) DEFAULT NULL,
+  `pwdHint` varchar(50) DEFAULT NULL,
+  `userJob` varchar(20) DEFAULT NULL,
+  `gender` varchar(20) DEFAULT NULL,
+  `attDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `regDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`userNum`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci'
+
+
+
+'CREATE TABLE `comment` (
+  `comNumber` int NOT NULL AUTO_INCREMENT,
+  `number` int DEFAULT NULL,
+  `writer` varchar(30) DEFAULT NULL,
+  `comment` varchar(10000) DEFAULT NULL,
+  `regDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`comNumber`)
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb3'
+
+'CREATE TABLE `diary` (
+  `diaryNumber` int NOT NULL AUTO_INCREMENT,
+  `intro` varchar(1000) DEFAULT NULL,
+  `writer` varchar(50) DEFAULT NULL,
+  `title` varchar(200) DEFAULT NULL,
+  `content` varchar(10000) DEFAULT NULL,
+  `regDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`diaryNumber`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3'
+
