@@ -15,7 +15,7 @@
 	<c:set var="userId" value="${userId}"></c:set>
 	<c:if test="${userId eq null}">
 		<span>
-			<a href="#" id="kakao">
+			<a href="#" id="kakaoLogin">
 				<img alt="" src="/resources/img/kakao_login_medium_narrow.png">
 			</a>
 		</span>
@@ -24,7 +24,12 @@
 		<span>
 			<!-- 네이버 로그인 controller의 apiURL -->
 			<input style="display: none" value="${apiURL}" id="naverURL">
-			<a href="#" id="naver"><img height="40" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+			<a href="#" id="naverLogin"><img height="40" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+		</span>
+	</c:if>
+	<c:if test="${userId eq null}">
+		<span>
+			<a href="#" id="googleLogin"><img alt="" src="https://velog.velcdn.com/images/vector13/post/e3a5850a-02b8-451e-a11a-3c5c8b5449a8/signInWithGoogle.png"></a>
 		</span>
 	</c:if>
 	<!-- 로그아웃 -->

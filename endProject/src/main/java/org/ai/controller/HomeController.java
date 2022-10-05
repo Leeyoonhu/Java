@@ -3,7 +3,6 @@ package org.ai.controller;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.URLEncoder;
-import java.net.http.HttpResponse;
 import java.security.SecureRandom;
 import java.util.HashMap;
 
@@ -28,9 +27,10 @@ import lombok.extern.log4j.Log4j;
 public class HomeController {
 	KaKaoAPI kakaoApi = new KaKaoAPI();
 	NaverAPI naverApi = new NaverAPI();
+	GoogleAPI googleApi = new GoogleAPI();
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	// 카카오 redirect, 네이버 callback url
+	
 	@RequestMapping(value = "/login")
 	public ModelAndView login(@RequestParam("code") String code, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
@@ -38,7 +38,6 @@ public class HomeController {
 		String state = null;
 		String platform = null;
 		HashMap<String, Object> userInfo = null;
-		// js로 쿠키를 줘서 구분하자, 로그아웃할때 죽여야함
 		Cookie[] cookieArr = request.getCookies();
 		for(Cookie cookie : cookieArr) {
 			if(cookie.getName().equals("platform")) {
@@ -48,29 +47,31 @@ public class HomeController {
 		
 		// 카카오 일때
 		if(platform.equals("kakao")) {
-			// 1. 토큰 요청
 			access_token = kakaoApi.getAccessToken(code);
-			// 토큰 오고있니?
-			System.out.println("kakao access_token : " + access_token);
-			// 2. 토큰으로 유저정보
 			userInfo = kakaoApi.getUserInfo(access_token);
-			// 유저 정보 확인용(나중에 지울것)
-			System.out.println("kakao login info : " + userInfo.toString());
-			// 받은 유저정보에 이메일이 있을경우 세션에 아이디와, 토큰 저장	
 		}
+		
 		// 네이버 일때
 		if(platform.equals("naver")) {
 			access_token = naverApi.getAccessToken(code, session);
 			state = (String)session.getAttribute("state");
-			System.out.println("naver access_token : " + access_token);
 			userInfo = naverApi.getUserInfo(access_token);
-			System.out.println("naver login info : " + userInfo.toString());
+		}
+		
+		// 구글 일때
+		if(platform.equals("google")) {
+			access_token = googleApi.getAccessToken(code);
+			userInfo = googleApi.getUserInfo(access_token);
 		}
 		
 		if(userInfo.get("email") != null) {
 			session.setAttribute("userId", userInfo.get("email"));
 			session.setAttribute("access_token", access_token);
 		}
+		
+		System.out.println("login platform : " + platform);
+		System.out.println("access_token : " + access_token);
+		System.out.println("login info : " + userInfo.toString());
 		mav.addObject("userId", userInfo.get("email"));
 		// 메인페이지 위치로
 		mav.setViewName("index");
@@ -79,7 +80,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getLogin(HttpSession session, Model model) throws UnsupportedEncodingException {
-		
 		// https://developers.naver.com/docs/login/api/api.md 참조
 		// 로그인 페이지시 네이버 버튼을 누르기 위해 필요한 정보
 		String clientId = "s3SKlARx4M5gtCyBNSwG";//애플리케이션 클라이언트 아이디값";
@@ -97,7 +97,7 @@ public class HomeController {
 		return "login";
 	}
 	
-	// 유저 로그아웃 (네이버, 카카오, 나중에 만들 구글에 회원가입까지..)
+	// 유저 로그아웃
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView();
@@ -109,10 +109,13 @@ public class HomeController {
 			}
 		}
 		if(platform.equals("kakao")) {
-			kakaoApi.kakaoLogOut((String)session.getAttribute("access_token"));
+			kakaoApi.logOut((String)session.getAttribute("access_token"));
 		}
 		if(platform.equals("naver")) {
-			naverApi.naverLogOut((String)session.getAttribute("access_token"));
+			naverApi.logOut((String)session.getAttribute("access_token"));
+		}
+		if(platform.equals("google")) {
+			googleApi.logOut((String)session.getAttribute("access_token"));
 		}
 
 		// 세션 다죽임
