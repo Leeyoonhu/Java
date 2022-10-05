@@ -215,6 +215,12 @@
 			<artifactId>thumbnailator</artifactId>
 			<version>0.4.17</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.github.scribejava/scribejava-core -->
+		<dependency>
+		    <groupId>com.github.scribejava</groupId>
+		    <artifactId>scribejava-core</artifactId>
+		    <version>8.3.1</version>
+		</dependency>
 
 	</dependencies>
 	<build>
