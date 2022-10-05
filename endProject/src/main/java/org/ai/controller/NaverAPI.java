@@ -31,19 +31,20 @@ public class NaverAPI {
 	    apiURL += "&state=" + state;
 	    String accessToken = "";
 	    String refreshToken = "";
+	    BufferedReader br = null;
 	    System.out.println("apiURL="+apiURL);
 	    try {
 	      URL url = new URL(apiURL);
 	      HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 	      conn.setRequestMethod("GET");
 	      int responseCode = conn.getResponseCode();
-	      // 여기서부터 작업
-	      BufferedReader br;
+	      
 	      System.out.println("responseCode : " + responseCode);
-	      if(responseCode==200) { // 정상 호출
-	        br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	      } else {  // 에러 발생
-	        br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+	      if(responseCode == 200) { // 정상 호출
+	    	  br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	      } 
+	      else {  // 에러 발생
+	    	  br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 	      }
 	      String line = "";
 	      String result = "";
@@ -117,7 +118,7 @@ public class NaverAPI {
 	}
 	
 	// 토큰 삭제
-	public void naverLogOut(String accessToken) {
+	public void logOut(String accessToken) {
 		String apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=delete&";
 		String clientId = "s3SKlARx4M5gtCyBNSwG";
 		String clientSecret = "3Td083OqAE";

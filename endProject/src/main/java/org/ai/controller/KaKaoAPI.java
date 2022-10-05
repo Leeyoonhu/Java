@@ -23,7 +23,8 @@ public class KaKaoAPI {
 		String refreshToken = "";
 		// 요청 Url (HOST - OAuth)
 		String reqUrl = "https://kauth.kakao.com/oauth/token";
-		
+		String clientId = "8f3bf912ba858b8abef6fa5d46d5ff7b";
+		String redirectURL = "http://localhost:8080/login";
 		try {
 			// java.net의 URL, HttpURLConnection 객체 사용
 			URL url = new URL(reqUrl);
@@ -39,9 +40,9 @@ public class KaKaoAPI {
 			// grant_type = authorization_code (인가 코드) 고정 값임
 			sb.append("grant_type=authorization_code");
 			// client_id = javaScript Key
-			sb.append("&client_id=8f3bf912ba858b8abef6fa5d46d5ff7b");
+			sb.append("&client_id=" + clientId);
 			// redirect 주소 (변경, 수정 필요)
-			sb.append("&redirect_uri=http://localhost:8080/login");
+			sb.append("&redirect_uri=" + redirectURL);
 			// authorization_code
 			sb.append("&code="+code);
 			// client_secret 은 ON인 경우 필수설정이지만 X 이기에 추가안했음..
@@ -84,10 +85,11 @@ public class KaKaoAPI {
 	
 	
 	// 토큰으로 유저정보 조회
-	public HashMap<String, Object> getUserInfo(String accesstoken) {
+	public HashMap<String, Object> getUserInfo(String accessToken) {
 		HashMap<String, Object> userInfo = new HashMap<String, Object>();
 		// 요청 Url, KaKaoDevelopers REST API - Access Token 사용 문서 참조
 		String reqUrl = "https://kapi.kakao.com/v2/user/me";
+		BufferedReader br = null;
 		try {
 			// java.net의 URL, HttpURLConnection 객체 사용
 			URL url = new URL(reqUrl);
@@ -95,13 +97,18 @@ public class KaKaoAPI {
 			// post 방식 set
 			conn.setRequestMethod("POST");
 			// Access Token 사용 문서의 Authorization(인가) key - value set
-			conn.setRequestProperty("Authorization", "Bearer " + accesstoken);
+			conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 			// 200 or 401
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
 			
 			// 예전에 했던 I/O
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			if(responseCode == 200) { 
+		        br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		    } 
+			else {  
+		        br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		    }
 			
 			String line = "";
 			String result = "";
@@ -136,7 +143,7 @@ public class KaKaoAPI {
 	
 	// 로그아웃 (https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#logout)
 	// 사용자 액세스 토큰과 리프레시 토큰을 모두 만료시킵니다.
-	public void kakaoLogOut(String accessToken) {
+	public void logOut(String accessToken) {
 		// host + post
 		String reqUrl = "https://kapi.kakao.com/v1/user/logout";
 		try {
