@@ -146,6 +146,7 @@ public class KaKaoAPI {
 	public void logOut(String accessToken) {
 		// host + post
 		String reqUrl = "https://kapi.kakao.com/v1/user/logout";
+		BufferedReader br = null;
 		try {
 			URL url = new URL(reqUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -157,7 +158,12 @@ public class KaKaoAPI {
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
 			
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			if(responseCode == 200) { 
+		        br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		    } 
+			else {  
+		        br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		    }
 			
 			String line = "";
 			String result = "";

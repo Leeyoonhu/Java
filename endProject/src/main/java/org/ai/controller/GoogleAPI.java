@@ -118,6 +118,37 @@ public class GoogleAPI {
 	}
 	
 	public void logOut(String accessToken) {
-		
+		// https://developers.google.com/identity/protocols/oauth2/web-server#tokenrevoke 참고
+		String reqUrl = "https://oauth2.googleapis.com/revoke?token=" + accessToken;
+		BufferedReader br = null;
+		try {
+			URL url = new URL(reqUrl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			// method = "POST"
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+			
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
+			
+			if(responseCode == 200) { 
+		        br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		    } 
+			else {  
+		        br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		    }
+			
+			String line = "";
+			String result = "";
+			
+			while((line = br.readLine()) != null) {
+				result += line;
+			}
+			System.out.println("logout : " + result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

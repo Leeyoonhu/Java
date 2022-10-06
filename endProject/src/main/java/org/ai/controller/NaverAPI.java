@@ -128,6 +128,7 @@ public class NaverAPI {
 	    apiURL += "&client_secret=" + clientSecret;
 		apiURL += "&service_provider=" + service_provider; 
 		apiURL += "&access_token=" + accessToken;
+		BufferedReader br = null;
 		try {
 			URL url = new URL(apiURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -137,7 +138,12 @@ public class NaverAPI {
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
 			
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			if(responseCode == 200) { 
+		        br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		    } 
+			else {  
+		        br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		    }
 			
 			String line = "";
 			String result = "";
