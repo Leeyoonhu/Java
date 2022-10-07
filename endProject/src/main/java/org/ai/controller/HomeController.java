@@ -109,13 +109,13 @@ public class HomeController {
 			}
 		}
 		if(platform.equals("kakao")) {
-			kakaoApi.logOut((String)session.getAttribute("access_token"));
+			kakaoApi.logout((String)session.getAttribute("access_token"));
 		}
 		if(platform.equals("naver")) {
-			naverApi.logOut((String)session.getAttribute("access_token"));
+			naverApi.logout((String)session.getAttribute("access_token"));
 		}
 		if(platform.equals("google")) {
-			googleApi.logOut((String)session.getAttribute("access_token"));
+			googleApi.logout((String)session.getAttribute("access_token"));
 		}
 
 		// 세션 다죽임

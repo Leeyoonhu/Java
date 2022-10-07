@@ -118,7 +118,7 @@ public class NaverAPI {
 	}
 	
 	// 토큰 삭제
-	public void logOut(String accessToken) {
+	public void logout(String accessToken) {
 		String apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=delete&";
 		String clientId = "s3SKlARx4M5gtCyBNSwG";
 		String clientSecret = "3Td083OqAE";

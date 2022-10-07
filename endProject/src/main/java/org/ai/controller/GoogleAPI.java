@@ -35,7 +35,8 @@ public class GoogleAPI {
 			sb.append("&client_secret=" + clientSecret);
 			sb.append("&redirect_uri=" + redirectURL);
 			sb.append("&grant_type=authorization_code");
-			
+			// access_type 매개변수를 offline로 설정하는 경우에만 refresh_token 발행
+			sb.append("&access_type=offline");
 			bw.write(sb.toString());
 			bw.flush();
 			
@@ -117,17 +118,29 @@ public class GoogleAPI {
 		return userInfo;
 	}
 	
-	public void logOut(String accessToken) {
+	public void logout(String accessToken) {
 		// https://developers.google.com/identity/protocols/oauth2/web-server#tokenrevoke 참고
-		String reqUrl = "https://oauth2.googleapis.com/revoke?token=" + accessToken;
+		// CURL 이란 서버와 통신할 수 있는 커맨드 명령어 툴
+		String reqUrl = "https://oauth2.googleapis.com/revoke";
 		BufferedReader br = null;
 		try {
+			//URL url = new URL(reqUrl2);
 			URL url = new URL(reqUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			
 			// method = "POST"
+			// GET 방식인 경우 쿼리스트링을 사용해서 보냄
+			// POST 방식이기 때문에 쿼리스트링 대신 bufferedWriter를 통해서 작성
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			
+			conn.setDoOutput(true);
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			StringBuilder sb = new StringBuilder();
+			sb.append("token=" + accessToken);
+			bw.write(sb.toString());
+			bw.flush();
+			
 			
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
