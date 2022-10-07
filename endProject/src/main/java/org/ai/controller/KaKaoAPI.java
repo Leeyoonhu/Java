@@ -1,6 +1,6 @@
 package org.ai.controller;
 
-import java.io.BufferedReader;
+import java.io.BufferedReader; 
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -143,7 +143,7 @@ public class KaKaoAPI {
 	
 	// 로그아웃 (https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#logout)
 	// 사용자 액세스 토큰과 리프레시 토큰을 모두 만료시킵니다.
-	public void logOut(String accessToken) {
+	public void logout(String accessToken) {
 		// host + post
 		String reqUrl = "https://kapi.kakao.com/v1/user/logout";
 		BufferedReader br = null;

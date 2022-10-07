@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h1>Login Test</h1>
+	
 	<!-- 카카오 로그인 -->
 	<!-- https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-code -->
 	<c:set var="userId" value="${userId}"></c:set>
