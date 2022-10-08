@@ -23,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@Log4j
 public class HomeController {
 	KaKaoAPI kakaoApi = new KaKaoAPI();
 	NaverAPI naverApi = new NaverAPI();
