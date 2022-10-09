@@ -26,13 +26,13 @@ public class LoginController {
 		String platform = null;
 		HashMap<String, Object> userInfo = null;
 		Cookie[] cookieArr = request.getCookies();
+
 		for(Cookie cookie : cookieArr) {
 			if(cookie.getName().equals("platform")) {
 				platform = cookie.getValue();
 			}
 		}
-		
-		
+
 		// 카카오 일때
 		if(platform.equals("kakao")) {
 			access_token = kakaoApi.getAccessToken(code);
@@ -62,7 +62,7 @@ public class LoginController {
 		System.out.println("login info : " + userInfo.toString());
 		mav.addObject("userId", userInfo.get("email"));
 		// 메인페이지 위치로
-		mav.setViewName("test01");
+		mav.setViewName("index");
 		return mav;
 	}
 }

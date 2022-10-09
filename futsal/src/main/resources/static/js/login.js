@@ -7,7 +7,8 @@ $(document).ready(function(){
 	
 	$("#naverLogin").on('click', function(){
 		document.cookie = "platform = naver";
-		location.href = $("#naverURL").val();
+		location.href = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=s3SKlARx4M5gtCyBNSwG&redirect_uri=http://localhost:8080/login&state=";
+		// location.href = $("#naverURL").val();
 	})
 	
 	$("#googleLogin").on('click', function(){
