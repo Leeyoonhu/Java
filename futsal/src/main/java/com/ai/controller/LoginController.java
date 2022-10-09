@@ -62,7 +62,7 @@ public class LoginController {
 		System.out.println("login info : " + userInfo.toString());
 		mav.addObject("userId", userInfo.get("email"));
 		// 메인페이지 위치로
-		mav.setViewName("test01");
+		mav.setViewName("index");
 		return mav;
 	}
 }
