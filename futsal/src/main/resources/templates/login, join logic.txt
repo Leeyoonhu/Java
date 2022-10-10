@@ -1,0 +1,63 @@
+1. if (userId == null) {
+	join/login => 원버튼
+}
+2. else {
+	myPage/logout => 2버튼
+	
+	nickName은 모든페이지에서 보여줌 => click시 userInfo를 담은 quickMenu
+	quickMenu로 끝낼건지? myPage를 따로 만들것인지?
+		quickMenu만들경우, 	
+			- .class 2개 2개(hide, output용)
+			- userInfo output(1. 페이지 진입 시 DB 조회, 2. click 시 Ajax로 DB조회) 
+			
+	point는 myPage or quickMenu/payment 시에만 check
+}
+	
+============================================================================
+
+1번일 경우)
+ 
+if (userId == null) {
+	if(join/login button click) {		
+		if(social login button(kakao, naver, google) click) {
+			if (userInfo in MongoDB) {
+				go to main
+			}
+			else {
+				go to join
+			}
+		}
+	}
+}
+
+
+join page configuration (회원 가입)
+
+columns : name, nickName, phoneNo, email, regDate, platform
+
+name : 
+nickName (unique) :
+phoneNo (unique, API) :
+email (unique, userId, readonly) :
+nickName => Ajax를 통한 DB 존재 여부 확인
+phoneNo => 기입 후 button 클릭 시 
+	if (phoneNo in MongoDB) {
+		already using 
+	}
+ 	else {
+		delete already using info
+		phoneNo check API
+	}
+regDate(datetime now()) :
+platform : kakao, naver, google..
+각 조건들은 상의후에 정규식을 통해 조건부여
+
+how to check all?
+- 전처럼 check들을 통해 모든 조건 통과시에 진행 가능하게 할 것
+- 모든 조건 만족시 main
+
+
+========================================================================
+
+
+
