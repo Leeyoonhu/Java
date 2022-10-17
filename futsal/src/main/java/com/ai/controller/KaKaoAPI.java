@@ -24,7 +24,7 @@ public class KaKaoAPI {
 		// 요청 Url (HOST - OAuth)
 		String reqUrl = "https://kauth.kakao.com/oauth/token";
 		String clientId = "8f3bf912ba858b8abef6fa5d46d5ff7b";
-		String redirectURL = "http://localhost:8080/login";
+		String redirectURL = "http://localhost:8080/loginAccess";
 		try {
 			// java.net의 URL, HttpURLConnection 객체 사용
 			URL url = new URL(reqUrl);

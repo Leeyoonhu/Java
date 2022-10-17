@@ -19,14 +19,14 @@ public class GoogleAPI {
 		String reqUrl = "https://oauth2.googleapis.com/token";
 		String clientId = "407684725072-2ikndkuqcafeku5ufb4dvnm940t1d1v1.apps.googleusercontent.com";
 		String clientSecret = "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";
-		String redirectURL = "http://localhost:8080/login";
+		String redirectURL = "http://localhost:8080/loginAccess";
 		try {
 			URL url = new URL(reqUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			// google 문서 상 method = "POST"
 			conn.setRequestMethod("POST");
 			conn.setDoOutput(true);
-			
+			System.out.println("url : " + url);
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 			StringBuilder sb = new StringBuilder();
 			// code, client_id, client_secret, redirect_uri, grant_type
@@ -37,6 +37,7 @@ public class GoogleAPI {
 			sb.append("&grant_type=authorization_code");
 			// access_type 매개변수를 offline로 설정하는 경우에만 refresh_token 발행
 			sb.append("&access_type=offline");
+			System.out.println("sb toString :: " + sb.toString());
 			bw.write(sb.toString());
 			bw.flush();
 			
