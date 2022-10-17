@@ -25,8 +25,28 @@ public class MainController {
 	GoogleAPI googleApi = new GoogleAPI();
 	
 	@RequestMapping(value = "/login")
+	public ModelAndView getLogin() throws UnsupportedEncodingException {
+		ModelAndView mav = new ModelAndView();
+		String clientId = "s3SKlARx4M5gtCyBNSwG";//애플리케이션 클라이언트 아이디값";
+		// callbackURL 나중에 변경할것
+	    String redirectURI = URLEncoder.encode("http://localhost:8080/loginAccess", "UTF-8");
+	    SecureRandom random = new SecureRandom();
+	    // state 는 Naver 사에서 'CSRF를 방지하기 위한 인증값입니다. 임의의 값을 넣어 진행해주시면 되는데요.' 라고 답변 (난수 입력)
+	    String state = new BigInteger(130, random).toString();
+	    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+	    apiURL += "&client_id=" + clientId;
+	    apiURL += "&redirect_uri=" + redirectURI;
+	    apiURL += "&state=" + state;
+	    System.out.println(apiURL);
+	    mav.addObject("apiURL", apiURL);
+	    mav.setViewName("login");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/loginAccess")
 	public ModelAndView login(@RequestParam("code") String code, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
+		System.out.println("code : " + code);
 		String access_token = null;
 		String state = null;
 		String platform = null;
@@ -37,7 +57,6 @@ public class MainController {
 				platform = cookie.getValue();
 			}
 		}
-		
 		
 		// 카카오 일때
 		if(platform.equals("kakao")) {
@@ -66,9 +85,9 @@ public class MainController {
 		System.out.println("login platform : " + platform);
 		System.out.println("access_token : " + access_token);
 		System.out.println("login info : " + userInfo.toString());
-		mav.addObject("userId", userInfo.get("email"));
+		session.setAttribute("userId", userInfo.get("email"));
 		// 메인페이지 위치로
-		mav.setViewName("main");
+		mav.setViewName("redirect:main");
 		return mav;
 	}
 	
@@ -82,20 +101,6 @@ public class MainController {
 		// https://developers.naver.com/docs/login/api/api.md 참조
 		// 로그인 페이지시 네이버 버튼을 누르기 위해 필요한 정보
 		ModelAndView mav = new ModelAndView();
-		
-		// NEED NAVER LOGIN 
-//		String clientId = "s3SKlARx4M5gtCyBNSwG";//애플리케이션 클라이언트 아이디값";
-//		// callbackURL 나중에 변경할것
-//	    String redirectURI = URLEncoder.encode("http://localhost:8080/login", "UTF-8");
-//	    SecureRandom random = new SecureRandom();
-//	    // state 는 Naver 사에서 'CSRF를 방지하기 위한 인증값입니다. 임의의 값을 넣어 진행해주시면 되는데요.' 라고 답변 (난수 입력)
-//	    String state = new BigInteger(130, random).toString();
-//	    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-//	    apiURL += "&client_id=" + clientId;
-//	    apiURL += "&redirect_uri=" + redirectURI;
-//	    apiURL += "&state=" + state;
-//	    System.out.println(apiURL);
-//	    mav.addObject("apiURL", apiURL);
 	    mav.setViewName("main");
 	    return mav;
 	}
@@ -129,7 +134,7 @@ public class MainController {
 				response.addCookie(cookie);
 			}
 			// 메인 페이지 위치로
-			mav.setViewName("main");
+			mav.setViewName("redirect:main");
 			
 			return mav;
 		}
