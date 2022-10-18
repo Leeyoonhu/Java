@@ -1,4 +1,5 @@
 //jQuery time
+$(document).ready(function(){
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
@@ -31,7 +32,7 @@ $(".next").click(function () {
           transform: "scale(" + scale + ")",
           position: "absolute",
         });
-        next_fs.css({ left: left, opacity: opacity });
+        next_fs.css({'left': left, 'opacity': opacity });
       },
       duration: 800,
       complete: function () {
@@ -39,7 +40,7 @@ $(".next").click(function () {
         animating = false;
       },
       //this comes from the custom easing plugin
-      easing: "easeInOutBack",
+      // easing: "easeInOutBack",
     }
   );
 });
@@ -70,10 +71,10 @@ $(".previous").click(function () {
         left = (1 - now) * 50 + "%";
         //3. increase opacity of previous_fs to 1 as it moves in
         opacity = 1 - now;
-        current_fs.css({ left: left });
+        current_fs.css({ 'left': left });
         previous_fs.css({
-          transform: "scale(" + scale + ")",
-          opacity: opacity,
+          'transform': "scale(" + scale + ")",
+          'opacity': opacity,
         });
       },
       duration: 800,
@@ -82,7 +83,7 @@ $(".previous").click(function () {
         animating = false;
       },
       //this comes from the custom easing plugin
-      easing: "easeInOutBack",
+      // easing: "easeInOutBack",
     }
   );
 });
@@ -90,3 +91,4 @@ $(".previous").click(function () {
 $(".submit").click(function () {
   return false;
 });
+})
