@@ -24,6 +24,18 @@ public class MainController {
 	NaverAPI naverApi = new NaverAPI();
 	GoogleAPI googleApi = new GoogleAPI();
 	
+//	TEST CALENDER 
+	@RequestMapping(value = "/cal")
+	public void getCalendar() {
+	
+	}
+//	TEST CREATE TEAM
+	@RequestMapping(value ="/createTeam")
+	public void getCreateTeam() {
+		
+	}
+	
+	
 	@RequestMapping(value = "/login")
 	public ModelAndView getLogin() throws UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
@@ -91,7 +103,7 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/") 
 	public String getMain() {
 		return "redirect:/main";
 	}
@@ -106,8 +118,8 @@ public class MainController {
 	}
 	
 	// 유저 로그아웃
-		@RequestMapping(value = "/logout")
-		public ModelAndView logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/logout")
+	public ModelAndView logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 			ModelAndView mav = new ModelAndView();
 			String platform = null;
 			Cookie[] cookieArr = request.getCookies();

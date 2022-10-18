@@ -14,6 +14,9 @@
 	</span>
 	<span th:if="${userId eq null}">
 		<!-- 네이버 로그인 controller의 apiURL -->
+		HttpSession >> abc, "1234"
+		${session.abc}
+		
 		<input style="display: none" th:value="${apiURL}" id="naverURL">
 		<a href="#" id="naverLogin"><img height="40" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
 	</span>
