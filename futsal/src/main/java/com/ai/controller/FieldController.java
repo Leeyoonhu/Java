@@ -19,7 +19,7 @@ public class FieldController {
 	@Autowired
 	FieldService service;
 	
-	@RequestMapping(value = "/abcd")
+	@RequestMapping(value = "/reserve")
 //	public void test04 () {
 //		
 //	}
