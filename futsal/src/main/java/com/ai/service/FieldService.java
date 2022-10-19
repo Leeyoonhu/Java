@@ -1,5 +1,7 @@
 package com.ai.service;
 
+import com.ai.domain.FieldDTO;
+
 public interface FieldService {
-	public String selectField(String fName);
+	public FieldDTO selectField(String id);
 }

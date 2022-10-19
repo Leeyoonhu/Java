@@ -77,4 +77,15 @@ $(window).on('load', function() {
 	});
 
 })(jQuery);
+// 여기서부터 1/1
+//로그인 버튼 눌렀을 때
+$(function () {
+      $(".signIn").click(function () {
+        $(".modal").fadeIn();
+      });
 
+      $(".modal_content").click(function () {
+        $(".modal").fadeOut();
+      });
+    });
+// 여기까지 1/1

@@ -24,14 +24,20 @@ public class MainController {
 	NaverAPI naverApi = new NaverAPI();
 	GoogleAPI googleApi = new GoogleAPI();
 	
+	
 //	TEST CALENDER 
 	@RequestMapping(value = "/cal")
-	public void getCalendar() {
+	public void test01() {
 	
 	}
 //	TEST CREATE TEAM
 	@RequestMapping(value ="/createTeam")
-	public void getCreateTeam() {
+	public void test02() {
+		
+	}
+//	TEST FIELD RESERVE
+	@RequestMapping(value ="/reserve")
+	public void test03() {
 		
 	}
 	

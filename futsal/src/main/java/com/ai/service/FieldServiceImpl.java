@@ -3,6 +3,7 @@ package com.ai.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ai.domain.FieldDTO;
 import com.ai.repository.FieldRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,19 +16,20 @@ public class FieldServiceImpl implements FieldService {
 	@Autowired
 	FieldRepository fieldRepository;
 	
-	public String selectField(String fName) {
+	public FieldDTO selectField(String id) {
 		ObjectMapper objMapper = new ObjectMapper();
+		FieldDTO field = fieldRepository.findByid(id);
 		try {
-			if(fieldRepository.findByfName(fName) == null) {
-				log.info("[Service] fName : {} 존재하지 않습니다!!", fName);
-				return String.format("fName : %s 존재하지 않습니다!!", fName);
+			if(fieldRepository.findByid(id) == null) {
+				return null;
 			}
 			else {
-				return objMapper.writeValueAsString(fieldRepository.findByfName(fName));
+//				return objMapper.writeValueAsString(fieldRepository.findByid(id));
+				return field;
 			}
-		} catch (JsonProcessingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			return "ERROR";
 		}
+		return field;
 	}
 }
