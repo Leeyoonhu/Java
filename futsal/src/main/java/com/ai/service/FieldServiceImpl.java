@@ -1,5 +1,7 @@
 package com.ai.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,15 +18,13 @@ public class FieldServiceImpl implements FieldService {
 	@Autowired
 	FieldRepository fieldRepository;
 	
-	public FieldDTO selectField(String id) {
-		ObjectMapper objMapper = new ObjectMapper();
+	public FieldDTO findByid(String id) {
 		FieldDTO field = fieldRepository.findByid(id);
 		try {
 			if(fieldRepository.findByid(id) == null) {
 				return null;
 			}
 			else {
-//				return objMapper.writeValueAsString(fieldRepository.findByid(id));
 				return field;
 			}
 		} catch (Exception e) {
@@ -32,4 +32,12 @@ public class FieldServiceImpl implements FieldService {
 		}
 		return field;
 	}
+
+	@Override
+	public ArrayList<FieldDTO> findAll() {
+		// TODO Auto-generated method stub
+		ArrayList<FieldDTO> fList = (ArrayList<FieldDTO>) fieldRepository.findAll();
+		return fList;
+	}
+	
 }

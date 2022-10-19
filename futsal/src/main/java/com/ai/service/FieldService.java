@@ -1,7 +1,10 @@
 package com.ai.service;
 
+import java.util.ArrayList;
+
 import com.ai.domain.FieldDTO;
 
 public interface FieldService {
-	public FieldDTO selectField(String id);
+	public FieldDTO findByid(String id);
+	public ArrayList<FieldDTO> findAll();
 }

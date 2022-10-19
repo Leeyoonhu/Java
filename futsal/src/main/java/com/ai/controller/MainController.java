@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +20,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ai.domain.FieldDTO;
+import com.ai.service.FieldService;
+
 @Controller
 public class MainController {
 	KaKaoAPI kakaoApi = new KaKaoAPI();
 	NaverAPI naverApi = new NaverAPI();
 	GoogleAPI googleApi = new GoogleAPI();
 	
+	@Autowired
+	FieldService fService;
 	
 //	TEST CALENDER 
 	@RequestMapping(value = "/cal")
@@ -44,6 +51,7 @@ public class MainController {
 	
 	@RequestMapping(value = "/login")
 	public ModelAndView getLogin() throws UnsupportedEncodingException {
+		// https://developers.naver.com/docs/login/api/api.md 참조
 		ModelAndView mav = new ModelAndView();
 		String clientId = "s3SKlARx4M5gtCyBNSwG";//애플리케이션 클라이언트 아이디값";
 		// callbackURL 나중에 변경할것
@@ -110,15 +118,25 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/") 
-	public String getMain() {
+	public String goMain() {
 		return "redirect:/main";
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public ModelAndView getState(HttpSession session, Model model) throws UnsupportedEncodingException {
-		// https://developers.naver.com/docs/login/api/api.md 참조
-		// 로그인 페이지시 네이버 버튼을 누르기 위해 필요한 정보
+	public ModelAndView getMain(HttpSession session, Model model) throws UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
+		ArrayList<FieldDTO> fList = fService.findAll();
+		ArrayList<String> fAList = new ArrayList<String>();
+		ArrayList<String> latList = new ArrayList<String>(); 
+		ArrayList<String> lonList = new ArrayList<String>();
+		for(int i = 0; i < fList.size(); i++) {
+			fAList.add(fList.get(i).getfAddress());
+			latList.add(fList.get(i).getLatitude());
+			lonList.add(fList.get(i).getLongitude());
+		}
+		mav.addObject("fAList", fAList);
+		mav.addObject("latList", latList);
+		mav.addObject("lonList", lonList);		
 	    mav.setViewName("main");
 	    return mav;
 	}
@@ -156,6 +174,4 @@ public class MainController {
 			
 			return mav;
 		}
-		
-	
 }
