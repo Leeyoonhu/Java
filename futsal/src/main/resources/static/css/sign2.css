@@ -12,7 +12,11 @@ html {
   background-image: url("../img/메인사진1.jpg");
   background-size: cover;
 }
-
+/* 여기서 부터 1/1 */
+.login img, .signIn {
+	cursor: pointer;
+}
+/* 여기까지 1/1 */
 body {
   font-family: montserrat, arial, verdana;
 }
