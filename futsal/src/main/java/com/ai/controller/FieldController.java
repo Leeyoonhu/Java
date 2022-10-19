@@ -20,12 +20,9 @@ public class FieldController {
 	FieldService service;
 	
 	@RequestMapping(value = "/reserve")
-//	public void test04 () {
-//		
-//	}
 	public ModelAndView searchTest(@RequestParam("id") String id) {
 		ModelAndView mav = new ModelAndView();
-		FieldDTO field = service.selectField(id);
+		FieldDTO field = service.findByid(id);
 		mav.addObject("field", field);
 		return mav;
 	}

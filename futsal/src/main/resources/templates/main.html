@@ -190,10 +190,16 @@
     <section class="feature-section spad">
       <div class="container">
         <div class="row" style="width: 500px; height: 500px">
+        <!-- 지도 -->
+       	<input id="fAList" style="display :none" th:value="${fAList}">
+       	<input id="latList" style="display :none" th:value="${latList}">
+       	<input id="lonList" style="display :none" th:value="${lonList}">
           <div class="col-lg-3 col-md-6 p-0">
             <div id="map_n" style="width: 300px; height: 300px">
             </div>
           </div>
+        <!-- 지도 끝 -->
+        
           <div class="col-lg-3 col-md-6 p-0">
             
           </div>

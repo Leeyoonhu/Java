@@ -1,4 +1,11 @@
 $(document).ready(function(){
+	var fAList = document.getElementById('fAList').value;
+	var length = fAList.length; 
+	fAList = fAList.split(",")
+	var latList = document.getElementById('latList').value;
+	latList = latList.split(",")
+	var lonList = document.getElementById('lonList').value;
+	lonList = lonList.split(",")
 	var mapContainer = document.getElementById('map_n'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -37,17 +44,19 @@ if (navigator.geolocation) {
 } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
     
     var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
-        
-    displayMarker(locPosition, message);
+    displayMarker(locPosition);
 }
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition) {
-
-    // 마커를 생성합니다
+	var imageSrc = "https://i.ibb.co/ky1DywQ/Kakao-Talk-20221019-214448571.png"
+	var imageSize = new kakao.maps.Size(50, 50);
+	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize)
+    // 첫 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
-        position: locPosition
+        position: locPosition,
+        image : markerImage
     }); 
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
@@ -55,8 +64,24 @@ function displayMarker(locPosition) {
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + locPosition + '</div>');
         infowindow.open(map, marker);
     });
+    for(var i = 0; i < lonList.length; i++){
+		var fName = fAList[i].replace("[","")
+		fName = fName.replace("]","")
+    	var lat2 = latList[i].replace("[","");
+    	lat2 = lat2.replace("]","")
+    	lat2 = parseFloat(lat2)// 위도
+       	var lon2 = lonList[i].replace("[",""); 
+       	lon2 = lon2.replace("]","")
+       	lon2 = parseFloat(lon2)// 경도
+        var locPosition2 = new kakao.maps.LatLng(lat2, lon2);
     
+    	var marker2 = new kakao.maps.Marker({
+			map: map,
+			position: locPosition2,
+			image: markerImage
+		})
     
+    }
     
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);      
