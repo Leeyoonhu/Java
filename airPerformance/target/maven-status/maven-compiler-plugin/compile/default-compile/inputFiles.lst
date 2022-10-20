@@ -1,4 +1,6 @@
-C:\Users\31690\eclipse-workspace\airPerformance\src\main\java\com\adacho\mapper\DepartureDelayCountMapper.java
-C:\Users\31690\eclipse-workspace\airPerformance\src\main\java\com\adacho\reducer\DelayCountReducer.java
-C:\Users\31690\eclipse-workspace\airPerformance\src\main\java\com\adacho\driver\DepartureDelayCount.java
-C:\Users\31690\eclipse-workspace\airPerformance\src\main\java\com\adacho\common\AirlinePerformanceParser.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\common\AirlinePerformanceParser.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\mapper\ArrivalDelayCountMapper.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\reducer\DelayCountReducer.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\driver\DepartureDelayCount.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\mapper\DepartureDelayCountMapper.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\driver\ArrivalDelayCount.java
