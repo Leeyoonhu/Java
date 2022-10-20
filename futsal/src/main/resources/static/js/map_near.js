@@ -1,7 +1,7 @@
 $(document).ready(function(){
-	var fAList = document.getElementById('fAList').value;
-	var length = fAList.length; 
-	fAList = fAList.split(",")
+	var fNList = document.getElementById('fNList').value;
+	fNList = fNList.split(",")
+	
 	var latList = document.getElementById('latList').value;
 	latList = latList.split(",")
 	var lonList = document.getElementById('lonList').value;
@@ -9,17 +9,17 @@ $(document).ready(function(){
 	var mapContainer = document.getElementById('map_n'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨 
+        level: 4 // 지도의 확대 레벨 
     }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-var mapTypeControl = new kakao.maps.MapTypeControl();
+// var mapTypeControl = new kakao.maps.MapTypeControl();
 
 // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
 // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+// map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
 // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 var zoomControl = new kakao.maps.ZoomControl();
@@ -49,9 +49,12 @@ if (navigator.geolocation) {
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition) {
-	var imageSrc = "https://i.ibb.co/ky1DywQ/Kakao-Talk-20221019-214448571.png"
-	var imageSize = new kakao.maps.Size(50, 50);
+	var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+	var imageSrc2 = "https://i.ibb.co/ky1DywQ/Kakao-Talk-20221019-214448571.png"
+	var imageSize = new kakao.maps.Size(24, 35); 
+	var imageSize2 = new kakao.maps.Size(44, 44);
 	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize)
+	var markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2)
     // 첫 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
@@ -64,9 +67,17 @@ function displayMarker(locPosition) {
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + locPosition + '</div>');
         infowindow.open(map, marker);
     });
+    
+    console.log(fNList.length)
+    console.log(latList.length)
+    console.log(lonList.length)
+
+    
+    
     for(var i = 0; i < lonList.length; i++){
-		var fName = fAList[i].replace("[","")
+		var fName = fNList[i].replace("[","")
 		fName = fName.replace("]","")
+		
     	var lat2 = latList[i].replace("[","");
     	lat2 = lat2.replace("]","")
     	lat2 = parseFloat(lat2)// 위도
@@ -78,15 +89,29 @@ function displayMarker(locPosition) {
     	var marker2 = new kakao.maps.Marker({
 			map: map,
 			position: locPosition2,
-			image: markerImage
+			image: markerImage2
 		})
-    
+		var infowindow2 = new kakao.maps.InfoWindow({
+        	content: '<div style="width: 100%; padding:5px;">' + fName + '</div>' // 인포윈도우에 표시할 내용
+    	});
+    	
+    	kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map, marker2, infowindow2));
+    	kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(infowindow2));
     }
     
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);      
 }    
-
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
 
 	
 })
