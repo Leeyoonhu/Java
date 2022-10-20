@@ -1,6 +1,6 @@
 package com.adacho.driver;
 
-import org.apache.hadoop.conf.Configuration; 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
@@ -10,26 +10,25 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-import com.adacho.mapper.DepartureDelayCountMapper;
+import com.adacho.mapper.ArrivalDelayCountMapper;
 import com.adacho.reducer.DelayCountReducer;
 
-
-public class DepartureDelayCount {
+public class ArrivalDelayCount {
 	public static void main(String[] args) throws Exception {
 		Configuration config = new Configuration();
 		if(args.length != 2) {
-			System.err.println("Usage: DepartureDelayCount <input> <output>");
+			System.err.println("Usage: ArrivalDelayCount <input> <output>");
 			System.exit(1);
 		}
 		/* job ID는 yarn jar hadoop-3.2.4/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.4.jar wordcount sample-input sample-output 실행시에
 		나왔던 job ID */
-		Job job = Job.getInstance(config, "DepartureDelayCount");
+		Job job = Job.getInstance(config, "ArrivalDelayCount");
 		
 		// JAR - MAPPER - REDUCER
 		// Jar 로 쓸 class 지정
-		job.setJarByClass(DepartureDelayCount.class);
+		job.setJarByClass(ArrivalDelayCount.class);
 		// Mapper로 쓸 클래스 지정
-		job.setMapperClass(DepartureDelayCountMapper.class);
+		job.setMapperClass(ArrivalDelayCountMapper.class);
 		// Reducer로 쓸 클래스 지정
 		job.setReducerClass(DelayCountReducer.class);
 		
