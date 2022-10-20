@@ -97,7 +97,27 @@
           ></path>
         </svg> -->
       </div>
-      <form action="#" method="post" id="contact_form">
+      <form action="/team/insert" method="post" id="contact_form">
+        <!-- <div class="captain">
+          <label for="captain"></label>
+          <input
+            type="hidden"
+            name="captain"
+            value="로그인세션해당닉네임"
+            id="name_input"
+            required
+          />
+        </div> -->
+        <div class="total">
+          <label for="total"></label>
+          <input
+            type="hidden"
+            name="total"
+            value=0
+            id="total_input"
+            required
+          />
+        </div>
         <div class="name">
           <label for="name"></label>
           <input
@@ -108,8 +128,8 @@
             required
           />
         </div>
-        <div class="email">
-          <label for="email"></label>
+        <div class="location">
+          <label for="location"></label>
           <input
             type="text"
             placeholder="주 활동 지역"
@@ -118,8 +138,8 @@
             required
           />
         </div>
-        <div class="telephone">
-          <label for="name"></label>
+        <div class="birth">
+          <label for="birth"></label>
           <input
             type="text"
             placeholder="창단일"
@@ -128,20 +148,35 @@
             required
           />
         </div>
-        <div class="subject">
-          <label for="subject"></label>
-          <select
-            placeholder="유니폼 색상"
-            name="uniform"
-            id="uniform_input"
-            required
-          >
+        <div class="age">
+          <label for="age"></label>
+          <select name="age">
             <option disabled hidden selected>나이</option>
             <option>10대</option>
             <option>20대</option>
             <option>30대</option>
             <option>40대 이상</option>
           </select>
+        </div>
+        <div class="uniform">
+          <label for="uniform"></label>
+          <input
+            type="text"
+            name="uniform"
+            id="uniform_input"
+             placeholder="유니폼색상"
+            required
+          />
+        </div>
+        <div class="manner">
+          <label for="manner"></label>
+          <input
+            type="hidden"
+            name="manner"
+            value=0
+            id="manner_input"
+            required
+          />
         </div>
         <div class="message">
           <label for="message"></label>
