@@ -59,11 +59,11 @@
         <!-- site menu -->
         <nav class="main-menu">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="review.html">Team</a></li>
-            <li><a href="categories.html">Reservation</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="contact.html">Quick Menu</a></li>
+            <li><a href="/main">Home</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/reservation">Reservation</a></li>
+            <li><a href="/community">Community</a></li>
+            <li><a href="/">Quick Menu</a></li>
           </ul>
         </nav>
       </div>
@@ -123,6 +123,7 @@
               	<input id="longitude" style="display:none" th:value="${field.longitude}">
               	<div id="map_n" style="width: 300px; height: 300px"></div>
               	<input id="fName" style="display:none" th:value="${field.fName}">
+              	<div id="futsalDate"></div>
               	<h1 th:text="${field.fName}" class="h2"></h1>
                 <p th:text="${field.fAddress}" class="h3 py-2"></p>
                 <p class="py-2">
