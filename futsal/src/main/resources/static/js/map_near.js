@@ -71,7 +71,7 @@ function displayMarker(locPosition) {
     for(var i = 0; i < lonList.length; i++){
 		var fName = fNList[i].replace("[","")
 		fName = fName.replace("]","")
-		
+		fName = fName.trim();
     	var lat2 = latList[i].replace("[","");
     	lat2 = lat2.replace("]","")
     	lat2 = parseFloat(lat2)// 위도
@@ -91,11 +91,18 @@ function displayMarker(locPosition) {
     	
     	kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map, marker2, infowindow2));
     	kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(infowindow2));
+    	kakao.maps.event.addListener(marker2, 'click', moveToField(fName));
     }
-    
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);      
-}    
+}
+
+function moveToField(fName){
+	return function(){
+		location.href = "field/click?fName=" + fName;
+	}
+}
+   
 function makeOverListener(map, marker, infowindow) {
     return function() {
         infowindow.open(map, marker);

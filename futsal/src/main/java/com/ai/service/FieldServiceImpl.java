@@ -39,5 +39,12 @@ public class FieldServiceImpl implements FieldService {
 		ArrayList<FieldDTO> fList = (ArrayList<FieldDTO>) fieldRepository.findAll();
 		return fList;
 	}
+
+	@Override
+	public FieldDTO findByfName(String fName) {
+		System.out.println(fName);
+		FieldDTO field = fieldRepository.findByfName(fName);
+		return field;
+	}
 	
 }
