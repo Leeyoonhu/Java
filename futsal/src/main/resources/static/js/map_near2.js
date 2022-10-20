@@ -2,7 +2,6 @@ $(document).ready(function(){
 var lat = document.getElementById('latitude').value; // 위도
 var lon = document.getElementById('longitude').value; // 경도
 var fName = document.getElementById('fName').value;
-console.log(fName)
 	var mapContainer = document.getElementById('map_n'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(parseFloat(lat), parseFloat(lon)), // 지도의 중심좌표
@@ -43,7 +42,7 @@ function displayMarker(locPosition) {
 	
 	// 인포윈도우를 생성합니다
 	var infowindow = new kakao.maps.InfoWindow({
-	    content : iwContent
+	    content : iwContent,
 	});
 	
 	// 마커에 마우스오버 이벤트를 등록합니다
