@@ -126,15 +126,15 @@ public class MainController {
 	public ModelAndView getMain(HttpSession session, Model model) throws UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
 		ArrayList<FieldDTO> fList = fService.findAll();
-		ArrayList<String> fAList = new ArrayList<String>();
+		ArrayList<String> fNList = new ArrayList<String>();
 		ArrayList<String> latList = new ArrayList<String>(); 
 		ArrayList<String> lonList = new ArrayList<String>();
 		for(int i = 0; i < fList.size(); i++) {
-			fAList.add(fList.get(i).getfAddress());
+			fNList.add(fList.get(i).getfName());
 			latList.add(fList.get(i).getLatitude());
 			lonList.add(fList.get(i).getLongitude());
 		}
-		mav.addObject("fAList", fAList);
+		mav.addObject("fNList", fNList);
 		mav.addObject("latList", latList);
 		mav.addObject("lonList", lonList);		
 	    mav.setViewName("main");
