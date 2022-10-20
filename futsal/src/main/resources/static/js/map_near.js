@@ -68,12 +68,6 @@ function displayMarker(locPosition) {
         infowindow.open(map, marker);
     });
     
-    console.log(fNList.length)
-    console.log(latList.length)
-    console.log(lonList.length)
-
-    
-    
     for(var i = 0; i < lonList.length; i++){
 		var fName = fNList[i].replace("[","")
 		fName = fName.replace("]","")
@@ -92,7 +86,7 @@ function displayMarker(locPosition) {
 			image: markerImage2
 		})
 		var infowindow2 = new kakao.maps.InfoWindow({
-        	content: '<div style="width: 100%; padding:5px;">' + fName + '</div>' // 인포윈도우에 표시할 내용
+        	content: '<div style="width: 100%; padding:5px;" class="cata new">' + fName + '</div>' // 인포윈도우에 표시할 내용
     	});
     	
     	kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map, marker2, infowindow2));
