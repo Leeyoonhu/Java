@@ -6,7 +6,7 @@ import com.ai.domain.FieldDTO;
 import com.ai.domain.MemberDTO;
 import com.ai.domain.TeamDTO;
 
-public interface MemberRepository extends MongoRepository<FieldDTO, String>{
-   MemberDTO insert(MemberDTO insertMember);
+public interface MemberRepository extends MongoRepository<MemberDTO, String>{
+   MemberDTO insert(MemberDTO joinMember);
 
 }

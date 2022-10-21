@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <link rel="stylesheet" href="./css/sign2.css"/>
+    <link rel="stylesheet" href="/css/sign2.css"/>
   </head>
   <body>
     <!-- multistep form -->
-    <form id="msform">
+    <form action="/member/join" method="post" id="msform">
       <!-- progressbar -->
       <ul id="progressbar">
-        <li class="active">Account Setup</li>
-        <li>Social Profiles</li>
+        <!-- <li class="active">Account Setup</li> -->
+        <!-- <li>Social Profiles</li> -->
         <li>Personal Details</li>
       </ul>
       <!-- fieldsets -->
-      <div th:if="${session.userId == null}">
+      <div th:if = "${session.userId == null}">
       <fieldset>
         <h2 class="fs-title">Create your account</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
@@ -29,10 +29,8 @@
           type="button"
           name="next"
           class="next action-button"
-          value="Next"
-        />
-      	</fieldset>
-      
+          value="Next"/>
+      </fieldset>
       <fieldset>
         <h2 class="fs-title">Social Profiles</h2>
         <h3 class="fs-subtitle">Your presence on the social network</h3>
@@ -41,7 +39,7 @@
         <a href="#" id="naverLogin"><img height="55px" style="margin-top: 5px;" src="./img/naverLogin.png"/></a><br>
         <a href="#" id="googleLogin"><img height="55px" style="margin-top: 5px;" src="./img/googleLogin.png"></a>
       </br>
-        <!-- <input
+        <input
           type="button"
           name="previous"
           class="previous action-button"
@@ -52,32 +50,36 @@
           name="next"
           class="next action-button"
           value="Next"
-        /> -->
-      </fieldset>
-      </div>
-      <div th:if="${session.userId != null}">
-      <fieldset>
-        <h2 class="fs-title">Personal Details</h2>
-        <h3 class="fs-subtitle">We will never sell it</h3>
-        <input type="text" name="fname" placeholder="First Name" />
-        <input type="text" name="lname" placeholder="Last Name" />
-        <input type="text" name="phone" placeholder="Phone" />
-        <textarea name="address" placeholder="Address"></textarea>
-        <!-- <input
-          type="button"
-          name="previous"
-          class="previous action-button"
-          value="Previous"
-        /> -->
-        <input
-          type="submit"
-          name="submit"
-          class="submit action-button"
-          value="Submit"
         />
       </fieldset>
       </div>
+      <div th:if = "${session.userId != null}">
+      <fieldset>
+        <h2 class="fs-title">Personal Details</h2>
+        <h3 class="fs-subtitle">We will never sell it</h3>
+        <!-- 이름설정 -->
+        <input type="text" name="name" placeholder="Name" required/>
+        <!-- 닉네임설정 -->
+        <input type="text" name="nickName" placeholder="사용할 닉네임" required />
+        <!-- 성별고르기 -->
+        <select name="sex" id="sex">
+          <option disabled hidden selected>성별</option>
+          <option value="남자">남자</option>
+          <option value="여자">여자</option>
+      </select>
+        <!-- 고민필요<input type="text" name="birthday" placeholder="xxxx-xx-xx" /> -->
+        <input type="text" name="phoneNo" placeholder="010-0000-0000" required/>
+        <!-- 휴대폰인증버튼 들어가야함 -->
+        <!-- 해당회원 팀 소속없으므로 null일단 집어넣음 : 몽고디비컬럼보이기위해 -->
+        <input type="hidden" name="tName" value=null>
+        <!-- 해당회원 보유포인트없으므로 0일단 집어넣음 : 몽고디비컬럼보이기위해 -->
+        <input type="hidden" name="hadPoint" value=0>
+        <!-- 제출버튼 -->
+        <input type="submit" value="회원가입"/><br>
+      </fieldset>
+      </div>
     </form>
+
   </body>
   <script src="./js/sign2.js"></script>
   <script type="text/javascript" src="js/login.js"></script>

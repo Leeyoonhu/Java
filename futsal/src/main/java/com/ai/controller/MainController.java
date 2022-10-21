@@ -47,7 +47,11 @@ public class MainController {
 	public void test03() {
 		
 	}
-	
+//	TEST TEAMTABLE 
+	@RequestMapping(value = "/teamtables")
+	public void test04() {
+		   
+	}
 	
 	@RequestMapping(value = "/login")
 	public ModelAndView getLogin() throws UnsupportedEncodingException {

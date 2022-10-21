@@ -2,6 +2,7 @@ package com.ai.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.ai.domain.MemberDTO;
 import com.ai.repository.MemberRepository;
@@ -15,10 +16,10 @@ public class MemberServiceImpl implements MemberService{
    MemberRepository memberRepository;
    
    @Override
-   public MemberDTO insert(MemberDTO insertMember) {
+   public MemberDTO insert(MemberDTO joinMember) {
       // TODO Auto-generated method stub
-       MemberDTO insertedMember = memberRepository.insert(insertMember); 
-        return insertedMember;
+       MemberDTO joinedMember = memberRepository.insert(joinMember); 
+       return joinedMember;
       
    }
 }

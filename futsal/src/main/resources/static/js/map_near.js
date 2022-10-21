@@ -57,8 +57,8 @@ function displayMarker(locPosition) {
 	var imageSize = new kakao.maps.Size(24, 35); 
 	var imageSize2 = new kakao.maps.Size(44, 44);
 	var imageOption = {offset: new kakao.maps.Point(27, 69)}
-	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
-	var markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2, imageOption)
+	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize)
+	var markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2)
     var cnt = 0
     // 첫 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
@@ -108,14 +108,11 @@ function displayMarker(locPosition) {
 	//	}
 	//}
     map.setCenter(locPosition);
-    
-	
 }
 
 
 function moveToField(fName2, marker, map){
 	return function(){
-		//location.href = "field/click?fName=" + fName;
 		console.log(fName2)
 		console.log(marker.getPosition().getLat())
 		console.log(marker.getPosition().getLng())
@@ -124,10 +121,10 @@ function moveToField(fName2, marker, map){
 		for(var k = 0; k < markers.length; k++){
 			if(markers[k] == str){
 				if(content == ""){
-					content = '<span class="info-window">' + fNames[k] + '</span>'
+					content = '<a href="/field/click?fName=' + fNames[k] + '"><span class="info-window">' + fNames[k] + '</span></a>'
 				}
 				else {
-					content = content + '<span class="info-window">' + fNames[k] + '</span>'
+					content = content +'<a href="/field/click?fName=' + fNames[k] + '"><span class="info-window">' + fNames[k] + '</span></a>'
 				}
 			}
 		}
