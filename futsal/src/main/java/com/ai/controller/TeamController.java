@@ -16,7 +16,6 @@ public class TeamController {
    
    @Autowired
    TeamService service;
-   
    /*
     * @RequestMapping(value = "", method = RequestMethod.GET) public ModelAndView
     * Team() { ModelAndView mav = new ModelAndView(); mav.setViewName("team"); //

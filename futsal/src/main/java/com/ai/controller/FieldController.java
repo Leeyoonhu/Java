@@ -31,7 +31,6 @@ public class FieldController {
 		return mav;
 	}
 	
-	
 	@RequestMapping(value = "/reserve")
 	public ModelAndView searchTest(@RequestParam("id") String id) {
 		ModelAndView mav = new ModelAndView();
