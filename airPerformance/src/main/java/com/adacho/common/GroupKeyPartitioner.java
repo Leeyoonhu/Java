@@ -8,9 +8,9 @@ public class GroupKeyPartitioner extends Partitioner<DateKey, IntWritable> {
 
 	@Override
 	public int getPartition(DateKey key, IntWritable value, int numPartitions) {
+		// numPartition의 수만큼 골고루 분산
 		int hash = key.getYear().hashCode();
 		int partition = hash % numPartitions;
 		return partition;
-	}
-	
+	}	
 }
