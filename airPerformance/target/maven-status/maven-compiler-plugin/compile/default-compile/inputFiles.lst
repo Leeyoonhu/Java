@@ -2,10 +2,13 @@ C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\common\AirlinePe
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\mapper\DelayCountMapper.java
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\mapper\ArrivalDelayCountMapper.java
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\counter\DelayCounter.java
-C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\reducer\DelayCountReducer.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\reducer\DelayCountReducerMultiOut.java
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\driver\DelayCountCounter.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\driver\DelayCountMultiOut.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\reducer\DelayCountReducer.java
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\driver\DepartureDelayCount.java
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\driver\DelayCount.java
+C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\mapper\DelayCountMapperMultiOut.java
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\mapper\DepartureDelayCountMapper.java
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\driver\ArrivalDelayCount.java
 C:\Users\31690\git\Java\airPerformance\src\main\java\com\adacho\mapper\DelayCountMapperCounter.java
