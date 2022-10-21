@@ -21,9 +21,15 @@ map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 var zoomControl = new kakao.maps.ZoomControl();
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     
-    var locPosition = new kakao.maps.LatLng(parseFloat(lat), parseFloat(lon));
-    displayMarker(locPosition);
+var locPosition = new kakao.maps.LatLng(parseFloat(lat), parseFloat(lon));
+displayMarker(locPosition);
 
+var customOverlay = new kakao.maps.CustomOverlay({
+	map: map,
+	position: new kakao.maps.LatLng(parseFloat(lat) - 0.0005, parseFloat(lon)),
+	content: '<span class="info-window">' + "현재 위치" + '</span>',
+	yAnchor: 1  
+});
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition) {
@@ -36,26 +42,6 @@ function displayMarker(locPosition) {
         position : locPosition,
         image : markerImage
     }); 
-   	
-   	// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-	var iwContent = '<div style="padding:5px;">' + fName + '</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	
-	// 인포윈도우를 생성합니다
-	var infowindow = new kakao.maps.InfoWindow({
-	    content : iwContent,
-	});
-	
-	// 마커에 마우스오버 이벤트를 등록합니다
-	kakao.maps.event.addListener(marker, 'mouseover', function() {
-	  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-	    infowindow.open(map, marker);
-	});
-	
-	// 마커에 마우스아웃 이벤트를 등록합니다
-	kakao.maps.event.addListener(marker, 'mouseout', function() {
-	    // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-	    infowindow.close();
-	});
     
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);      

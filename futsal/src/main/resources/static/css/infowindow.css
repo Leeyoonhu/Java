@@ -1,0 +1,11 @@
+.info-window {
+    display: block;
+    background: #d95050;
+    color: #fff;
+    text-align: center;
+    height: 24px;
+    line-height:22px;
+    border-radius:15px;
+    padding:0px 10px;
+    width:max-content;
+}
