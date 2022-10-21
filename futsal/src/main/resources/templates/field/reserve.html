@@ -92,7 +92,7 @@
     </div>
       <body>
         <!-- Open Content -->
-		<!-- 여기서 부터 -->
+      <!-- 여기서 부터 -->
         <section class="hero-section row">
           <div class="col-md-5 mt-5">
             <div class="hero-slider owl-carousel">
@@ -112,6 +112,11 @@
                 </div>
               </div>
             </div>
+            <div class="mnd">
+               <div id="map_n" style="width: 300px; height: 300px; margin-left:80px; margin-top:10px;"></div>
+                 <input id="fName" style="display:none" th:value="${field.fName}">
+                 <div id="futsalDate" style="margin-left:400px; margin-top :-300px"></div>
+                 </div>
           </div>
 
           <!--End Controls-->
@@ -120,12 +125,10 @@
           <div class="col-md-7 mt-5">
             <div class="card">
               <div class="card-body">
-              	<input id="latitude" style="display:none" th:value="${field.latitude}">
-              	<input id="longitude" style="display:none" th:value="${field.longitude}">
-              	<div id="map_n" style="width: 500px; height: 500px"></div>
-              	<input id="fName" style="display:none" th:value="${field.fName}">
-              	<div id="futsalDate"></div>
-              	<h1 th:text="${field.fName}" class="h2"></h1>
+                 <input id="latitude" style="display:none" th:value="${field.latitude}">
+                 <input id="longitude" style="display:none" th:value="${field.longitude}">
+              
+                 <h1 th:text="${field.fName}" class="h2"></h1>
                 <p th:text="${field.fAddress}" class="h3 py-2"></p>
                 <p class="py-2">
                   <i class="fa fa-star text-warning"></i>
@@ -224,6 +227,8 @@
             </div>
           </div>
         </section>
+        <br>
+        <br>
     <div>이용약관</div><br>
     <div th:text="${field.fRule}"></div><br>
     <div>환불약관</div><br>
@@ -262,8 +267,8 @@
     <script src="/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f3bf912ba858b8abef6fa5d46d5ff7b"></script>
-	<script type="text/javascript" src="/js/map_near2.js"></script>
-	<script src="/js/datepicker.js"></script>
-	<script type="text/javascript" src="/js/infowindow.js"></script>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f3bf912ba858b8abef6fa5d46d5ff7b"></script>
+   <script type="text/javascript" src="/js/map_near2.js"></script>
+   <script src="/js/datepicker.js"></script>
+   <script type="text/javascript" src="/js/infowindow.js"></script>
 </html>

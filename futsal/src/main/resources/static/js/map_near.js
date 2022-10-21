@@ -1,4 +1,7 @@
 $(document).ready(function(){
+var markers = []
+var fNames = []
+var customOverlay;
 	var fNList = document.getElementById('fNList').value;
 	fNList = fNList.split(",")
 	
@@ -56,6 +59,7 @@ function displayMarker(locPosition) {
 	var imageOption = {offset: new kakao.maps.Point(27, 69)}
 	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 	var markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2, imageOption)
+    var cnt = 0
     // 첫 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
@@ -87,32 +91,58 @@ function displayMarker(locPosition) {
 			image: markerImage2,
 			text: fName
 		})
+		markers[i] = marker2.getPosition().getLat().toString() + ", " + marker2.getPosition().getLng().toString()
+		fNames[i] = fName
 		
-		var customOverlay = new kakao.maps.CustomOverlay({
-   			position: locPosition2,
-    		content: '<span class="info-window">' + fName + '</span>',
-    		yAnchor: 1  
-		});
-		
-		//var infowindow2 = new kakao.maps.InfoWindow({
-        //	content: 
-        //    zIndex:1
-    	//});
-    	
-    	kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map, marker2, customOverlay));
-    	kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(customOverlay));    	
-    	kakao.maps.event.addListener(marker2, 'click', moveToField(fName));
+    	//kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map, marker2, customOverlay));
+    	//kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(customOverlay));    	
+    	kakao.maps.event.addListener(marker2, 'click', moveToField(fName, marker2, map));
     }
     // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);      
+    //for(var j = 0; j < markers.length; j++){
+	//	for(var k = 0; k < markers.length; k++){
+	//		if(markers[j].n == markers[k].n){
+	//			console.log(fNames[j])
+	//			cnt = cnt + 1
+	//		}	
+	//	}
+	//}
+    map.setCenter(locPosition);
+    
+	
 }
 
-function moveToField(fName){
+
+function moveToField(fName2, marker, map){
 	return function(){
-		location.href = "field/click?fName=" + fName;
+		//location.href = "field/click?fName=" + fName;
+		console.log(fName2)
+		console.log(marker.getPosition().getLat())
+		console.log(marker.getPosition().getLng())
+		var str = marker.getPosition().getLat().toString() + ", " + marker.getPosition().getLng().toString()
+		var content = ""
+		for(var k = 0; k < markers.length; k++){
+			if(markers[k] == str){
+				if(content == ""){
+					content = '<span class="info-window">' + fNames[k] + '</span>'
+				}
+				else {
+					content = content + '<span class="info-window">' + fNames[k] + '</span>'
+				}
+			}
+		}
+		var locPosition3 = new kakao.maps.LatLng(marker.getPosition().getLat(), marker.getPosition().getLng())
+		customOverlay = new kakao.maps.CustomOverlay({
+	   			position: locPosition3,
+	   			content: content,
+	    		yAnchor: 1  
+		});
+		if(map.getLevel() < 9){
+        	customOverlay.setMap(map, marker);
+        }
 	}
 }
-   
+
 function makeOverListener(map, marker, customOverlay) {
     return function() {
 		console.log(map.getLevel())

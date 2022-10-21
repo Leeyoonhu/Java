@@ -18,6 +18,7 @@
         <li>Personal Details</li>
       </ul>
       <!-- fieldsets -->
+      <div th:if="${session.userId == null}">
       <fieldset>
         <h2 class="fs-title">Create your account</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
@@ -30,7 +31,8 @@
           class="next action-button"
           value="Next"
         />
-      </fieldset>
+      	</fieldset>
+      
       <fieldset>
         <h2 class="fs-title">Social Profiles</h2>
         <h3 class="fs-subtitle">Your presence on the social network</h3>
@@ -52,6 +54,8 @@
           value="Next"
         /> -->
       </fieldset>
+      </div>
+      <div th:if="${session.userId != null}">
       <fieldset>
         <h2 class="fs-title">Personal Details</h2>
         <h3 class="fs-subtitle">We will never sell it</h3>
@@ -72,6 +76,7 @@
           value="Submit"
         />
       </fieldset>
+      </div>
     </form>
   </body>
   <script src="./js/sign2.js"></script>
