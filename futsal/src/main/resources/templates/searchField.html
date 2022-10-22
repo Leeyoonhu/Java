@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="zxx">
-  <head>
+<html>
+<head>
     <title>Game Warrior Template</title>
     <meta charset="UTF-8" />
     <!-- calendar -->
@@ -8,7 +8,7 @@
     <meta name="description" content="Game Warrior Template" />
     <meta name="keywords" content="warrior, game, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon -->`
+    <!-- Favicon -->
     <link href="/img/favicon.ico" rel="shortcut icon" />
 
     <!-- Google Fonts -->
@@ -69,18 +69,18 @@
       <div class="container">
         <!-- logo -->
         <!-- 여기서 부터 2/3-->
-	<div class="user-panel">
-		<span th:if="${session.userId eq null}"> <span class="signIn">로그인</span>
-			/ <a href="login">회원가입</a>
-		</span> <span th:if="${session.userId ne null}"> <a
-			href="http://localhost:8080/logout">로그아웃</a>
-		</span>
+   <div class="user-panel">
+      <span th:if="${session.userId eq null}"> <span class="signIn">로그인</span>
+         / <a href="login">회원가입</a>
+      </span> <span th:if="${session.userId ne null}"> <a
+         href="http://localhost:8080/logout">로그아웃</a>
+      </span>
           <div class="modal">
-      		<div class="modal_content" title="클릭하면 창이 닫힙니다.">
-		        여기에 모달창 내용을 적어줍니다.<br />
-		        이미지여도 좋고 글이어도 좋습니다.
-		      </div>
-		    </div>
+            <div class="modal_content" title="클릭하면 창이 닫힙니다.">
+              여기에 모달창 내용을 적어줍니다.<br />
+              이미지여도 좋고 글이어도 좋습니다.
+            </div>
+          </div>
      <!-- 여기까지 2/3-->
         </div>
         <!-- responsive -->
@@ -132,19 +132,19 @@
             </div>
           </div>
         </div>
-		<div class="hs-item set-bg" data-setbg="./img/메인사진2.jpg">
-			<div class="hs-text">
-			  <div class="container">
-				<h2>The Best <span>FUTSAL</span> PLAY</h2>
-				<p>
-				  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-				  malesuada <br />
-				  lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac
-				  ligula sapien. <br />Suspendisse cursus faucibus finibus.
-				</p>
-				<a href="#" class="site-btn">Read More</a>
-			  </div>
-			</div>
+      <div class="hs-item set-bg" data-setbg="./img/메인사진2.jpg">
+         <div class="hs-text">
+           <div class="container">
+            <h2>The Best <span>FUTSAL</span> PLAY</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              malesuada <br />
+              lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac
+              ligula sapien. <br />Suspendisse cursus faucibus finibus.
+            </p>
+            <a href="#" class="site-btn">Read More</a>
+           </div>
+         </div>
       </div>
     </section>
     <!-- Hero section end -->
@@ -170,20 +170,23 @@
       </div>
     </div>
     <!-- Latest news section end -->
-	<form action="field/searchField" method="post">
-       <div>
-         <input type="text" name="fName" placeholder="찾는 구장 이름">
-         <input type="submit" value="구장찾기">
-       </div>
+
+<!--field search -->
+    
+    <form action="/field/searchField" method="get">
+    <div>
+      <input type="text" name="fName" placeholder="찾는 구장 이름">
+      <button type="submit">구장찾기</button>
+    </div>
     </form>
     <!-- Feature section -->
     <section class="feature-section spad">
       <div class="container">
         <div class="row">
         <!-- 지도 -->
-       	<input id="fNList" style="display :none" th:value="${fNList}">
-       	<input id="latList" style="display :none" th:value="${latList}">
-       	<input id="lonList" style="display :none" th:value="${lonList}">
+          <input id="fNList" style="display :none" th:value="${fNList}">
+          <input id="latList" style="display :none" th:value="${latList}">
+          <input id="lonList" style="display :none" th:value="${lonList}">
           <div class="col-lg-3 col-md-6 p-0">
             <div id="map_n" style="width: 400px; height: 400px">
             </div>
@@ -216,14 +219,15 @@
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-6">
-            <div class="recent-game-item">
-              <div class="rgi-thumb set-bg" data-setbg="/img/필드4.png">
+            <div class="recent-game-item" th:each="list : ${searchedField}">
+            <div class="rgi-thumb set-bg" th:text="${searchedField.fPic1}">
                 <!-- <div class="cata new">new</div> -->
               </div>
               <div class="rgi-content">
-                <h5>스윗스팟풋살장 강남점</h5>
-                <p>주소 : 서울시 서초구 서초동 1698-7 수성수빌딩 지하1층</p>
-                <a href="#" class="comment">3 Comments</a>
+                <h5><span th:text="${searchedField.fName}"></span></h5>
+                <p>주소 : <span th:text="${searchedField.fAddress}"></span></p>
+                <a href="#" class="comment"><span th:text="${searchedField.review}"></span></a>
+                
                 <div class="rgi-extra">
                   <div class="rgi-star">
                     <img src="/img/icons/star.png" alt="" />
@@ -235,48 +239,10 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="recent-game-item">
-              <div class="rgi-thumb set-bg" data-setbg="/img/필드2.png">
-                <!-- <div class="cata racing">racing</div> -->
-              </div>
-              <div class="rgi-content">
-                <h5>두블리 스포츠센터 6코트</h5>
-                <p>주소 : 서울시 서초구 서초동 1332-2 무지개 종합상가</p>
-                <a href="#" class="comment">3 Comments</a>
-                <div class="rgi-extra">
-                  <div class="rgi-star">
-                    <img src="/img/icons/star.png" alt="" />
-                  </div>
-                  <div class="rgi-heart">
-                    <img src="/img/icons/heart.png" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="recent-game-item">
-              <div class="rgi-thumb set-bg" data-setbg="/img/필드3.png">
-                <!-- <div class="cata adventure">Adventure</div> -->
-              </div>
-              <div class="rgi-content">
-                <h5>역삼 JMJ 실내풋살장</h5>
-                <p>주소 : 서울시 강남구 역삼동 637-31 지하1층으로 오면 된다</p>
-                <a href="#" class="comment">3 Comments</a>
-                <div class="rgi-extra">
-                  <div class="rgi-star">
-                    <img src="/img/icons/star.png" alt="" />
-                  </div>
-                  <div class="rgi-heart">
-                    <img src="/img/icons/heart.png" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          
+          
+        
     </section>
     <!-- Footer section -->
     <footer class="footer-section">
@@ -304,8 +270,8 @@
     <!-- Footer section end -->
 
     <!--====== Javascripts & Jquery ======-->
-	<script src="/js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+   <script src="/js/jquery-3.2.1.min.js"></script>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/jquery.marquee.min.js"></script>
