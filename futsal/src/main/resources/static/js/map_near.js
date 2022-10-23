@@ -1,19 +1,20 @@
 $(document).ready(function(){
 var markers = []
 var fNames = []
-var customOverlay;
-	var fNList = document.getElementById('fNList').value;
-	fNList = fNList.split(",")
-	
-	var latList = document.getElementById('latList').value;
-	latList = latList.split(",")
-	var lonList = document.getElementById('lonList').value;
-	lonList = lonList.split(",")
-	var mapContainer = document.getElementById('map_n'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 4 // 지도의 확대 레벨 
-    }; 
+var clickedOverlay = 0;
+var customOverlays = [];
+var fNList = document.getElementById('fNList').value;
+fNList = fNList.split(",")
+
+var latList = document.getElementById('latList').value;
+latList = latList.split(",")
+var lonList = document.getElementById('lonList').value;
+lonList = lonList.split(",")
+var mapContainer = document.getElementById('map_n'), // 지도를 표시할 div 
+mapOption = { 
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 4 // 지도의 확대 레벨 
+}; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
@@ -94,51 +95,58 @@ function displayMarker(locPosition) {
 		markers[i] = marker2.getPosition().getLat().toString() + ", " + marker2.getPosition().getLng().toString()
 		fNames[i] = fName
 		
-    	//kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map, marker2, customOverlay));
-    	//kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(customOverlay));    	
-    	kakao.maps.event.addListener(marker2, 'click', moveToField(fName, marker2, map));
+    	kakao.maps.event.addListener(marker2, 'mouseover', showInfo(marker2, map));	
+ 		kakao.maps.event.addListener(map, 'zoom_changed', function(){
+			for(var j = 0; j < customOverlays.length; j++){
+				customOverlays.pop().setMap(null)
+			}
+		});
     }
-    // 지도 중심좌표를 접속위치로 변경합니다
-    //for(var j = 0; j < markers.length; j++){
-	//	for(var k = 0; k < markers.length; k++){
-	//		if(markers[j].n == markers[k].n){
-	//			console.log(fNames[j])
-	//			cnt = cnt + 1
-	//		}	
-	//	}
-	//}
+	
     map.setCenter(locPosition);
 }
 
-
-function moveToField(fName2, marker, map){
+function showInfo(marker, map){
 	return function(){
-		console.log(fName2)
-		console.log(marker.getPosition().getLat())
-		console.log(marker.getPosition().getLng())
 		var str = marker.getPosition().getLat().toString() + ", " + marker.getPosition().getLng().toString()
-		var content = ""
+		var content = '<div class="overlaybox"><ul>'
 		for(var k = 0; k < markers.length; k++){
 			if(markers[k] == str){
 				if(content == ""){
-					content = '<a href="/field/click?fName=' + fNames[k] + '"><span class="info-window">' + fNames[k] + '</span></a>'
+					content = '<li class="up"><a href="/field/click?fName=' + fNames[k] + '"><span class="title">' + fNames[k] + '</span></a></li>'
 				}
 				else {
-					content = content +'<a href="/field/click?fName=' + fNames[k] + '"><span class="info-window">' + fNames[k] + '</span></a>'
+					content = content +'<li class="up"><a href="/field/click?fName=' + fNames[k] + '"><span class="title">' + fNames[k] + '</span></a></li>'
 				}
 			}
 		}
+		content = content + "</ul></div>"
 		var locPosition3 = new kakao.maps.LatLng(marker.getPosition().getLat(), marker.getPosition().getLng())
-		customOverlay = new kakao.maps.CustomOverlay({
-	   			position: locPosition3,
-	   			content: content,
-	    		yAnchor: 1  
-		});
+		var customOverlay = new kakao.maps.CustomOverlay({
+   			position: locPosition3,
+   			content: content,
+   			zIndex: 1,
+   			clickable: false
+		}); 
 		if(map.getLevel() < 9){
         	customOverlay.setMap(map, marker);
         }
+        if(customOverlays.length < 1){
+        	customOverlays.push(customOverlay)
+		}
+		else {
+			for(var i = 0; i < customOverlays.length; i++){
+				customOverlays.pop().setMap(null)
+			}
+			customOverlays.push(customOverlay)
+		}
+		console.log(customOverlays.length)
+		return customOverlays
 	}
 }
+
+
+
 
 function makeOverListener(map, marker, customOverlay) {
     return function() {
@@ -148,9 +156,11 @@ function makeOverListener(map, marker, customOverlay) {
         }
     };
 }
-function makeOutListener(customOverlay) {
+
+function disableInfo(customOverlay) {
     return function() {
-        customOverlay.setMap(null);
+		customOverlay.setMap(null)
     };
 }	
+
 })
