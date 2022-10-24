@@ -12,7 +12,7 @@ var lonList = document.getElementById('lonList').value;
 lonList = lonList.split(",")
 var mapContainer = document.getElementById('map_n'), // 지도를 표시할 div 
 mapOption = { 
-    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    center: new kakao.maps.LatLng(37.4946287, 127.0276197), // 지도의 중심좌표
     level: 4 // 지도의 확대 레벨 
 }; 
 
@@ -31,7 +31,6 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 if (navigator.geolocation) {
-    
     // GeoLocation을 이용해서 접속 위치를 얻어옵니다
     navigator.geolocation.getCurrentPosition(function(position) {
         
@@ -43,11 +42,11 @@ if (navigator.geolocation) {
         // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition);
             
-      });
+    });
     
 } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
     
-    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+    var locPosition = new kakao.maps.LatLng(37.4946287, 127.0276197);
     displayMarker(locPosition);
 }
 
