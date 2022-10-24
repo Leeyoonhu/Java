@@ -24,7 +24,6 @@ public class MemberController {
    @Autowired
    MemberService service;
 
-
    @RequestMapping(value = "/join", method = RequestMethod.POST) 
    public ModelAndView insert(@RequestParam("name")String name,@RequestParam("nickName")String nickName,
          @RequestParam("sex")String sex, @RequestParam("phoneNo")String phoneNo,
@@ -42,14 +41,18 @@ public class MemberController {
       joinMember.setName(name); joinMember.setNickName(nickName);
       joinMember.setSex(sex); joinMember.setPhoneNo(phoneNo);
       joinMember.setTName(tName); joinMember.setHadPoint(hadPoint);
-      System.out.println(userId);
-      System.out.println(platform);
       MemberDTO joinedMember = service.insert(joinMember); //set한거 DB에넣고, joinedMember에 담기
       mav.addObject("joinedMember", joinedMember);
-      mav.setViewName("redirect:/main"); 
-      System.out.println(joinedMember.getName()+ "\n" + joinedMember.getNickName() + "\n" + 
-            joinedMember.getSex() + "\n" + joinedMember.getPhoneNo()
-            + "\n" + joinedMember.getTName() + "\n" + joinedMember.getHadPoint() + "\n"); 
+      mav.setViewName("redirect:/main");
+      
+      System.out.println("userId : " + userId);
+      System.out.println("platform : " + platform);
+      System.out.println("Name : " + joinedMember.getName());
+      System.out.println("nickName : " + joinedMember.getNickName());
+      System.out.println("sex : " + joinedMember.getSex());
+      System.out.println("phoneNo : " + joinedMember.getPhoneNo());
+      System.out.println("tName : " + joinedMember.getTName());
+      System.out.println("Point : " + joinedMember.getHadPoint());
       return mav; 
    }
 
