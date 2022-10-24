@@ -32,6 +32,17 @@ public class MainController {
 	NaverAPI naverApi = new NaverAPI();
 	GoogleAPI googleApi = new GoogleAPI();
 	
+	//TEST CASH
+	@RequestMapping(value = "/cash")
+	public void test01() {
+		
+	}
+	//TEST TEAMTABLES
+	@RequestMapping(value = "/teamtables")
+	public void test02() {
+		
+	}
+		
 	@Autowired
 	FieldService fService;
 

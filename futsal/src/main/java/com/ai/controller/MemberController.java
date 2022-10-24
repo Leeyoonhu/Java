@@ -24,6 +24,11 @@ public class MemberController {
    @Autowired
    MemberService service;
 
+   @RequestMapping(value = "/checked")
+   public void check() {
+	   
+   }
+   
    @RequestMapping(value = "/join", method = RequestMethod.POST) 
    public ModelAndView insert(@RequestParam("name")String name,@RequestParam("nickName")String nickName,
          @RequestParam("sex")String sex, @RequestParam("phoneNo")String phoneNo,
