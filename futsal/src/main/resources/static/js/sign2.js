@@ -2,45 +2,81 @@ $(document).ready(function(){
 var current_fs, next_fs, previous_fs; 
 var left, opacity, scale; 
 var animating; 
+let pNCheck = /^[0-9]{9,11}$/;
+let check = false;
+let check1 = false;
+let check2 = false;
 
+// 이전에 있던 페이지 번호
 $(".next").on('click', function () {
   if (animating) return false;
   animating = true;
 
   current_fs = $(this).parent();
   next_fs = $(this).parent().next();
-
-  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-  next_fs.show();
-  current_fs.animate(
-    { opacity: 0 },
-    {
-	    step: function (now, mx) {
-        scale = 1 - (1 - now) * 0.2;
-        left = now * 50 + "%";
-        opacity = 1 - now;
-        current_fs.css({
-          transform: "scale(" + scale + ")",
-          position: "absolute",
-        });
-        next_fs.css({'left': left, 'opacity': opacity });
-      },
-      duration: 800,
-      complete: function () {
-        current_fs.hide();
-        animating = false;
-      },
-    }
-  );
+  console.log("next_fs = " + $("fieldset").index(next_fs))
+  
+  // 1번째 화면
+  if($("fieldset").index(next_fs) == 1){
+	 $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	  next_fs.show();
+	  current_fs.animate(
+	    { opacity: 0 },
+	    {
+		    step: function (now, mx) {
+	        scale = 1 - (1 - now) * 0.2;
+	        left = now * 50 + "%";
+	        opacity = 1 - now;
+	        current_fs.css({
+	          transform: "scale(" + scale + ")",
+	          position: "absolute",
+	        });
+	        next_fs.css({'left': left, 'opacity': opacity });
+	      },
+	      duration: 800,
+	      complete: function () {
+	        current_fs.hide();
+	        animating = false;
+	      },
+	    }
+	  );
+  }
+  // 2번째 화면
+  if($("fieldset").index(next_fs) == 2){
+	 $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	  next_fs.show();
+	  current_fs.animate(
+	    { opacity: 0 },
+	    {
+		    step: function (now, mx) {
+	        scale = 1 - (1 - now) * 0.2;
+	        left = now * 50 + "%";
+	        opacity = 1 - now;
+	        current_fs.css({
+	          transform: "scale(" + scale + ")",
+	          position: "absolute",
+	        });
+	        next_fs.css({'left': left, 'opacity': opacity });
+	      },
+	      duration: 800,
+	      complete: function () {
+	        current_fs.hide();
+	        animating = false;
+	      },
+	    }
+	  );
+  }  
 });
 
+
+// 가고자 하는 번호로 감
 $(".previous").on('click', function () {
   if (animating) return false;
   animating = true;
 
   current_fs = $(this).parent();
   previous_fs = $(this).parent().prev();
-
+  console.log("previous_fs = " + $("fieldset").index(current_fs))
   $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
   previous_fs.show();
   current_fs.animate(
