@@ -1,6 +1,6 @@
-package com.ai.controller;
+package com.ai.domain;
 
-import java.io.BufferedReader; 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -8,50 +8,41 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
-
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-
-public class KaKaoAPI {
-	// https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api 문서 참고
-	
-	// 토큰 요청 (https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-token)
+public class GoogleAPI {
+	// https://developers.google.com/identity/protocols/oauth2/web-server#httprest_1 참고
 	public String getAccessToken(String code) {
 		String accessToken = "";
 		String refreshToken = "";
-		// 요청 Url (HOST - OAuth)
-		String reqUrl = "https://kauth.kakao.com/oauth/token";
-		String clientId = "8f3bf912ba858b8abef6fa5d46d5ff7b";
+		String reqUrl = "https://oauth2.googleapis.com/token";
+		String clientId = "407684725072-2ikndkuqcafeku5ufb4dvnm940t1d1v1.apps.googleusercontent.com";
+		String clientSecret = "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";
 		String redirectURL = "http://localhost:8080/loginAccess";
 		try {
-			// java.net의 URL, HttpURLConnection 객체 사용
 			URL url = new URL(reqUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			// post 방식 set
+			// google 문서 상 method = "POST"
 			conn.setRequestMethod("POST");
-			// 출력에 URL 연결을 사용하려는 경우 doOutputflag를 true로 설정하고 그렇지 않은 경우 false로 설정합니다. 기본값은 false
 			conn.setDoOutput(true);
-			
-			// 예전에 했던 I/O
+			System.out.println("url : " + url);
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 			StringBuilder sb = new StringBuilder();
-			// grant_type = authorization_code (인가 코드) 고정 값임
-			sb.append("grant_type=authorization_code");
-			// client_id = javaScript Key
+			// code, client_id, client_secret, redirect_uri, grant_type
+			sb.append("code=" + code);
 			sb.append("&client_id=" + clientId);
-			// redirect 주소 (변경, 수정 필요)
+			sb.append("&client_secret=" + clientSecret);
 			sb.append("&redirect_uri=" + redirectURL);
-			// authorization_code
-			sb.append("&code="+code);
-			// client_secret 은 ON인 경우 필수설정이지만 X 이기에 추가안했음..
-			
+			sb.append("&grant_type=authorization_code");
+			// access_type 매개변수를 offline로 설정하는 경우에만 refresh_token 발행
+			sb.append("&access_type=offline");
+			System.out.println("sb toString :: " + sb.toString());
 			bw.write(sb.toString());
 			bw.flush();
 			
-			// 200 or 401
 			int responseCode = conn.getResponseCode();
+			// 상태 확인
 			System.out.println("responseCode : " + responseCode);
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -64,45 +55,38 @@ public class KaKaoAPI {
 			}
 			System.out.println("responseBody : " + result);
 			
-			// Json Parsing
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
-			
-			// 파싱한 결과물중에 토큰이 있음 (2개)
 			accessToken = element.getAsJsonObject().get("access_token").getAsString();
 			refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
 			
-			// 닫아주고
 			br.close();
 			bw.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return accessToken;
 	}
 	
-	
-	// 토큰으로 유저정보 조회
 	public HashMap<String, Object> getUserInfo(String accessToken) {
 		HashMap<String, Object> userInfo = new HashMap<String, Object>();
-		// 요청 Url, KaKaoDevelopers REST API - Access Token 사용 문서 참조
-		String reqUrl = "https://kapi.kakao.com/v2/user/me";
+		
+		String reqUrl = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + accessToken;
 		BufferedReader br = null;
 		try {
-			// java.net의 URL, HttpURLConnection 객체 사용
 			URL url = new URL(reqUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			// post 방식 set
-			conn.setRequestMethod("POST");
-			// Access Token 사용 문서의 Authorization(인가) key - value set
+			
+			conn.setRequestMethod("GET");
+			// header 에 필요한 요청
 			conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-			// 200 or 401
+			
 			int responseCode = conn.getResponseCode();
+	        // 상태확인
 			System.out.println("responseCode : " + responseCode);
 			
-			// 예전에 했던 I/O
+			
 			if(responseCode == 200) { 
 		        br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		    } 
@@ -113,48 +97,52 @@ public class KaKaoAPI {
 			String line = "";
 			String result = "";
 			
-			// 읽어올게 없을 때 까지 result 에 더함
 			while((line = br.readLine()) != null) {
 				result += line;
 			}
-			// 결과값 확인용(후에 지워도 됨)
+			
 			System.out.println("responseBody : " + result);
 			
-			// Json data parsing (가져온 유저 정보 parsing)
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 			
-			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-			JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-			String nickName = properties.getAsJsonObject().get("nickname").getAsString();
-			String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
+			String nickName = element.getAsJsonObject().get("name").getAsString();
+			String email = element.getAsJsonObject().get("email").getAsString();
 			
-			// HashMap k-v 선언 
 			userInfo.put("nickName", nickName);
 			userInfo.put("email", email);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// 유저 정보 반환
+		
 		return userInfo;
 	}
-
 	
-	// 로그아웃 (https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#logout)
-	// 사용자 액세스 토큰과 리프레시 토큰을 모두 만료시킵니다.
 	public void logout(String accessToken) {
-		// host + post
-		String reqUrl = "https://kapi.kakao.com/v1/user/logout";
+		// https://developers.google.com/identity/protocols/oauth2/web-server#tokenrevoke 참고
+		// CURL 이란 서버와 통신할 수 있는 커맨드 명령어 툴
+		String reqUrl = "https://oauth2.googleapis.com/revoke";
 		BufferedReader br = null;
 		try {
+			//URL url = new URL(reqUrl2);
 			URL url = new URL(reqUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			// Method = "POST"
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 			
-			// 200 or 401
+			// method = "POST"
+			// GET 방식인 경우 쿼리스트링을 사용해서 보냄
+			// POST 방식이기 때문에 쿼리스트링 대신 bufferedWriter를 통해서 작성
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			
+			conn.setDoOutput(true);
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			StringBuilder sb = new StringBuilder();
+			sb.append("token=" + accessToken);
+			bw.write(sb.toString());
+			bw.flush();
+			
+			
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
 			
@@ -177,5 +165,4 @@ public class KaKaoAPI {
 			e.printStackTrace();
 		}
 	}
-
 }

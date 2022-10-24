@@ -1,4 +1,4 @@
-package com.ai.controller;
+package com.ai.domain;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

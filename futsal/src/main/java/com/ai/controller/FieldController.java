@@ -25,21 +25,18 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping(value = "/field")
 public class FieldController {
-	
 	@Autowired
 	FieldService service;
 	
 	@RequestMapping(value = "/click")
-	public String moveToField(@RequestParam("fName") String fName, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
+	public String moveToField(@RequestParam("fName") String fName) { 
 		FieldDTO field = service.findByfName(fName);
 		System.out.println(Integer.parseInt(field.getId()));
-		session.setAttribute("fieldReserve", field.getId());
 		return "redirect:/field/reserve/"+field.getId();
 	}
 	
 	@RequestMapping("/reserve/{id}")
-	public ModelAndView searchTest(@PathVariable String id, HttpSession session) throws Exception {
+	public ModelAndView searchTest(@PathVariable String id) {
 		ModelAndView mav = new ModelAndView();
 		FieldDTO field = service.findByid(id);
 		ArrayList<FieldDTO> fList = service.findAll();
@@ -57,15 +54,5 @@ public class FieldController {
 		mav.addObject("field", field);
 		mav.setViewName("/field/reserve");
 		return mav;
-	}
-	
-	@RequestMapping(value = "/searchField", method=RequestMethod.POST)
-	  public ModelAndView searchField(@RequestParam("fName") String fName) {
-      ModelAndView mav = new ModelAndView();
-      FieldDTO field = service.findByfName(fName);
-      mav.addObject("searchedField", field);
-      System.out.println(field.getfAddress());
-      mav.setViewName("/searchField");
-      return mav;
 	}
 }

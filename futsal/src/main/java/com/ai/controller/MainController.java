@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ai.domain.FieldDTO;
+import com.ai.domain.GoogleAPI;
+import com.ai.domain.KaKaoAPI;
+import com.ai.domain.NaverAPI;
 import com.ai.service.FieldService;
 
 @Controller
@@ -31,30 +34,9 @@ public class MainController {
 	
 	@Autowired
 	FieldService fService;
-	
-//	TEST CALENDER 
-	@RequestMapping(value = "/cal")
-	public void test01() {
-	
-	}
-//	TEST CREATE TEAM
-	@RequestMapping(value ="/createTeam")
-	public void test02() {
-		
-	}
-//	TEST FIELD RESERVE
-	@RequestMapping(value ="/reserve")
-	public void test03() {
-		
-	}
-//	TEST TEAMTABLE 
-	@RequestMapping(value = "/teamtables")
-	public void test04() {
-		   
-	}
-	
-	@RequestMapping(value = "/login")
-	public ModelAndView getLogin() throws UnsupportedEncodingException {
+
+	@RequestMapping(value = "/register")
+	public ModelAndView getLoginAndRegister() throws UnsupportedEncodingException {
 		// https://developers.naver.com/docs/login/api/api.md 참조
 		ModelAndView mav = new ModelAndView();
 		String clientId = "s3SKlARx4M5gtCyBNSwG";//애플리케이션 클라이언트 아이디값";
@@ -67,9 +49,8 @@ public class MainController {
 	    apiURL += "&client_id=" + clientId;
 	    apiURL += "&redirect_uri=" + redirectURI;
 	    apiURL += "&state=" + state;
-	    System.out.println(apiURL);
 	    mav.addObject("apiURL", apiURL);
-	    mav.setViewName("login");
+	    mav.setViewName("/register");
 		return mav;
 	}
 	
@@ -117,7 +98,7 @@ public class MainController {
 		System.out.println("login info : " + userInfo.toString());
 		session.setAttribute("userId", userInfo.get("email"));
 		// 메인페이지 위치로
-		mav.setViewName("redirect:login");
+		mav.setViewName("redirect:/register");
 		return mav;
 	}
 	
@@ -141,41 +122,44 @@ public class MainController {
 		mav.addObject("fNList", fNList);
 		mav.addObject("latList", latList);
 		mav.addObject("lonList", lonList);		
-	    mav.setViewName("main");
+	    mav.setViewName("/main");
 	    return mav;
 	}
-	
-	// 유저 로그아웃
+
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-			ModelAndView mav = new ModelAndView();
-			String platform = null;
-			Cookie[] cookieArr = request.getCookies();
-			for(Cookie cookie : cookieArr) {
-				if(cookie.getName().equals("platform")) {
-					platform = cookie.getValue();
-				}
+		ModelAndView mav = new ModelAndView();
+		String platform = null;
+		Cookie[] cookieArr = request.getCookies();
+		for(Cookie cookie : cookieArr) {
+			if(cookie.getName().equals("platform")) {
+				platform = cookie.getValue();
 			}
-			if(platform.equals("kakao")) {
-				kakaoApi.logout((String)session.getAttribute("access_token"));
-			}
-			if(platform.equals("naver")) {
-				naverApi.logout((String)session.getAttribute("access_token"));
-			}
-			if(platform.equals("google")) {
-				googleApi.logout((String)session.getAttribute("access_token"));
-			}
-
-			// 세션 다죽임
-			session.invalidate();
-			// 쿠키도 죽임
-			for(Cookie cookie : cookieArr) {
-				cookie.setMaxAge(0);
-				response.addCookie(cookie);
-			}
-			// 메인
-			mav.setViewName("redirect:main");
-			
-			return mav;
 		}
+		if(platform.equals("kakao")) {
+			kakaoApi.logout((String)session.getAttribute("access_token"));
+		}
+		if(platform.equals("naver")) {
+			naverApi.logout((String)session.getAttribute("access_token"));
+		}
+		if(platform.equals("google")) {
+			googleApi.logout((String)session.getAttribute("access_token"));
+		}
+		session.invalidate();
+		for(Cookie cookie : cookieArr) {
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+		}
+		mav.setViewName("redirect:/main");
+		return mav;
+	}
+	@RequestMapping(value = "/search", method=RequestMethod.POST)
+	public ModelAndView searchField(@RequestParam("fName") String fName) {
+      ModelAndView mav = new ModelAndView();
+      FieldDTO field = fService.findByfName(fName);
+      mav.addObject("searchedField", field);
+      System.out.println(field.getfAddress());
+      mav.setViewName("/search");
+      return mav;
+	}
 }

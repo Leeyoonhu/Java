@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ai.domain.TeamDTO;
 import com.ai.service.TeamService;
@@ -22,13 +23,13 @@ public class TeamController {
     * 페이지이동 return mav; }
     */
    
-   @RequestMapping(value = "/search", method = RequestMethod.GET)
-   public ModelAndView search(String tName) {
+   @RequestMapping(value = "/search", method = RequestMethod.POST)
+   public ModelAndView search(@RequestParam("tName")String tName) {
       ModelAndView mav = new ModelAndView();
       TeamDTO team = service.findBytName(tName);
-      mav.addObject("team", team);
-      System.out.println(team.getTName());
-      mav.setViewName("yukiteam"); // 페이지이동 
+      mav.addObject("searchedTeam", team);
+      System.out.println("tName : " + team.getTName());
+      mav.setViewName("/teamtables"); // 페이지이동    
       return mav;
    }
    
@@ -50,11 +51,17 @@ public class TeamController {
       
       TeamDTO insertedTeam = service.insert(insertTeam);
       mav.addObject("insertedTeam", insertedTeam); 
-      mav.setViewName("main");
-      System.out.println(insertedTeam.getTName() + "\n" + insertedTeam.getTArea() + "\n" + 
-            insertedTeam.getFoundingDate() + "\n" + insertedTeam.getUniform() + "\n" +
-            insertedTeam.getTTotal() + "\n" + insertedTeam.getTAge() + "\n" + insertedTeam.getTManner()
-            + "\n" + insertedTeam.getTeamInfo());
+      mav.setViewName("/main");
+      
+      System.out.println("insert tName : " + insertedTeam.getTName());
+      System.out.println("insert tArea : " + insertedTeam.getTArea());
+      System.out.println("insert fDate : " + insertedTeam.getFoundingDate());
+      System.out.println("insert tUniform : " + insertedTeam.getUniform());
+      System.out.println("insert tTotal : " + insertedTeam.getTTotal());
+      System.out.println("insert tAge : " + insertedTeam.getTAge());
+      System.out.println("insert tManner : " + insertedTeam.getTManner());
+      System.out.println("insert tInfo : " + insertedTeam.getTeamInfo());
+      
       return mav;
    }
 }
