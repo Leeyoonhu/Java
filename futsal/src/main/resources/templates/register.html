@@ -13,12 +13,11 @@
     <form action="/member/join" method="post" id="msform">
       <!-- progressbar -->
       <ul id="progressbar">
-        <!-- <li class="active">Account Setup</li> -->
-        <!-- <li>Social Profiles</li> -->
-        <li>Personal Details</li>
+        <li class="active">이용 약관</li>
+        <li>정보 기입</li>
+        <li>소셜 인증</li>
       </ul>
       <!-- fieldsets -->
-      <div th:if = "${session.userId == null}">
       <fieldset>
         <h2 class="fs-title">Create your account</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
@@ -31,29 +30,7 @@
           class="next action-button"
           value="Next"/>
       </fieldset>
-      <fieldset>
-        <h2 class="fs-title">Social Profiles</h2>
-        <h3 class="fs-subtitle">Your presence on the social network</h3>
-        <a href="#" id="kakaoLogin"><img height="55px" src="/img/kakaoLogin.png"/></a><br>
-        <input style="display: none" th:value="${apiURL}" id="naverURL">
-        <a href="#" id="naverLogin"><img height="55px" style="margin-top: 5px;" src="/img/naverLogin.png"/></a><br>
-        <a href="#" id="googleLogin"><img height="55px" style="margin-top: 5px;" src="/img/googleLogin.png"></a>
-      </br>
-        <input
-          type="button"
-          name="previous"
-          class="previous action-button"
-          value="Previous"
-        />
-        <input
-          type="button"
-          name="next"
-          class="next action-button"
-          value="Next"
-        />
-      </fieldset>
-      </div>
-      <div th:if = "${session.userId != null}">
+      
       <fieldset>
         <h2 class="fs-title">Personal Details</h2>
         <h3 class="fs-subtitle">We will never sell it</h3>
@@ -75,9 +52,22 @@
         <!-- 해당회원 보유포인트없으므로 0일단 집어넣음 : 몽고디비컬럼보이기위해 -->
         <input type="hidden" name="hadPoint" value=0>
         <!-- 제출버튼 -->
+        </br>
+        <input type="button" name="previous" class="previous action-button" value="Previous"/>
+        <input type="button" name="next" class="next action-button" value="Next"/>
+        <!-- 
+        위의 next 버튼 누를 시 ajax로 db 조회
         <input type="submit" value="회원가입"/><br>
+         -->
       </fieldset>
-      </div>
+      <fieldset>
+        <h2 class="fs-title">Social Profiles</h2>
+        <h3 class="fs-subtitle">Your presence on the social network</h3>
+        <a href="#" id="kakaoLogin"><img height="55px" src="/img/kakaoLogin.png"/></a><br>
+        <input style="display: none" th:value="${apiURL}" id="naverURL">
+        <a href="#" id="naverLogin"><img height="55px" style="margin-top: 5px;" src="/img/naverLogin.png"/></a><br>
+        <a href="#" id="googleLogin"><img height="55px" style="margin-top: 5px;" src="/img/googleLogin.png"></a>
+      </fieldset>
     </form>
 
   </body>
