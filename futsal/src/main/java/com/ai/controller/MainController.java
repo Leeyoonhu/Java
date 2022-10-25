@@ -43,8 +43,14 @@ public class MainController {
 	}
 	//TEST TEAMTABLES
 	@RequestMapping(value = "/teamtables")
-	public void test02() {
-		
+	public ModelAndView test02(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String _id = (String)(session.getAttribute("userId"));
+		MemberDTO member = new MemberDTO();
+		member = mService.findBy_id(_id);
+		mav.addObject("member", member);
+		mav.setViewName("/teamtables");
+		return mav;
 	}
 	//TEST CREATETEAM
 	@RequestMapping(value = "/createTeam")
@@ -53,9 +59,22 @@ public class MainController {
 	}
 	
 	//TEST 
-	@RequestMapping(value = "/test")
-	public void test04() {
-	
+	@RequestMapping(value = "/login")
+	public ModelAndView getLogin() throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String clientId = "s3SKlARx4M5gtCyBNSwG";//애플리케이션 클라이언트 아이디값";
+		// callbackURL 나중에 변경할것
+	    String redirectURI = URLEncoder.encode("http://localhost:8080/loginAccess", "UTF-8");
+	    SecureRandom random = new SecureRandom();
+	    // state 는 Naver 사에서 'CSRF를 방지하기 위한 인증값입니다. 임의의 값을 넣어 진행해주시면 되는데요.' 라고 답변 (난수 입력)
+	    String state = new BigInteger(130, random).toString();
+	    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+	    apiURL += "&client_id=" + clientId;
+	    apiURL += "&redirect_uri=" + redirectURI;
+	    apiURL += "&state=" + state;
+	    mav.addObject("apiURL", apiURL);
+	    mav.setViewName("/login");
+		return mav;
 	}	
 	@Autowired
 	FieldService fService;
@@ -64,7 +83,7 @@ public class MainController {
 	MemberService mService;
 
 	@RequestMapping(value = "/register")
-	public ModelAndView getLoginAndRegister() throws UnsupportedEncodingException {
+	public ModelAndView getRegister() throws UnsupportedEncodingException {
 		// https://developers.naver.com/docs/login/api/api.md 참조
 		ModelAndView mav = new ModelAndView();
 		String clientId = "s3SKlARx4M5gtCyBNSwG";//애플리케이션 클라이언트 아이디값";
@@ -93,7 +112,7 @@ public class MainController {
 		String nickName = null;
 		String sex = null;
 		String phoneNo = null;
-		String tName = null;
+		String tName = "null";
 		int hadPoint = 0;
 	    Date date = new Date();
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

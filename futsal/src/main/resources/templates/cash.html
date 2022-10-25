@@ -1,93 +1,98 @@
 <!DOCTYPE html>
 <html lang="zxx">
-  <head>
-    <title>Game Warrior Template</title>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Game Warrior Template" />
-    <meta name="keywords" content="warrior, game, creative, html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="shortcut icon" />
+<head>
+<title>Game Warrior Template</title>
+<meta charset="UTF-8" />
+<meta name="description" content="Game Warrior Template" />
+<meta name="keywords" content="warrior, game, creative, html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="shortcut icon" />
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i"
-      rel="stylesheet"
-    />
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i"
+	rel="stylesheet" />
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/css/bootstrap.min2.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/style3.css">
-  </head>
-  <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-      <div class="loader"></div>
-    </div>
+<!-- Stylesheets -->
+<link rel="stylesheet" href="/css/bootstrap.min2.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/style3.css">
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+	<!-- Header section -->
+	<header class="header-section">
+		<div class="container">
+			<!-- logo -->
+			<a class="site-logo" href="index.html"> <img src="img/logo.png"
+				alt="" />
+			</a>
+			<div class="user-panel">
+				<a href="#">Login</a> / <a href="#">Register</a>
+			</div>
+			<!-- responsive -->
+			<div class="nav-switch">
+				<i class="fa fa-bars"></i>
+			</div>
+			<!-- site menu -->
+			<nav class="main-menu">
+				<ul>
+					<
+					<ul>
+						<span th:if="${session.userId ne null}">
+							<li><a href="/main">Home</a></li>
+							<li><a href="/teamtables">Team</a></li>
+							<li><a href="/reservation">Reservation</a></li> <!-- <li><a href="/community">Community</a></li> -->
+							<li><a href="/contact.html">Quick Menu</a></li>
+						</span>
+						<span th:if="${session.userId eq null}">
+							<li><a href="/main">Home</a></li>
+						</span>
+					</ul>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- Header section end -->
+	<!-- Latest news section -->
 
-    <!-- Header section -->
-    <header class="header-section">
-      <div class="container">
-        <!-- logo -->
-        <a class="site-logo" href="index.html">
-          <img src="img/logo.png" alt="" />
-        </a>
-        <div class="user-panel">
-          <a href="#">Login</a> / <a href="#">Register</a>
-        </div>
-        <!-- responsive -->
-        <div class="nav-switch">
-          <i class="fa fa-bars"></i>
-        </div>
-        <!-- site menu -->
-        <nav class="main-menu">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="review.html">Games</a></li>
-            <li><a href="categories.html">Blog</a></li>
-            <li><a href="community.html">Forums</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <!-- Header section end -->
-    <!-- Latest news section -->
-
-    <div class="latest-news-section">
-      <div class="ln-title">Latest News</div>
-      <div class="news-ticker">
-        <div class="news-ticker-contant">
-          <div class="nt-item">
-            <span class="new">new</span>Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit.
-          </div>
-          <div class="nt-item">
-            <span class="strategy">strategy</span>Isum dolor sit amet,
-            consectetur adipiscing elit.
-          </div>
-          <div class="nt-item">
-            <span class="racing">racing</span>Isum dolor sit amet, consectetur
-            adipiscing elit.
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- 전광판-->
-    <!-- 예약창-->
-    <br>
-    <div class="checkout__form">
-      <h4 style="margin-left : 200px; margin-top:20px;">A구장 결제 페이지</h4>
-      <hr>
-      <form action="#">
-        <div class="row">
-          <div class="col-lg-8 col-md-6">
-              <div class="col-lg-6">
-                <div class="checkout__input">
-                  <p>개인정보 제 3차 제공 방침 밑 시설 이용 약관</p>
-                  <textarea readonly id="agree_text" style="width : 780px; height:240px; font-size: 12px; resize:none; overflow:auto;
-                  ">이용 약관 – 풋살 매니저
+	<div class="latest-news-section">
+		<div class="ln-title">Latest News</div>
+		<div class="news-ticker">
+			<div class="news-ticker-contant">
+				<div class="nt-item">
+					<span class="new">new</span>Lorem ipsum dolor sit amet, consectetur
+					adipiscing elit.
+				</div>
+				<div class="nt-item">
+					<span class="strategy">strategy</span>Isum dolor sit amet,
+					consectetur adipiscing elit.
+				</div>
+				<div class="nt-item">
+					<span class="racing">racing</span>Isum dolor sit amet, consectetur
+					adipiscing elit.
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 전광판-->
+	<!-- 예약창-->
+	<br>
+	<div class="checkout__form">
+		<h4 style="margin-left: 200px; margin-top: 20px;">A구장 결제 페이지</h4>
+		<hr>
+		<form action="#">
+			<div class="row">
+				<div class="col-lg-8 col-md-6">
+					<div class="col-lg-6">
+						<div class="checkout__input">
+							<h5 style="font-weight: bold;">개인정보 제 3차 제공 방침 밑 시설 이용 약관</h5>
+							<textarea readonly id="agree_text"
+								style="width: 780px; height: 240px; font-size: 12px; resize: none; overflow: auto;">이용 약관 – 풋살 매니저
 
                   제 1 조 (목적)
                     이 약관은 주식회사 미머디 (이하 ‘회사’)가 제공하는 풋살매니저 및 풋살매니저 이용에 따른 관계자들의 권리, 의무, 책임, 기타 필요한 사항들을 규정함을 목적으로 합니다.
@@ -369,22 +374,20 @@
                   
                   <부칙>
                   본 약관은 2015년 11월 1일부터 시행합니다.</textarea>
-                </div>
-              
-            
-            <div class="checkout__input__checkbox">
-                <label for="acc">
-                  위의 개인정보 취급방침에 동의합니다.
-                  <input type="checkbox" id="acc" />
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-            
-     
-            <div class="checkout__input">
-              <p>시설 이용 약관</p>
-              <textarea readonly id="agree_text" style="width : 780px; height:240px; font-size: 12px; resize:none; overflow:auto;
-              ">개인정보 수집 및 이용에 대한 안내(필수)
+						</div>
+
+
+						<div class="checkout__input__checkbox">
+							<label for="acc"> 위의 개인정보 취급방침에 동의합니다. <input
+								type="checkbox" id="acc" /> <span class="checkmark"></span>
+							</label>
+						</div>
+
+
+						<div class="checkout__input">
+							<h5 style="font-weight: bold;">시설 이용 약관</h5>
+							<textarea readonly id="agree_text"
+								style="width: 780px; height: 240px; font-size: 12px; resize: none; overflow: auto;">개인정보 수집 및 이용에 대한 안내(필수)
 
               ① 수집 및 이용 목적 : 회원관리, 맞춤형 서비스 제공, 신원확인, 유저 간 커뮤니케이션 서비스 제공, 체육시설 대관 및 관리를 위한 이용자 확인, 결제, 마케팅 및 광고 등
               
@@ -460,92 +463,101 @@
               - 정보보호마크인증위원회 (www.eprivacy.or.kr/02-580-0533~4)
               - 대검찰청 인터넷범죄수사센터 (http://icic.sppo.go.kr/02-3480-3600)
               - 경찰청 사이버테러대응센터 (www.ctrc.go.kr/02-392-0330)</textarea>
-            </div>
-     
-            <div class="checkout__input__checkbox">
-                <label for="acc">
-                  위의 개인정보 취급방침에 동의합니다.
-                  <input type="checkbox" id="acc" />
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-              <div class="checkout__input__checkbox">
-                <label for="acc">
-                    전체동의에 대한 약관에 모두 동의합니다.
-                  <input type="checkbox" id="acc" />
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-            </div>
-            <a style="color :red; margin-left: 15px;">** 빨간색 포인트는 즉시 차감됩니다. </a> <br>
-            <a style="color :blue; margin-left: 15px;">** 파란색 포인트는 매칭 완료시 차감됩니다. </a>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="checkout__order">
-              <h4>예약내역</h4>
-              <div class="checkout__order__products">
-                예약내역 <span>Total</span>
-              </div>
-              <ul>
-                <li>일자 <span>2022-10-24</span></li>
-                <li>사용 시간 <span>16 - 18시</span></li>
-                <li>구장 사용료 <span>100,000P</span></li>
-              </ul>
-              <div class="checkout__order__subtotal">
-                사용 가능한 결제 포인트 <span>200,000P</span>
-              </div>
-              <div class="checkout__order__total">
-                총 결제 포인트 <span>100,000P</span>
-              </div>
-              <div class="checkout__order__total">
-                잔여 포인트 <span>100,000P</span>
-              </div>
-              <a style="color:red">매칭 완료 시 예약금의 50%가 환불됩니다.</a>
-              <br>
-              
-             <input readonly placeholder="신청 팀" style="width : 540px; margin-bottom: 10px; background-color: rgb(214, 214, 214); border:0 solid black;">
-             <input readonly placeholder="신청자(닉네임)" style="width : 540px; margin-bottom: 10px; background-color: rgb(214, 214, 214); border:0 solid black;">
-             <input readonly placeholder="신청 팀" style="width : 540px; background-color: rgb(214, 214, 214); border:0 solid black;">
-             <button type="submit" class="site-btn" style="margin-top:30px;">예약</button>
-              </div>
-              
+						</div>
 
-            </div>
-          </div>
-     
+						<div class="checkout__input__checkbox">
+							<label for="acc"> 위의 개인정보 취급방침에 동의합니다. <input
+								type="checkbox" id="acc" /> <span class="checkmark"></span>
+							</label>
+						</div>
+						<div class="checkout__input__checkbox">
+							<label for="acc"> 전체동의에 대한 약관에 모두 동의합니다. <input
+								type="checkbox" id="acc" /> <span class="checkmark"></span>
+							</label>
+						</div>
+					</div>
+					<a style="color: red; margin-left: 15px;">** 빨간색 포인트는 즉시 차감됩니다.
+					</a> <br> <a style="color: blue; margin-left: 15px;">** 파란색
+						포인트는 매칭 완료시 차감됩니다. </a>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="checkout__order">
+						<h4>예약내역</h4>
+						<div class="checkout__order__products">
+							예약내역 <span>Total</span>
+						</div>
+						<ul>
+							<li>일자 <span>2022-10-24</span></li>
+							<li>사용 시간 <span>16 - 18시</span></li>
+							<li>구장 사용료 <span>100,000P</span></li>
+						</ul>
+						<div class="checkout__order__subtotal">
+							사용 가능한 결제 포인트 <span>200,000P</span>
+						</div>
+						<div class="checkout__order__total">
+							총 결제 포인트 <span>100,000P</span>
+						</div>
+						<div class="checkout__order__total">
+							잔여 포인트 <span>100,000P</span>
+						</div>
+						<a style="color: red">매칭 완료 시 예약금의 50%가 환불됩니다.</a> <br> <input
+							readonly placeholder="신청 팀"
+							style="width: 100%; margin-bottom: 10px; background-color: rgb(214, 214, 214); border: 0 solid black;">
+						<input readonly placeholder="신청자(닉네임)"
+							style="width: 100%; margin-bottom: 10px; background-color: rgb(214, 214, 214); border: 0 solid black;">
+						<input readonly placeholder="신청 팀"
+							style="width: 540px; background-color: rgb(214, 214, 214); border: 0 solid black;">
+						<button type="submit" class="site-btn" style="margin-top: 30px;">예약</button>
+					</div>
 
-<!-- Checkout Section End -->
-    <!-- 예약창-->
-    <!-- Footer section -->
-    <footer class="footer-section">
-      <div class="container">
-        <ul class="footer-menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="review.html">Games</a></li>
-          <li><a href="categories.html">Blog</a></li>
-          <li><a href="community.html">Forums</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <p class="copyright">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          All rights reserved | This template is made with
-          <i class="fa fa-heart-o" aria-hidden="true"></i> by
-          <a href="https://colorlib.com" target="_blank">Colorlib</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
-      </div>
-    </footer>
-    <!-- Footer section end -->
 
-    <!--====== Javascripts & Jquery ======-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.marquee.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+				</div>
+			</div>
+
+
+			<!-- Checkout Section End -->
+			<!-- 예약창-->
+			<!-- Footer section -->
+			<footer class="footer-section">
+				<div class="container">
+					<ul class="footer-menu">
+						<ul>
+							<span th:if="${session.userId ne null}">
+								<li><a href="/main">Home</a></li>
+								<li><a href="/teamtables">Team</a></li>
+								<li><a href="/reservation">Reservation</a></li> <!-- <li><a href="/community">Community</a></li> -->
+								<li><a href="/contact.html">Quick Menu</a></li>
+							</span>
+							<span th:if="${session.userId eq null}">
+								<li><a href="/main">Home</a></li>
+							</span>
+						</ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="review.html">Games</a></li>
+						<li><a href="categories.html">Blog</a></li>
+						<li><a href="community.html">Forums</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+					<p class="copyright">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</footer>
+			<!-- Footer section end -->
+
+			<!--====== Javascripts & Jquery ======-->
+			<script src="js/jquery-3.2.1.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/owl.carousel.min.js"></script>
+			<script src="js/jquery.marquee.min.js"></script>
+			<script src="js/main.js"></script>
+</body>
 </html>
