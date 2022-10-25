@@ -32,7 +32,14 @@
 				alt="" />
 			</a>
 			<div class="user-panel">
-				<a href="#">Login</a> / <a href="#">Register</a>
+				<!-- logo -->
+				<a class="site-logo" href="/main"> <img src="img/logo.png"
+					alt="" />
+				</a> <span th:if="${session.userId eq null}"> <a href="#">로그인</a>
+					/ <a href="/register">회원가입</a>
+				</span> <span th:if="${session.userId ne null}"> <a
+					href="http://localhost:8080/logout">로그아웃</a>
+				</span>
 			</div>
 			<!-- responsive -->
 			<div class="nav-switch">
@@ -521,17 +528,6 @@
 			<footer class="footer-section">
 				<div class="container">
 					<ul class="footer-menu">
-						<ul>
-							<span th:if="${session.userId ne null}">
-								<li><a href="/main">Home</a></li>
-								<li><a href="/teamtables">Team</a></li>
-								<li><a href="/reservation">Reservation</a></li> <!-- <li><a href="/community">Community</a></li> -->
-								<li><a href="/contact.html">Quick Menu</a></li>
-							</span>
-							<span th:if="${session.userId eq null}">
-								<li><a href="/main">Home</a></li>
-							</span>
-						</ul>
 						<li><a href="index.html">Home</a></li>
 						<li><a href="review.html">Games</a></li>
 						<li><a href="categories.html">Blog</a></li>

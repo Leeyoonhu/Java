@@ -1,22 +1,27 @@
 package com.ai.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ai.domain.MemberDTO;
 import com.ai.domain.TeamDTO;
+import com.ai.service.MemberService;
 import com.ai.service.TeamService;
 
 @Controller
 @RequestMapping(path = "/team")
 public class TeamController {
-   
    @Autowired
    TeamService service;
+   @Autowired
+   MemberService mService;
+   
    /*
     * @RequestMapping(value = "", method = RequestMethod.GET) public ModelAndView
     * Team() { ModelAndView mav = new ModelAndView(); mav.setViewName("team"); //
@@ -37,9 +42,12 @@ public class TeamController {
    public ModelAndView insertTeam(@RequestParam("name")String tName,@RequestParam("location")String location,
          @RequestParam("birth")String birth,@RequestParam("uniform")String uniform,
          @RequestParam("total")int total,@RequestParam("age")String tAge,
-         @RequestParam("manner")int tManner,@RequestParam("message")String TeamInfo) {
+         @RequestParam("manner")int tManner,@RequestParam("message")String TeamInfo, HttpSession session) {
       TeamDTO insertTeam = new TeamDTO();
       ModelAndView mav = new ModelAndView(); 
+      String userId = (String)session.getAttribute("userId");
+      String _id = mService.findBy_id(userId).getNickName();
+      insertTeam.set_id(_id); 
       insertTeam.setTName(tName);
       insertTeam.setTArea(location);
       insertTeam.setFoundingDate(birth);
@@ -48,7 +56,9 @@ public class TeamController {
       insertTeam.setTAge(tAge);
       insertTeam.setTManner(tManner);
       insertTeam.setTeamInfo(TeamInfo);
-      
+      MemberDTO member = mService.findBy_id(userId);
+      member.setTName(tName);
+      mService.save(member);
       TeamDTO insertedTeam = service.insert(insertTeam);
       mav.addObject("insertedTeam", insertedTeam); 
       mav.setViewName("/main");

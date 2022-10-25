@@ -1,20 +1,16 @@
 package com.ai.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.ai.domain.FieldDTO;
 import com.ai.service.FieldService;
@@ -29,8 +25,26 @@ public class FieldController {
 	FieldService service;
 	
 	@RequestMapping(value = "/click")
-	public String moveToField(@RequestParam("fName") String fName) { 
+	public String moveToField(@RequestParam("fName") String fName, HttpServletRequest request) { 
 		FieldDTO field = service.findByfName(fName);
+		Cookie[] cookies = request.getCookies();
+		String year = null;
+		String month = null;
+		String day = null;
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("year")) {
+				year = cookie.getValue();
+			}
+			if(cookie.getName().equals("month")) {
+				month = cookie.getValue();
+			}
+			if(cookie.getName().equals("day")) {
+				day = cookie.getValue();
+			}
+		}
+		System.out.println("year : " + year);
+		System.out.println("month : " + month);
+		System.out.println("day : " + day);
 		System.out.println(Integer.parseInt(field.getId()));
 		return "redirect:/field/reserve/"+field.getId();
 	}
