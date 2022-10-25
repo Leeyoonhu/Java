@@ -34,4 +34,10 @@ public class MemberServiceImpl implements MemberService{
 		MemberDTO member = memberRepository.findByNickName(nickName);
 		return member;
 	}
+
+	@Override
+	public MemberDTO findBy_id(String _id) {
+		MemberDTO member = memberRepository.findBy_id(_id);
+		return member;
+	}
 }
