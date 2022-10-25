@@ -61,7 +61,21 @@ p {
 img {
   max-width: 100%;
 }
+  #time-table{
+		  border-collapse:collapse;
+          text-align: center;
+          margin : auto;
+          margin-bottom : 30px;
+          height: 80px;
+        }
+        #time-table th {
 
+          background-color: #e6e6e6;
+        }
+        #time-table th:hover{
+        background-color: tomato;
+        }
+        
 input:focus,
 select:focus,
 button:focus,

@@ -3,6 +3,7 @@ var markers = []
 var fNames = []
 var clickedOverlay = 0;
 var customOverlays = [];
+
 var fNList = document.getElementById('fNList').value;
 fNList = fNList.split(",")
 
@@ -105,7 +106,7 @@ function displayMarker(locPosition) {
     map.setCenter(locPosition);
 }
 
-function showInfo(marker, map){
+function showInfo(marker, map){	
 	return function(){
 		var str = marker.getPosition().getLat().toString() + ", " + marker.getPosition().getLng().toString()
 		var content = '<div class="overlaybox"><ul>'
@@ -125,7 +126,7 @@ function showInfo(marker, map){
    			position: locPosition3,
    			content: content,
    			zIndex: 1,
-   			clickable: false
+   			clickable: false	
 		}); 
 		if(map.getLevel() < 9){
         	customOverlay.setMap(map, marker);

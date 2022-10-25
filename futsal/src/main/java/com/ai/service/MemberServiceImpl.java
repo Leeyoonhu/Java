@@ -40,4 +40,10 @@ public class MemberServiceImpl implements MemberService{
 		MemberDTO member = memberRepository.findBy_id(_id);
 		return member;
 	}
+
+	@Override
+	public void save(MemberDTO member) {
+		// TODO Auto-generated method stub
+		memberRepository.save(member);
+	}
 }

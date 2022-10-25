@@ -10,4 +10,5 @@ public interface MemberRepository extends MongoRepository<MemberDTO, String>{
    MemberDTO findByPhoneNo(@RequestParam("phoneNo") String phoneNo);
    MemberDTO findByNickName(@RequestParam("nickName") String nickName);
    MemberDTO findBy_id(@RequestParam("_id") String _id);
+   MemberDTO save(MemberDTO member);
 }
