@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
@@ -23,8 +25,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ai.domain.FieldDTO;
 import com.ai.domain.GoogleAPI;
 import com.ai.domain.KaKaoAPI;
+import com.ai.domain.MemberDTO;
 import com.ai.domain.NaverAPI;
 import com.ai.service.FieldService;
+import com.ai.service.MemberService;
 
 @Controller
 public class MainController {
@@ -42,9 +46,22 @@ public class MainController {
 	public void test02() {
 		
 	}
+	//TEST CREATETEAM
+	@RequestMapping(value = "/createTeam")
+	public void test03() {
 		
+	}
+	
+	//TEST 
+	@RequestMapping(value = "/test")
+	public void test04() {
+	
+	}	
 	@Autowired
 	FieldService fService;
+	
+	@Autowired
+	MemberService mService;
 
 	@RequestMapping(value = "/register")
 	public ModelAndView getLoginAndRegister() throws UnsupportedEncodingException {
@@ -72,11 +89,38 @@ public class MainController {
 		String access_token = null;
 		String state = null;
 		String platform = null;
-		HashMap<String, Object> userInfo = null;
+		String name = null;
+		String nickName = null;
+		String sex = null;
+		String phoneNo = null;
+		String tName = null;
+		int hadPoint = 0;
+	    Date date = new Date();
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    String now = sdf.format(date);
+		MemberDTO member = new MemberDTO();
+	    
+	    HashMap<String, Object> userInfo = null;
 		Cookie[] cookieArr = request.getCookies();
 		for(Cookie cookie : cookieArr) {
 			if(cookie.getName().equals("platform")) {
 				platform = cookie.getValue();
+			}
+			if(cookie.getName().equals("name")) {
+				name = cookie.getValue();
+				System.out.println("Cookie name : " + name);
+			}
+			if(cookie.getName().equals("nickName")) {
+				nickName = cookie.getValue();
+				System.out.println("Cookie nickName : " + nickName);
+			}
+			if(cookie.getName().equals("sex")) {
+				sex = cookie.getValue();
+				System.out.println("Cookie sex : " + sex);
+			}
+			if(cookie.getName().equals("phoneNo")) {
+				phoneNo = cookie.getValue();
+				System.out.println("Cookie phoneNo : " + phoneNo);
 			}
 		}
 		
@@ -109,7 +153,19 @@ public class MainController {
 		System.out.println("login info : " + userInfo.toString());
 		session.setAttribute("userId", userInfo.get("email"));
 		// 메인페이지 위치로
-		mav.setViewName("redirect:/register");
+		if(name != null) {
+			member.set_id((String)userInfo.get("email"));
+			member.setPlatform(platform);
+			member.setRegDate(now);
+			member.setName(name);
+			member.setNickName(nickName);
+			member.setSex(sex);
+			member.setPhoneNo(phoneNo);
+			member.setTName(tName);
+			member.setHadPoint(hadPoint);
+			mService.insert(member);
+		}
+		mav.setViewName("redirect:/main");
 		return mav;
 	}
 	
@@ -164,6 +220,7 @@ public class MainController {
 		mav.setViewName("redirect:/main");
 		return mav;
 	}
+	
 	@RequestMapping(value = "/search", method=RequestMethod.POST)
 	public ModelAndView searchField(@RequestParam("fName") String fName) {
       ModelAndView mav = new ModelAndView();

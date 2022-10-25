@@ -1,10 +1,13 @@
 package com.ai.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +26,35 @@ import com.ai.service.MemberService;
 public class MemberController {
    @Autowired
    MemberService service;
-
-   @RequestMapping(value = "/checked")
-   public void check() {
-	   
+   
+   // AJAX
+   @RequestMapping(value = "/nickNameAjax")
+   public void AjaxToNickName(@RequestParam("nickName")String nickName, HttpServletResponse response) throws Exception {
+	   System.out.println("Checking nickName.....");
+	   MemberDTO member= service.findByNickName(nickName);
+	   PrintWriter out = response.getWriter();
+	   if(member != null) {
+		   out.print("true");
+	   }
+	   else {
+		   out.print("false");
+	   }
    }
+   
+   // AJAX
+   @RequestMapping(value = "/phoneNoAjax", method = RequestMethod.POST)
+   public void AjaxToPhoneNo(@RequestParam("phoneNo")String phoneNo, HttpServletResponse response) throws Exception {
+	   System.out.println("Checking phoneNo.....");
+	   MemberDTO member =  service.findByPhoneNo(phoneNo);
+	   PrintWriter out = response.getWriter();
+	   if(member != null) {
+		   out.print("true");
+	   }
+	   else {
+		   out.print("false");
+	   }
+   }
+   
    
    @RequestMapping(value = "/join", method = RequestMethod.POST) 
    public ModelAndView insert(@RequestParam("name")String name,@RequestParam("nickName")String nickName,
