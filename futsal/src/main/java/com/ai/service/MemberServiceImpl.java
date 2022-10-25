@@ -22,4 +22,16 @@ public class MemberServiceImpl implements MemberService{
        return joinedMember;
       
    }
+
+	@Override
+	public MemberDTO findByPhoneNo(String phoneNo) {
+		MemberDTO member = memberRepository.findByPhoneNo(phoneNo);
+		return member;
+	}
+
+	@Override
+	public MemberDTO findByNickName(String nickName) {
+		MemberDTO member = memberRepository.findByNickName(nickName);
+		return member;
+	}
 }

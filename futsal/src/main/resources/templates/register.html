@@ -31,11 +31,11 @@
         <h2 class="fs-title">Personal Details</h2>
         <h3 class="fs-subtitle">We will never sell it</h3>
         <!-- 이름설정 -->
-        <input id="name" type="text" name="name" placeholder="Name" required/>
+        <input id="name" type="text" name="name" placeholder="이름" autocomplete="off" required autofocus="autofocus"/>
         <!-- 닉네임설정 -->
-        <input id="nickName" type="text" name="nickName" placeholder="사용할 닉네임" required />
+        <input id="nickName" type="text" name="nickName" placeholder="사용할 닉네임" autocomplete="off"/>
         <!-- 고민필요<input type="text" name="birthday" placeholder="xxxx-xx-xx" /> -->
-        <input id="phoneNo" type="text" name="phoneNo" placeholder="010-0000-0000" required/>
+        <input id="phoneNo" type="text" name="phoneNo" placeholder="01000000000 (- 제외)" autocomplete="off" maxlength="11"/>
         <!-- 성별고르기 -->
         <select id="sex" name="sex">
           <option value="남자" selected="selected">남자</option>
@@ -67,7 +67,6 @@
       </fieldset>
     </form>
   </body>
-  <script type="text/javascript" src="/js/checkjoin.js"></script>
   <script src="/js/sign2.js"></script>
   <script type="text/javascript" src="/js/login.js"></script>
 </html>

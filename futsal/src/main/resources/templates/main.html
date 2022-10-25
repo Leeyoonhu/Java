@@ -40,7 +40,7 @@
         <!-- logo -->
 	<div class="user-panel">
 		<span th:if="${session.userId eq null}"> 
-			<span class="signIn">로그인</span>
+			<a href="/test">로그인</a>
 			/ <a href="/register">회원가입</a>
 		</span> 
 		<span th:if="${session.userId ne null}"> 
