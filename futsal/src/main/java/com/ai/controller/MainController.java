@@ -27,14 +27,24 @@ import com.ai.domain.GoogleAPI;
 import com.ai.domain.KaKaoAPI;
 import com.ai.domain.MemberDTO;
 import com.ai.domain.NaverAPI;
+import com.ai.domain.TeamDTO;
 import com.ai.service.FieldService;
 import com.ai.service.MemberService;
+import com.ai.service.TeamService;
 
 @Controller
 public class MainController {
 	KaKaoAPI kakaoApi = new KaKaoAPI();
 	NaverAPI naverApi = new NaverAPI();
 	GoogleAPI googleApi = new GoogleAPI();
+	@Autowired
+	FieldService fService;
+	
+	@Autowired
+	MemberService mService;
+	
+	@Autowired
+	TeamService tService;
 	
 	//TEST CASH
 	@RequestMapping(value = "/cash")
@@ -43,14 +53,34 @@ public class MainController {
 	}
 	//TEST TEAMTABLES
 	@RequestMapping(value = "/teamtables")
-	public ModelAndView test02(HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		String _id = (String)(session.getAttribute("userId"));
-		MemberDTO member = new MemberDTO();
-		member = mService.findBy_id(_id);
-		mav.addObject("member", member);
-		mav.setViewName("/teamtables");
-		return mav;
+	   public ModelAndView test02(HttpSession session) {
+      ModelAndView mav = new ModelAndView();
+      String _id = (String)(session.getAttribute("userId"));
+      MemberDTO member = new MemberDTO();
+      member = mService.findBy_id(_id);
+      mav.addObject("member", member);
+      TeamDTO myTeam = tService.findBytName(member.getTName());
+      mav.addObject("myTeam", myTeam);
+      
+      ArrayList<TeamDTO> tList = tService.findAll();
+      ArrayList<String> tAgeList = new ArrayList<String>();
+      ArrayList<String> tAreaList = new ArrayList<String>(); 
+      ArrayList<Integer> tTotalList = new ArrayList<Integer>();
+      ArrayList<Integer> tMannerList = new ArrayList<Integer>();
+      for(int i = 0; i < tList.size(); i++) {
+         tAgeList.add(tList.get(i).getTAge());
+         tAreaList.add(tList.get(i).getTAge());
+         tTotalList.add(tList.get(i).getTTotal());
+         tMannerList.add(tList.get(i).getTManner());
+      }
+      mav.addObject("tAgeList", tAgeList);
+      mav.addObject("tAreaList", tAreaList);
+      mav.addObject("tTotalList", tTotalList);   
+      mav.addObject("tTotalList", tTotalList);
+      mav.addObject("tMannerList", tMannerList);
+      
+      mav.setViewName("/teamtables");
+      return mav;
 	}
 	//TEST CREATETEAM
 	@RequestMapping(value = "/createTeam")
@@ -76,11 +106,6 @@ public class MainController {
 	    mav.setViewName("/login");
 		return mav;
 	}	
-	@Autowired
-	FieldService fService;
-	
-	@Autowired
-	MemberService mService;
 
 	@RequestMapping(value = "/register")
 	public ModelAndView getRegister() throws UnsupportedEncodingException {
@@ -169,8 +194,9 @@ public class MainController {
 		
 		System.out.println("login platform : " + platform);
 		System.out.println("access_token : " + access_token);
-		System.out.println("login info : " + userInfo.toString());
+		System.out.println("login info : " + userInfo.toString());	
 		session.setAttribute("userId", userInfo.get("email"));
+		session.setAttribute("member", mService.findBy_id((String)userInfo.get("email")));
 		// 메인페이지 위치로
 		if(name != null) {
 			member.set_id((String)userInfo.get("email"));
@@ -248,5 +274,17 @@ public class MainController {
       System.out.println(field.getfAddress());
       mav.setViewName("/search");
       return mav;
+	}
+	
+	@RequestMapping("/reserve")
+	public ModelAndView getReserve(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		Cookie[] cookies = request.getCookies();
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("date")) {
+				mav.addObject("date", cookie.getValue());
+			}
+		}
+		return mav;
 	}
 }

@@ -494,12 +494,12 @@
 							예약내역 <span>Total</span>
 						</div>
 						<ul>
-							<li>일자 <span>2022-10-24</span></li>
+							<li>일자 <span th:text="${date}"></span></li>
 							<li>사용 시간 <span>16 - 18시</span></li>
 							<li>구장 사용료 <span>100,000P</span></li>
 						</ul>
 						<div class="checkout__order__subtotal">
-							사용 가능한 결제 포인트 <span>200,000P</span>
+							사용 가능한 결제 포인트 <span th:text="${session.member.hadPoint}"></span>
 						</div>
 						<div class="checkout__order__total">
 							총 결제 포인트 <span>100,000P</span>

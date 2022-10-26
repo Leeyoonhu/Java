@@ -1,5 +1,7 @@
 package com.ai.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -36,5 +38,11 @@ public class TeamServiceImpl implements TeamService {
    public TeamDTO insert(TeamDTO insertTeam) { 
       TeamDTO insertedTeam = teamRepository.insert(insertTeam); 
       return insertedTeam; 
+   }
+   @Override
+   public ArrayList<TeamDTO> findAll() {
+      // TODO Auto-generated method stub
+      ArrayList<TeamDTO> tList = (ArrayList<TeamDTO>) teamRepository.findAll();
+      return tList;
    }
 }
