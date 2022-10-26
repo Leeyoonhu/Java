@@ -1,16 +1,11 @@
 $(document).ready(function(){
 	var date = new Date();
-	var year = date.getFullYear();
-	var month = date.getMonth() + 1;
-	var day = date.getDate();
-	
-	document.cookie = "year = " + year
-	document.cookie = "month = " + month
-	document.cookie = "day = " + day
-	console.log(year)
-	console.log(month)
-	console.log(day)
+	date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+	console.log(date)
+	document.cookie = "date = " + date
+
 	$("#futsalDate").datepicker({
+		dateFormat: "yy-mm-dd",
 		showOn: "both", 
 	    buttonImage: "button.png", 
 	    buttonImageOnly: true,
@@ -26,21 +21,13 @@ $(document).ready(function(){
 	    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 	    minDate: "0",
 	    maxDate: "+1M",
-	    showAnim: "slide",
+	    showAnimation: 'slider',
 	    
 		onSelect:function(d){
 	        console.log(d+" 선택되었습니다");
+	        date = d
+	        document.cookie = "date = " + date
 	        
-	        var arr=d.split("/");
-	        month=arr[0];
-	        day=arr[1];
-	        year=arr[2];
-	       document.cookie = "year = " + year
-		   document.cookie = "month = " + month
-		   document.cookie = "day = " + day
-	       console.log("선택된 년도 : "+ year)
-	       console.log("선택된 달 : " +month)
-	       console.log("선택된 일 : " +day)
 	    }
 	});
   	

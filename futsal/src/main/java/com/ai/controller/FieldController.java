@@ -25,31 +25,13 @@ public class FieldController {
 	FieldService service;
 	
 	@RequestMapping(value = "/click")
-	public String moveToField(@RequestParam("fName") String fName, HttpServletRequest request) { 
+	public String moveToField(@RequestParam("fName") String fName) { 
 		FieldDTO field = service.findByfName(fName);
-		Cookie[] cookies = request.getCookies();
-		String year = null;
-		String month = null;
-		String day = null;
-		for(Cookie cookie : cookies) {
-			if(cookie.getName().equals("year")) {
-				year = cookie.getValue();
-			}
-			if(cookie.getName().equals("month")) {
-				month = cookie.getValue();
-			}
-			if(cookie.getName().equals("day")) {
-				day = cookie.getValue();
-			}
-		}
-		System.out.println("year : " + year);
-		System.out.println("month : " + month);
-		System.out.println("day : " + day);
 		System.out.println(Integer.parseInt(field.getId()));
-		return "redirect:/field/reserve/"+field.getId();
+		return "redirect:/field/"+field.getId();
 	}
 	
-	@RequestMapping("/reserve/{id}")
+	@RequestMapping("/{id}")
 	public ModelAndView searchTest(@PathVariable String id) {
 		ModelAndView mav = new ModelAndView();
 		FieldDTO field = service.findByid(id);
@@ -66,7 +48,7 @@ public class FieldController {
 		mav.addObject("latList", latList);
 		mav.addObject("lonList", lonList);	
 		mav.addObject("field", field);
-		mav.setViewName("/field/reserve");
+		mav.setViewName("/field");
 		return mav;
 	}
 }
