@@ -1,0 +1,86 @@
+/* Here you can change the button sizes */
+.btn.small,
+.btn-two.small,
+.btn-gradient.small,
+.btn-effect.small {
+  padding: 8px 18px;
+  font-size: 14px;
+  width : 85px;
+  margin:-3px;
+  margin-bottom:10px;
+  text-align: center;
+}
+
+/* 3D button colors */
+.btn-3d.red {
+  background-color: rgb(206, 206, 206);
+  box-shadow: 0 0 0 1px #c63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 8px 0 0 #c24032, 0 8px 0 1px rgba(0, 0, 0, 0.4),
+    0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.btn-3d.red:active {
+  box-shadow: 0 0 0 1px #c63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+/* Gradient buttons */
+.btn-gradient {
+  text-decoration: none;
+  color: black;
+  padding: 10px 30px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-gradient.red {
+  background: rgb(206, 206, 206);
+  background: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    from(rgb(206, 206, 206, 1)),
+    to(rgba(232, 81, 81, 1))
+  );
+  background: -webkit-linear-gradient(
+    rgb(206, 206, 206, 1) 0%,
+    rgba(190, 190, 190, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    rgb(206, 206, 206, 1) 0%,
+    rgba(190, 190, 190, 1) 100%
+  );
+  background: -o-linear-gradient(
+    rgb(206, 206, 206, 1) 0%,
+    rgba(190, 190, 190, 1) 100%
+  );
+  background: linear-gradient(
+    rgb(206, 206, 206, 1) 0%,
+    rgba(190, 190, 190, 1) 100%
+  );
+}
+
+.btn-gradient.red:active {
+  background: rgb(206, 206, 206, 1);
+}
+.btn-gradient.orange:active {
+  background: #e8601b;
+}
+.btn-gradient.cyan:active {
+  background: #169499;
+}
+.btn-gradient.blue:active {
+  background: #608fbf;
+}
+.btn-gradient.purple:active {
+  background: #bd8eb7;
+}
+.btn-gradient.yellow:active {
+  background: #dbc05b;
+}
+.btn-gradient.green:active {
+  background: #72b08e;
+}

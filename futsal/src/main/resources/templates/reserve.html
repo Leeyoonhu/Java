@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+<title>Game Warrior Template</title>
+<meta charset="UTF-8" />
+<meta name="description" content="Game Warrior Template" />
+<meta name="keywords" content="warrior, game, creative, html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="shortcut icon" />
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i"
+	rel="stylesheet" />
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="/css/bootstrap.min2.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/style3.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script src="/js/includeHTML.js"></script>
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+	<!-- Header section -->
+<header class="header-section">
+		<div class="container">
+			<!-- logo -->
+			<a href="/main"><img src="/img/logo.png" style="height: 50px;"></a>
+			<div class="user-panel">
+				<span th:if="${session.userId eq null}"> <a href="/login">로그인</a>
+					/ <a href="/register">회원가입</a>
+				</span> <span th:if="${session.userId ne null}"> <a
+					href="http://localhost:8080/logout">로그아웃</a>
+				</span>
+			</div>
+			<!-- responsive -->
+			<div class="nav-switch">
+				<i class="fa fa-bars"></i>
+			</div>
+			<!-- site menu -->
+			<nav class="main-menu">
+				<ul>
+					<span th:if="${session.userId ne null}">
+						<li><a href="/main">Home</a></li>
+						<li><a href="/teamtables">Team</a></li>
+						<li><a href="/reservation">Reservation</a></li> <!-- <li><a href="/community">Community</a></li> -->
+						<li><a href="/contact.html">Quick Menu</a></li>
+					</span>
+					<span th:if="${session.userId eq null}">
+						<li><a href="/main">Home</a></li>
+					</span>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- Header section end -->
+	<!-- Latest news section -->
+
+	<div class="latest-news-section">
+		<div class="ln-title">Latest News</div>
+		<div class="news-ticker">
+			<div class="news-ticker-contant">
+				<div class="nt-item">
+					<span class="new">new</span>Lorem ipsum dolor sit amet, consectetur
+					adipiscing elit.
+				</div>
+				<div class="nt-item">
+					<span class="strategy">strategy</span>Isum dolor sit amet,
+					consectetur adipiscing elit.
+				</div>
+				<div class="nt-item">
+					<span class="racing">racing</span>Isum dolor sit amet, consectetur
+					adipiscing elit.
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 전광판-->
+	<!-- 예약창-->
+	<br>
+	<div class="checkout__form">
+		<h4 style="margin-left: 200px; margin-top: 20px;">A구장 결제 페이지</h4>
+		<hr>
+		<div class="row">
+			<header include-html="/reserveCheck2.html"></header>
+			<div class="col-lg-4 col-md-6">
+				<div class="checkout__order">
+					<h4>예약내역</h4>
+					<div class="checkout__order__products">
+						구장정보 <span id="fName" th:text="${selectField.fName}"></span>
+					</div>
+					<ul>
+						<li>일자 <span id="fDate" th:text="${date}"></span></li>
+						<li>사용 시간 <span id="fTime">16 - 18시</span></li>
+						<li>사용료 <span id="fPrice"
+							th:text="|${#numbers.formatInteger(selectField.fPrice1, 0, 'COMMA')} P|"></span></li>
+						<li>전화번호 <span id="fPhoneNo"
+							th:text="${selectField.fPhoneNo}"></span></li>
+					</ul>
+					<div class="checkout__order__subtotal">
+						사용 가능한 결제 포인트 <span
+							th:text="|${#numbers.formatInteger(member.hadPoint, 0, 'COMMA')} P|"></span>
+					</div>
+					<div class="checkout__order__total">
+						총 결제 포인트 <span
+							th:text="|${#numbers.formatInteger(selectField.fPrice1, 0, 'COMMA')} P|"></span>
+					</div>
+					<div class="checkout__order__total">
+						잔여 포인트 <span
+							th:text="|${#numbers.formatInteger(member.hadPoint-selectField.fPrice1, 0, 'COMMA')} P|"></span>
+					</div>
+					<a style="color: red">매칭 완료 시 예약금의 50%가 환불됩니다.</a> <br> <input id="tName1"
+						readonly th:placeholder="${member.tName}"
+						style="width: 100%; margin-bottom: 10px; background-color: rgb(214, 214, 214); border: 0 solid black;">
+					<input id="nickName1" readonly th:placeholder="${member.name}"
+						style="width: 100%; margin-bottom: 10px; background-color: rgb(214, 214, 214); border: 0 solid black;">
+					<div class="checkout__input__checkbox">
+						<input type="radio" name="reserveType" value="part"
+							checked="checked" />부분 대여 <input type="radio" name="reserveType"
+							value="all"/>일괄 대여
+					</div>
+					<!-- <span th:if="${team.tName eq null}">
+                     <input readonly placeholder="팀이 없습니다."
+                     style="width: 100%; background-color: rgb(214, 214, 214); border: 0 solid black;">
+                  </span>
+                  <span th:if="${team.tName ne null}">
+                  <input readonly th:placeholder="${team.tName}"
+                     style="width: 100%; background-color: rgb(214, 214, 214); border: 0 solid black;">
+                  </span> -->
+					<button type="button" id="tryReserve" class="site-btn"
+						style="margin-top: 30px;">예약</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Checkout Section End -->
+	<!-- 예약창-->
+	<!-- Footer section -->
+	<footer class="footer-section">
+		<div class="container">
+			<ul class="footer-menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="review.html">Games</a></li>
+				<li><a href="categories.html">Blog</a></li>
+				<li><a href="community.html">Forums</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+			<p class="copyright">
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;
+				<script>
+					document.write(new Date().getFullYear());
+				</script>
+				All rights reserved | This template is made with <i
+					class="fa fa-heart-o" aria-hidden="true"></i> by <a
+					href="https://colorlib.com" target="_blank">Colorlib</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</p>
+		</div>
+	</footer>
+	<!-- Footer section end -->
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/jquery.marquee.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/reserve.js"></script>
+</body>
+<script>
+	includeHTML();
+</script>
+</html>
