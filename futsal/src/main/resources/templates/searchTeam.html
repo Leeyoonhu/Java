@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+<title>Game Warrior Template</title>
+<meta charset="UTF-8" />
+<meta name="description" content="Game Warrior Template" />
+<meta name="keywords" content="warrior, game, creative, html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link href="/img/favicon.ico" rel="shortcut icon" />
+
+<!-- Google Fonts -->
+<link
+   href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i"
+   rel="stylesheet" />
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<!-- <link rel="stylesheet" href="css/font-awesome.min.css" /> -->
+<!-- <link rel="stylesheet" href="css/owl.carousel.css" /> -->
+<link rel="stylesheet" href="/css/style.css" />
+<!-- <link rel="stylesheet" href="css/animate.css" /> -->
+<link rel="stylesheet" href="/css/table.css" />
+<link rel="stylesheet" href="/css/all.css" />
+<link rel="stylesheet" href="/css/button.css" />
+<script src="/js/button.js"></script>
+<link rel="stylesheet"
+   href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+</head>
+<body>
+   <!-- Page Preloder -->
+   <div id="preloder">
+      <div class="loader"></div>
+   </div>
+
+   <!-- Header section -->
+   <header class="header-section">
+      <div class="container">
+         <!-- logo -->
+         <a class="site-logo" href="index.html"> <img src="/img/logo.png"
+            alt="" />
+         </a>
+         <div class="user-panel">
+            <!-- logo -->
+            <a class="site-logo" href="/main"> <img src="img/logo.png"
+               alt="" />
+            </a> <span th:if="${session.userId eq null}"> <a href="#">로그인</a>
+               / <a href="/register">회원가입</a>
+            </span> <span th:if="${session.userId ne null}"> <a
+               href="http://localhost:8080/logout">로그아웃</a>
+            </span>
+
+         </div>
+         <!-- responsive -->
+         <div class="nav-switch">
+            <i class="fa fa-bars"></i>
+         </div>
+         <!-- site menu -->
+         <nav class="main-menu">
+            <ul>
+               <span th:if="${session.userId ne null}">
+                  <li><a href="/main">Home</a></li>
+                  <li><a href="/teamtables">Team</a></li>
+                  <li><a href="/reservation">Reservation</a></li> <!-- <li><a href="/community">Community</a></li> -->
+                  <li><a href="/contact.html">Quick Menu</a></li>
+               </span>
+               <span th:if="${session.userId eq null}">
+                  <li><a href="/main">Home</a></li>
+               </span>
+            </ul>
+         </nav>
+      </div>
+   </header>
+   <!-- Header section end -->
+   <!-- Latest news section -->
+
+   <div class="latest-news-section">
+      <div class="ln-title">Latest News</div>
+      <div class="news-ticker">
+         <div class="news-ticker-contant">
+            <div class="nt-item">
+               <span class="new">new</span>Lorem ipsum dolor sit amet, consectetur
+               adipiscing elit.
+            </div>
+            <div class="nt-item">
+               <span class="strategy">strategy</span>Isum dolor sit amet,
+               consectetur adipiscing elit.
+            </div>
+            <div class="nt-item">
+               <span class="racing">racing</span>Isum dolor sit amet, consectetur
+               adipiscing elit.
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- 전광판-->
+   <!--team table-->
+   <span th:if="${member.tName eq 'null'}">
+      <button class="snip1535" onclick="location.href='/createTeam' ">팀
+         생성</button>
+   </span>
+   <span th:if="${member.tName ne 'null'}"> 
+   		<!-- 마이팀화면단 -->
+   </span>
+   <form action="/team/search" method="post">
+      <div class="search-box">
+         <input type="text" class="search-txt" name="tName"
+            placeholder="찾는 팀 이름">
+         <button type="submit" class="fas fa-search" style="color: #ffb320;"></button>
+      </div>
+   </form>
+   
+   <div class="p-3" style="width: 1400px; margin: auto">
+      <table class="table-responsive w-full rounded">
+         <thead>
+            <tr>
+               <th class="border w-1/7 px-4 py-2">Status</th>
+               <th class="border w-1/4 px-4 py-2">팀명</th>
+               <th class="border w-1/6 px-4 py-2">총 판수</th>
+               <th class="border w-1/6 px-4 py-2">활동 지역</th>
+               <th class="border w-1/6 px-4 py-2">평균 연령</th>
+               <th class="border w-1/5 px-4 py-2">Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr style="background-color: yellowgreen">
+               <td class="border px-4 py-2"><i
+                  class="fas fa-check text-green-500 mx-2"></i></td>
+                  
+               <td class="border px-4 py-2"><a th:href="@{myteamtest?tName={tName}(tName=${team.tName})}">
+               <span th:text="${team.tName}"></span></a></td>
+                     
+               <td class="border px-4 py-2"><span th:text="${team.tTotal}"></span></td>
+               <td class="border px-4 py-2"><span th:text="${team.tArea}"></span></td>
+               <td class="border px-4 py-2"><span th:text="${team.tAge}"></span></td>
+               <td class="border px-4 py-2"><a
+                  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                     <i class="fas fa-eye"></i>
+               </a><a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 t	ext-white">
+                     <i class="fas fa-edit"></i>
+               </a><a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                     <i class="fas fa-trash"></i>
+               </a></td>
+            </tr>
+            <tr>
+               <td class="border px-4 py-2"><i
+                  class="fas fa-check text-green-500 mx-2"></i></td>
+                  
+               <td class="border px-4 py-2"><a th:href="@{myteamtest?tName={tName}(tName=${sTeam.tName})}">
+               <span th:text="${sTeam.tName}"></span></a></td>
+               
+               <td class="border px-4 py-2"><span
+                  th:text="${sTeam.tTotal}"></span></td>
+               <td class="border px-4 py-2"><span
+                  th:text="${sTeam.tArea}"></span></td>
+               <td class="border px-4 py-2"><span
+                  th:text="${sTeam.tAge}"></span></td>
+               <td class="border px-4 py-2"><a
+                  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                     <i class="fas fa-eye"></i>
+               </a><a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                     <i class="fas fa-edit"></i>
+               </a><a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                     <i class="fas fa-trash"></i>
+               </a></td>
+
+            </tr>
+
+         </tbody>
+
+      </table>
+   </div>
+
+   <!--/team table-->
+   <!-- Footer section -->
+   <footer class="footer-section">
+      <div class="container">
+         <ul class="footer-menu">
+            <li><a href="/main">Home</a></li>
+            <li><a href="/teamtables">Team</a></li>
+            <li><a href="/reservation">Reservation</a></li>
+            <li><a href="/community">Community</a></li>
+            <li><a href="#">Quick Menu</a></li>
+         </ul>
+         <p class="copyright">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>
+               document.write(new Date().getFullYear());
+            </script>
+            All rights reserved | This template is made with <i
+               class="fa fa-heart-o" aria-hidden="true"></i> by <a
+               href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+         </p>
+      </div>
+   </footer>
+   <!-- Footer section end -->
+
+   <!--====== Javascripts & Jquery ======-->
+   <script src="/js/jquery-3.2.1.min.js"></script>
+   <script src="/js/bootstrap.min.js"></script>
+   <script src="/js/owl.carousel.min.js"></script>
+   <script src="/js/jquery.marquee.min.js"></script>
+   <script src="/js/main.js"></script>
+</body>
+</html>
