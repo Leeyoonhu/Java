@@ -243,35 +243,49 @@ ol {
     border-left-color: transparent;
   }
 }
+/*------------------
+  Main login modal
+---------------------*/
 
 .modal {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        top: 0;
-        left: 0;
-        display: none;
-      }
-
-.modal_content {
-  width: 400px;
-  height: 200px;
-  background: #fff;
-  border-radius: 10px;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  margin-top: -100px;
-  margin-left: -200px;
-  text-align: center;
-  box-sizing: border-box;
-  padding: 74px 0;
-  line-height: 23px;
-  cursor: pointer;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.8);
+   top: 0;
+   left: 0;
+   display: none;
 }
 
+.modal_content {
+   width: 400px;
+   height: 380px;
+   background: #fff;
+   border-radius: 10px;
+   position: relative;
+   top: 50%;
+   left: 50%;
+   margin-top: -250px;
+   margin-left: -200px;
+   text-align: center;
+   box-sizing: border-box;
+   padding: 50px 0;
+   line-height: 23px;
+}
 
+#loginSet img, #signIn {
+   cursor: pointer;
+}
+
+#signIn {
+   font-size: 14px;
+}
+
+#backBtn {
+   margin-top: 20px;
+   font-size: 15px;
+   padding: 10px 20px;
+}
 /*------------------
   Header section
 ---------------------*/

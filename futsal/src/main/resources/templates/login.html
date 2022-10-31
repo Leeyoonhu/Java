@@ -4,12 +4,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<style type="text/css">
+#loginSet img {
+   cursor: pointer;
+}
+</style>
 </head>
 <body>
-   <a href="#" id="kakaoLogin"><img height="55px" src="/img/kakaoLogin.png"/></a><br>
-   <input style="display: none" th:value="${apiURL}" id="naverURL">
-   <a href="#" id="naverLogin"><img height="55px" style="margin-top: 5px;" src="/img/naverLogin.png"/></a><br>
-   <a href="#" id="googleLogin"><img height="55px" style="margin-top: 5px;" src="/img/googleLogin.png"></a><br>
+   <div id='loginSet'>
+      <img id="kakaoLogin" height="55px" src="/img/kakaoLogin.png"/>
+      <input style="display: none" th:value="${apiURL}" id="naverURL"/>
+      <img id="naverLogin" height="55px" style="margin-top: 5px;" src="/img/naverLogin.png"/>
+      <img id="googleLogin" height="55px" style="margin-top: 5px;" src="/img/googleLogin.png"/>
+   </div>
 </body>
 <script type="text/javascript" src="/js/login.js"></script>
 </html>

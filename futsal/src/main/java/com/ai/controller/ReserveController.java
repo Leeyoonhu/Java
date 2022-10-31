@@ -29,7 +29,7 @@ public class ReserveController {
 	@RequestMapping(value = "/checkAjax", method = RequestMethod.POST)
 	public void checkAjax(@RequestParam("name")String name, @RequestParam("tName1") String tName1, @RequestParam("fTime") String fTime, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
-		System.out.println("구장명 : " + name + ", 팀명 : " + tName1 + ", 필드 : " + fTime);
+		System.out.println("구장명 : " + name + ", 팀명 : " + tName1 + ", 시간 : " + fTime);
 		try {
 			if(service.findByFieldAndNameAAndTime(name, tName1, fTime).getState() == null) {
 				out.print("null");
