@@ -65,34 +65,25 @@ public class FieldController {
 			}
 		}
 		Date today = new Date();
-		Calendar cal = Calendar.getInstance();
-//		int hours = cal.HOUR;
+		int hours = today.getHours();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String now = sdf.format(today);
 		System.out.println("now : " + now);
-		
+		System.out.println("hours : " + hours);
 		for(int j = 0; j < 12; j++) {
 			timeMap.put(String.format("%d - %d", 2*j, (2*j)+2), "null");
 		} 
 		String[] timeArray = timeMap.keySet().toArray(new String[timeMap.size()]);
-		String[] timeArray2 = new String[24];
-//		System.out.println("HOURS : " + hours);
-//		for(int p = 0; p < timeArray.length; p++) {
-//			timeArray2 = timeArray[p].split(" , ");
-//		}
-//		for(int t = 0; t < timeArray2.length; t++) {
-//			
-//		}
+	
 		try {
 			reserveList = rService.findByField(field.getfName());
 			for(int i = 0; i < reserveList.size(); i++) {
-				System.out.println(i + "번째 reserveList의 getDate : " + reserveList.get(i).getDate());
 				if(reserveList.get(i).getDate().equals(date)) {
 					try {
-						if(reserveList.get(i).getType().equals("part")) {
+						if(reserveList.get(i).getType().equalsIgnoreCase("part")) {
 							timeMap.replace(reserveList.get(i).getTime(), reserveList.get(i).getState());
 						}
-						if(reserveList.get(i).getType().equals("All") || reserveList.get(i).getState().equals("B")) {
+						if(reserveList.get(i).getType().equalsIgnoreCase("all") || reserveList.get(i).getState().equalsIgnoreCase("B")) {
 							timeMap.replace(reserveList.get(i).getTime(), "full");
 						}
 					} catch (Exception e) {
@@ -100,26 +91,19 @@ public class FieldController {
 					}
 				}
 			}
-			
 		} catch (Exception e) {
 			System.out.println("해당 구장의 예약 정보가 없음!");
 		}
 		if(now.equals(date)) {
-//			for(int z = 0; z < timeArray.length; z+=2) {
-//				if(hours >= Integer.parseInt(timeArray[z])) {
-//					
-//				}
-//			}
-		}
-		System.out.println("예약 리스트(reserveList) 정보 : " + reserveList);
-//		System.out.println("시간 테이블의 정보 : " + timeMap.keySet());
-		
-		
-		for(int k = 0; k < timeMap.size(); k++) {
-//			System.out.println(k + "번째 타임 리스트(timeMap) 정보 : " + timeMap.get(String.format("%d - %d", 2*k, (2*k)+2)));
+			System.out.println("현재 날짜와 선택된 날짜가 같음!");
+			for(int p = 0; p < timeArray.length; p++) {
+				String[] timeArray2 = timeArray[p].split(" - ");
+				if(hours >= Integer.parseInt(timeArray2[1].toString())) {
+					timeMap.replace(timeArray[p].toString(), "full");
+				}
+			}
 		}
 		
-		mav.clear();
 		mav.addObject("timeMap", timeMap);
 		mav.addObject("fNList", fNList);
 		mav.addObject("latList", latList);

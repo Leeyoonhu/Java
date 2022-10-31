@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Game Warrior Template</title>
 <meta charset="UTF-8" />
@@ -150,7 +150,7 @@
                <p th:text="${field.capacity}"></p>
                <p th:text="${field.fSize}"></p>
                <p th:text="${field.fInfo}"></p>
-
+			   <p th:text="|구장 이용료 : ${field.fPrice1} 원|"></p>
                <h6>편의시설</h6>
                <ul class="list-unstyled pb-3">
                   <img th:src="${field.coldHot}" />
@@ -183,7 +183,7 @@
                         <input type="button" class="btn-gradient yellow small" th:value="${time.key}"> 
                      </span>
                      <span th:if="${time.value eq 'full'}" style="display: inline-block;">
-                        <input type="button" class="btn-gradient red small" th:value="${time.key}"> 
+                        <input type="button" disabled='disabled' class="btn-gradient red small" th:value="${time.key}"> 
                      </span>
                   </span></div>
                   <table>
