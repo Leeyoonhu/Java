@@ -177,13 +177,13 @@
                   <div id="timeTables">
                   <span th:each="time : ${timeMap}">
                      <span th:if="${time.value eq 'null'}" style="display: inline-block;">
-                        <input type="button" class="btn-gradient green small" th:value="${time.key}">
+                        <input type="button" class="btn-gradient green small" th:value="|${time.key}시|">
                      </span>
                      <span th:if="${time.value eq 'A'}" style="display: inline-block;">
-                        <input type="button" class="btn-gradient yellow small" th:value="${time.key}"> 
+                        <input type="button" class="btn-gradient yellow small" th:value="|${time.key}시|">
                      </span>
                      <span th:if="${time.value eq 'full'}" style="display: inline-block;">
-                        <input type="button" disabled='disabled' class="btn-gradient red small" th:value="${time.key}"> 
+                        <input type="button" disabled='disabled' class="btn-gradient red small" th:value="|${time.key}시|">
                      </span>
                   </span></div>
                   <table>
@@ -260,4 +260,5 @@
 <script type="text/javascript" src="/js/map_near2.js"></script>
 <script src="/js/datepicker2.js"></script>
 <script type="text/javascript" src="/js/infowindow.js"></script>
+<script type="text/javascript" src="/js/field.js"></script>
 </html>

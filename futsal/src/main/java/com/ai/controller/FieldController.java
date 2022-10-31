@@ -71,7 +71,7 @@ public class FieldController {
 		System.out.println("now : " + now);
 		System.out.println("hours : " + hours);
 		for(int j = 0; j < 12; j++) {
-			timeMap.put(String.format("%d - %d", 2*j, (2*j)+2), "null");
+			timeMap.put(String.format("%d시 - %d", 2*j, (2*j)+2), "null");
 		} 
 		String[] timeArray = timeMap.keySet().toArray(new String[timeMap.size()]);
 	
@@ -97,7 +97,7 @@ public class FieldController {
 		if(now.equals(date)) {
 			System.out.println("현재 날짜와 선택된 날짜가 같음!");
 			for(int p = 0; p < timeArray.length; p++) {
-				String[] timeArray2 = timeArray[p].split(" - ");
+				String[] timeArray2 = timeArray[p].split("시 - ");
 				if(hours >= Integer.parseInt(timeArray2[1].toString())) {
 					timeMap.replace(timeArray[p].toString(), "full");
 				}
