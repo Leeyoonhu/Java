@@ -36,7 +36,7 @@
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
-.btn-gradient.red {
+.btn-gradient.gray {
   background: rgb(206, 206, 206);
   background: -webkit-gradient(
     linear,
@@ -63,9 +63,102 @@
   );
 }
 
-.btn-gradient.red:active {
-  background: rgb(206, 206, 206, 1);
+.btn-gradient.yellow {
+  background: rgb(255, 255, 160);
+  background: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    from(rgb(255, 255, 160, 1)),
+    to(rgba(232, 81, 81, 1))
+  );
+  background: -webkit-linear-gradient(
+    rgb(255, 255, 160, 1) 0%,
+    rgba(255, 255, 130, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    rgb(255, 255, 160, 1) 0%,
+    rgba(255, 255, 130, 1) 100%
+  );
+  background: -o-linear-gradient(
+    rgb(255, 255, 160, 1) 0%,
+    rgba(255, 255, 130, 1) 100%
+  );
+  background: linear-gradient(
+    rgb(255, 255, 160, 1) 0%,
+    rgba(255, 255, 130, 1) 100%
+  );
 }
+.btn-gradient.yellow:active {
+  background: rgb(255, 255, 160, 1);
+}
+
+.btn-gradient.green {
+  background: rgb(185, 255, 185);
+  background: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    from(rgb(185, 255, 185, 1)),
+    to(rgba(232, 81, 81, 1))
+  );
+  background: -webkit-linear-gradient(
+    rgb(185, 255, 185, 1) 0%,
+    rgba(160, 255, 160, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    rgb(185, 255, 185, 1) 0%,
+    rgba(160, 255, 160, 1) 100%
+  );
+  background: -o-linear-gradient(
+    rgb(185, 255, 185, 1) 0%,
+    rgba(160, 255, 160, 1) 100%
+  );
+  background: linear-gradient(
+    rgb(185, 255, 185, 1) 0%,
+    rgba(160, 255, 160, 1) 100%
+  );
+}
+.btn-gradient.green:active {
+  background: rgb(185, 255, 185, 1);
+}
+
+.btn-gradient.red {
+  background: rgb(255, 150, 150);
+  background: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    from(rgb(185, 255, 185, 1)),
+    to(rgba(232, 81, 81, 1))
+  );
+  background: -webkit-linear-gradient(
+    rgb(255, 150, 150, 1) 0%,
+    rgba(255, 130, 130, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    rgb(255, 150, 150, 1) 0%,
+    rgba(255, 130, 130, 1) 100%
+  );
+  background: -o-linear-gradient(
+    rgb(255, 150, 150, 1) 0%,
+    rgba(255, 130, 130, 1) 100%
+  );
+  background: linear-gradient(
+    rgb(255, 150, 150, 1) 0%,
+    rgba(255, 130, 130, 1) 100%
+  );
+}
+.btn-gradient.red:active {
+  background: rgb(255, 150, 150, 1);
+}
+
+/* 
+.btn-gradient.gray:active {
+  background: rgb(255, 150, 150, 1);
+} 
+*/
+
 .btn-gradient.orange:active {
   background: #e8601b;
 }

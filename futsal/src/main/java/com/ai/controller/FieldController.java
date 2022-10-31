@@ -50,6 +50,7 @@ public class FieldController {
 			lonList.add(fList.get(i).getLongitude());
 		}
 		String date = null;
+		ArrayList <String> timeList = new ArrayList <String>();
 		Cookie[] cookies = request.getCookies();
 		for(Cookie cookie : cookies) {
 			if(cookie.getName().equals("date")) {
@@ -58,23 +59,28 @@ public class FieldController {
 			}
 		}
 		
-		try {
+//		try {
 			reserveList = rService.findByField(field.getfName());
-			try {
-				// 쿠키의 date정보에 일치하는것이 없다면
-				for(int i = 0; i < reserveList.size(); i++) {
-					if(reserveList.get(i).getDate() == date) {
-						// 시간 목록 판별 조건 보여줘야함
+			for(int i = 0; i < reserveList.size(); i++) {
+				if(reserveList.get(i).getDate() == date) {
+					try {
+						if(reserveList.get(i).getTime() != null) {
+							timeList.add(reserveList.get(i).getTime());
+						} else {
+							timeList.add("null");
+						}
+					} catch (Exception e) {
+						timeList.add("null");
 					}
-					else {
-						
-					}
+					// 시간 목록 판별 조건 보여줘야함
 				}
-			} catch (Exception e) {
-				
 			}
-		} catch (Exception e) {
-			System.out.println("해당 구장의 예약 정보가 없음!");
+//		} catch (Exception e) {
+//			System.out.println("해당 구장의 예약 정보가 없음!");
+//		}
+			System.out.println("예약 리스트 정보 : " + reserveList);
+		for(int i = 0; i < timeList.size(); i++) {
+			System.out.println(timeList.get(i).toString());
 		}
 		
 		mav.addObject("fNList", fNList);
