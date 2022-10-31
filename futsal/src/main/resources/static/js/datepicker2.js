@@ -48,8 +48,15 @@ $(document).ready(function() {
 				url : "/field/" + $("#fieldId").val(),
 				success : function(res){
 					$("#timeTables").replaceWith(res.substring(res.indexOf('<div id="timeTables">'), res.indexOf('<table>')));
+					$(".btn-gradient.green").on('click', function(){
+						console.log("green click")
+
+					})
+					
+					$(".btn-gradient.yellow").on('click', function(){
+						console.log("yellow click")
+					})
 				}
-				
 			})
 	    }
 	}).datepicker('setDate', date);
@@ -58,4 +65,11 @@ $(document).ready(function() {
 	if((today.getFullYear() == getDate.getFullYear()) && (today.getMonth() == getDate.getMonth()) && (today.getDate() == getDate.getDate())){
 		console.log("선택날짜가 오늘과 동일함")
 	}
+	$(".btn-gradient.green").on('click', function(){
+		console.log("green click")
+	})
+	
+	$(".btn-gradient.yellow").on('click', function(){
+		console.log("yellow click")
+	})
 })
