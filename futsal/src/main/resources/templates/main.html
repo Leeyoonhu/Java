@@ -186,55 +186,16 @@
 				<h2>stadium reservation</h2>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-md-6">
+				<div class="col-lg-4 col-md-6" th:each="fList : ${fList}">
 					<div class="recent-game-item">
-						<div class="rgi-thumb set-bg" data-setbg="/img/필드4.png">
-							<!-- <div class="cata new">new</div> -->
-						</div>
+						<div class="rgi-thumb set-bg" th:data-setbg="${fList.fPic1}"></div>
 						<div class="rgi-content">
-							<h5>스윗스팟풋살장 강남점</h5>
-							<p>주소 : 서울시 서초구 서초동 1698-7 수성수빌딩 지하1층</p>
-							<a href="#" class="comment">3 Comments</a>
-							<div class="rgi-extra">
-								<div class="rgi-star">
-									<img src="/img/icons/star.png" alt="" />
-								</div>
-								<div class="rgi-heart">
-									<img src="/img/icons/heart.png" alt="" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="recent-game-item">
-						<div class="rgi-thumb set-bg" data-setbg="/img/필드2.png">
-							<!-- <div class="cata racing">racing</div> -->
-						</div>
-						<div class="rgi-content">
-							<h5>두블리 스포츠센터 6코트</h5>
-							<p>주소 : 서울시 서초구 서초동 1332-2 무지개 종합상가</p>
-							<a href="#" class="comment">3 Comments</a>
-							<div class="rgi-extra">
-								<div class="rgi-star">
-									<img src="/img/icons/star.png" alt="" />
-								</div>
-								<div class="rgi-heart">
-									<img src="/img/icons/heart.png" alt="" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="recent-game-item">
-						<div class="rgi-thumb set-bg" data-setbg="/img/필드3.png">
-							<!-- <div class="cata adventure">Adventure</div> -->
-						</div>
-						<div class="rgi-content">
-							<h5>역삼 JMJ 실내풋살장</h5>
-							<p>주소 : 서울시 강남구 역삼동 637-31 지하1층으로 오면 된다</p>
-							<a href="#" class="comment">3 Comments</a>
+							<h5>
+								<a th:href="@{field/click?fName={fName}(fName=${fList.fName})}"><span
+									th:text="${fList.fName}"></span></a>
+							</h5>
+							<p>주소 : <span th:text="${fList.fAddress}"></span></p>
+							<a href="#" class="comment"><span th:text="${fList.review}"></span></a>
 							<div class="rgi-extra">
 								<div class="rgi-star">
 									<img src="/img/icons/star.png" alt="" />

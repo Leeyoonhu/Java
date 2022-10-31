@@ -7,8 +7,8 @@ $(document).ready(function(){
 	var rState = "A"
 	var nickName1 =$("#nickName1").attr('placeholder') 
 	var tName1 = $("#tName1").attr('placeholder')
-	var rDate1 = new Date();
-	rDate1 = rDate1.getFullYear() + '-' + (rDate1.getMonth()+1) + '-' + rDate1.getDate(); 
+	var rDate1 = new Date(+ new Date() + 3240 * 10000).toISOString().replace('T', ' ').replace(/\..*/, '');
+//	rDate1 = rDate1.getFullYear() + '-' + (rDate1.getMonth()+1) + '-' + rDate1.getDate(); 
 	var nickName2 = "null"
 	var tName2 = "null"
 	var rDate2 = "null"

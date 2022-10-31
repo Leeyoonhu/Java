@@ -31,11 +31,11 @@ public class ReserveController {
 		PrintWriter out = response.getWriter();
 		System.out.println("구장명 : " + name + ", 팀명 : " + tName1 + ", 필드 : " + fTime);
 		try {
-			if(service.findByNameAndNameAAndTime(name, tName1, fTime).getState() == null) {
+			if(service.findByFieldAndNameAAndTime(name, tName1, fTime).getState() == null) {
 				out.print("null");
 			}
 			else {
-				out.print(service.findByNameAndNameAAndTime(name, tName1, fTime).getState());
+				out.print(service.findByFieldAndNameAAndTime(name, tName1, fTime).getState());
 			}
 		} catch (NullPointerException e) {
 			out.print("null");
@@ -51,7 +51,7 @@ public class ReserveController {
 			@RequestParam("rDate2") String rDate2)
 	{	
 		ReserveDTO reserve = new ReserveDTO();
-		reserve.setName(fName);
+		reserve.setField(fName);
 		reserve.setPrice(fPrice);
 		Integer price = Integer.parseInt(fPrice.replace(",", "").replace(" P", "")); 
 		System.out.println("가격 : " + price);

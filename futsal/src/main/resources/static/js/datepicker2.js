@@ -41,7 +41,12 @@ $(document).ready(function() {
 		onSelect:function(d){
 	        console.log(d+" 선택되었습니다");
 	        date = d
-	        document.cookie = "date = " + date
+	        document.cookie = "date = " + date + '; path=/;'
+	        $.ajax({
+				type : "POST",
+				url : "/field/" + $("#fieldId").val(),
+				dataType : "text"
+			})
 	    }
 	}).datepicker('setDate', date);
 	

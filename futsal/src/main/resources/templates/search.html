@@ -38,20 +38,12 @@
    <!-- Header section -->
    <header class="header-section">
       <div class="container">
-         <!-- logo -->
-         <!-- 여기서 부터 2/3-->
          <div class="user-panel">
             <span th:if="${session.userId eq null}"> <span class="signIn">로그인</span>
                / <a href="/register">회원가입</a>
             </span> <span th:if="${session.userId ne null}"> <a
                href="http://localhost:8080/logout">로그아웃</a>
             </span>
-            <div class="modal">
-               <div class="modal_content" title="클릭하면 창이 닫힙니다.">
-                  여기에 모달창 내용을 적어줍니다.<br /> 이미지여도 좋고 글이어도 좋습니다.
-               </div>
-            </div>
-            <!-- 여기까지 2/3-->
          </div>
          <!-- responsive -->
          <div class="nav-switch">

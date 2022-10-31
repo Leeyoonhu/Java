@@ -1,7 +1,6 @@
 $(document).ready(function(){
 var markers = []
 var fNames = []
-var clickedOverlay = 0;
 var customOverlays = [];
 
 var fNList = document.getElementById('fNList').value;
@@ -61,19 +60,12 @@ function displayMarker(locPosition) {
 	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize)
 	var markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2)
     var cnt = 0
-    // 첫 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
         position: locPosition,
         image : markerImage
     }); 
-    // 마커에 클릭이벤트를 등록합니다
-    //kakao.maps.event.addListener(marker, 'click', function() {
-        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-    //    infowindow.setContent('<div style="padding:5px;font-size:12px;">' + locPosition + '</div>');
-    //    infowindow.open(map, marker);
-    //});
-    
+
     for(var i = 0; i < lonList.length; i++){
 		var fName = fNList[i].replace("[","")
 		fName = fName.replace("]","")
@@ -144,23 +136,4 @@ function showInfo(marker, map){
 		return customOverlays
 	}
 }
-
-
-
-
-function makeOverListener(map, marker, customOverlay) {
-    return function() {
-		console.log(map.getLevel())
-		if(map.getLevel() < 9){
-        	customOverlay.setMap(map, marker);
-        }
-    };
-}
-
-function disableInfo(customOverlay) {
-    return function() {
-		customOverlay.setMap(null)
-    };
-}	
-
 })

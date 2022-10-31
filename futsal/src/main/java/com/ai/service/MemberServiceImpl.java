@@ -36,8 +36,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberDTO findBy_id(String _id) {
-		MemberDTO member = memberRepository.findBy_id(_id);
+	public MemberDTO findByid(String _id) {
+		MemberDTO member = memberRepository.findByid(_id);
 		return member;
 	}
 
