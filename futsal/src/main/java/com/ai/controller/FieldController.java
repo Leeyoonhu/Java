@@ -1,9 +1,15 @@
 package com.ai.controller;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,8 +41,8 @@ public class FieldController {
 		return "redirect:/field/"+field.getId();
 	}
 	
-	@RequestMapping("/{id}")
-	public ModelAndView searchTest(@PathVariable String id, HttpServletRequest request) {
+	@RequestMapping(path = "/{id}")
+	public ModelAndView searchField(@PathVariable String id, HttpServletRequest request, HttpServletResponse response, ModelAndView mav2) throws IOException {
 		ModelAndView mav = new ModelAndView();
 		FieldDTO field = service.findByid(id);
 		ArrayList<FieldDTO> fList = service.findAll();
@@ -50,7 +56,7 @@ public class FieldController {
 			lonList.add(fList.get(i).getLongitude());
 		}
 		String date = null;
-		ArrayList <String> timeList = new ArrayList <String>();
+		LinkedHashMap <String, String> timeMap = new LinkedHashMap <String, String>();
 		Cookie[] cookies = request.getCookies();
 		for(Cookie cookie : cookies) {
 			if(cookie.getName().equals("date")) {
@@ -58,31 +64,63 @@ public class FieldController {
 				System.out.println("현재 선택된 날짜 : " + date);
 			}
 		}
+		Date today = new Date();
+		Calendar cal = Calendar.getInstance();
+//		int hours = cal.HOUR;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String now = sdf.format(today);
+		System.out.println("now : " + now);
 		
-//		try {
+		for(int j = 0; j < 12; j++) {
+			timeMap.put(String.format("%d - %d", 2*j, (2*j)+2), "null");
+		} 
+		String[] timeArray = timeMap.keySet().toArray(new String[timeMap.size()]);
+		String[] timeArray2 = new String[24];
+//		System.out.println("HOURS : " + hours);
+//		for(int p = 0; p < timeArray.length; p++) {
+//			timeArray2 = timeArray[p].split(" , ");
+//		}
+//		for(int t = 0; t < timeArray2.length; t++) {
+//			
+//		}
+		try {
 			reserveList = rService.findByField(field.getfName());
 			for(int i = 0; i < reserveList.size(); i++) {
-				if(reserveList.get(i).getDate() == date) {
+				System.out.println(i + "번째 reserveList의 getDate : " + reserveList.get(i).getDate());
+				if(reserveList.get(i).getDate().equals(date)) {
 					try {
-						if(reserveList.get(i).getTime() != null) {
-							timeList.add(reserveList.get(i).getTime());
-						} else {
-							timeList.add("null");
+						if(reserveList.get(i).getType().equals("part")) {
+							timeMap.replace(reserveList.get(i).getTime(), reserveList.get(i).getState());
+						}
+						if(reserveList.get(i).getType().equals("All") || reserveList.get(i).getState().equals("B")) {
+							timeMap.replace(reserveList.get(i).getTime(), "full");
 						}
 					} catch (Exception e) {
-						timeList.add("null");
+						System.out.println("Field Controller Error : " + e.getMessage());
 					}
-					// 시간 목록 판별 조건 보여줘야함
 				}
 			}
-//		} catch (Exception e) {
-//			System.out.println("해당 구장의 예약 정보가 없음!");
-//		}
-			System.out.println("예약 리스트 정보 : " + reserveList);
-		for(int i = 0; i < timeList.size(); i++) {
-			System.out.println(timeList.get(i).toString());
+			
+		} catch (Exception e) {
+			System.out.println("해당 구장의 예약 정보가 없음!");
+		}
+		if(now.equals(date)) {
+//			for(int z = 0; z < timeArray.length; z+=2) {
+//				if(hours >= Integer.parseInt(timeArray[z])) {
+//					
+//				}
+//			}
+		}
+		System.out.println("예약 리스트(reserveList) 정보 : " + reserveList);
+//		System.out.println("시간 테이블의 정보 : " + timeMap.keySet());
+		
+		
+		for(int k = 0; k < timeMap.size(); k++) {
+//			System.out.println(k + "번째 타임 리스트(timeMap) 정보 : " + timeMap.get(String.format("%d - %d", 2*k, (2*k)+2)));
 		}
 		
+		mav.clear();
+		mav.addObject("timeMap", timeMap);
 		mav.addObject("fNList", fNList);
 		mav.addObject("latList", latList);
 		mav.addObject("lonList", lonList);	

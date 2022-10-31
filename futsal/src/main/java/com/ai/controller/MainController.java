@@ -81,18 +81,6 @@ public class MainController {
 	@RequestMapping(value = "/login")
 	public ModelAndView getLogin() throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String clientId = "s3SKlARx4M5gtCyBNSwG";// 애플리케이션 클라이언트 아이디값";
-		// callbackURL 나중에 변경할것
-		String redirectURI = URLEncoder.encode("http://localhost:8080/loginAccess", "UTF-8");
-		SecureRandom random = new SecureRandom();
-		// state 는 Naver 사에서 'CSRF를 방지하기 위한 인증값입니다. 임의의 값을 넣어 진행해주시면 되는데요.' 라고 답변 (난수
-		// 입력)
-		String state = new BigInteger(130, random).toString();
-		String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-		apiURL += "&client_id=" + clientId;
-		apiURL += "&redirect_uri=" + redirectURI;
-		apiURL += "&state=" + state;
-		mav.addObject("apiURL", apiURL);
 		mav.setViewName("/login");
 		return mav;
 	}
@@ -221,6 +209,18 @@ public class MainController {
 			latList.add(fList.get(i).getLatitude());
 			lonList.add(fList.get(i).getLongitude());
 		}
+		String clientId = "s3SKlARx4M5gtCyBNSwG";// 애플리케이션 클라이언트 아이디값";
+		// callbackURL 나중에 변경할것
+		String redirectURI = URLEncoder.encode("http://localhost:8080/loginAccess", "UTF-8");
+		SecureRandom random = new SecureRandom();
+		// state 는 Naver 사에서 'CSRF를 방지하기 위한 인증값입니다. 임의의 값을 넣어 진행해주시면 되는데요.' 라고 답변 (난수
+		// 입력)
+		String state = new BigInteger(130, random).toString();
+		String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+		apiURL += "&client_id=" + clientId;
+		apiURL += "&redirect_uri=" + redirectURI;
+		apiURL += "&state=" + state;
+		mav.addObject("apiURL", apiURL);
 		mav.addObject("fNList", fNList);
 		mav.addObject("latList", latList);
 		mav.addObject("lonList", lonList);

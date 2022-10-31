@@ -19,6 +19,7 @@ $(document).ready(function() {
 	
 	console.log(getCookie('date'))
 	var date = getCookie('date');
+	var today = new Date();
 	
 	$("#futsalDate").datepicker({
 		dateFormat: "yy-mm-dd",
@@ -45,20 +46,16 @@ $(document).ready(function() {
 	        $.ajax({
 				type : "POST",
 				url : "/field/" + $("#fieldId").val(),
-				dataType : "text"
+				success : function(res){
+					$("#timeTables").replaceWith(res.substring(res.indexOf('<div id="timeTables">'), res.indexOf('<table>')));
+				}
+				
 			})
 	    }
 	}).datepicker('setDate', date);
 	
 	var getDate = ($('#futsalDate').datepicker('getDate'))
-	var today = new Date();
-	var hours;
 	if((today.getFullYear() == getDate.getFullYear()) && (today.getMonth() == getDate.getMonth()) && (today.getDate() == getDate.getDate())){
 		console.log("선택날짜가 오늘과 동일함")
-		hours = today.getHours();
-		if(hours < 10){
-			hours = "0" + hours
-		}
-		console.log("현재 시 : " + hours)
 	}
 })
