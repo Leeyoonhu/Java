@@ -1,6 +1,11 @@
 $(document).ready(function(){
 	var date = new Date();
-	date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+	var day;
+	if (date.getDate() < 10){
+		day = '0' + date.getDate().toString();
+	}
+	date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + day;
+	
 	console.log(date)
 	document.cookie = "date = " + date
 

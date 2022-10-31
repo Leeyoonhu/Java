@@ -28,6 +28,7 @@ import com.ai.domain.FieldDTO;
 import com.ai.domain.GoogleAPI;
 import com.ai.domain.KaKaoAPI;
 import com.ai.domain.MemberDTO;
+import com.ai.domain.Message;
 import com.ai.domain.NaverAPI;
 import com.ai.domain.TeamDTO;
 import com.ai.service.FieldService;
@@ -42,15 +43,18 @@ public class MainController {
 	GoogleAPI googleApi = new GoogleAPI();
 	@Autowired
 	FieldService fService;
-
 	@Autowired
 	MemberService mService;
-
 	@Autowired
 	TeamService tService;
-	
 	@Autowired
 	ReserveService rService;
+	
+	// TEST
+	@RequestMapping(value ="/reserveTable")
+	public void TEST() {
+		
+	}
 
 	@RequestMapping(value = "/teamtables", method = RequestMethod.GET)
 	public ModelAndView goTeam(HttpSession session) {
@@ -130,6 +134,8 @@ public class MainController {
 			if (cookie.getName().equals("platform")) {
 				platform = cookie.getValue();
 			}
+			
+			// REGISTER
 			if (cookie.getName().equals("name")) {
 				name = cookie.getValue();
 				System.out.println("Cookie name : " + name);
@@ -146,9 +152,10 @@ public class MainController {
 				phoneNo = cookie.getValue();
 				System.out.println("Cookie phoneNo : " + phoneNo);
 			}
+			// REGISTER
 		}
 
-		// 카카오 일때
+		// CHECK PLATFORM
 		if (platform.equals("kakao")) {
 			access_token = kakaoApi.getAccessToken(code);
 			userInfo = kakaoApi.getUserInfo(access_token);
@@ -187,8 +194,18 @@ public class MainController {
 		System.out.println("login platform : " + platform);
 		System.out.println("access_token : " + access_token);
 		System.out.println("login info : " + userInfo.toString());
+		// CHECK MEMBER
 		session.setAttribute("userId", userInfo.get("email"));
-		mav.setViewName("redirect:/main");
+		if(mService.findByid((String)userInfo.get("email")) != null) {
+			System.out.println("회원 정보 존재");
+			mav.setViewName("redirect:/main");
+		}
+
+		else {
+			System.out.println("회원정보에 없는 유저가 로그인");
+			mav.addObject("data", new Message("등록된 회원 정보가 없습니다. 회원가입 페이지로 이동합니다.", "/logout2"));
+			mav.setViewName("/message");
+		}
 		return mav;
 	}
 
@@ -220,6 +237,7 @@ public class MainController {
 		apiURL += "&client_id=" + clientId;
 		apiURL += "&redirect_uri=" + redirectURI;
 		apiURL += "&state=" + state;
+		apiURL += "&prompt=login";
 		mav.addObject("apiURL", apiURL);
 		mav.addObject("fNList", fNList);
 		mav.addObject("latList", latList);
@@ -264,6 +282,42 @@ public class MainController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/logout2")
+	public ModelAndView logout2(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		String platform = null;
+		Cookie[] cookieArr = request.getCookies();
+		for (Cookie cookie : cookieArr) {
+			if (cookie.getName().equals("platform")) {
+				platform = cookie.getValue();
+			}
+		}
+		try {
+			if (platform.equals("kakao")) {
+				kakaoApi.logout((String) session.getAttribute("access_token"));
+				session.invalidate();
+			}
+			if (platform.equals("naver")) {
+				naverApi.logout((String) session.getAttribute("access_token"));
+				session.invalidate();
+			}
+			if (platform.equals("google")) {
+				googleApi.logout((String) session.getAttribute("access_token"));
+				session.invalidate();
+			}
+		} catch (Exception e) {
+			session.invalidate();
+		}
+
+		for (Cookie cookie : cookieArr) {
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+		}
+		mav.setViewName("redirect:/register");
+		return mav;
+	}
+	
+	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	   public ModelAndView searchFields(@RequestParam("fName") String fName) {
 	      ModelAndView mav = new ModelAndView();
