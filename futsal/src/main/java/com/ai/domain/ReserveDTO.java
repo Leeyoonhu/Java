@@ -11,7 +11,7 @@ public class ReserveDTO {
 	@Id
 	private String id;
 // 구장
-	private String name, price, date, time, phoneNo, type; 
+	private String field, price, date, time, phoneNo, type; 
 	private String state; 
 // 예약상태 ==> b 예약시 rState = B로 바꾸고, 예약페이지에서 rState가 B일경우 || type이 all일경우는 예약불가
 // type이 all이면 tName2,rDate2에도 tName1,rDate1값이 들어가야함==> 컨트롤러에서 처리

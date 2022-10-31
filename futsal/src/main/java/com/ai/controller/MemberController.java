@@ -69,7 +69,7 @@ public class MemberController {
       Cookie cookie = cookies[1]; 
       String platform = cookie.getValue().toString();
       String userId = (String)session.getAttribute("userId");
-      joinMember.set_id(userId); joinMember.setPlatform(platform); joinMember.setRegDate(now);
+      joinMember.setId(userId); joinMember.setPlatform(platform); joinMember.setRegDate(now);
       joinMember.setName(name); joinMember.setNickName(nickName);
       joinMember.setSex(sex); joinMember.setPhoneNo(phoneNo);
       joinMember.setTName(tName); joinMember.setHadPoint(hadPoint);

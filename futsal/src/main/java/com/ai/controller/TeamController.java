@@ -39,7 +39,7 @@ public class TeamController {
       TeamDTO insertTeam = new TeamDTO();
       ModelAndView mav = new ModelAndView(); 
       String userId = (String)session.getAttribute("userId");
-      String _id = mService.findBy_id(userId).getNickName();
+      String _id = mService.findByid(userId).getNickName();
       insertTeam.set_id(_id); 
       insertTeam.setTName(tName);
       insertTeam.setTArea(location);
@@ -49,7 +49,7 @@ public class TeamController {
       insertTeam.setTAge(tAge);
       insertTeam.setTManner(tManner);
       insertTeam.setTeamInfo(TeamInfo);
-      MemberDTO member = mService.findBy_id(userId);
+      MemberDTO member = mService.findByid(userId);
       member.setTName(tName);
       mService.save(member);
       TeamDTO insertedTeam = service.insert(insertTeam);
@@ -80,11 +80,16 @@ public class TeamController {
    @RequestMapping(value = "/search", method = RequestMethod.POST)
    public ModelAndView search(@RequestParam("tName")String tName, HttpSession session) {
       ModelAndView mav = new ModelAndView();
-      System.out.println("찾는 문자열 : " + tName);
+      System.out.println("찾는 팀이름 : " + tName);
       ArrayList<TeamDTO> team = service.findByTNameRegex(tName);
       mav.addObject("sTeamList", team);
-      mav.addObject("member", mService.findBy_id((String)session.getAttribute("userId")));
-      System.out.println("팀컨트롤러 문자열포함서치된팀리스트 : " + team);
+      mav.addObject("team", service.findBytName(mService.findByid((String)session.getAttribute("userId")).getTName()));
+      mav.addObject("member", mService.findByid((String)session.getAttribute("userId")));
+      System.out.println("========= SEARCHED TEAM NAME =========");
+      for(int i = 0; i < team.size(); i++) {
+    	  System.out.println("검색 된 팀 이름 : " + team.get(i).getTName());
+      }
+      
       mav.setViewName("/searchTeam"); // 페이지이동    
       return mav;
    }

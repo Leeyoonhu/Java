@@ -32,6 +32,7 @@ import com.ai.domain.NaverAPI;
 import com.ai.domain.TeamDTO;
 import com.ai.service.FieldService;
 import com.ai.service.MemberService;
+import com.ai.service.ReserveService;
 import com.ai.service.TeamService;
 
 @Controller
@@ -47,6 +48,9 @@ public class MainController {
 
 	@Autowired
 	TeamService tService;
+	
+	@Autowired
+	ReserveService rService;
 
 	@RequestMapping(value = "/teamtables", method = RequestMethod.GET)
 	public ModelAndView goTeam(HttpSession session) {
@@ -55,15 +59,15 @@ public class MainController {
 		System.out.println("세션 유저 아이디 : " + session.getAttribute("userId"));
 		System.out.println("=============== Sesssion ==============");
 		System.out.println("=============== RESERVE MAV ===================");
-		System.out.println("member : " + mService.findBy_id((String)session.getAttribute("userId")));
-		System.out.println("team : " + tService.findBytName(mService.findBy_id((String)session.getAttribute("userId")).getTName()));
+		System.out.println("member : " + mService.findByid((String)session.getAttribute("userId")));
+		System.out.println("team : " + tService.findBytName(mService.findByid((String)session.getAttribute("userId")).getTName()));
 		System.out.println("=============== RESERVE MAV ===================");
 		// END TEST
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("team", tService.findBytName(mService.findBy_id((String)session.getAttribute("userId")).getTName()));
+		mav.addObject("team", tService.findBytName(mService.findByid((String)session.getAttribute("userId")).getTName()));
 		String _id = (String) (session.getAttribute("userId"));
 		MemberDTO member = new MemberDTO();
-		member = mService.findBy_id(_id);
+		member = mService.findByid(_id);
 		mav.addObject("member", member);
 		TeamDTO myTeam = tService.findBytName(member.getTName());
 		mav.addObject("myTeam", myTeam);
@@ -181,7 +185,7 @@ public class MainController {
 		}
 		// 메인페이지 위치로
 		if (name != null) {
-			member.set_id((String) userInfo.get("email"));
+			member.setId((String) userInfo.get("email"));
 			member.setPlatform(platform);
 			member.setRegDate(now);
 			member.setName(name);
@@ -220,6 +224,7 @@ public class MainController {
 		mav.addObject("fNList", fNList);
 		mav.addObject("latList", latList);
 		mav.addObject("lonList", lonList);
+		mav.addObject("fList", fList);
 		mav.setViewName("/main");
 		return mav;
 	}
@@ -283,8 +288,8 @@ public class MainController {
 	@RequestMapping(value = "/reserve/{selectField}")
 	public ModelAndView goReserve(@PathVariable("selectField") String selectField, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("member", mService.findBy_id((String)session.getAttribute("userId"))); 
-		mav.addObject("team", tService.findBytName(mService.findBy_id((String)session.getAttribute("userId")).getTName()));
+		mav.addObject("member", mService.findByid((String)session.getAttribute("userId"))); 
+		mav.addObject("team", tService.findBytName(mService.findByid((String)session.getAttribute("userId")).getTName()));
 		Cookie[] cookies = request.getCookies();
 		FieldDTO field = fService.findByfName(selectField);
 		for (Cookie cookie : cookies) {
@@ -294,14 +299,15 @@ public class MainController {
 			}
 		}
 		mav.addObject("selectField", field);
+		
 		// TEST CODE
 		System.out.println("=================== Sesssion ==================");
 		System.out.println("세션 유저 아이디 : " + session.getAttribute("userId"));
 		System.out.println("=================== Sesssion ==================");
 		System.out.println();
 		System.out.println("=============== Reserve Model Objects ===================");
-		System.out.println("member : " + mService.findBy_id((String)session.getAttribute("userId")));
-		System.out.println("team : " + tService.findBytName(mService.findBy_id((String)session.getAttribute("userId")).getTName()));
+		System.out.println("member : " + mService.findByid((String)session.getAttribute("userId")));
+		System.out.println("team : " + tService.findBytName(mService.findByid((String)session.getAttribute("userId")).getTName()));
 		System.out.println("현재 선택된 필드 : " + field);
 		System.out.println("=============== Reserve Model Objects ===================");
 		// END TEST

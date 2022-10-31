@@ -131,6 +131,7 @@
 		<div class="col-md-7 mt-5">
 			<div class="card" style="margin-right: 20px;">
 				<div class="card-body">
+					<input id="fieldId" th:value="${field.id}" style="display:none">
 					<input id="latitude" style="display: none"
 						th:value="${field.latitude}"> <input id="longitude"
 						style="display: none" th:value="${field.longitude}">
@@ -173,23 +174,18 @@
 							</div>
 							<!--  시간테이블 -->
 						</div>
-							<input type="button" class="btn-gradient red small"
-								value="06 ~ 08" style="margin-left: 15px;"> <input
-								type="button" class="btn-gradient red small" value="08 ~ 10">
-							<input type="button" class="btn-gradient red small"
-								value="10 ~ 12"> <input type="button"
-								class="btn-gradient red small" value="12 ~ 14"> <input
-								type="button" class="btn-gradient red small" value="14 ~ 16">
-							<input type="button" class="btn-gradient red small"
-								value="16 ~ 18"> <input type="button"
-								class="btn-gradient red small" value="18 ~ 20"> <input
-								type="button" class="btn-gradient red small" value="20 ~ 22">
-							<input type="button" class="btn-gradient red small"
-								value="22 ~ 00"> <input type="button"
-								class="btn-gradient red small" value="00 ~ 02"> <input
-								type="button" class="btn-gradient red small" value="02 ~ 04">
-							<input type="button" class="btn-gradient red small"
-								value="04 ~ 06">
+							<input type="button" class="btn-gradient red small" value="06 ~ 08" style="margin-left: 15px;"> 
+							<input type="button" class="btn-gradient red small" value="08 ~ 10">
+							<input type="button" class="btn-gradient red small" value="10 ~ 12"> 
+							<input type="button" class="btn-gradient red small" value="12 ~ 14"> 
+							<input type="button" class="btn-gradient red small" value="14 ~ 16">
+							<input type="button" class="btn-gradient red small" value="16 ~ 18"> 
+							<input type="button" class="btn-gradient red small" value="18 ~ 20">
+							<input type="button" class="btn-gradient red small" value="20 ~ 22">
+							<input type="button" class="btn-gradient red small" value="22 ~ 00"> 
+							<input type="button" class="btn-gradient red small" value="00 ~ 02"> 
+							<input type="button" class="btn-gradient red small" value="02 ~ 04">
+							<input type="button" class="btn-gradient red small" value="04 ~ 06">
 							<table>
 								<tr>
 									<td colspan="2">🟥예약불가</td>

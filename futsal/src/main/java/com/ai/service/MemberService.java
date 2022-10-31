@@ -10,6 +10,6 @@ public interface MemberService {
    public MemberDTO insert(MemberDTO joinMember);
    public MemberDTO findByPhoneNo(@RequestParam("phoneNo") String phoneNo);
    public MemberDTO findByNickName(@RequestParam("nickName") String nickName);
-   public MemberDTO findBy_id(@RequestParam("_id") String _id);
+   public MemberDTO findByid(@RequestParam("_id") String _id);
    public void save(MemberDTO member);
 }

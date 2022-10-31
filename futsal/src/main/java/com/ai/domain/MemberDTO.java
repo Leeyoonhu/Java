@@ -9,7 +9,8 @@ import lombok.Data;
 @Document(collection = "member")
 public class MemberDTO {
    @Id
-   private String _id; //카카오구글네이버에서 받아온 이메일값, 프라이머리키
+   private String id; //카카오구글네이버에서 받아온 이메일값, 프라이머리키
+   
    private String name, nickName, sex;
 //   private String birthday; // 타입어떻게하지?
    private String phoneNo;
