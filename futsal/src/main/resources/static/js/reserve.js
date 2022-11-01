@@ -18,7 +18,7 @@ $(document).ready(function(){
 		$.ajax({
 			type : "POST",
 			url : "/reserveTo/checkAjax",
-			data : {name : fName, tName1 : tName1, fTime : fTime},
+			data : {field : fName, tName1 : tName1, fTime : fTime},
 			dataType : "text",
 			success : function(result){
 				console.log("예약 정보 : " + result)
@@ -47,7 +47,7 @@ $(document).ready(function(){
 						}
 					})
 				}
-				if(result == "A"){ 
+				if(result == "A"){
 					console.log("b예약")
 				}
 			},

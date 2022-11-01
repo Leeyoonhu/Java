@@ -97,7 +97,7 @@
 					</div>
 					<ul>
 						<li>일자 <span id="fDate" th:text="${date}"></span></li>
-						<li>사용 시간 <span>시</span><span id="fTime">16 - 18</span></li>
+						<li>사용 시간 <span></span><span id="fTime">16시 - 18시</span></li>
 						<li>사용료 <span id="fPrice"
 							th:text="|${#numbers.formatInteger(selectField.fPrice1, 0, 'COMMA')} P|"></span></li>
 						<li>전화번호 <span id="fPhoneNo"
@@ -118,7 +118,7 @@
 					<a style="color: red">매칭 완료 시 예약금의 50%가 환불됩니다.</a> <br> <input id="tName1"
 						readonly th:placeholder="${member.tName}"
 						style="width: 100%; margin-bottom: 10px; background-color: rgb(214, 214, 214); border: 0 solid black;">
-					<input id="nickName1" readonly th:placeholder="${member.name}"
+					<input id="nickName1" readonly th:placeholder="${member.nickName}"
 						style="width: 100%; margin-bottom: 10px; background-color: rgb(214, 214, 214); border: 0 solid black;">
 					<div class="checkout__input__checkbox">
 						<input type="radio" name="reserveType" value="part"
