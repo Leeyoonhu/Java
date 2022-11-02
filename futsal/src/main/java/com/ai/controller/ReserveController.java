@@ -27,15 +27,15 @@ public class ReserveController {
 	MemberService mService;
 
 	@RequestMapping(value = "/checkAjax", method = RequestMethod.POST)
-	public void checkAjax(@RequestParam("field")String field, @RequestParam("tName1") String tName1, @RequestParam("fTime") String fTime, HttpServletResponse response) throws IOException {
+	public void checkAjax(@RequestParam("field")String field, @RequestParam("tName1") String tName1, @RequestParam("fTime") String fTime, @RequestParam("fDate") String fDate, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
-		System.out.println("구장명 : " + field + ", 팀명 : " + tName1 + ", 시간 : " + fTime);
+		System.out.println("구장명 : " + field + ", 팀명 : " + tName1 + ", 날짜 : " + fDate +  ", 시간 : " + fTime);
 		try {
-			if(service.findByFieldAndNameAAndTime(field, tName1, fTime).getState() == null) {
+			if(service.findReserveToA(field, tName1, fDate, fTime).getState() == null) {
 				out.print("null");
 			}
 			else {
-				out.print(service.findByFieldAndNameAAndTime(field, tName1, fTime).getState());
+				out.print(service.findReserveToA(field, tName1, fDate, fTime).getState());
 			}
 		} catch (NullPointerException e) {
 			out.print("null");

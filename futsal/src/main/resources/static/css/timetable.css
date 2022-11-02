@@ -89,9 +89,14 @@
     rgba(255, 255, 130, 1) 100%
   );
 }
-.btn-gradient.yellow:active {
+
+.btn-gradient.yellow:hover{
   background: rgb(255, 255, 160, 1);
 }
+
+.btn-gradient.yellow.active {
+  background: #dbc05b;
+} 
 
 .btn-gradient.green {
   background: rgb(185, 255, 185);
@@ -119,8 +124,11 @@
     rgba(160, 255, 160, 1) 100%
   );
 }
-.btn-gradient.green:active {
+.btn-gradient.green:hover {
   background: rgb(185, 255, 185, 1);
+}
+.btn-gradient.green.active {
+  background: #72b08e;
 }
 
 .btn-gradient.red {
@@ -149,15 +157,9 @@
     rgba(255, 130, 130, 1) 100%
   );
 }
-.btn-gradient.red:active {
+/* .btn-gradient.red:active {
   background: rgb(255, 150, 150, 1);
-}
-
-/* 
-.btn-gradient.gray:active {
-  background: rgb(255, 150, 150, 1);
-} 
-*/
+} */
 
 .btn-gradient.orange:active {
   background: #e8601b;
@@ -170,10 +172,4 @@
 }
 .btn-gradient.purple:active {
   background: #bd8eb7;
-}
-.btn-gradient.yellow:active {
-  background: #dbc05b;
-}
-.btn-gradient.green:active {
-  background: #72b08e;
 }

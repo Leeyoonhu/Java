@@ -94,7 +94,6 @@ public class FieldController {
 		} catch (Exception e) {
 			System.out.println("해당 구장의 예약 정보가 없음!");
 		}
-		System.out.println("timeMap : " +timeMap.keySet());
 		if(now.equals(date)) {
 			System.out.println("현재 날짜와 선택된 날짜가 같음!");
 			for(int p = 0; p < timeArray.length; p++) {

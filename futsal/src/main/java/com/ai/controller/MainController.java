@@ -339,21 +339,29 @@ public class MainController {
 	      return mav;
 	   }
 	
-	@RequestMapping(value = "/reserve/{selectField}")
-	public ModelAndView goReserve(@PathVariable("selectField") String selectField, HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value = "/reserve/{selectField}/{time}/{type}")
+	public ModelAndView goReserve(@PathVariable("selectField") String selectField, @PathVariable("time") String time, @PathVariable("type") String type, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("member", mService.findByid((String)session.getAttribute("userId"))); 
 		mav.addObject("team", tService.findBytName(mService.findByid((String)session.getAttribute("userId")).getTName()));
 		Cookie[] cookies = request.getCookies();
 		FieldDTO field = fService.findByfName(selectField);
+		String date = null;
 		for (Cookie cookie : cookies) {
 			System.out.println("쿠키 이름 : " + cookie.getName());
 			if (cookie.getName().equals("date")) {
-				mav.addObject("date", cookie.getValue());
+				date = cookie.getValue();
+				mav.addObject("date", date);
 			}
 		}
 		mav.addObject("selectField", field);
-		
+		mav.addObject("time", time);
+		if(type.equalsIgnoreCase("yellow")){
+			mav.addObject("reserveInfo", rService.findReserveToB(selectField, date, time));
+		}
+		else {
+			mav.addObject("reserveInfo", null);
+		}
 		// TEST CODE
 		System.out.println("=================== Sesssion ==================");
 		System.out.println("세션 유저 아이디 : " + session.getAttribute("userId"));
@@ -363,6 +371,8 @@ public class MainController {
 		System.out.println("member : " + mService.findByid((String)session.getAttribute("userId")));
 		System.out.println("team : " + tService.findBytName(mService.findByid((String)session.getAttribute("userId")).getTName()));
 		System.out.println("현재 선택된 필드 : " + field);
+		System.out.println("현재 선택된 시간 : " + time);
+		System.out.println("예약자의 타입 Green=A, Yellow=B : " + type);
 		System.out.println("=============== Reserve Model Objects ===================");
 		// END TEST
 		mav.setViewName("/reserve");

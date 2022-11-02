@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	var fName = $("#fName").val();
+	var time;
+	var type;
 	function getCookie(name) {
 		var nameOfCookie = name + "=";
 		var x = 0;
@@ -48,28 +51,74 @@ $(document).ready(function() {
 				url : "/field/" + $("#fieldId").val(),
 				success : function(res){
 					$("#timeTables").replaceWith(res.substring(res.indexOf('<div id="timeTables">'), res.indexOf('<table>')));
-					$(".btn-gradient.green").on('click', function(){
-						console.log("green click")
-
+					$(".btn-gradient.green").on('click', function(e){
+						var btns = document.querySelectorAll(".btn-gradient");
+						btns.forEach(function(btn, i) {
+							if(e.currentTarget == btn) {
+								btn.classList.add("active");
+							}
+							else {
+								btn.classList.remove("active");
+							}
+						});
+						console.log("선택 시간 : " + e.currentTarget.value);
+						time = e.currentTarget.value
+						type = "green"
 					})
 					
-					$(".btn-gradient.yellow").on('click', function(){
-						console.log("yellow click")
+					$(".btn-gradient.yellow").on('click', function(e){
+						var btns = document.querySelectorAll(".btn-gradient");
+						btns.forEach(function(btn, i) {
+							if(e.currentTarget == btn) {
+								btn.classList.add("active");
+							}
+							else {
+								btn.classList.remove("active");
+							}
+						});
+						console.log("선택 시간 : " + e.currentTarget.value);
+						time = e.currentTarget.value
+						type = "yellow"
 					})
 				}
 			})
 	    }
 	}).datepicker('setDate', date);
-	
-	var getDate = ($('#futsalDate').datepicker('getDate'))
-	if((today.getFullYear() == getDate.getFullYear()) && (today.getMonth() == getDate.getMonth()) && (today.getDate() == getDate.getDate())){
-		console.log("선택날짜가 오늘과 동일함")
-	}
-	$(".btn-gradient.green").on('click', function(){
-		console.log("green click")
+	$(".btn-gradient.green").on('click', function(e){
+		var btns = document.querySelectorAll(".btn-gradient");
+		btns.forEach(function(btn, i) {
+			if(e.currentTarget == btn) {
+				btn.classList.add("active");
+			}
+			else {
+				btn.classList.remove("active");
+			}
+		});
+		console.log("선택 시간 : " + e.currentTarget.value);
+		time = e.currentTarget.value
+		type = "green"
 	})
 	
-	$(".btn-gradient.yellow").on('click', function(){
-		console.log("yellow click")
+	$(".btn-gradient.yellow").on('click', function(e){
+		var btns = document.querySelectorAll(".btn-gradient");
+		btns.forEach(function(btn, i) {
+			if(e.currentTarget == btn) {
+				btn.classList.add("active");
+			}
+			else {
+				btn.classList.remove("active");
+			}
+		});
+		console.log("선택 시간 : " + e.currentTarget.value);
+		time = e.currentTarget.value
+		type = "yellow"
+	})
+	$("#goReserve").on('click', function(){
+		if($(".btn-gradient.yellow.active").val() == null && $(".btn-gradient.green.active").val() == null){
+			alert("예약 시간을 선택해주세요")
+		}
+		else {
+			location.href = "/reserve/" + fName + "/" + time + "/" + type;
+		}
 	})
 })

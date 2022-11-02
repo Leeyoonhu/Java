@@ -18,7 +18,7 @@ $(document).ready(function(){
 		$.ajax({
 			type : "POST",
 			url : "/reserveTo/checkAjax",
-			data : {field : fName, tName1 : tName1, fTime : fTime},
+			data : {field : fName, tName1 : tName1, fTime : fTime, fDate : fDate},
 			dataType : "text",
 			success : function(result){
 				console.log("예약 정보 : " + result)
@@ -48,14 +48,13 @@ $(document).ready(function(){
 					})
 				}
 				if(result == "A"){
+					// save로 보내야함
 					console.log("b예약")
 				}
 			},
 			error: function(result){
 				console.log("reserve Ajax Error : " + result)
 			}
-		})
-		
-	
+		})	
 	});
 })

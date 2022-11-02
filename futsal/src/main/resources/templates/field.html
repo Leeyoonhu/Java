@@ -177,13 +177,13 @@
                   <div id="timeTables">
                   <span th:each="time : ${timeMap}">
                      <span th:if="${time.value eq 'null'}" style="display: inline-block;">
-                        <input type="button" class="btn-gradient green small" th:value="|${time.key}시|">
+                        <input type="button" class="btn-gradient green small" th:value="${time.key}">
                      </span>
                      <span th:if="${time.value eq 'A'}" style="display: inline-block;">
-                        <input type="button" class="btn-gradient yellow small" th:value="|${time.key}시|">
+                        <input type="button" class="btn-gradient yellow small" th:value="${time.key}">
                      </span>
                      <span th:if="${time.value eq 'full'}" style="display: inline-block;">
-                        <input type="button" disabled='disabled' class="btn-gradient red small" th:value="|${time.key}시|">
+                        <input type="button" disabled='disabled' class="btn-gradient red small" th:value="${time.key}">
                      </span>
                   </span></div>
                   <table>
@@ -195,17 +195,18 @@
                         </tr>
                      </table>
                   <!--  시간테이블 -->
-                  <div class="row pb-3">
-                     <div class="col d-grid">
-                        <a th:href="@{/reserve/{selectField}(selectField=${field.fName})}">
-                           <input type="button" class="btn btn-success btn-lg" name="submit" value="예약하기" style="width: 520px;">
-                        </a>
-                     </div>
-                     <div class="col d-grid">
-                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard" style="width: 520px;">
-                           도전하기</button>
-                     </div>
-                  </div>
+                  	<div class="row pb-3">
+	                 	<span th:if="${session.userId eq null}"> 
+                 			<div class="col d-grid">
+                 				<input type="button" class="btn-gradient gray" name="submit" value="로그인 후 예약하실 수 있습니다." style="width: 1020px; cursor: text;">
+                 			</div>
+	                 	</span>
+	                 	<span th:if="${session.userId ne null}">
+		                     <div class="col d-grid">
+		                        <input id="goReserve" type="button" class="btn btn-success btn-lg" name="submit" value="예약하기" style="width: 1020px;">
+		                     </div>
+	                   	</span>
+               		</div>
                </form>
             </div>
          </div>

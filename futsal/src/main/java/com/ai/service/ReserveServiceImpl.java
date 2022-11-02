@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ai.domain.ReserveDTO;
 import com.ai.repository.ReserveRepository;
@@ -19,12 +20,19 @@ public class ReserveServiceImpl implements ReserveService {
 	ReserveRepository reserveRepository;
 
 	@Override
-	public ReserveDTO findByFieldAndNameAAndTime(String name, String tName1, String fTime) {
+	public ReserveDTO findReserveToA(String name, String tName1, String fDate, String fTime) {
 		ReserveDTO reserve = new ReserveDTO(); 
-		reserve = reserveRepository.findByFieldAndNameAAndTime(name, tName1, fTime);
+		reserve = reserveRepository.findByFieldAndNameAAndDateAndTime(name, tName1, fDate, fTime);
 		return reserve;
 	}
 
+	@Override
+	public ReserveDTO findReserveToB(String name, String fDate, String fTime) {
+		ReserveDTO reserve = new ReserveDTO();
+		reserve = reserveRepository.findByFieldAndDateAndTime(name, fDate, fTime);
+		return reserve;
+	}
+	
 	@Override
 	public void insert(ReserveDTO reserve) {
 		System.out.println("예약 신청 완료");

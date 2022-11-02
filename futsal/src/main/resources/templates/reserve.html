@@ -97,7 +97,7 @@
 					</div>
 					<ul>
 						<li>일자 <span id="fDate" th:text="${date}"></span></li>
-						<li>사용 시간 <span></span><span id="fTime">16시 - 18시</span></li>
+						<li>사용 시간 <span></span><span id="fTime" th:text="${time}"></span></li>
 						<li>사용료 <span id="fPrice"
 							th:text="|${#numbers.formatInteger(selectField.fPrice1, 0, 'COMMA')} P|"></span></li>
 						<li>전화번호 <span id="fPhoneNo"
