@@ -17,12 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class FieldServiceImpl implements FieldService {
    @Autowired
-   FieldRepository fieldRepository;
+   FieldRepository repo;
    
    public FieldDTO findByid(String id) {
-      FieldDTO field = fieldRepository.findByid(id);
+      FieldDTO field = repo.findByid(id);
       try {
-         if(fieldRepository.findByid(id) == null) {
+         if(repo.findByid(id) == null) {
             return null;
          }
          else {
@@ -37,21 +37,21 @@ public class FieldServiceImpl implements FieldService {
    @Override
    public ArrayList<FieldDTO> findAll() {
       // TODO Auto-generated method stub
-      ArrayList<FieldDTO> fList = (ArrayList<FieldDTO>) fieldRepository.findAll();
+      ArrayList<FieldDTO> fList = (ArrayList<FieldDTO>) repo.findAll();
       return fList;
    }
 
    @Override
    public FieldDTO findByfName(String fName) {
       System.out.println(fName);
-      FieldDTO field = fieldRepository.findByfName(fName);
+      FieldDTO field = repo.findByfName(fName);
       return field;
    }
 
    @Override
    public ArrayList<FieldDTO> findByFNameRegex(String fName) {
       // TODO Auto-generated method stub
-      ArrayList<FieldDTO> fields = fieldRepository.findByFNameRegex(fName);
+      ArrayList<FieldDTO> fields = repo.findByFNameRegex(fName);
       return fields;
    }
    

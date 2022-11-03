@@ -13,37 +13,37 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class MemberServiceImpl implements MemberService{
    @Autowired
-   MemberRepository memberRepository;
+   MemberRepository repo;
    
    @Override
    public MemberDTO insert(MemberDTO joinMember) {
       // TODO Auto-generated method stub
-       MemberDTO joinedMember = memberRepository.insert(joinMember); 
+       MemberDTO joinedMember = repo.insert(joinMember); 
        return joinedMember;
       
    }
 
 	@Override
 	public MemberDTO findByPhoneNo(String phoneNo) {
-		MemberDTO member = memberRepository.findByPhoneNo(phoneNo);
+		MemberDTO member = repo.findByPhoneNo(phoneNo);
 		return member;
 	}
 
 	@Override
 	public MemberDTO findByNickName(String nickName) {
-		MemberDTO member = memberRepository.findByNickName(nickName);
+		MemberDTO member = repo.findByNickName(nickName);
 		return member;
 	}
 
 	@Override
 	public MemberDTO findByid(String _id) {
-		MemberDTO member = memberRepository.findByid(_id);
+		MemberDTO member = repo.findByid(_id);
 		return member;
 	}
 
 	@Override
 	public void save(MemberDTO member) {
 		// TODO Auto-generated method stub
-		memberRepository.save(member);
+		repo.save(member);
 	}
 }

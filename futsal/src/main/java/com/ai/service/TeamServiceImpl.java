@@ -17,12 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @Repository
 public class TeamServiceImpl implements TeamService {
    @Autowired
-   TeamRepository teamRepository;
+   TeamRepository repo;
 
    public TeamDTO findBytName(String tName) {
-      TeamDTO team = teamRepository.findBytName(tName);
+      TeamDTO team = repo.findBytName(tName);
       try {
-         if(teamRepository.findBytName(tName) == null) {
+         if(repo.findBytName(tName) == null) {
             return null;
          }
          else { // 검색한 팀이 존재하면 
@@ -37,13 +37,13 @@ public class TeamServiceImpl implements TeamService {
    
    @Override 
    public TeamDTO insert(TeamDTO insertTeam) { 
-      TeamDTO insertedTeam = teamRepository.insert(insertTeam); 
+      TeamDTO insertedTeam = repo.insert(insertTeam); 
       return insertedTeam; 
    }
    @Override
    public ArrayList<TeamDTO> findAll() {
       // TODO Auto-generated method stub
-      ArrayList<TeamDTO> tList = (ArrayList<TeamDTO>) teamRepository.findAll();
+      ArrayList<TeamDTO> tList = (ArrayList<TeamDTO>) repo.findAll();
       return tList;
    }
 
@@ -51,7 +51,7 @@ public class TeamServiceImpl implements TeamService {
    @Override
    public ArrayList<TeamDTO> findByTNameRegex(String tName) {
       // TODO Auto-generated method stub
-      ArrayList<TeamDTO> teams = teamRepository.findByTNameRegex(tName);
+      ArrayList<TeamDTO> teams = repo.findByTNameRegex(tName);
       return teams;
    }
 }

@@ -107,20 +107,34 @@
 						사용 가능한 결제 포인트 <span
 							th:text="|${#numbers.formatInteger(member.hadPoint, 0, 'COMMA')} P|"></span>
 					</div>
-					<div class="checkout__order__total">
-						총 결제 포인트 <span
-							th:text="|${#numbers.formatInteger(selectField.fPrice1, 0, 'COMMA')} P|"></span>
+					<div th:if="${reserveInfo eq null}" class="checkout__order__total">
+						총 결제 포인트 <span th:text="|${#numbers.formatInteger(selectField.fPrice1, 0, 'COMMA')} P|"></span>
 					</div>
-					<div class="checkout__order__total">
-						잔여 포인트 <span
-							th:text="|${#numbers.formatInteger(member.hadPoint-selectField.fPrice1, 0, 'COMMA')} P|"></span>
+					<div th:if="${reserveInfo ne null}" class="checkout__order__total">
+						총 결제 포인트 <span style="color:blue" th:text="|${#numbers.formatInteger(selectField.fPrice1-selectField.fPrice1/2, 0, 'COMMA')} P|"></span>
 					</div>
-					<a style="color: red">매칭 완료 시 예약금의 50%가 환불됩니다.</a> <br> <input id="tName1"
-						readonly th:placeholder="${member.tName}"
-						style="width: 100%; margin-bottom: 10px; background-color: rgb(214, 214, 214); border: 0 solid black;">
-					<input id="nickName1" readonly th:placeholder="${member.nickName}"
-						style="width: 100%; margin-bottom: 10px; background-color: rgb(214, 214, 214); border: 0 solid black;">
-					<div class="checkout__input__checkbox">
+					
+					<div th:if="${reserveInfo eq null}" class="checkout__order__total">
+						잔여 포인트 <span th:text="|${#numbers.formatInteger(member.hadPoint-selectField.fPrice1, 0, 'COMMA')} P|"></span>
+					</div>
+					<div th:if="${reserveInfo ne null}" class="checkout__order__total">
+						매칭 성사 시 잔여 포인트 <span style="color:blue" th:text="|${#numbers.formatInteger(member.hadPoint-selectField.fPrice1/2, 0, 'COMMA')} P|"></span>
+					</div>
+					<a th:if="${reserveInfo eq null}" style="color: red">매칭 완료 시 예약금의 50%가 환불됩니다.</a>
+					<p th:if="${reserveInfo eq null}"></p>
+					<div class="checkout__order__products">
+						매칭정보
+					</div>
+					
+					<ul>
+						<li th:if="${reserveInfo ne null}">홈팀<span th:text="${reserveInfo.nameA}"></span></li>
+						<li th:if="${reserveInfo eq null}">홈팀<span id="tName1" th:text="${member.tName}"></span></li>
+						<li th:if="${reserveInfo ne null}">어웨이팀<span id="tName2" th:text="${member.tName}"></span></li>
+						<li th:if="${reserveInfo eq null}">신청자 <span id="nickName1" th:text="${member.nickName}"></span></li>
+						<li th:if="${reserveInfo ne null}">신청자 <span id="nickName2" th:text="${member.nickName}"></span></li>	
+					</ul>
+					
+					<div th:if="${reserveInfo eq null}" class="checkout__input__checkbox">
 						<input type="radio" name="reserveType" value="part"
 							checked="checked" />부분 대여 <input type="radio" name="reserveType"
 							value="all"/>일괄 대여

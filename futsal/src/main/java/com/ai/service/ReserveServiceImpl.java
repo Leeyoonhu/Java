@@ -17,34 +17,39 @@ import lombok.extern.slf4j.Slf4j;
 @Repository
 public class ReserveServiceImpl implements ReserveService {
 	@Autowired
-	ReserveRepository reserveRepository;
+	ReserveRepository repo;
 
 	@Override
 	public ReserveDTO findReserveToA(String name, String tName1, String fDate, String fTime) {
 		ReserveDTO reserve = new ReserveDTO(); 
-		reserve = reserveRepository.findByFieldAndNameAAndDateAndTime(name, tName1, fDate, fTime);
+		reserve = repo.findByFieldAndNameAAndDateAndTime(name, tName1, fDate, fTime);
 		return reserve;
 	}
 
 	@Override
-	public ReserveDTO findReserveToB(String name, String fDate, String fTime) {
+	public ReserveDTO findReserve(String name, String fDate, String fTime) {
 		ReserveDTO reserve = new ReserveDTO();
-		reserve = reserveRepository.findByFieldAndDateAndTime(name, fDate, fTime);
+		reserve = repo.findByFieldAndDateAndTime(name, fDate, fTime);
 		return reserve;
 	}
 	
 	@Override
 	public void insert(ReserveDTO reserve) {
 		System.out.println("예약 신청 완료");
-		reserveRepository.insert(reserve);
+		repo.insert(reserve);
 	}
-
+	
+	@Override
+	public void save(ReserveDTO reserve) {
+		// TODO Auto-generated method stub
+		System.out.println("B팀 신청 완료");
+		repo.save(reserve);
+	}
+	
 	@Override
 	public ArrayList<ReserveDTO> findByField(String name) {
 		ArrayList<ReserveDTO> reserveList = new ArrayList<>();
-		reserveList = reserveRepository.findByField(name);
+		reserveList = repo.findByField(name);
 		return reserveList;
 	}
-
-
 }

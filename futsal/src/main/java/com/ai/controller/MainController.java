@@ -357,7 +357,7 @@ public class MainController {
 		mav.addObject("selectField", field);
 		mav.addObject("time", time);
 		if(type.equalsIgnoreCase("yellow")){
-			mav.addObject("reserveInfo", rService.findReserveToB(selectField, date, time));
+			mav.addObject("reserveInfo", rService.findReserve(selectField, date, time));
 		}
 		else {
 			mav.addObject("reserveInfo", null);

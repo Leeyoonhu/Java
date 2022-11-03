@@ -7,19 +7,17 @@
 <meta name="keywords" content="warrior, game, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Favicon -->
-<link href="/img/favicon.ico" rel="shortcut icon" />
+<link th:href="@{/img/favicon.ico}" rel="shortcut icon" />
 
 <!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
 
 <!-- Stylesheets -->
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" href="/css/font-awesome.min.css" />
-<link rel="stylesheet" href="/css/owl.carousel.css" />
-<link rel="stylesheet" href="/css/style.css" />
-<link rel="stylesheet" href="/css/animate.css" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+<link rel="stylesheet" th:href="@{/css/owl.carousel.css}" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet" th:href="@{/css/animate.css}" />
 
 
 <!--[if lt IE 9]>
@@ -38,7 +36,7 @@
 	<header class="header-section">
 		<div class="container">
 			<!-- logo -->
-			<a class="site-logo" href="main"> <img src="/img/logo.png" alt="">
+			<a class="site-logo" th:href="@{/main}"> <img th:src="@{/img/logo.png}" alt="">
 			</a>
 			<div class="user-panel">
 				<!-- logo -->
