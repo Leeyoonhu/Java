@@ -1,0 +1,11 @@
+로그인 시, session 에 넣던 member, team 삭제 
+구장 선택시 session 에 넣던 selectedField 삭제
+- 영향받는 html
+- search // searchTeam // main // reserve // field
+
+각 페이지 진입시, 필요한 값들 model에 set 하는 문구 추가 & html 태그 session 제거
+
+Controller 세션 사용하던애들 mav사용하게 변경 - 오류날 시 윤후 call
+
+세션- 쿠키 30일 지정 // 서버, 쿠키 재시작해도 로그인 되어있을 경우 방문자 기록 삭제할것
+

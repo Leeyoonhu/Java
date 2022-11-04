@@ -1,0 +1,48 @@
+=== HTML ===
+ㅁ field.html
+- <a th:href="@{/reserve/{selectField}(selectField=${field.fName})}"> 태그 제거, button id = goReserve 부여 
+- 예약에 로그인 조건 추가
+- A / B 타입에 따른 예약정보변경
+
+ㅁ reserve.html
+- 사용시간 고정 값에서 th:text="${time}" 으로 변경
+- 도전하기 버튼 삭제
+
+=== JS === 
+ㅁ datepicker2.js
+- class btn-gradient.green,yellow 클릭 이벤트 함수 추가
+- id goReserve 클릭 이벤트 함수 추가
+- location.href = "/reserve/" + fName + "/" + time + "/" + type 지정
+
+ㅁ timetable.css
+- .btn-gradient.green,yellow :active 삭제
+- .btn-gradient.green,yellow .active :hover 경우의 수 추가 
+- .btn-gradient.red:active 비활성화
+
+ㅁ reserve.js
+- data에 fDate 추가
+
+=== Controller ===
+ㅁ Maincontroller
+* goReserve (reserve.html 보내는 function)
+- 매핑 변경 > /reserve/{selectField}/{time}/{type}
+- @PathVariable("time") String time, @PathVariable("type") String type 매개변수 추가
+- mav.addObject("time", time) 추가 // 로그에서 선택된 시간 확인 가능
+- mav.addObject("reserveInfo", rService.findReserveToB(selectField, date, time)) 추가 // 로그에서 현재 예약자의 타입 확인 가능
+
+ㅁ ReserveController
+* checkAjax (Ajax)
+- @RequestParam("fDate") String fDate 매개변수 추가
+
+
+=== Repository ===
+ㅁ ReserveRepository
+- findByFieldAndNameAAndTime -> 삭제
+- @RequestParam("fDate") String fDate 매개변수 추가
+- findByFieldAndDateAndTime 추가
+
+=== Service & Impl ===
+ㅁ ReserveService & Impl
+- findByFieldAndNameAAndTime -> findReserveToA로 변경 
+- @RequestParam("fDate") String fDate 매개변수 추가
+- findReserveToB 생성

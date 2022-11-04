@@ -1,0 +1,40 @@
+== 2022-10-31 ==
+1. TeamController
+@mapping - '/search'  
+- model object 'team' 추가
+
+2. ReserveDTO : String name -> field 변경 // Repo, Service, Impl, Controller 전부 변경 
+- Repo : findByField() 추가
+
+3. ReserveListDTO, Controller, Repository, Service, ServiceImpl 생성
+
+4. MainController 
+@mapping - '/main'
+- model object 'fList' 추가
+- ReserveService rService; 추가
+
+5. reserve.js 
+- var rDate1 = new Date(+ new Date() + 3240 * 10000).toISOString().replace('T', ' ').replace(/\..*/, ''); 변경
+
+6. MemberDTO String _id -> id 변경
+- MemberRepository MemberDTO findByid 변경
+
+7. field.html
+- <input id="fieldId" th:value="${field.id}" style="display:none"> 추가
+
+8. datepicker2.js
+- 클릭 시 마다 cookie값 변경 + ajax를 통해 비동기식 화면구성 변환
+
+
+
+
+파이썬 wsgi 규격으로 컨버젼해주면 파이썬도 web 을 받을수 있고, django는 이것이 내장되어있고
+
+java tomcat => WAS // dispatchServlet 을 통해서
+python wsgi server => WAS (혼자서 못받으니 gunicorn ) 장고나 플라스크 가있어야하고 
+
+스프링 > 파이썬(플라스크) > 스프링으로 해볼것 // 중간에 DB 끼지말고
+
+딥러닝 모델이 무엇인지, 어디에 어떻게 썻는지 정확히 명시할 것
+
+추천을 해주는 딥러닝은 어렵다
