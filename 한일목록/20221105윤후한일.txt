@@ -1,0 +1,83 @@
+=== HTML ===
+ㅁ field.html 
+- 예약 버튼 클릭에 따른 색상 문구 추가
+
+ㅁ register.html
+- 이용약관 동의 체크를 위한 체크박스 아이디값 변경
+
+ㅁ reserve.html
+- 결제페이지 이름에 구장 명 노출되도록 변경
+- 전체 동의버튼 삭제
+- 약관 동의 처리를 위한 reserveCheck2.html 의 체크박스 아이디 변경
+
+
+=== JS === 
+ㅁ map_search, map_test.js 삭제
+
+ㅁ datepicker2.js
+- 시간 버튼 클릭시마다 나오는 색상에 따른 예약가능/불가능 여부 안내문구 추가
+
+ㅁ reserve.js
+- 홈 예약한놈이 어웨이 예약할경우를 대비한 ajax 추가
+- 이용 약관에 동의했을경우만 예약 진행가능케 변경
+
+ㅁ sign2.js
+- 이용약관 동의했을 시에만 진행가능케 변경
+
+=== Controller ===
+ㅁ MainController
+* getReservation
+- 정보를 가져올 때 현재 시간이 지난 정보들 상태 변경 추가
+
+* ReservationService rvService 추가 
+
+ㅁ ReserveController
+* insertReserve
+- 예약(홈) 저장시 reservation에도 insert 되도록 수정
+
+* checkAjax2 추가
+- 홈 예약한놈이 어웨이 예약할경우 reserveList 로 insert하는게아닌 기존의 reserve를 변경하게처리
+
+* saveAway 추가
+- 기존의 reserve에서 홈 > 어웨이로 파트 변경 및 reservation에서 매칭 완료로 변경
+
+* save 삭제
+
+* insert 수정
+- 전체 대여일 경우 B 상태로 변경
+
+ㅁ ReserveListController
+* insertReserveList
+- 예약(어웨이) 저장시 reservation에도 insert 되도록 수정
+
+
+=== Domain ===
+ㅁ ReservationVO 추가
+
+ㅁ ReservationDTO 추가
+
+ㅁ Scheduler 추가
+- application 실행 후 주기적으로 실행 시킬것 명령
+
+
+=== Repository ===
+ㅁ ReservationRepository
+- findAll 추가
+- findByid 추가
+- insert 추가
+- save 추가
+
+
+=== Service & Impl ===
+ㅁ ReservationService 추가
+ㅁ ReservationServiceImpl 추가
+
+
+=== Application ===
+ㅁ 주기적으로 스케쥴링 하기위한 @EnableScheduling  추가
+
+
+
+=== MongoDB === 
+ㅁ Reservation collection 추가
+
