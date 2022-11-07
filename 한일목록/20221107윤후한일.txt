@@ -1,0 +1,70 @@
+=== HTML ===
+ㅁ field.html
+- 홈팀 정보 추가
+- 홈팀 정보만 추릴수 있는 id = hometeamInfo, hometeamInfo2 추가
+- 현재 로그인한 유저 정보로 팀 정보조회시 팀이 없으면 예약 불가능 처리 (userTeamInfo)
+
+ㅁ error500.html 추가
+
+ㅁ reserve.html
+- 현재 보유한 포인트에 따른 문구 변경 추가
+- 보유한 포인트에 따른 예약 불가 처리
+- timetable.css 추가
+
+
+=== JS === 
+ㅁ datepicker2.js
+- 각 버튼클릭시 div태그 스타일 조정 추가
+- 노란 버튼 클릭시 홈팀 정보 출력
+
+
+ㅁ searchField.js
+- ajax를 fetch로 변경	
+- 검색 시 이전 내용들 삭제 후 새로 div 생성하게 변경
+
+ㅁ reserve.js
+- click 이벤트 이전에 자금 먼저 확인 추가
+
+
+=== Configuration ===
+ㅁ WebServerCustomizer
+- error500 추가
+
+
+
+=== Controller ===
+ㅁ FieldController
+* searchField 추가
+* searchHomeTeam 추가
+* memberService mService 추가
+* 현재 로그인한 유저 정보로 팀 정보조회시 팀이 없으면 예약 불가능 처리
+
+
+ㅁ ErrorPageController
+* error500 추가
+
+
+=== Domain ===
+ㅁ SearchMainDTO 추가
+
+
+
+=== Repository ===
+
+
+
+=== Service & Impl ===
+
+
+
+=== bulid.gradle ===
+@ResponseBody 사용 시 알아서 결과를 알아서 json으로 parsing해주는 jackson 추가
+implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2' 
+버전 업데이트
+
+
+=== application.properties ===
+spring.devtools.livereload.enabled=true 추가
+spring.devtools.restart.enabled=true 추가
+spring.freemarker.cache=false 추가
+spring.resources.static-locations=file:src/main/resources/static/ 추가
