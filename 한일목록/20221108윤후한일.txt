@@ -1,0 +1,80 @@
+=== HTML ===
+ㅁ teamtables.html
+- <a th:href="@{team/teamInfo?tName={tName}(tName=${tList.tName})}"> 변경
+
+ㅁ teamInfo.html
+- <input class="form-control" type="file" accept="image/*" name="logo"/> 네임, 업로드 타입 추가
+- <input type="button" class="btn btn-primary" id="uploadBtn" value="Save Changes"/> 아이디 추가
+- <script src="/js/team.js"></script> 추가
+- 
+
+
+=== JS === 
+ㅁ team.js 생성
+- save change를 누르면 logo path, file 변경
+- 변경된 이미지로 팀정보save 후 새 logo 만들어줌
+
+
+=== Configuration ===
+ㅁ WebMvcConfigurer
+- 정적 자원들 해들링 추가
+
+
+=== Controller ===
+ㅁ TeamController
+- getFolder() 함수 추가
+- saveAsync 매핑 추가, 로고 비동기적으로 바뀜
+- checkImageType
+
+ㅁ MainController
+- display 매핑 추가
+
+ㅁ FutsalApplication 
+-@Override
+protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+	return builder.sources(UiuiApplication.class);
+} 추가
+
+
+=== Domain ===
+ㅁ TeamDTO
+- private String logoPath, logoName; 추가
+
+ㅁ AttachFileDTO 추가 (썸네일 용)
+
+
+
+=== Repository ===
+ㅁ ReserveListRepository
+- findFieldAndDateAndTime 추가
+
+
+
+=== Service & Impl ===
+ㅁ ReserveListService & Impl
+- findFieldAndDateAndTime 추가
+
+
+
+=== bulid.gradle ===
+ㅁ plugins
+- id 'war' 추가
+
+ㅁ dependencies
+- implementation 'net.coobird:thumbnailator:0.4.18' 추가
+- implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.4' 추가
+- providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat' 추가
+
+bootWar{
+	archiveName("futsal.war") 추가
+}
+
+bootWar.enabled = false
+war.enabled = true
+
+
+=== application.properties ===
+ㅁ spring.servlet.multipart.enabled=true 추가
+
+
+
