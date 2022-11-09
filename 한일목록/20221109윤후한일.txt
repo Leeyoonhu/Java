@@ -1,0 +1,106 @@
+=== HTML ===
+ㅁ main.html
+- 배포된 서버 url 추가된 loginServer.js 추가
+- 배포된 서버 url 로그아웃 추가
+- <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/> 추가
+- 로그아웃 버튼 변경
+
+ㅁ register.html
+- 소셜 로그인 이미지 버튼 hover시 pointer 변경
+- <html xmlns:th="http://www.thymeleaf.org" th:style="'background-image:url(' + @{/img/메인사진1.jpg} + ');'"> 추가
+
+& 모든 페이지
+- <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/> 추가
+- 정적 자원 리소스들 contextpath 파악을 위해 th:src 등으로 표현
+
+
+=== JS === 
+ㅁ 서버배포용 loginServer.js 추가
+
+ㅁ 서버배포용 registerServer.js 추가
+
+ㅁ sign2.js
+- let contextPath = document.getElementById('contextPathHolder').getAttribute('data-contextPath'); 추가
+
+ㅁ registerServer.js 
+- let contextPath = document.getElementById('contextPathHolder').getAttribute('data-contextPath'); 추가
+- kakao, google 로그인 시 contextPath 추가
+
+ 
+=== Css ===
+ㅁ sign2.css
+- html background img 삭제
+
+
+=== Configuration ===
+
+
+
+
+
+=== Controller ===
+ㅁ MainController 
+* getMain
+- 배포된 서버 url 추가
+- NAVER API 배포서버용 클라이언트, 비밀번호 추가
+
+* register
+- 배포된 서버 url 추가
+- NAVER API 배포서버용 클라이언트, 비밀번호 추가
+
+* postMain
+- 배포된 서버 url 추가
+- NAVER API 배포서버용 클라이언트, 비밀번호 추가
+
+* login
+- 배포서버일때, 개발서버일때 로그인 과정 추가
+
+ㅁ FutsalApplication
+- 시작시 url에 jsessionid 나오지 않도록 하는 함수 onStartUp 추가
+
+
+
+=== Domain ===
+ㅁ KaKaoAPI
+* getAccessToken
+- 배포된 서버 url 추가
+
+ㅁ NaverAPI
+* getAccessToken
+- 배포된 서버 url 추가
+
+ㅁ GoogleAPI
+* getAccessToken
+- 배포된 서버 url 추가
+
+ㅁ CheckDevenv 추가
+- 개발 환경 / 배포 환경에 따라 true, false 값 부여
+- 나머지 추가된 부분들 개발환경/ 배포환경에 따라 값 설정 변경되게
+
+ㅁ Scheduler 
+- date 비교구문 변경
+- 오늘날짜가 아닌 과거날짜의 경우의 수 추가
+
+
+=== Repository ===
+
+
+
+=== Service & Impl ===
+
+
+
+=== bulid.gradle ===
+
+
+
+=== application.properties ===
+- server.servlet.session.tracking-modes=cookie 추가
+
+
+
+=== 배포된 AWS 서버 ===
+- CheckDevenv, loginServer.js, registerServer.js 로 개발/배포 변경 
+- 로그아웃 contextPath 변경
+- 로그인 url 변경된 war 적용
+- aws linux2 환경에서 letsecrypt 인증서를 활용하여 https로 변경
