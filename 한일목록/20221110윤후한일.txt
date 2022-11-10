@@ -1,0 +1,142 @@
+let contextPath = document.getElementById('contextPathHolder').getAttribute('data-contextPath');
+<link th:href="@{/img/mainlogo.png}" rel="shortcut icon"/>
+<link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
+=== HTML ===
+ㅁ field.html
+- 타이틀 변경
+- 페이지 진입 로고 변경 -> mainlogo.png
+- 안쓰는 코드들 삭제	
+- 정적 리소스들 thymeleaf 태그 추가
+- span th:if >> th:block th:if 로 변경
+- 코드 들여쓰기, 재사용 안하는 코드들 정리	
+- 개발시 login.js // 배포시 loginServer.js 사용
+- contextPath 추가
+
+ㅁ reserve.html
+- contextPath 추가
+- 페이지 진입 로고 변경 -> mainlogo.png
+- 타이틀 변경
+- 안쓰는 코드들 삭제
+- 정적 리소스들 thymeleaf 태그 추가
+- span th:if >> th:block th:if 로 변경
+- modal 로그인 추가
+- login, loginServer.js 추가
+
+ㅁ register.html
+- 페이지 진입 로고 변경 -> mainlogo.png
+
+ㅁ teamtables.html
+- contextPath 추가
+- 페이지 진입 로고 변경 -> mainlogo.png
+- 타이틀 변경
+- 안쓰는 코드들 삭제
+- 정적 리소스들 thymeleaf 태그 추가
+- modal 로그인 추가
+- login, loginServer.js 추가
+- createTeam 개발/배포 클릭시 각기다른 경로 추가
+
+ㅁ createTeam.html
+- contextPath 추가
+- 페이지 진입 로고 변경 -> mainlogo.png
+- 타이틀 변경
+- 안쓰는 코드들 삭제
+- modal 로그인 추가
+- 정적 리소스들 thymeleaf 태그 추가
+- login, loginServer.js 추가
+
+
+
+=== CSS ===
+ㅁ style3.css
+- modal css 추가
+
+
+=== JS === 
+ㅁ loginServer.js
+- 각 api 경로에 contextPath추가
+
+ㅁ field.js 삭제
+
+ㅁ datepicker.js
+- var >> let 변경
+- Date.getDate()의 일 수가 10일 이상일경우의 수 추가
+
+ㅁ datepicker2.js, 
+- var >> let 변경
+- contextPath 추가
+- 개발/ 배포환경에 따른 날짜 클릭시 변동사항 수정
+
+ㅁ mapnear2.js
+- contextPath 추가
+- var >> let 변경
+- 마커 오버레이에 contextPath에 따른 경로 변경 추가
+
+ㅁ likefield.js
+- contextPath 추가
+
+ㅁ reserve.js
+- contextPath 추가
+
+ㅁ searchTeam.js
+- contextPath 추가
+- getTeams 에 contextPath값에 따른 경로 설정
+
+ㅁ other_search_field.js
+- contextPath 추가
+
+
+
+
+
+=== Configuration ===
+
+
+
+
+
+=== Controller ===
+ㅁ MainController
+* loginAccess
+- 회원 가입 시 이미 있는 회원일 경우, 이미 있는 회원임을 알림
+
+ㅁ FieldController
+* searchField
+- hours 시스템 시간이아닌, 한국 서울 기준 시간으로 가져오게 변경
+
+
+=== Domain ===
+ㅁ KakaoAPI & NaverAPI & GoogleAPI
+* getAccessToken
+- 서버 배포용 경로에 contextPath 추가
+- Dev 홈페이지에 redirect url 설정
+- 배포용 application 생성(Naver)
+
+ㅁ Scheduler
+- before = sdf.parse(rV.getDate()); 파싱 오류나서 try-catch 묶어놈 (추후해결필요)
+- hours 시스템 시간이아닌, 한국 서울 기준 시간으로 가져오게 변경
+
+
+=== Repository ===
+
+
+
+=== Service & Impl ===
+
+
+
+=== bulid.gradle ===
+ㅁ war 생성시 futsal.war 로 되도록 build 설정
+
+
+=== application.properties ===
+
+
+
+=== AWS ===
+ㅁ 포트번호 27017, 443, 80, 8080 개방
+
+ㅁ ubuntu 환경에서 방화벽 설정 및 외부에서 mongodb사용 가능하게 db, user 구성
+
+
+=== MongoDB ===
+ㅁ 기존 클러스터 사용에서 AWS EC2 내의 mongoDB사용으로 변경
