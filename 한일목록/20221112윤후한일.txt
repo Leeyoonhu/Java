@@ -1,0 +1,72 @@
+	■ HTML
+◾ teamtables
+- 팀 생성 버튼 exception 오류 수정
+
+◾ teamtables
+- contextPath 추가
+- 아이콘 변경
+- 정적 자원들 조건에따른 contextPath 추가
+- button.js import 삭제
+- login.js, loginServer.js 추가
+- footer 변경
+- header section 변경
+- other_search_field.js 추가
+
+
+	■ JS
+◾ team.js
+- contextPath에 따른 controller 매핑 주소 위치 변화
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ TeamController
+- s3UploaderService 정의
+- 이제부터 이미지 저장장소를 s3에 저장하도록 saveSync 변경 
+- s3UploaderService.upload(uploadFile, "1-source", "image"); 추가
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾ S3UploadService 생성
+- S3 에 정적 이미지 파일을 올릴 수 있도록 설정
+
+
+	■ bulid.gradle
+◾ AWS S3 와 연동하기위한 의존성 추가
+- implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 각 개발자 사이트 연결주소 변경
+
+
+
+	■ MongoDB
+◾ 
