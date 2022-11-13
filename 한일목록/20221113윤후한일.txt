@@ -1,0 +1,59 @@
+	■ HTML
+◾ 
+
+
+	■ JS
+◾ 
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+
+	■ bulid.gradle
+◾ 
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+
+	■ AWS S3
+◾ IAM 생성, 키 연결
+
+
+
+	■ Social Login
+◾
+
+
+
+	■ MongoDB
+◾ 
