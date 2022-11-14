@@ -1,0 +1,112 @@
+	■ HTML
+◾ teamInfo.html
+- 로고 db 조회 방식 변경
+
+◾ reservation.html, community.html, write.html 
+- mainlogo 변경
+- static resource contextpath 처리
+- header section 변경
+- login, loginServer.js 추가
+- other_search_field.js 추가
+
+◾ teamTables.html
+- 팀 생성 버튼 클릭이벤트 변경
+- 신청하기 조건 추가
+
+
+	■ JS
+◾ datepicker2.js
+- logoPath 수정
+
+◾ searchTeam.js
+- contextPath 삭제
+
+◾ updateReservate.js
+- contextPath 추가
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾ S3Configuration 생성
+- IAM 정보, 버킷 정보 담고있음
+
+
+	■ Controller
+◾ TeamController
+- bucket 정보 추가 
+- insertTeam 할 때 logoName 받던 것 삭제
+- default 이미지 path 설정
+- getFolder, checkImageType 삭제
+
+
+◾ MainController
+- 로컬 저장소를 사용하지 않으므로 display 삭제
+- awayList1 test mapping 삭제
+- awayList 매핑 추가
+
+
+
+	■ Domain
+◾ TeamDTO
+- logoName 열 삭제
+
+
+◾ AttachFileDTO 삭제
+
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+
+	■ bulid.gradle
+◾ implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE' 추가
+
+
+
+	■ application.properties
+◾ S3 사용을 위한 properties 추가
+- cloud.aws.credentials.accessKey= 공개키
+- cloud.aws.credentials.secretKey= 암호키
+- cloud.aws.stack.auto=false
+- cloud.aws.s3.bucket=버킷이름
+- cloud.aws.region.static=지역
+- logging.level.com.amazonaws.util.EC2MetadataUtils="ERROR"
+
+◾ AWS EC2 & Mongodb 환경을 사용하는 properties 분류
+
+◾ 스프링 멀티 파트에 관한 설정 추가 (1기가까지)
+- spring.servlet.multipart.enabled=true
+- spring.servlet.multipart.max-file-size=1GB
+- spring.servlet.multipart.max-request-size=1GB
+
+
+	■ AWS EC2
+◾ S3와 마운트 설정
+
+◾ 버킷 정책 추가 및 엑세스 설정
+
+
+
+	■ AWS S3
+◾ IAM 생성, 키 연결
+
+
+
+	■ Social Login
+◾
+
+
+
+	■ MongoDB
+◾ team
+- logoName 열 삭제
+- logoPath default https://fsmanager.s3.ap-northeast-2.amazonaws.com/image/logo.png로 변경
