@@ -1,0 +1,81 @@
+	■ HTML
+◾field.html
+- heart.icons contextPath 추가
+- 리뷰 관련 유저 로그인 조건 추가
+
+
+◾모든 html
+- header section에 유저 포인트 추가
+
+
+◾board.html
+- title 변경
+- 아이콘 변경
+- 정적 리소스 contextPath 변경
+- header section 변경
+- login, loginServer, other_search_field.js 추가
+
+
+	■ JS
+◾map_near.js
+- 메인 매핑 수정
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ 모든 컨트롤러에 userId로 조회한 hadPoint를 model에 추가
+- mav.addObject("point", member.getHadPoint());
+
+
+
+	■ Domain
+◾ OpenWeather 생성
+- OpenWeatherAPI 2.5 의 값을 받아오는 객체
+
+
+◾ WeatherVO, WeatherDTO 생성
+- OpenWeather 에서 값을 가공하여 저장할 객체 WeatherVO
+- 각 구장마다 날씨 정보를 담을 WeatherDTO
+
+
+	■ Repository
+◾ WeatherRepository 생성
+- save 추가
+- findByid 추가
+
+
+	■ Service & Impl
+◾ WeatherService, WeatherServiceImpl 생성
+- save 구현
+- findByid 구현
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
