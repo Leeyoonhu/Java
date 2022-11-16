@@ -1,0 +1,177 @@
+	■ HTML
+◾ main.html
+- point 추가
+- community 추가
+
+◾ teamtables.html
+- point 추가
+- community 추가
+
+◾ field.html
+- point 추가
+- community 추가
+
+◾ reserve.html
+- point 추가
+- community 추가
+
+◾ reservation.html
+- point 추가
+- community 추가
+
+◾ teamInfo.html
+- point 추가
+- coummnity 추가
+
+◾ board.html
+- 기존 community에 수정 부분 추가
+- point 추가
+- community 추가
+
+◾ write.html 
+- 기존 write에 수정 부분 추가
+- point 추가
+- community 추가
+
+◾ register.html 
+- 배경 사진 변경
+
+◾ createTeam.html
+- point 추가
+- community 추가
+
+◾ error404.html
+- point 추가
+- community 추가
+
+◾ error500.html
+- point 추가
+- community 추가
+
+	■ JS
+◾datepicker2
+- 홈팀 구장 클릭 가능하게 cursor 포인터 변경
+
+◾teamModal.js 생성
+- 클릭시 클릭한 놈의 팀정보를 가져와서 모달로 띄워줌
+
+
+
+	■ CSS
+◾teamInfo.css 생성
+- 팀 정보 담고있는 모달창관련 css
+
+◾profile.css 생성
+- 팀 로고 동그라미로 나오게해주는 css
+
+
+
+	■ Configuration
+◾ WebServerCustomizer 삭제
+
+
+	■ Controller
+◾ MainController
+* getMain & postMain
+- point 추가
+
+* getReserve
+- point 추가
+
+* getTeamtables
+- point 추가
+
+* getReservation
+- point 추가
+
+* getCreateTeam
+- point 추가
+- TEST 코드 삭제
+
+
+◾ FieldController
+* getField
+- point 추가
+
+◾ TeamController
+* getTeamInfo
+- point 추가
+
+- postTeamInfo 추가
+
+◾ CommunityController
+- @Slf4j 어노테이션 추가
+
+* getBoard
+- point 추가
+
+* getWrite
+- point 추가
+
+◾ ErrorPageController
+- implements ErrorController 추가
+- VIEW_PATH 추가
+- 앞으로 모든 에러에 대한 핸들링은 이넘이 할것임
+
+* error404
+- point 추가
+
+* error500
+- point 추가
+
+
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾ Stack Trace setting 추가
+- server.error.include-exception=true
+- server.error.include-stacktrace=always
+
+
+	■ AWS EC2
+◾ 2022-11-16 07:37 시점 project 로 적용
+
+◾ S3 mount 를 위한 S3FS 설치
+
+◾ 지정한 ip외에 mongoDB 접근 해제 (인스턴스 규칙 변경)
+
+◾ 보안규칙에 EC2 외부 IP 추가
+
+◾ 데이터베이스 접속이 인증이 필요하도록 mongod config security 섹션을 수정
+
+◾ sudo vi /etc/fstab에 자동 마운트 설정
+
+
+	■ AWS S3
+◾ 엑세스 모든 권한 차단
+
+◾ EC2 와 마운트 시킴 
+
+◾ 버킷 정책에 권한 허용할 ip 추가
+
+pubObject의 S3 권한 허용 정책 추가
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 서버 탈취당해서 DB 증발함 ㅠㅠ
+
+◾ MongoDB Conf 설정 - 지정 Ip외에 접근 불가
