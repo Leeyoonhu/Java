@@ -1,0 +1,88 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾teamInfo.js 
+- 모달 생성 html 문 추가
+
+
+	■ CSS
+◾teamInfo.css
+- 모달 css 추가
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ 앱 테스트용 컨트롤러 생성 AppTestController
+
+
+	■ Domain
+◾ 앱 테스트용 클래스 생성 TestApp
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾ 
+
+
+	■ bulid.gradle
+◾ Android 의존성 주입
+- implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+- implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+- implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+- implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ IAM 키가 정의된 S3Configuration
+
+◾ IAM 역할 생성된 Role 변경 
+
+
+	■ AWS S3
+◾ IAM 2가지 key에 대한 버킷 정책 생성
+- deleteObject
+- putObject
+- getObject
+
+◾ IAM Role 생성 - EC2 -> AmazonS3FullAccess
+- name = pre-signed-role
+- def = default
+
+◾ 미리 서명된 URL(pre-signed url)에 객체 공유 설정하려고 했는데 안뜸슈발
+* 강사님 말씀) 그거하다가 시간 다가겠다 걍 액세스 풀고, back-up을 하는 방향으로 진행
+
+
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 오전 6:42 weather 정보 추가
+
+
+	■ Andriod
+◾ MainActivity
+- 버튼 4개 띄우고, 클릭 이벤트로 서버와 통신할 수 있도록 retrofit2 설정
+
+◾ MyAPI
+- GET, POST, PATCH, DELETE 매핑 설정
+
+◾ TestApp
+- SpringBoot VO와 동일한 구성
+
+◾ activity_main
+- 메인화면 구성 변경
