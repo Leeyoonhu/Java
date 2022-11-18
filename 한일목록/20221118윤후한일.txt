@@ -1,0 +1,101 @@
+	■ HTML
+◾ field.html
+-  날씨관련 코드 수정
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾ fieldreviewmodal.css
+- 어제 프로젝트에 날씨관련 css추가
+
+
+	■ SCSS
+◾ weather.scss 추가
+
+
+
+	■ Configuration
+◾ WebConfiguration
+- sass >> scss 핸들링 변경
+
+◾ ErrorConfiguration 재삭제
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod <TEST>
+◾ PutExtraActivity 생성
+- indent를 putextra해서 띄울 view 구성
+
+◾ AndroidManifest.xml
+- 사용할 PutExtraActivity에 관한 정보 작성
+
+- GPS 사용을 위해 Access 허용
+- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+- 카카오 로그인 API 사용을 위한 activity 설정 추가 (네이티브 앱키 포함)
+
+◾ MyAPI
+- post_posts 
+- @body ==> json // @Field ==> parameter 로 보내기에 @Field 로 변경
+- @FormUrlEncoded 어노테이션 추가
+
+◾ MainActivity
+- post 버튼 클릭 시, 보내는 객체를 객체 필드들로 변경
+- Response 성공 시, 받아오는 res.body() 의 값들을 intent에 추가 코드(putExtra) 작성
+- intent에 저장된 값 사용할 activity start
+- 앱 실행시 client에게 위치 권한 물어보게 만들기 (startLocationService() 작성)
+
+* startLocationService()
+- ADD Permission ~~ ==> AndroidManifest.xml에 <user-permission... > 코드 추가 필요함
+
+- 위치 요청을 하기위한 GPSListener 추가
+
+◾ bulid.gradle
+- implementation 'com.kakao.sdk:v2-user:2.11.2' 추가
+
+
+
+	■ Andriod <fsmanager>
