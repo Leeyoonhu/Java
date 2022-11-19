@@ -1,0 +1,72 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ test용 패키지 제거
+- 기존 패키지 수정해서 본 작품으로 변경
+- 세팅 값 수정
+
+◾ loggging 시 보여줄 객체들 생성 (이름 바꿔야함)
+
+◾ LoginActivity 생성
+- 로고 추가
+
+◾ activity_login.xml 생성
+
+◾ AndroidManifest 
+- login Activity 활성화
+
+
