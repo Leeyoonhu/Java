@@ -1,0 +1,65 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 날씨 DB 갱신
+
+
+	■ Andriod
+◾매인 구성 투표 종료
+- 원티드, 포잉, 메가박스
+
+◾메인 구성
+- 위치권한
+- 카메라권한
+- 로딩 화면
+- 메인
