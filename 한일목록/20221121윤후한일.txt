@@ -1,0 +1,122 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppTestController
+- 구장 FieldOne 함수 추가
+
+◾ WeatherController
+- 날씨 아이콘 변경
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾ JSON 을 XML로 변경하던 의존성 제거
+- implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.4'
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 서버 업데이트 로그
+- 09:31 war update
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ lodding 페이지 관련 파일들 Splash로 명칭 변경
+
+◾ AndroidManifest.xml
+- 타이틀 바 제거 테마 추가
+- 카카오 로그인 API 사용을 위한 key 등록
+
+◾ 시작 사이클 변경
+- SplashActivity -> Main 
+- Splash 에서 2가지 권한 여부 파악
+
+◾ SplashActivity
+- 2초 후 로그인으로 핸들링 추가
+
+◾ MainActivity
+- 기존 테스트 용 코드들 test에 옮김
+- DB조회해서 구장 정보 가져옴
+
+
+◾ LoginActivity
+- 카카오 sdk 로그인 연동 완료
+
+
+◾ KakaoApplication
+- 카카오 로그인에 필요한 Application
+
+
+
+◾ activity_main.xml
+- 기존 테스트 디자인 activtiy_test.xml로 변경
+- 새로운 디자인 파일 생성 (Constraint layout)
+
+
+◾ build.gradle
+- 이미지 URL 로 띄우기 위해 glide 라이브러리 D.I
+- implementation 'com.github.bumptech.glide:glide:4.9.0'
+- annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+- 카카오 소셜 SDK 로그인을 위한 의존성 주입 implementation 'com.kakao.sdk:v2-user:2.10.0'
+
+
+◾ settings.gradle
+- 카카오 소셜 SDK 로그인을 위한 세팅 추가 maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
+
+
+◾ gradle.properties
+- 환경 중복 class 오류 무시하기위한 코드 추가
+- android.enableJetifier=true
+
+◾ FieldDTO 생성
+
+
+◾ 원할한 Retrofit2 사용을 위해 기존 방식 버리고, 새로운 Retrofit_client 객체 생성
+
+
+◾ 폰트 추가
+
+
+◾ 질문) 안드로이드는 세션이없는데 로그인 정보 어떻게 기억하나요?
+강사님 왈) 
+- 안드로이드에서 HttpRequest 에서 구현해야되는데, 쓰레드로해야된다 (동기로 할경우 UI 가 멈추기때문) 
