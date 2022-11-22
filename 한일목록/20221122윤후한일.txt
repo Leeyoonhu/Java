@@ -1,0 +1,87 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- checkMember 매핑 추가
+- fieldinfo 매핑 추가
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 2022-11-22 06:34 서버 restart
+- war update
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 2022-11-22 06:34 weather db 갱신
+
+
+	■ Andriod
+◾ MainActivity
+- 구장 정보 받는 부분 수정
+- 구장 보여주는 코드 수정 (5개 조회)
+
+◾ MemberAPI 생성
+
+◾ MemberDTO 생성 
+
+◾ Retrofit_client 
+- member 확인 부분 추가
+
+◾ build.gradle 
+- implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6' - 네이버 로그인 추가
+
+◾ strings.xml
+- 네이버 클라이언트 아이디, 시크릿 키 기입
+
+◾ activity_main.xml
+- 네스티드 스크롤 뷰 적용
+- 뷰페이지2 적용
+- 헤더, 푸터 완료
+
+◾ LoginCheck
+- 로그인 정보 담는 static 객체
+
+◾ Retrofit_client
+- API 마다 연결된 함수 작성
