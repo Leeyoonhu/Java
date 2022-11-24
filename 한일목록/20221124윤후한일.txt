@@ -1,0 +1,96 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- fieldone 매핑 반환타입 AppFieldDTO로 변경
+- 날씨/ 예약리스트 / 구장정보를 담고있음
+
+- postTime 추가
+- 해당 날짜의 시간 테이블 정보를 담고있음
+
+	■ Domain
+◾TestApp 삭제
+
+
+◾AppFieldDTO 생성
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ activity_field
+- 시간 scrollview 버튼 클릭시 눌림 효과활성
+
+◾ FieldDTO
+- reviewsCount 추가
+
+◾ AppFieldDTO, WeatherVO, WeatherDTO  추가
+
+
+◾ MainActivity
+- 구장 이름 클릭시, 해당 이름으로 조회한 정보를 Check에 저장
+
+
+◾ Glide 
+- 의존성 업데이트
+
+
+◾ build.gradle
+- implementation ("com.github.bumptech.glide:glide:4.11.0") {
+        exclude group: "com.android.support"
+   } 추가
+- annotationProcessor 'androidx.annotation:annotation:1.5.0' 추가
+- annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0' 추가
+- implementation ("com.github.bumptech.glide:glide:4.11.0@aar") {
+        transitive = true
+   } 추가
+
+
+◾ FieldActivity
+- 구장 정보에 따라 오늘 예약상태 보여줌
+- 선택된 구장에 따라 색상 넣어줌
+
