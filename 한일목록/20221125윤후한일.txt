@@ -1,0 +1,88 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾ LoggingRunner
+- logback 적용
+- logback.xml 작성
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ FieldActivity
+- 예약 타입 버튼 보이기/안보이기 조건 추가
+- 예약 타입 클릭 시, 예약 버튼에 대관 비용 보임
+- 매칭 대기중일시 예약 타입 부분 대여만 보임
+- 날짜를 변경할시 모든 조건 초기화
+- 예약 타입에 따른 버튼 예약 버튼 변경
+- 예약 버튼 클릭 시 멤버 포인트와 비교
+- 예약 버튼 클릭 시 현재 예약대상의 팀 존재여부 확인
+
+
+◾ Check
+- 예약 타입 판별 type 추가
+- 예약 상태 파악 state 추가
+- 예약 날짜 파악 date 추가
+- 예약 시간 파악 time 추가
+
+
+◾ ReserveDTO 추가
+
+
+◾ ReserveListDTO 추가
+
+
+◾ ReserveAPI 추가
+
+
+◾ Retrofit_client
+- ReserveAPI 호출 구문 추가
+
