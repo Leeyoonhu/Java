@@ -1,0 +1,104 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾ datepicker2 
+- date cookie 저장할 때 path 경로 수정
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+checkReserve 추가
+postHomeTeam 추가
+
+
+
+	■ Domain
+◾ TeamDTO 생성
+
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾ ReservationServiceImpl 
+- 예약 정보 확인 로그문구 제거
+
+
+	■ bulid.gradle
+◾ 
+jar {
+	enabled = false
+} 추가
+
+implementation 'org.springframework.boot:spring-boot-maven-plugin:2.7.5' 추가
+
+
+	■ application.properties
+◾ spring.profiles.active=prod 추가
+
+◾ logback-dev.properties 추가
+
+◾ logback-prod.properties 추가
+
+◾ logback-spring.xml 추가
+
+
+	■ AWS EC2
+◾ nohup install 
+
+◾ logback 설정
+- 서버에 일어나는 로그 레벨에 따라 로그 저장
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ FieldAPI 추가 
+- post_check 추가 (매칭 대기중 일때 어웨이 , 홈 & 어웨이 여부 파악)
+- 홈 & 어웨이로 변경 요청시 기존 예약 변경 및 그에 따른 안내
+- 어웨이로 요청시 reserveList db에 들어가도록 설정
+
+◾ TeamAPI 추가
+- post_homeTeam 추가 (홈팀 정보 조회)
+
+◾ WeatherAPI 추가
+- post_weather 추가 (구장 시간별로 날씨 조회)
+- 5일이 지난 날짜정보에서는 날씨 정보를 나타내지않음
+
+◾ Retrofit_client
+- teamService 추가 (TeamAPI)
+- weatherService 추가 (WeatherAPI)
+
+◾ AndroidManifest.xml
+- android:usesCleartextTraffic="true"
+- com.kakao.sdk.AppKey native appkey 추가
+
+◾ KakaoMap
+- libs 에 libDaumMapAndroid.jar 추가
+- jniLibs에 arm64-v8a, armeabi, armeabi-v7a 추가
+
+
+◾ res
+- balloon_layout.xml 추가 (커스텀 말풍선)
