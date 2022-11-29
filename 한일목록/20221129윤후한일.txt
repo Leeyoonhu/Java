@@ -1,0 +1,93 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_save1 추가
+- 홈 & 어웨이로 변경할 시 reserve, reservation save 시킴
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 오전 6:19 28일자 프로젝트 적용
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ FieldActivity
+- 구장 정보 레이어 구현
+- 기존에 callback 되지않던 부분 수정
+- 홈 & 어웨이로 변경하기 눌렀을 경우 구현 > post_save1
+
+
+◾ TeamActivity
+- tablayer 적용
+- footer 변경되게 조건들 추가
+
+
+◾ FieldDTO
+- Callback 되지않던 열 수정 
+
+
+◾ activity_main.xml
+- footer 크기만큼 더미 레이어 추가
+
+
+◾ teamfrag1, 2, 3.xml 추가 
+
+
+◾ TeamFrag1, 2, 3 추가
+
+
+◾ drawable
+- customorange_rectangle_radius.xml 추가
+- photo_frame.xml 추가
+- tab_background.xml 추가
+
+
+◾ AndroidManifest.xml
+- 각 activity 들에 대한 설정 변경
+
