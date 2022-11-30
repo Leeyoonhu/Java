@@ -1,0 +1,133 @@
+11 월 마지막이당
+
+	■ HTML
+◾ error404, 500.html 삭제
+
+
+	■ JS
+◾ reserve.js
+- 예약 완료 시 필드구장으로 가게 변경
+
+
+	■ CSS
+◾
+
+
+
+	■ Configuration
+◾ WebServerConfiguration 삭제
+
+
+
+	■ Controller
+◾ AppController
+- get_mannerList 추가
+- get_matchList 추가 
+- get_ageList 추가
+
+
+	■ Domain
+◾ AppReservationDTO 추가
+
+
+
+	■ Repository
+◾
+
+
+
+	■ Service & Impl
+◾
+
+
+
+	■ bulid.gradle
+◾
+
+
+
+	■ application.properties
+◾
+
+
+
+	■ AWS EC2
+◾ 2022-11-29 06:09 갱신된 프로젝트로 서버 배포
+
+
+
+	■ AWS S3
+◾
+
+
+
+	■ Social Login
+◾ 
+
+
+
+	■ MongoDB
+◾ Weather 정보 갱신
+
+
+
+	■ Andriod
+◾ activity_field.xml
+- homeTeamLogo 사이즈 수정
+- 주소 나타내는 폰트 위치, 스타일, 색상 변경
+- 각종 헤더태그에 아이콘 추가
+
+
+◾ activity_main.xml
+- 헤더태그에 아이콘 추가
+
+
+◾ FieldActivity
+- 달력 변경시 선택된 calendar 의 day가 10미만일 경우, 문자열 0을 붙여주도록 처리
+
+
+◾ activity_login.xml
+- 버튼 상호작용 변경
+- 버튼 위치 변경
+
+
+◾ SplashActivity
+- 위치 권한 Permission denied or granted 에 따른 이후 동작 설정
+- loding 추가
+
+
+◾ TeamAPI
+- get_mannerList 추가
+- get_matchList 추가
+- get_ageList 추가
+
+
+◾ AndroidManifest.xml
+- ReservationActivity 추가
+
+
+◾ ReservationActivity 추가
+
+
+◾ reservationBtn 활성화
+
+
+◾ reservation.xml 추가
+- listview로 추가하기 위한 xml
+
+
+◾ ReservationAPI 추가
+
+
+◾ AppReservationDTO 추가
+- listview 넣을 인자값을 가진 객체
+
+
+◾ ReservationVO 추가
+
+
+◾ Retrofit_client
+- reservationService 추가
+
+◾ ReservationAdapter 추가
+- list view 에 컨텐츠 크기만큼 view를 convert 해줄 adpater 선언
