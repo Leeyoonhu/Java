@@ -1,0 +1,91 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ WeatherController
+- 가져오는 범위 수정
+
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:14 새 프로젝트 배포 
+
+
+	■ AWS S3
+◾ 
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:15 날씨 데이터 갱신
+
+
+	■ Andriod
+◾ ReservationAdapter
+- 각 뷰마다 클릭이벤트 제거
+
+
+◾ ReservationActivity
+- listview.setOnItemClickListene를 통해 각 객체 클릭시 index해당값 불러오도록 수정
+- index에 해당하는 값으로 retrofit callback 
+
+
+◾ AndroidManifest.xml
+- 모든 activity에 singletask flag 부여
+- splash, login에 noHistory= true 부여
+
+
+◾ ReservationAPI
+- post_selectAway 추가
+
+
+◾ setListView 생성
+- listView 크기에 맞게 auto height 설정 메서드 추가
+
+
+◾ ReserveListActivity
+- 
+
+
+◾ FieldActivity
+- 애니메이션 추가
+
+
+◾ FieldActivity
+- 애니메이션 추가

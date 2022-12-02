@@ -1,0 +1,95 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_reservation 변경
+- 이제 regDate 우선 정렬로 가져옴
+- postReserveList 추가
+- 도전한 상대팀 정보를 가져옴
+
+	■ Domain
+◾ ReserveListDTO
+- private String logoPath; 추가
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:21 최신 프로젝트 배포
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ ReservationActivity
+- listView 에 추가한 item 크기만큼 height이 늘어날 수 있도록 조정
+
+
+◾ build.gradle
+- implementation 'de.hdodenhof:circleimageview:3.1.0' 추가
+
+
+◾ activity_team.xml
+- 기존 ImageView > CircleView 로 변경
+
+
+◾ TeamActivity
+- glide 함수 사용하던부분 변경
+
+
+◾ FieldActivity
+- 날짜 관련 10일 이내일경우 일수에 "0" 추가
+
+
+◾ translate_left, right.xml 추가
+- 애니메이션 효과를 위한 xml 설정
+
+
+◾ custom_ripple_effect.xml 추가
+- 클릭 시 물결효과를 주기위한 ripple효과 추가
+
+
+◾ ReserveListDTO 추가
+- 홈팀의 입장에서 상대팀 정보 확인용
+
+
+◾ ReserveListAdapter 추가
+- 예약 관련 눌렀을 시 상대팀 정보를 띄울 것임
