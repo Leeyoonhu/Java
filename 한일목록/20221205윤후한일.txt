@@ -1,0 +1,141 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- ZonedDateTime 초까지 적용
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:20 신버전 재배포 
+
+
+◾ 3:49 서버죽어서 재부팅
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 날씨 정보 갱신
+
+
+
+	■ Andriod
+◾ ReservationActivity
+- 홈, 팀버튼 클릭시 애니메이션 삭제
+- 예약상태에 따른 reserveList 보여주기 조건 추가
+- 예약상태에 따른 토스트메세지 추가
+- 상대팀 선택 시 ReservationActivity 갱신되도록 변경
+
+
+◾ ReserveListActivity
+- backpress 애니메이션 이벤트 변경
+- 상대팀 선택 시 finish가아닌 이전 액티비티로 돌아가게끔 변경
+- 상대팀 선택 시 ReservationActivity 갱신되도록 변경
+
+
+◾ ReservationAdapter
+- 매칭 대기중일때 info 아이콘 >> 매칭 완료이면서 홈 & 어웨이가 아닐때로 변경
+
+
+◾ activity_field.xml
+- 이용료, 구장크기 위치 변경
+
+
+◾ AndroidManifest.xml
+- 앱 아이콘 변경
+
+
+◾ strings.xml
+- 앱 이름 변경
+
+
+◾ MainActivity
+- 구장 이미지 클릭시에도 진입 가능하도록 변경
+- communitybtn 클릭 시 이동가능하도록 연결
+
+
+◾ build.gradle
+implementation 'me.saket:inboxrecyclerview:1.0.0-rc1' 추가 (슬라이드 리사이클 뷰)
+
+
+◾ CommunityActivity 추가
+
+
+◾ AndroidManifest.xml
+- CommunityActivity 추가
+
+
+◾ Header Section
+- 전반적인 크기 줄임
+
+
+◾ RecyclerViewerAdapter 추가
+- 아코디언 형식의 리사이클러뷰 추가를 위한 어댑터
+
+
+◾ ViewHolderTeam 추가
+- 아코디언 형식의 리사이클러뷰 추가를 위한 뷰 홀더
+
+
+◾ OnViewHolderItemClickListener 추가
+- 뷰홀더 클릭 리스너 인터페이스
+
+
+◾ item_team.xml
+- 뷰 홀더 xml
+- 2개의 레이아웃으로 position에 따른 애니메이션 추가
+
+
+◾ strings.xml
+- 프로그래스바 속도 지정
+
+
+◾ ProgressDialog
+- 커스텀 프로그래스 바 설정
+
+
+◾ dialog_progress.xml
+- 커스텀 프로그래스바 xml
+
+
+
