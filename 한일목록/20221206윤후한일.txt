@@ -1,0 +1,107 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- TEST code 삭제
+- 하버 사인 공식 추가
+- fieldinfo 요구 파라미터 변경 및 두 경위도 비교하여 리스트 반환
+
+- getPopular 추가
+- getComment 추가
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ dialog_progress.xml 생성
+- 전반적인 구성
+
+
+◾ ProgressDialog 생성
+- 이제 task 처리가아닌 먼저보여주고, 비동기가 끝나면 종료하는 식으로 진행할예정
+- 모듈화를 통해 로딩이 필요한 부분들에 progressdialog사용
+
+
+◾ progress_bg.xml 생성
+- 프로그래스바 백그라운드 
+
+
+◾ progress_image.xml 생성
+- 백그라운드에 사용할 프로그래스 이미지
+
+
+◾ MainActivity
+- 프로그래스바 로딩 이미지 적용
+- 현재 위치에서의 경위도 비교해서 가까운 순서로 5개 정렬
+
+
+◾ TeamActivity
+- tap layout클릭시 callback이 끝날때까지 프로그래스바 로딩 추가
+
+
+◾ footerSection 
+- 각 푸터 항목 변경할때마다 프로그래스바 사용
+
+
+◾ LoginActivity
+- login 진행 시 프로그래스바 추가
+
+
+◾ FieldActivity
+- 날짜, 시간 선택 시 로딩 구현
+
+
+◾ Check
+- Splash에서 시 경, 위도 저장
+
+
+◾ FieldAPI
+- get_popular 생성
+
