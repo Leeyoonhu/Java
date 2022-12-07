@@ -1,0 +1,101 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ MessagingStompWebSocketApplication 삭제
+
+
+◾ AppController
+- get_fieldName 추가
+- post_searchField 추가
+
+
+	■ Domain
+◾ LocationFieldDTO 추가
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:14 합친 프로젝트 배포
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ Domain에 LocationFieldDTO 추가
+- 메인에 현위치 선택시 거리 나타내줄 예정임
+
+
+◾ MainLocAdapter 추가
+
+
+◾ MainAdapter 추가
+- 구장을 listView로 나타낼 예정
+
+
+◾ main.xml 추가
+
+
+◾ FieldAPI
+- get_locfieldinfo 추가
+- post_searchField 추가
+
+
+◾ MainActivity 
+- 동적으로 추가할당 가능하게 리스트 변경
+
+
+◾ FieldAPI
+- get_fieldName 추가
+
+
+◾ AndroidManifest.xml
+- SearchFieldActivity 추가
+- SearchMapActivity 추가
+
+
+◾ SearchMapActivity 추가
+
+
+◾ activity_search_map.xml 추가
+
+
+◾ SearchFieldDTO 생성
