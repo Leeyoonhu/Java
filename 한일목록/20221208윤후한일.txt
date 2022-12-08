@@ -1,0 +1,88 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:16 war 재배포
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:16 날씨 데이터 갱신
+
+
+	■ Andriod
+◾ activity_search_field.xml 
+- 맵도 포개서 띄우고 한페이지에서 모든걸 처리하도록 설정
+- 리사이클러뷰 제약 조건 변경
+
+
+◾ activity_search_map.xml 삭제
+
+
+◾ SearchFieldAdapter
+- 각 아이템뷰 클릭시 이벤트 변경
+
+
+◾ SearchFieldActivity 
+- 뷰홀더 아이템 클릭이벤트를 액티비티에서 처리할 수 있도록 변경
+- 지도 검은화면 나오는 현상 fix
+- 키보드 업 다운 이벤트 count 체크로 판단
+
+
+◾ build.gradle
+- 지도 검은화면 제거용 splits 추가
+
+
+◾ SearchMapActivity 삭제
+
+
+◾ FieldActivity
+- finish, backbtn 클릭 시 지도 제거
+
+
+◾ activity_field.xml
+- 주소지 fontsize 조정
