@@ -1,0 +1,89 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_reg_search 추가
+- 포함된 문자열을 거리순으로 재정렬할거임
+
+
+	■ Domain
+◾ Scheduler
+- 인덱스 범위 잘못되있던 부분수정
+
+
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:21 합친 war 재배포
+- 6:54 오류 소스 코드 수정 후 프로젝트 재배포
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:21 날씨 구장정보 갱신
+
+
+	■ Andriod
+◾ AndroidManifest.xml
+- 모든 액티비티 가로모드 전환 불가로 변경
+- android:screenOrientation="portrait
+- putExtra.activity 삭제
+
+
+
+◾ SearchFieldActivity
+- searchET.setOnEditorActionListener 추가
+- filterList에 검색 결과물 추가
+- 검색 결과 값이 없을 경우 예외 처리
+- CustomCalloutBalloonAdapter 추가
+- MarkerEventListener 추가
+- 지도 줌 컨트롤 가능한 컨트롤러 추가
+
+
+
+◾ SearchFieldAdapter
+- 검색 결과 값이 없을 경우 사이즈 0 반환하도록 변경
+
+
+
+◾ activity_search_field.xml
+- 줌 컨트롤러 생성
+
