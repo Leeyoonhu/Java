@@ -1,0 +1,109 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾6:16 war 재배포
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:16 날씨 db 갱신
+
+
+	■ Andriod
+◾ ShowDis 객체 생성
+- 거리계산 귀찮게 할 필요없이 double 값만 넣으면 알아서 처리
+
+
+◾ balloon_layout.xml
+- 레이아웃 크기 수정
+
+
+◾ SearchFieldActivity
+- 현 위치 보여주도록 설정
+- 구장 검색 최초 시에 이전에 검색했던 내용들 나오도록 처리
+- 구장 검색 재클릭 시 검색했던 내용 추가된 부분으로 나오도록 처리
+- 이전에 검색한 적 있는 내용을 재 검색시 새로운 검색날짜로 갱신되게 변경
+- 이전에 검색한 내역 클릭시 해당 내역으로 검색한 내용 보여주도록 설정
+- 커스텀 벌룬 터치 시 구장 정보로 연동
+
+
+◾ SpFielditem
+- SharedPreference 사용할 객체 선언
+
+
+◾ SpSearchFieldAdapter
+- SpFielditem을 recyclerview에 넣어줄 어댑터 설정
+
+
+◾ item_sp_field.xml
+- 검색어 목록을 보여줄 xml 설정
+
+
+◾ CustomSharedPreferences 생성
+- SharedPreferences 로 객체를 저장, 불러오기 쉽도록 클래스 생성
+
+
+◾ build.gradle
+- 최신 빌드 sdk 33 으로 버전업데이트
+
+
+◾ activity_field.xml
+- 구장 정보 어느 해상도에도 동일하게 나오도록 변경
+
+
+
+◾ activity_community.xml
+- 배너 이미지 설정
+
+
+◾ CommunityVO 추가
+
+
+◾ CommunityDTO 추가
+
+
