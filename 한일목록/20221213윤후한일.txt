@@ -1,0 +1,136 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- get_community_board 추가
+- get_community_board_one 추가
+
+
+	■ Domain
+◾ AppCommunityDTO 추가
+- 게시글 클릭 시 필요한 객체
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 5:55 날씨 정보 갱신
+- DB 정보 JSON 저장
+
+
+	■ Andriod
+◾ CommunityAPI 생성
+- get_memberInfo 추가
+- 전체글 조회부터 만들예정
+- get_community_board_one 추가
+- 부분 글 조회
+- 부분 글 조회 시 필요한 객체 AppCommunityDTO 추가
+
+
+◾ BoardFrag1, 2 추가
+
+
+◾ item_community_board.xml 추가
+- recycler view 에 넣을 item view
+
+
+◾ rectangle_comment_radius.xml 추가
+
+
+◾ Retrofit_client
+- CommunityAPI 사용하는 communityService 선언
+
+
+◾ CompletedFragment 추가
+- recyclerview로 이루어진 fragment
+
+
+◾ ViewPager2Adapter 추가
+- Tab이 변경될때마다 fragment 구성 변경
+
+
+◾ CommunityDTO 
+- 객체 ArrayList로 bundle 넘겨주기위해 implements Parcelable
+
+
+◾ bulid.gradle 
+- ViewPager2 추가
+- implementation "androidx.viewpager2:viewpager2:1.0.0" 
+- Naver SDK Login 추가 
+- implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
+- JSONParser 사용을 위한 의존성 추가
+- implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+
+
+
+◾ CommunityActivity
+- footer 기능 활성화
+
+
+◾ TeamActivity
+- footer 기능 추가
+
+
+◾ ReservationActivity
+- footer 기능 추가
+
+
+◾ BoardAdapter
+- item 클릭 이벤트 추가
+- activity에서 자세히 구현할 것임
+
+
+◾ Check
+- board_idx 추가
+
+
+◾ BoardActivity 추가
+- 게시글 클릭 시 보여줄 화면
+- activity_board.xml 추가
+
+
+◾ AndroidManifest.xml
+- BoardActivity 옵션 추가
+- 가로모드만 가능
+
