@@ -1,0 +1,169 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾ register.js
+- 회원가입 시에도 무조건 소셜로그인 물어보게 수정
+- platform cookie path 추가
+
+
+◾ registerServer.js
+- 회원가입 시에도 무조건 소셜로그인 물어보게 수정
+- platform cookie path 추가
+
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- checkMember >> get_memberInfo 변경
+- 메서드 매개변수에 platform 추가
+- post_write 추가
+
+
+◾ MainController
+- LoginAccess 에서 회원조회할때 플랫폼 확인
+- LoginAccess 에서 로그인 시 로그데이터로 변경
+- 회원 정보 조회로직 변경
+- getRegister 에서 네이버 로그인 시 자동로그인 해제
+- 회원 가입시 기본 100만 포인트 지급
+
+
+	■ Domain
+◾
+
+
+
+	■ Repository
+◾ MemberRepository
+- findByidAndPlatform 추가
+
+
+
+	■ Service & Impl
+◾ MemberService & Impl
+- findByidAndPlatform 추가
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:10 날씨정보 갱신
+
+
+
+	■ Andriod
+◾ AndroidManifest.xml
+- NaverLogin 개발을 위해 추가 Activity 추가
+- android:name="com.nhn.android.naverlogin.ui.OAuthCustomTabActivity"
+- ** 매니피스트 오류 나던 부분 참고 URL
+- https://developer.android.com/guide/topics/manifest/activity-element#exported 
+- RegisterActivity 추가
+- WriteActivity 추가
+
+
+◾ build.gradle
+- 오류 나던 부분 확인하고 의존성 재주입
+- implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
+- 구글 로그인 의존성 주입
+- implementation 'com.google.android.gms:play-services-auth:20.4.0'
+
+
+◾ LoginActivity
+- 네아로 SDK 네이버 로그인 구현
+- 네이버 로그인 버튼 클릭시 OAuthLogin의 인스턴스에 init 후 OAuthLoginHandler로 핸들링
+- 지정된 경로에 유저정보 요청 성공 시, email 부분으로 기존 DB 조회
+- TEST 시 카카오, 네이버 메일 같을경우 플랫폼으로 구분해야함
+- 구글 로그인 구현
+- 구글 로그인 클릭시 SHA-1 key, GoogleSignInClient, GoogleSignInOptions 를 통한 이메일 정보 조회
+- 로그인 클릭 시 이전 로그인 기록있는지 파악 후 자동로그인
+- 회원가입 클릭 버튼 구현
+
+
+◾ activity_login.xml
+- 네이버 로그인 클릭 이벤트 추가
+- 구글 로그인 클릭 이벤트 추가
+- 회원가입 클릭 이벤트 추가
+
+
+
+◾ console.cloud.google.com 
+- 안드로이드용 OAuth 2.0 Client 추가
+- 프로젝트 서명 인증서 SHA-1 Key Value 추가
+
+
+◾ strings.xml
+- 클라이언트 아이디 추가
+
+
+◾ MemberAPI
+- get_memberInfo 메서드에 플랫폼 매개변수 추가
+
+
+◾ CommunityActivity
+- tab menu 위치, 폰트 수정
+- 글쓰기 아이콘 activity 연결
+
+
+◾ footer side
+- 예약정보가 없는 사용자가 예약클릭시 정보없음을 알려줌
+- touch listener 등록으로 recycler view와 겹칠때 터치 이벤트 우선 부여
+
+
+
+◾ activity_register.xml 생성
+
+
+
+◾ RegisterActivity 생성
+
+
+
+◾ activity_write.xml 생성
+
+
+
+◾ WriteActivity 생성
+- 작성한 내용에 따라 뒤로갈때 이벤트 추가
+- content 관련 layout 클릭시 requestFocus 추가
+- 구장 선택 누를 시 구장 정보 보이도록 recycler view 구성
+- 구장 선택 누를 시 슬라이더 이벤트 추가
+- 뒤로가기나 구장 선택했을 경우, 슬라이더 닫히는 이벤트 추가
+
+
+◾ item_write.xml 추가
+
+
+
+◾ WriteAdapter 추가
+
+
+
+◾ ReservationAPI
+- post_write 추가
