@@ -1,0 +1,125 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_do_write추가
+- post_comment 추가
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:07 날씨 구장 정보 갱신
+
+
+	■ Andriod
+◾ activity_write.xml
+- 홈으로 예약한 구장리스트 height percent 값으로 나오도록 부여
+- 백그라운드 drawable 수정
+
+
+◾ WriteActivity
+- visiable 컨트롤 대상을 recycler view에서 scrolle view 로 변경
+
+
+
+◾ SearchFieldActivity
+- 애니메이션 추가
+- 구장 검색 클릭 시, fade in, out
+
+
+◾ CommunityAPI
+- post_do_write추가
+- post_comment 추가
+
+
+◾ activity_board_test.xml 생성
+- activity_board test용임
+
+
+◾ Check
+- board_tab 추가
+
+
+◾ CommunityActivity
+- tabLayout 의 tab속성 선택 시마다 이벤트 추가
+
+
+
+◾ BoardFrag1
+- ViewPager2 에의해 최상단 뷰로 올라올 때 이벤트 추가
+
+
+
+◾ BoardFrag2
+- ViewPager2 에의해 최상단 뷰로 올라올 때 이벤트 추가
+
+
+
+◾ item_comment.xml 생성
+- 댓글 아이템 뷰
+
+
+◾ CommentAdapter 생성
+- 리사이클러 뷰에 댓글 아이템 추가
+
+
+◾ values
+- 구장 이름 입력시 추천해주기 위해 구장 DB의 구장명, 장소 xml 화
+- 구장 검색 클릭시 최초에는 최근검색어 나옴
+- 입력시에는 입력한 텍스트 토대로 구장 이름 추천
+- 검색 시에는 가까운 구장 순서로 정렬되어 출력
+
+
+◾ FilterAdapter 생성
+- 검색에서 단어 입력시마다 어댑터를 통해 구장 명 추천
+
+
+
+◾ item_field
+- 전반적인 디자인 변경
+- 내용물에 따라 가변적으로 늘어날수 있도록 변경

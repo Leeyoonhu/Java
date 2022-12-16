@@ -1,0 +1,133 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_reg_search 로직 변경
+- saveReserve
+- 홈 구장에 어웨이 신청시, 같은 팀이면 홈 & 어웨이로 되도록 변경
+- post_check_board 추가
+- 게시글에서 예약 누를 시, 매칭 대기중인 글인지 파악하기 위한 메서드
+- post_board_reserve 추가
+- 매칭 대기중일때 해당 예약 대상자가 나인지 파악 && 해당 예약 팀이 내팀인지 파악 후 진행
+- post_board_change_reserve 추가
+- 예약자가 홈 & 어웨이로 변경신청했을경우
+
+
+
+◾ FieldContorller
+- searchFields 로직 변경
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 5:56 서버 war 재배포
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 5:56 날씨 정보 갱신
+
+
+	■ Andriod
+◾ activity_board.xml
+- 팀 정보 보기 클릭시 나올 카드뷰 생성
+
+
+◾ BoardActivity
+- 팀 정보 보기 클릭시 나올 팀 정보 구성
+- 예약 구장 정보보기하면 홈신청된 구장정보 간략히 나옴
+- 선택지를 주고 수락시 예약 진행가능하도록 진행
+
+
+◾ ReservationAPI
+- post_check_board 추가
+- post_board_reserve 추가
+- post_board_change_reserve 추가
+
+
+◾ 앱으로의 푸시 알람 >>>
+- FCM(firebase 를 사용하여 구현할 예정)
+- firebase 서버에 앱 단말기 아이디 
+- firebase 패키지에 SHA-1 추가
+
+
+◾ google-services.json
+- app 밑에 google json 추가
+
+
+◾ build.gradle:module
+- firebase 사용을 위한 D.I주입 
+- implementation 'com.google.gms:google-services:4.3.14' 추가
+- implementation platform('com.google.firebase:firebase-bom:31.1.1')
+- implementation 'com.google.firebase:firebase-analytics-ktx'
+- implementation 'com.google.firebase:firebase-messaging-ktx'
+- id 'com.google.gms.google-services'
+
+
+- firebase에 메세지 전송을 위한 volley D.I 주입
+
+
+◾ build.gradle:Project
+- firebase 사용을 위한 플러그인 추가
+- id 'com.google.gms.google-services' version '4.3.14'
+
+
+◾ 프로젝트명 변경 test2 >>> futsal 
+
+
+◾ FutsalMessagingService 추가
+
+
+◾ AndroidManifest.xml
+- FutsalMessagingService 추가
+- firebase 서버로부터 메세지를 받아올 수 있도록 intent-filter 수정
+- <action android:name="com.google.firebase.MESSAGING_EVENT"/> 추가
+- FirebaseTestActivity 추가
+
+
+◾ strings.xml
+- msg_token_fmt 추가
+
+
+◾ 토큰 - 유저 아이디 매핑해서 고유한 값 2개를 매칭시킬 예정
+알림을 보낼 유저가 특정되면 알림보냄
