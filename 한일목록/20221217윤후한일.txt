@@ -1,0 +1,143 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾ FirebaseConfig 추가
+- 해당 config에서 admin권한 json 파악
+- FileInputStream 으로 해당 json 을 GoogleCredentials key로 사용
+- init() method 를 통해 직렬화
+- 로컬과 서버에서 서로 참조하는 url 변동되게 설정
+
+
+	■ Controller
+◾ AppController
+- post_auto_login 생성
+- get_memberInfo >> post_memberInfo 변경
+- 앱에서 한번이라도 로그인 시, 토큰 저장
+- post_save2 예약 리스트 추가시 알림 설정
+- post_board_reserve 예약리스트 추가시 알림 설정
+
+
+◾ ReserveController
+- SimpMessagingTemplate simpMessagingTemplate 추가
+- TeamService tService 추가
+- updateReserve 수정
+- 웹에서 accept할경우 메세지 보내도록 소스코드 추가
+
+
+◾ ReserveListController
+- 웹에서 어웨이팀이 신청리스트에 추가되었을때도 앱 알림 추가
+- 소스코드 수정
+
+
+	■ Domain
+◾ MemberDTO
+- String fireBaseToken 추가
+
+◾ Firebase 추가
+- sendToToken 메서드로 하나의 토큰에 메세지 보내게 작성
+- multipleSendToToken 여러개의 토큰에 메세지 보내도록 작성
+- 메세지를 보내는 부분에서 알림을 보내는 부분으로 소스코드 수정
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾ implementation 'com.google.firebase:firebase-admin:9.1.1' 추가
+futsal-b1b5b-firebase-adminsdk-w5640-0133f32660.json 추가
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:17 교체된 war 재배포
+
+
+◾ home/ubuntu/firebase 생성
+- 해당 키 밑에 admin json 옮김
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:17 날씨 DB 갱신
+
+
+	■ Andriod
+◾ CustomSharedPreferences 수정
+- 소셜 로그인 시 유저 닉네임을 가진 sharedPreferences userInfo에 key-mapping
+- 해당 정보로 DB 조회 (post_auto_login)
+- 조회해온 정보를 토대로 Check.info에 담음
+
+
+
+◾ MemberAPI
+- post_auto_login 추가
+- get_memberInfo >> post_memberInfo 로 변경
+- 앱에서 한번이라도 로그인 할경우 token 저장
+
+
+
+◾ MemberDTO
+- Integer alramCount 추가
+- Integer readCount 추가
+- ArrayList<AlarmVO> alarms 추가
+- String fireBaseToken 추가
+
+
+◾ AlarmVO 추가
+
+
+
+◾ LoginActivity
+- 소셜 로그인 시, 자동 로그인할수 있도록 코드추가
+
+
+
+◾ SplashActivity
+- 앞으로 sharedPrefreneces userInfo key에 유저 정보가있는지 확인 후, main / login 보낼 지 결정
+
+
+
+◾ BoardActivity 
+- back 버튼 클릭 이벤트 구현
+
+
+
+◾ item_reservation.xml
+- 어웨이팀 신청목록 디자인 변경
+
+
+
+◾ ReserveListAdapter
+- 어댑터 구성 내역 변경
+
+
+
+◾ ReserveListActivity
+- 예약 신청리스트 onBackPressed 애니메이션 변경
+- 프로그래스 바 추가
+- footer section 추가
