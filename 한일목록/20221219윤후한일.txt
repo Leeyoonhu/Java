@@ -1,0 +1,75 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾ 
+
+
+	■ Controller
+◾ AppController
+- post_join_member  추가
+- 앱에서 받은 맴버정보를 insert하고 리턴
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾ 
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ RegisterActivity
+- 소셜 로그인 버튼 클릭 시, 이미 있는 회원인지 판별
+- 이미 존재하는 회원일 경우 자동로그인 (기존에 토큰으로 되지만 만약을 대비해서 방지)
+- 각 버튼 클릭 시 기존 회원인지, 신규 가입인지 따라 핸들링
+
+
+
+◾ MemberDTO
+- alram, token 관련 필드 추가
+- getter  & setter 추가 
+
+
+
+◾ MemberAPI
+- post_join_member 추가
