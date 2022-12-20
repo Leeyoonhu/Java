@@ -1,0 +1,95 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_reservation 에서 dto.getInfo try-catch 문 추가
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:12 War 재배포
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:12 날씨 DB 갱신
+
+
+	■ Andriod
+◾ ViewHolderTeam 
+- binding할때 retrofit으로 button 판별 코드 삭제
+- 동기와 비동기의미를 잘 생각하자..
+- onBind시 각 text에 set해줄 때에 이미 activity에서 받아온 data를 가지고 판별
+- 가져온 data 내의 applyMember의 상황에 따라 버튼 색 구별
+- 팀이 없는 사람에 한에서만 팀신청 버튼 활성화
+
+
+◾ RegisterActivity
+- 전화번호 중복일경우 추가
+- onPause 이벤트 추가
+
+
+◾ LoginActivity
+- response code == 500 일 경우, 회원가입으로 유도 추가
+
+
+◾ SplashActivity
+- 기존 GPS를 받아오던 코드에서 AndPermission.onGranted 일 경우, locationlistener를 통해 주기적으로 GPS받아오도록 변경
+- 만약에 GPS를 못가져 올 경우, 2차안으로 NETWORK_PROVIDER 에서 가져옴
+- NETWORK_PROVIDER  에서도 못가져올 경우, 다른 앱에서 확인된 PASSIVE_PROVIDER 에서 가져오도록 설정
+
+
+◾ Check
+- clickedTeam 추가
+
+
+◾ other_layout.xml
+- inner layout 추가
+
+
+◾ activity_reservation.xml 
+- 예약이 없을경우 예약이 없습니다 뷰로 이동
+
+
+◾ activity_search_board.xml
+- 검색 화면 만듬
