@@ -1,0 +1,129 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_search_board
+- 예약된 구장정보로 조회가능하도록 수정
+- get_community_board
+- 전체 글 // 예약 글로 나누어서 AppSearchBoardDTO 타입으로 전송
+- 반환타입 AppSearchBoardDTO 으로 변경
+- post_click_notification
+- 알림 클릭시 처리할 컨트롤러
+
+
+	■ Domain
+◾ AppSearchBoardDTO
+- reserveSort 추가
+
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:09 war 재배포
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:09 날씨 구장정보 갱신
+
+
+	■ Andriod
+◾ SearchBoardActivity
+- 게시글 검색할때 예약 내용도 검색 가능하도록 변경
+
+
+◾ AppSearchBoardDTO
+- reserveSort 추가
+- getter & setter 추가
+
+
+◾ SearchBoardActivity
+- SearchBoardViewPager2Adapter 초기화 시, 매개변수로 fragment 1개 더 생성하도록 변경
+- tabElement 추가
+
+
+◾ SearchBoardViewPager2Adapter
+- 동적으로 pageCount 생성되도록 변경
+- 해당 포지션일때의 fragment 를 가져오도록 변경
+
+
+◾ CommunityAPI
+- get_community_board 반환값 AppSearchBoardDTO 로 변경
+
+
+◾ CommunityActivity
+- 기존 call 반환 타입 >> AppSearchBoardDTO 로 변경
+- CommunityViewPager2Adapter 호출 시, 매개변수 변경
+
+
+◾ activity_notification.xml 추가
+
+
+◾ content_notification.xml 추가
+
+
+◾ NotificationActivity 추가
+- 안읽은 처리된 알림들 클릭 시 이벤트 추가
+- 읽음처리 바꾸고 saveCall
+- saveCall이후, 예약으로 보냄
+
+
+◾ item_notification.xml 추가
+
+
+◾ AndroidManifest.xml
+- NotificationActivity 설정 추가
+- CreateTeamActivity 추가
+
+◾ NotificationAdapter 추가
+- 읽음 처리된 애들의 배경색 변경
+
+
+◾ MemberAPI
+- post_click_notification 추가
+
+
+◾ MyFirebaseMessagingService
+- local notification 추가
+
+
+
+◾ CreateTeamActivity 추가
+- spinner 에서 시/도 에서 아이템 클릭 시에 군/구 spinner에 값 추가
+- 팀 창단일 
