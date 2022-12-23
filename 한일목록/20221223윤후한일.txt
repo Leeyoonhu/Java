@@ -1,0 +1,157 @@
+	■ HTML
+◾ createTeam.html
+- 연령대 10대 >> 10대 후반 변경
+
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_create_team 추가
+
+- post_save2 소스코드 변경
+- log 를 통해 앱에서 구장 화면쪽에서 예약했음을 알 수 있도록 추가
+- rvoList 선 초기화
+
+- post_memberInfo 소스코드 변경
+- 로그 추가
+
+- post_my_info 추가
+
+
+
+	■ Domain
+◾ 
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:08 war 재배포
+
+
+◾ ec2 인스턴스 scaleing up 시도
+- 기존 t2.micro를 AMI 로 변환하여, t3.middle 인스턴스에 업스케일링
+- route 53 아이피 설정 변경
+- 새로 만든 t3 인스턴스 인바운드 보안규칙 수정
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:08 날씨 DB 갱신
+
+◾ 9:00 1차 소프트리셋&테스트 진행 (member collections)
+
+❗ APP TEST
+- 앱에서 회원가입 정상 작동함을 확인
+- 앱에서 로그인 시, 회원 없으면 회원가입 폼 가는부분 확인
+- 앱에서 로그인을 통한 회원가입 폼에서도 회원가입 정상적으로 진행됨을 확인
+- 가입 폼에서 네이버로 회원가입 할 경우, 메인으로 가는것을 확인
+- 앱 종료 후, 재 실행 시 자동로그인 되는것을 확인
+- 웹에서 가입한 회원이 앱에서 회원가입 시도할 경우, 기존의 계정으로 로그인 됨을 확인
+- 앱에서 로그인 할 때 firebase 토큰 갱신함을 확인
+
+❗ WEB TEST
+- 중복 회원가입할 경우 이미 가입되었음을 확인
+- 웹에서 회원가입 정상 작동함을 확인
+- 앱에서 가입한 아이디로 웹에서 로그인 됨을 확인
+- 웹에서 회원이 아닌 소셜계정으로 로그인 시도 시, 회원가입 창으로 보냄을 확인
+- 웹에서 회원가입 시 닉네임 중복 적용 확인하는지 체크
+- 웹에서 회원가입 시 전화번호 중복 적용 확인하는지 체크
+
+
+
+	■ Andriod
+◾ activity_create_team.xml
+- Nested ScrollView로 변경
+- 시/도 선택 시, 군/구 선택 알맞은 값으로 변경되도록 어댑터 설정
+
+
+◾ TeamAPI
+- post_create_team 추가
+
+
+◾ FieldActivity
+- 팀 페이지로 가기 클릭시, call back 추가
+- 돌아가기 버튼 클릭 시, 이벤트 변경
+
+
+◾ CreateTeamActivity
+- 나이조건 10대 >> 10대 후반 변경
+
+
+◾ SearchBoardActivity
+- back 버튼 활성화
+
+
+
+◾ activity_myinfo.xml 추가
+- 현재 사용자에 대한 정보 제공
+
+
+
+◾ MyInfoActivity 추가
+- 현재 사용자의 정보에 맞는 부분 controller로 callback
+- footer 연결
+
+
+◾ MemberAPI
+- post_my_info
+- 내 정보 찾기 추가
+
+
+◾ FormatUtil
+- 전화번호 포맷 변경 함수 phone 추가
+
+
+
+◾ MainActivity
+- footer 에 MyInfoActivity 연결
+
+
+
+◾ TeamActivity
+- footer 에 MyInfoActivity 연결
+
+
+
+◾ ReservationActivity
+- footer 에 MyInfoActivity 연결
+
+
+◾ CommunityActivity
+- footer 에 MyInfoActivity 연결
+
+
