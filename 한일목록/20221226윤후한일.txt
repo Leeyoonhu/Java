@@ -1,0 +1,114 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+
+	■ CSS
+◾
+
+
+
+	■ Configuration
+◾
+
+
+
+	■ Controller
+◾ PayController 추가
+- TestPay 생성 
+- 기존 java script 로 진행했던 restapi 호출을 controller에서 하기위함
+
+
+
+◾ insertReserve 수정
+- 앱에서 예약 신청할때 로그 추가
+
+	■ Domain
+◾
+
+
+
+	■ Repository
+◾
+
+
+
+	■ Service & Impl
+◾
+
+
+
+	■ bulid.gradle
+◾
+
+
+
+	■ application.properties
+◾ 이전 테스트시 사용했던 탄력적 ip 주소 삭제
+- spring.data.mongodb.host=13.124.31.229 삭제
+
+
+◾ Pay init 추가
+- pay.merchant.identification.code=imp02435263
+
+
+	■ AWS EC2
+◾ 기존 t2.micro >> t2.small scaling up 
+- 이전 t2.micro에 사용되었던 탄력적 ip 변경
+- 이전에 test했던 t3.midium 삭제
+
+
+◾ 이전의 탄력적 ip 삭제
+
+
+◾ 기존 key-gen 변경
+
+
+
+
+	■ AWS S3
+◾ 
+
+
+
+	■ Social Login
+◾ 
+
+
+
+	■ MongoDB
+◾ 7:38 날씨 구장 정보 갱신
+
+
+	■ Andriod
+◾ 구글 플레이스토어 콘솔에 등록 신청
+- 검토 기간 최대 2주 예상됨
+
+
+◾ 앞으로 구현되어야 할 것들 정리
+- 인앱 결제
+- 매칭 종료된 별점 주기
+- 매칭 완료된 예약 클릭시 상대확인
+
+
+◾ activity_manner.xml 추가
+- 매칭 종료된 팀들에게 보여줄 view
+- 홈으로 예약한 입장에서 승무패 기입뷰 추가로 보여줌
+
+
+◾ MannerActivity
+- 매너 액티비티 추가
+- 별점에 따른 이벤트 리스너 추가
+- 승/무/패 라디오 버튼 클릭에 따른 이벤트 추가
+
+
+◾ AndroidManifest.xml
+- MannerActivity 설정 추가
+
+
+◾ ReservationVO
+- manner, mannerornot 추가
