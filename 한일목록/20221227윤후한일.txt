@@ -1,0 +1,89 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾ Firebase
+- 로그 추가
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:22 war 재배포
+
+
+◾ AWS CLI 1.27 설치를위해 python3-pip 설치
+- aws configure 설정 (접근키, 비밀키, 지역, 받을 타입)
+- cp 로 마운트설정
+
+
+◾ auto mount를 위해 s3fs 설정
+
+
+
+◾ logback-spring.xml 설정 변경
+- 날짜별로 저장할 수 있도록 변경
+- 경로 수정해서 저장하도록 하려했으나 read-only 오류만 출력되는중
+* 확인해 본 것
+- mount 된 애들 readonly 인지? >> read - write임
+- 파일 읽기 쓰기 접근권한 있는지 ?? >> 저장하는 경로부분 모두다 777 로 변경했음
+- 사용자나 그룹 변경해봤는지 ?? >> root, ubuntu, tomcat 으로 변경해봤으나 모두 동일한 현상
+
+
+
+◾ EBS 볼륨 생성
+- 기존 ec2 인스턴스에 mount
+- 해당 볼륨을 파일 시스템으로 포멧
+- /etc/fstab 에 config 설정
+
+
+
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:22 날씨 구장 정보 갱신
+
+
+	■ Andriod
+◾ MannerActivity
+- 별점, 매너 주는부분 소스 수정
