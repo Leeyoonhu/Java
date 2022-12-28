@@ -1,0 +1,68 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:10 war 재배포
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:10 날씨 구장 정보 갱신
+
+
+	■ Andriod
+◾ 
+
+
+	■  발표 PPT
+◾ 중간 발표 ppt 
+- 1~ 6까지 발표 내용 작성
+
+
+◾ erdcloud 를 사용
+- mongodb db구조 작성
