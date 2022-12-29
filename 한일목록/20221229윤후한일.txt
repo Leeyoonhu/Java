@@ -1,0 +1,119 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾ AppReservationDTO
+- String manner 추가
+- String mannerornot 추가
+
+
+◾ AppController
+- post_reservation 수정
+- rv.setManner 추가
+- rv.setMannerornot 추가
+
+- checkReserve
+- 체크 시 팀명도 보내도록 변경
+
+- insertReserve
+- 첫 예약시 예약정보 생성되도록 수정
+
+- post_save1
+- 팀원이 홈 & 어웨이로 변경 시, 바꾼 팀원의 예약정보에도 남겨줌
+- 팀원이 예약 정보 없을 경우, 새로 만들어줌
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾ logback-spring.xml 
+- 로그 작성 변경
+
+
+	■ AWS EC2
+◾ 6:16 war 재배포
+
+
+◾ catalina.sh log 파일 생성 권한 변경
+- 기존 UMASK = "0027" >> "0"
+
+
+◾ Apache Tomcat의 config 변경
+- ReadWritePaths 에 mount 위치 경로 추가
+
+
+◾ Apache Tomcat 의 서비스 리로드
+- systemctl daemon-reload 
+
+
+◾ AWS CloudWatch 사용을 위한 IAM 생성
+
+
+◾ AWS CloudWatch Agent 설치 
+- .aws 에 AmazonCloudWatchAgent 크레덴셜 추가
+- common-config.toml 에 위에 작성한 크레덴셜 읽도록 변경
+- IAM 설정한 키값들 config 설정
+
+
+◾ AWS CloudWatch 에 위젯 추가
+- ec2 내의 networkIn,Out, CPU 위젯
+- log 테이블 위젯
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:16 날씨 구장 DB 정보 갱신
+
+
+
+
+
+	■ Andriod
+◾ ReservationVO 
+- fieldPic 추가
+
+
+◾ AppReservationDTO
+- String manner 추가
+- String mannerornot 추가
+
+
+◾ FieldActivity
+- 기존 동일 닉네임으로 예약 확인하던부분, 팀도 동일한지 확인
+- 동일 팀으로 예약하면 일괄 대여로 변경문구 
+
+	■ 발표 PPT
+◾
