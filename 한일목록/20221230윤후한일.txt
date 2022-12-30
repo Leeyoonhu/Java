@@ -1,0 +1,153 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_insert_manner  추가
+
+
+	■ Domain
+◾ Firebase
+- token 갯수 세는 로그 변경
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ admin IAM 생성
+- MFA 로 2단계 인증 설정
+
+
+
+	■ AWS S3
+◾ 6:14 War 재배포
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:14 날씨 구장 DB 갱신
+
+
+◾ 구글 플레이스토어 앱 제출용 심사계정 추가
+
+
+
+	■ Andriod
+◾ 구글 플레이스토어 앱 제출옹 심사계정 추가 및 설명 추가
+- 6:37 재 검토 확인 요청 
+- 17:01 2차 거절
+
+
+◾ MainActivity
+- 알람이 없어도 클릭 가능하도록 변경
+
+
+◾ NotificationActivity
+- 해당 유저 알람이 없을 경우 처리
+
+
+◾ ReserveListActivity
+- 돌아가기 클릭 이벤트 토스트 삭제
+
+
+◾ ReserveListAdapter
+- 색상에 색 넣는 부분 삭제
+
+
+◾ ReservationAdapter
+- 매너 알람 받았고, 입력하지 않았을 경우 i 아이콘 나오도록 출력
+
+
+◾ ReservationActivity
+- intent 에 type 값 보냄
+- manner 기입 화면에서 type에 따른 승/패 기입 문구 출력 여부 설정 위함
+
+
+◾ activity_manner.xml
+- 문구 수정
+
+
+◾ MannerActivity
+- 매너 기입 call 추가
+- 버튼 추가
+
+
+◾ ReservationAPI
+- post_insert_manner 추가
+
+
+◾ activity_login.xml
+- guest 로그인 버튼 추가
+
+
+
+◾ AndroidManifest.xml
+- <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/> 추가
+
+
+
+◾ SplashActivity
+- 위치 사용권한 거부해도 사용가능하도록 변경
+
+
+
+◾ LoginActivity
+- 게스트 로그인 시, guest 로그인이 true임을 확인
+- 소셜 로그인 시, guest 로그인이 false을 확인
+- 네이버 로그인 캔슬시 나오는 Toast 삭제
+
+
+◾ RegisterActivity
+- 소셜 로그인 시, guest 로그인이 false을 확인
+- 네이버 로그인 캔슬시 나오는 Toast 삭제
+
+
+◾ MainActivity
+- 기존의 resume 조건에 Check의 isGuest 확인여부 포함
+
+
+◾ FieldActivity
+- 기존의 예약 하기 버튼 클릭 조건에 isGuest 확인여부 포함
+- alert4() 추가
+
+
+◾ TeamActivity
+- Guest일 경우 팀 관리, 생성 버튼 비활성화
+
+
+◾ ViewHolderTeam
+- Guest일 경우 팀 신청 버튼 비활성화
+
+
+◾ MainLocAdapter
+- Guest일 경우 거리 비활성화
