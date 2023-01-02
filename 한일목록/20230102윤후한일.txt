@@ -1,0 +1,118 @@
+	■ HTML
+◾ board.html
+- 지도부분 시작에 경위도값 추가
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController 
+- post_community_board_one
+- 구장 클릭한 계정이 게스트일 경우 추가
+
+- post_do_write
+- 게시글 작성 시 신고 열 추가
+
+- post_report_board
+- 게시글 신고하기 추가
+
+
+◾ CommunityController 
+- 게시글 관련 소스 수정
+- 로그인 유저 정보 Utils 에 추가
+
+
+	■ Domain
+◾ Utils 추가
+- 재사용되는 함수나, 저장해야할 값들 저장
+
+
+◾ ErrorPageController
+- 유저 정보 Utils 로 변경
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:03 War 재배포
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:03 날씨 구장정보 갱신
+
+
+	■ Andriod
+◾ MainActivity 
+- 게스트가 예약 버튼 클릭했을 경우 이벤트 변경
+
+
+◾ ReservationActivity
+- 게스트가 예약 버튼 클릭해서 resume 될 경우, 이벤트 변경
+
+
+◾ CommunityActivity
+- 게스트 상태에서 글쓰기 클릭할 경우, 이벤트 변경
+
+
+◾ BoardActivity
+- 게스트가 글을 클릭할 경우, 이벤트 변경
+- call할때 userid를 guest로 처리
+- 게스트가 예약 구장 정보확인하는 화면에서 회원가입이나 로그인 하도록 유도
+
+
+◾ MannerActivity
+- 홈, 어웨이 상태에서 기입했을 경우 전송한 값 변경
+- 2초이내에 뒤로가기 2번클릭시 모든 액티비티 종료
+- system.exit(0) 으로 시스템 종료
+
+
+◾ Check
+- isGranted 추가
+
+
+◾ build.gradle
+- 출시 버전 코드 변경
+
+
+◾ BoardActivity
+- 신고하기 버튼 추가
+-  reportCall 추가
+
+
+◾ CommunityAPI
+- post_report_board 추가
+
+
