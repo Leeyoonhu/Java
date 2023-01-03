@@ -1,0 +1,102 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController
+- post_join_member
+- 회원 가입 시 blockList 추가
+
+- post_block_user
+- 유저 차단 source
+
+
+◾ MainController
+- login
+- 회원 가입시 blockList 추가
+
+
+◾ AppController2
+- get_community_board > post_community_board 로 변경
+- 게시글 정보 조회 시, 신고누적이나 차단된 게시글 제외하고 보여줌
+
+
+	■ Domain
+◾ MemberDTO
+- blockList 추가
+
+
+◾ Utils
+- 블럭 기준의 신고 count 추가
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+
+
+
+	■ AWS EC2
+◾ 5:58 war 재배포
+
+
+
+	■ AWS S3
+◾ 
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 5:58 날씨 구장 DB 갱신
+
+
+◾ 모든 멤버에 blockList추가
+
+
+	■ Andriod
+◾ BoardActivity
+- 회원만 댓글 작성가능하도록 변경
+- report_btn 삭제
+- report_block_btn 생성
+- blockCall 추가
+
+
+◾ CommunityDTO
+- reportNickNames 추가
+- reportMessages 추가
+
+
+◾ MemberDTO
+- blockList 추가
+
+
+◾ CommunityAPI
+- post_block_user 추가
+
+
+
