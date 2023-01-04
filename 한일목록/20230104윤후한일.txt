@@ -1,0 +1,90 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ AppController2
+- get_community_board 추가
+
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:16 War 재배포
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:16 날씨 정보 갱신
+
+
+	■ Andriod
+◾ 앱 출시 완료
+
+
+◾ 배포버전 네이버, 구글 안됨
+- 개발자 앱 콘솔에서 SHA-1 인증서 해시 키값 개발자 등록
+- 카카오, 구글 로그인됨 확인
+- 카카오 맵 사용 가능함 확인
+
+
+◾ CommunityActivty
+- guest 일 경우 게시글 조회하도록 guestCall 생성
+
+
+◾ CommunityAPI
+- get_community_board 추가
+
+
+◾ BoardActivity
+- 게시글 클릭 후 게스트일경우 옵션 추가
+
+
+◾ FieldActivity
+- 예약 불가 클릭시, dialog 돌던 부분 수정
+
+
+	■ PPT
+- 모든 슬라이드 헤더 변경
+- 2번 슬라이드 기능 설명 추가
+- 피피티 작성
+
