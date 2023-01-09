@@ -1,0 +1,81 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾ loginServer.js 
+- contextPath 삭제
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾
+
+
+	■ AWS EC2
+◾ 6:42 war 재배포
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 6:42 날씨 구장 DB 갱신
+
+
+	■ Andriod
+◾ activity_login.xml
+- 회원가입 버튼 삭제
+- 소셜 로그인 진행 시, 회원 여부 여하에 따른 프로필 설정으로 보낼예정
+
+
+◾ LoginActivity
+- 로그인 진행 시, 회원이 아닌 부분에 보내기
+- 로그인 진행 시, 해당 플랫폼 저장
+- 회원가입 이동 문구 삭제
+- guest로 로그인 시 알림 창
+
+◾ activity_register.xml
+- 프로필 설정으로 변경
+
+
+◾ Check
+- platform 추가
+- email 추가
+
+
+◾ RegisterActivity
+- 프로필 설정 진행 시, 유저 정보  insert 하고 메인으로 보냄
