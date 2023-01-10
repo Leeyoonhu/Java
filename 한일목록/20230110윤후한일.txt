@@ -1,0 +1,67 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾ WebConfiguration
+- swagger-ui.html 추가
+
+
+
+	■ Controller
+◾ 
+
+
+	■ Domain
+◾
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾ spring.mvc.pathmatch.matching-strategy=ant_path_matcher 추가
+
+
+
+	■ AWS EC2
+◾ 
+
+
+
+	■ AWS S3
+◾ 
+
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ 
+
+
+	■ jenkins
+◾ 
