@@ -1,0 +1,92 @@
+	■ HTML
+◾
+
+
+	■ JS
+◾
+
+
+	■ CSS
+◾
+
+
+	■ Configuration
+◾
+
+
+	■ Controller
+◾ MainController
+- getRegister 
+- clientId 값 변경
+- 기본 static clientId, secret 변경
+
+
+
+	■ Domain
+◾ KaKaoAPI 
+- client id source 변경
+
+
+◾ NaverAPI 
+- client id source 변경
+- clientSecret source 변경
+
+
+◾ GoogleAPI 
+- client id source 변경
+- clientSecret source 변경
+
+
+◾ SchedulerWeather
+- apikey 변경
+- baseurl 변경
+
+
+	■ Repository
+◾
+
+
+	■ Service & Impl
+◾
+
+
+	■ bulid.gradle
+◾
+
+
+	■ application.properties
+◾ application-aws.properties 추가
+- 각종 설정값들 이동
+- KakaoAPI
+- NaverAPI
+- GoogleAPI
+- OpenWeatherAPI
+
+
+◾ .gitignore 항목 추가
+- application-aws.properties
+- logbacks
+- serviceAccount
+
+
+
+	■ AWS EC2
+◾ jenkins 설치
+
+
+
+
+	■ AWS S3
+◾
+
+
+	■ Social Login
+◾ 
+
+
+	■ MongoDB
+◾ 
+
+
+	■ Andriod
+◾ 
